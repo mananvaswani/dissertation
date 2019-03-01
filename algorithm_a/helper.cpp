@@ -1,10 +1,4 @@
-#include <complex>
-#include <random>
-#include <iostream>
-
-#define SIZE 3
-
-using namespace std;
+#include "header.h"
 
 // Function declarations
 complex<double> getPerm(vector<vector<complex<double>>> A);
@@ -95,6 +89,16 @@ void matrixConjugateTranspose(complex<double> a[SIZE][SIZE], complex<double> con
     }
 }
 
+// Conjugate transpose of a vector matrix
+void vectorMatrixConjugateTranspose(vector<vector<complex<double>>> a, vector<vector<complex<double>>> &conjTrans) {
+    vectorMatrixInit(conjTrans, a[0].size(), a.size());
+    for(int i = 0; i < conjTrans.size(); ++i) {
+        for(int j = 0; j < conjTrans[0].size(); ++j){
+            conjTrans[i][j] = conj(a[j][i]);
+        }
+    }
+}
+
 // Matrix multiplication
 void matrixMult(complex<double> a[SIZE][SIZE], complex<double> b[SIZE][SIZE], complex<double> out[SIZE][SIZE]) {
     for(int i = 0; i < SIZE; ++i) {
@@ -105,4 +109,43 @@ void matrixMult(complex<double> a[SIZE][SIZE], complex<double> b[SIZE][SIZE], co
             }
         }
     }
+}
+
+// Vector matrix multiplication
+void vectorMatrixMult(vector<vector<complex<double>>> a, vector<vector<complex<double>>> b, vector<vector<complex<double>>> &out) {
+    vectorMatrixInit(out, a.size(), b[0].size());
+    for(int i = 0; i < a.size(); i++) {
+        for(int j = 0; j < b[0].size(); j++){
+            out[i][j] = 0;
+            for(int k = 0; k < b.size(); k++) {
+                out[i][j] += a[i][k] * b[k][j];
+            }
+        }
+    }
+}
+
+// initialize vector with zeros
+void vectorMatrixInit(vector<vector<complex<double>>> &a, int rows, int cols) {
+    for(int i = 0; i < rows; i++) {
+        vector<complex<double>> temp;
+        for(int j = 0; j < cols; j++){
+            temp.push_back(0);
+        }
+        a.push_back(temp);
+    }
+}
+
+// Get the list of combinations(without repetitions) of K elements from 1 ... N
+void comb(int N, int K, vector<vector<int>> &combs) {
+    std::string bitmask(K, 1); // K leading 1's
+    bitmask.resize(N, 0); // N-K trailing 0's
+
+    // print integers and permute bitmask
+    do {
+        vector<int> temp;
+        for (int i = 1; i <= N; ++i) {
+            if (bitmask[i-1]) temp.push_back(i);
+        }
+        combs.push_back(temp);
+    } while (std::prev_permutation(bitmask.begin(), bitmask.end()));
 }

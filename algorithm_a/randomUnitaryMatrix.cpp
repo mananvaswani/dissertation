@@ -2,9 +2,8 @@
 
 // Modified Gram-schmidt algorithm for QR decomposition
 // http://www.ams.sunysb.edu/~jiao/teaching/ams526_fall11/lectures/lecture06.pdf Slide 6
-void gramSchmidt(vector<vector<complex<double>>> &a, vector<vector<complex<double>>> &q, vector<vector<complex<double>>> &r, int size) {
-    vector<vector<complex<double>>> v;
-    vectorMatrixInit(v, size, size);
+void gramSchmidt(complex<double> a[SIZE][SIZE], complex<double> q[SIZE][SIZE], complex<double> r[SIZE][SIZE], int size) {
+    complex<double> v[size][size];
     for (int j = 0; j < size; j++) {
         // v_j = a_j
         for (int k = 0; k < size; k++) {
@@ -42,25 +41,24 @@ void gramSchmidt(vector<vector<complex<double>>> &a, vector<vector<complex<doubl
     // printComplexMatrix(r, SIZE);
 
     // // QR MULTIPLICATION to check
-    // vector<vector<complex<double>>> conjTrans;
-    // vectorMatrixConjugateTranspose(q, conjTrans);
+    // complex<double> conjTrans[SIZE][SIZE];
+    // matrixConjugateTranspose(q, conjTrans);
     //
-    // vector<vector<complex<double>>> output;
-    // vectorMatrixMult(q, conjTrans, output);
+    // complex<double> output[SIZE][SIZE];
+    // matrixMult(q, conjTrans, output);
     //
     // cout << endl;
-    // print2dComplexVec(output);
+    // printComplexMatrix(output, SIZE);
 
 }
 
 // Make a random unitary matrix
-void randomUnitary(int size, vector<vector<complex<double>>> &A) {
+void randomUnitary(int size) {
+    complex<double> A[SIZE][SIZE];
 
     random_device rd;
     mt19937 gen(rd());
     normal_distribution<> d(0,1);   // mean = 0, std dev = 1
-
-    vectorMatrixInit(A, size, size);
 
     for(int i = 0; i < size; i++) {
         for (int j = 0; j < size; j++) {
@@ -70,27 +68,21 @@ void randomUnitary(int size, vector<vector<complex<double>>> &A) {
     }
 
     // Carry out QR decomposition
-    vector<vector<complex<double>>> q;
-    vector<vector<complex<double>>> r;
-
-    vectorMatrixInit(q, size, size);
-    vectorMatrixInit(r, size, size);
-
-    gramSchmidt(A, q, r, size);
+    complex<double> q[SIZE][SIZE];
+    complex<double> r[SIZE][SIZE];
+    gramSchmidt(A, q, r, SIZE);
 
     // Create R_Diag
-    vector<vector<complex<double>>> r_diag;
-    vectorMatrixInit(r_diag, size, size);
-    for (int i = 0; i < size; i++) {
+    complex<double> r_diag[SIZE][SIZE];
+    for (int i = 0; i < SIZE; i++) {
         r_diag[i][i] = (real(r[i][i]) > 0) - (real(r[i][i]) < 0);
     }
 
     // Random unitary matrix
-    vector<vector<complex<double>>> randomUnitary;
-    vectorMatrixMult(q, r_diag, randomUnitary);
-    // matrixMult(q, r_diag, randomUnitary);
+    complex<double> randomUnitary[SIZE][SIZE];
+    matrixMult(q, r_diag, randomUnitary);
+    printComplexMatrix(randomUnitary, SIZE);
 
-    A = randomUnitary;
     // Check
     // complex<double> temp[SIZE][SIZE];
     // matrixConjugateTranspose(randomUnitary, temp);
@@ -98,10 +90,8 @@ void randomUnitary(int size, vector<vector<complex<double>>> &A) {
     // matrixMult(randomUnitary, temp, out);
     // printComplexMatrix(out, SIZE);
 }
-
+//
 // int main(int argc, char *argv[]) {
-//     vector<vector<complex<double>>> A;
-//     randomUnitary(SIZE, A);
-//     print2dComplexVec(A);
+//     randomUnitary(SIZE);
 //     return 0;
 // }
