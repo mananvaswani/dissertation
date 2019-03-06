@@ -1,0 +1,62 @@
+        -:    0:Source:getPerm.cpp
+        -:    0:Graph:getPerm.gcno
+        -:    0:Data:getPerm.gcda
+        -:    0:Runs:2
+        -:    0:Programs:1
+        -:    1:#include "header.h"
+        -:    2:#include <algorithm>
+        -:    3:#include <string>
+        -:    4:
+        -:    5:complex<double> getPerm(vector<vector<complex<double>>> A) {
+        -:    6:// Declarations
+      252:    7:    int n = A.size(),  m = A[0].size(); // needs to be square matrix
+      126:    8:	if(m != n) cout << "Input matrix has incorrect dimensions";
+        -:    9:
+      126:   10:    int j = 0, k;
+        -:   11:
+        -:   12:    // v = sum of elements in each row /2
+      126:   13:    vector<complex<double>> v;
+      684:   14:    for (int i = 0; i < n; i++) {
+      216:   15:        complex<double> rowsum = 0;
+     1296:   16:        for (int j = 0; j < n; j++) {
+     1296:   17:            rowsum += A[i][j];
+      432:   18:        }
+      432:   19:        v.push_back(rowsum/2.0);
+      216:   20:    }
+        -:   21:
+        -:   22:    // p = product of elements in v
+      126:   23:    complex<double> p = complex<double>(1., 0.);
+      378:   24:    p = complexVecProd(v);
+        -:   25:
+      126:   26:    bool s = true;
+        -:   27://
+      126:   28:    vector<bool> d(n, true);
+        -:   29://
+      288:   30:    if(n==1) return A[0][0];
+        -:   31://
+        -:   32:// g: initialize a gray code iterator
+       72:   33:    vector<int> g;
+      468:   34:    for (int i = 0; i < n; i++) {
+      162:   35:        g.push_back(i);
+      162:   36:    }
+        -:   37://
+      360:   38:    while (j < n-1) {
+      324:   39:        vector<complex<double>> A_j = getCol(A, j);
+      576:   40:        if (d[j]) v = subtractVecs(v, A_j);
+       72:   41:        else      v = addVecs(v, A_j);
+      864:   42:        s? p-= complexVecProd(v) : p+= complexVecProd(v);
+      324:   43:        d[j] = !d[j]; s=!s;
+        -:   44:// iterate Gray code: j is active index
+      108:   45:        if (j > 0) {
+       18:   46:            k = j+1;
+       54:   47:            g[j] = g[k];
+       36:   48:            g[k] = k;
+       18:   49:            j = 0;
+       18:   50:        }
+        -:   51:        else {
+      180:   52:            j = g[1];
+      180:   53:            g[1] = 1;
+        -:   54:        }
+      108:   55:    }
+      144:   56:    return 2.*p;
+      198:   57:}

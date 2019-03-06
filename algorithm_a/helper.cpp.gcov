@@ -1,0 +1,156 @@
+        -:    0:Source:helper.cpp
+        -:    0:Graph:helper.gcno
+        -:    0:Data:helper.gcda
+        -:    0:Runs:2
+        -:    0:Programs:1
+        -:    1:#include "header.h"
+        -:    2:
+        -:    3:// Function declarations
+        -:    4:complex<double> getPerm(vector<vector<complex<double>>> A);
+        -:    5:
+        -:    6:// Print a complex number
+        -:    7:void printComplex(complex<double> n) {
+      162:    8:    cout << real(n);
+      249:    9:    if (imag(n) >= 0) cout << "+";
+      162:   10:    cout << imag(n) << "i";
+      162:   11:}
+        -:   12:
+        -:   13:// Print a complex matrix
+        -:   14:void printComplexMatrix(complex<double> a[SIZE][SIZE], int size) {
+    #####:   15:    for(int i = 0; i < size; i++) {
+    #####:   16:        for (int j = 0; j < size; j++) {
+    #####:   17:            printComplex(a[i][j]);
+    #####:   18:            cout << "\t";
+    #####:   19:        }
+    #####:   20:        cout << endl;
+    #####:   21:    }
+    #####:   22:}
+        -:   23:
+        -:   24:// Print a 2D vector
+        -:   25:void print2dVec(vector<vector<int>> v) {
+    #####:   26:    for (int i = 0; i < v.size(); i++) {
+    #####:   27:        for (int j = 0; j < v.at(0).size(); j++) {
+    #####:   28:            cout << v[i][j] << "\t";
+    #####:   29:        }
+    #####:   30:        cout << endl;
+    #####:   31:    }
+    #####:   32:}
+        -:   33:
+        -:   34:// Print a 2D complex vector
+        -:   35:void print2dComplexVec(vector<vector<complex<double>>> v) {
+       42:   36:    for (int i = 0; i < v.size(); i++) {
+      360:   37:        for (int j = 0; j < v.at(0).size(); j++) {
+      162:   38:            printComplex(v[i][j]);
+      162:   39:            cout << "\t";
+      162:   40:        }
+       18:   41:        cout << endl;
+       18:   42:    }
+        2:   43:}
+        -:   44:
+        -:   45:// Product of elements in a complex vector
+        -:   46:complex<double> complexVecProd(vector<complex<double>> v) {
+      468:   47:    complex<double> prod = complex<double>(1., 0.);;
+     1440:   48:    for (int i = 0; i < v.size(); i++) {
+      486:   49:        prod = prod*v[i];
+      486:   50:    }
+      234:   51:    return prod;
+        -:   52:}
+        -:   53:
+        -:   54:// Add two complex vectors (element-wise)
+        -:   55:vector<complex<double>> addVecs(vector<complex<double>> v1, vector<complex<double>> v2) {
+       36:   56:    vector<complex<double>> result;
+       18:   57:    if (v1.size() != v2.size()) cout << "Incorrect inputs";
+      144:   58:    for (int i = 0; i < v1.size(); i++) {
+      216:   59:        result.push_back(v1[i] + v2[i]);
+       54:   60:    }
+       18:   61:    return result;
+       36:   62:}
+        -:   63:
+        -:   64:// Subtract two complex vectors (element-wise)
+        -:   65:vector<complex<double>> subtractVecs(vector<complex<double>> v1, vector<complex<double>> v2) {
+      180:   66:    vector<complex<double>> result;
+       90:   67:    if (v1.size() != v2.size()) cout << "Incorrect inputs";
+      612:   68:    for (int i = 0; i < v1.size(); i++) {
+      864:   69:        result.push_back(v1[i] + v2[i]);
+      216:   70:    }
+       90:   71:    return result;
+      180:   72:}
+        -:   73:
+        -:   74:// Get the ith column of a complex vector matrix (as a vector)
+        -:   75:vector<complex<double>> getCol(vector<vector<complex<double>>> m, int col) {
+      108:   76:    vector<complex<double>> output;
+      756:   77:    for (int i = 0; i < m.size(); i++) {
+      810:   78:        output.push_back(m[i][col]);
+      270:   79:    }
+      108:   80:    return output;
+      216:   81:}
+        -:   82:
+        -:   83:// Conjugate transpose of a matrix
+        -:   84:void matrixConjugateTranspose(complex<double> a[SIZE][SIZE], complex<double> conjTrans[SIZE][SIZE]) {
+    #####:   85:    for(int i = 0; i < SIZE; ++i) {
+    #####:   86:        for(int j = 0; j < SIZE; ++j){
+    #####:   87:            conjTrans[i][j] = conj(a[j][i]);
+    #####:   88:        }
+    #####:   89:    }
+    #####:   90:}
+        -:   91:
+        -:   92:// Conjugate transpose of a vector matrix
+        -:   93:void vectorMatrixConjugateTranspose(vector<vector<complex<double>>> a, vector<vector<complex<double>>> &conjTrans) {
+    #####:   94:    vectorMatrixInit(conjTrans, a[0].size(), a.size());
+    #####:   95:    for(int i = 0; i < conjTrans.size(); ++i) {
+    #####:   96:        for(int j = 0; j < conjTrans[0].size(); ++j){
+    #####:   97:            conjTrans[i][j] = conj(a[j][i]);
+    #####:   98:        }
+    #####:   99:    }
+    #####:  100:}
+        -:  101:
+        -:  102:// Matrix multiplication
+        -:  103:void matrixMult(complex<double> a[SIZE][SIZE], complex<double> b[SIZE][SIZE], complex<double> out[SIZE][SIZE]) {
+    #####:  104:    for(int i = 0; i < SIZE; ++i) {
+    #####:  105:        for(int j = 0; j < SIZE; ++j){
+    #####:  106:            out[i][j] = 0;
+    #####:  107:            for(int k = 0; k < SIZE; ++k) {
+    #####:  108:                out[i][j] += a[i][k] * b[k][j];
+    #####:  109:            }
+    #####:  110:        }
+    #####:  111:    }
+    #####:  112:}
+        -:  113:
+        -:  114:// Vector matrix multiplication
+        -:  115:void vectorMatrixMult(vector<vector<complex<double>>> a, vector<vector<complex<double>>> b, vector<vector<complex<double>>> &out) {
+        2:  116:    vectorMatrixInit(out, a.size(), b[0].size());
+       40:  117:    for(int i = 0; i < a.size(); i++) {
+      360:  118:        for(int j = 0; j < b[0].size(); j++){
+      162:  119:            out[i][j] = 0;
+     3240:  120:            for(int k = 0; k < b.size(); k++) {
+     1458:  121:                out[i][j] += a[i][k] * b[k][j];
+     1458:  122:            }
+      162:  123:        }
+       18:  124:    }
+        2:  125:}
+        -:  126:
+        -:  127:// initialize vector with zeros
+        -:  128:void vectorMatrixInit(vector<vector<complex<double>>> &a, int rows, int cols) {
+      240:  129:    for(int i = 0; i < rows; i++) {
+      108:  130:        vector<complex<double>> temp;
+     2160:  131:        for(int j = 0; j < cols; j++){
+     1944:  132:            temp.push_back(0);
+      972:  133:        }
+      108:  134:        a.push_back(temp);
+      108:  135:    }
+       12:  136:}
+        -:  137:
+        -:  138:// Get the list of combinations(without repetitions) of K elements from 1 ... N
+        -:  139:void comb(int N, int K, vector<vector<int>> &combs) {
+        6:  140:    std::string bitmask(K, 1); // K leading 1's
+        6:  141:    bitmask.resize(N, 0); // N-K trailing 0's
+        -:  142:
+        -:  143:    // print integers and permute bitmask
+        6:  144:    do {
+       14:  145:        vector<int> temp;
+      112:  146:        for (int i = 1; i <= N; ++i) {
+       90:  147:            if (bitmask[i-1]) temp.push_back(i);
+       42:  148:        }
+       14:  149:        combs.push_back(temp);
+       42:  150:    } while (std::prev_permutation(bitmask.begin(), bitmask.end()));
+        6:  151:}
