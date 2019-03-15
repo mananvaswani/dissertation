@@ -63,7 +63,7 @@ int main(int argc, char *argv[]) {
     for (int i = 0; i < output.size(); i++) {
         cout << output[i] << " ";
     }
-    cout << "]";
+    cout << " ]";
     cout << endl;
     return 0;
 }

@@ -44,7 +44,7 @@ void print2dComplexVec(vector<vector<complex<double>>> v) {
 
 // Product of elements in a complex vector
 complex<double> complexVecProd(vector<complex<double>> v) {
-    complex<double> prod = complex<double>(1., 0.);
+    complex<double> prod = complex<double>(1., 0.);;
     for (int i = 0; i < v.size(); i++) {
         prod = prod*v[i];
     }
@@ -62,7 +62,8 @@ vector<complex<double>> complexVecCumProd(vector<complex<double>> v) {
 // Add two complex vectors (element-wise)
 vector<complex<double>> addVecs(vector<complex<double>> v1, vector<complex<double>> v2) {
     vector<complex<double>> result;
-    if (v1.size() != v2.size()) cout << "Incorrect inputs";
+    if (v1.size() != v2.size()) {cout << "Incorrect inputs";
+    cout << v1.size() << " " << v2.size(); }
     for (int i = 0; i < v1.size(); i++) {
         result.push_back(v1[i] + v2[i]);
     }
@@ -72,7 +73,8 @@ vector<complex<double>> addVecs(vector<complex<double>> v1, vector<complex<doubl
 // Subtract two complex vectors (element-wise)
 vector<complex<double>> subtractVecs(vector<complex<double>> v1, vector<complex<double>> v2) {
     vector<complex<double>> result;
-    if (v1.size() != v2.size()) cout << "Incorrect inputs";
+    if (v1.size() != v2.size()) {cout << "Incorrect inputs";
+    cout << v1.size() << " " << v2.size(); }
     for (int i = 0; i < v1.size(); i++) {
         result.push_back(v1[i] + v2[i]);
     }
@@ -103,6 +105,16 @@ void vectorMatrixConjugateTranspose(vector<vector<complex<double>>> a, vector<ve
     for(int i = 0; i < conjTrans.size(); ++i) {
         for(int j = 0; j < conjTrans[0].size(); ++j){
             conjTrans[i][j] = conj(a[j][i]);
+        }
+    }
+}
+
+// Transpose of a vector matrix
+void vectorMatrixTranspose(vector<vector<complex<double>>> a, vector<vector<complex<double>>> &trans) {
+    vectorMatrixInit(trans, a[0].size(), a.size());
+    for(int i = 0; i < trans.size(); ++i) {
+        for(int j = 0; j < trans[0].size(); ++j){
+            trans[i][j] = a[j][i];
         }
     }
 }
