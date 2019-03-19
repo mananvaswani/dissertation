@@ -16,7 +16,7 @@ complex<double> getPerm(vector<vector<complex<double>>> A);
 vector<complex<double>> getPermMinors(vector<vector<complex<double>>> A);
 
 // Random unitary
-void randomUnitary(int size, vector<vector<complex<double>>> &A);
+vector<vector<complex<double>>> randomUnitary(int size);
 
 // Helper
 void printComplex(complex<double> n);

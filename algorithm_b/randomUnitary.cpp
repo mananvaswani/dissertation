@@ -54,7 +54,9 @@ void gramSchmidt(vector<vector<complex<double>>> &a, vector<vector<complex<doubl
 }
 
 // Make a random unitary matrix
-void randomUnitary(int size, vector<vector<complex<double>>> &A) {
+vector<vector<complex<double>>> randomUnitary(int size) {
+
+    vector<vector<complex<double>>> A;
 
     random_device rd;
     mt19937 gen(rd());
@@ -88,9 +90,10 @@ void randomUnitary(int size, vector<vector<complex<double>>> &A) {
     // Random unitary matrix
     vector<vector<complex<double>>> randomUnitary;
     vectorMatrixMult(q, r_diag, randomUnitary);
-    // matrixMult(q, r_diag, randomUnitary);
 
     A = randomUnitary;
+    return A;
+
     // Check
     // complex<double> temp[SIZE][SIZE];
     // matrixConjugateTranspose(randomUnitary, temp);
