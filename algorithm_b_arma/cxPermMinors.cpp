@@ -14,7 +14,9 @@ arma::cx_vec cxPermMinors(arma::cx_mat C) {
 		cout << "Input matrix has incorrect dimensions" << endl;
 		exit (EXIT_FAILURE);
 	}
-    int i, j = 0, k;
+    int i;
+	int j = 0;
+	int k;
     bool s = true;
     arma::cx_vec p(m), q(m), v(m);
     arma::cx_double t;
@@ -56,6 +58,7 @@ arma::cx_vec cxPermMinors(arma::cx_mat C) {
         }
 		d[j] = !d[j]; s = !s;
 // iterate Gray code: j is active index
+// QUESTION: Confused about whats going on here
 		if( j > 0){
             k = j + 1; g[j] = g[k]; g[k] = k; j = 0;
         } else {

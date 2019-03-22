@@ -1,6 +1,6 @@
 #include "header.h"
 
-vector<int> bosonSampler(arma::cx_mat A, int n, int m) {
+vector<int> bosonSampler(arma::cx_mat A, int n, int m, int &timeInPerms) {
     // Take first n columns of A
     A.set_size(m, n);
 
@@ -50,7 +50,11 @@ vector<int> bosonSampler(arma::cx_mat A, int n, int m) {
         // Line 8
         arma::cx_vec perms;
         arma::cx_mat temp;
+
+        auto startPerms = chrono::steady_clock::now();
         perms = cxPermMinors(B_k.st());
+        auto endPerms = chrono::steady_clock::now();
+        timeInPerms += chrono::duration_cast<chrono::milliseconds>(endPerms - startPerms).count();
 
         // Line 9
         for (int i = 1; i <= m; i++) {
@@ -75,14 +79,18 @@ vector<int> bosonSampler(arma::cx_mat A, int n, int m) {
     vector<int> z;
     sort(r.begin(), r.end());
     z = r;
-    // Line 14
 
+    // Line 14
     return z;
 }
 
 void runOneSample(int n, int m) {
+
     // Start clock
     auto start = chrono::steady_clock::now();
+
+    // Keep track of the time spent in calculating the permanents
+    int timeInPerms = 0;
 
     // Make random unitary matrix A
     arma::cx_mat A;
@@ -91,7 +99,7 @@ void runOneSample(int n, int m) {
 
     // Run boson sampling algorithm A
     vector<int> output;
-    output = bosonSampler(A, n, m);
+    output = bosonSampler(A, n, m, timeInPerms);
     cout << "[ ";
     for (int i = 0; i < output.size(); i++) {
         cout << output[i] << " ";
@@ -106,6 +114,9 @@ void runOneSample(int n, int m) {
         << chrono::duration_cast<chrono::milliseconds>(end - start).count()
         << " ms" << endl;
 
+    cout << "Time spent in calculating permanents : "
+        << timeInPerms
+        << " ms" << endl;
 
     std::ofstream outfile;
     outfile.open("timings.csv", std::ios_base::app);

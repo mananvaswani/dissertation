@@ -3,7 +3,6 @@
 #include <iostream>
 #include <chrono>
 #include <fstream>
-#include <armadillo>
 #include <stdlib.h>
 
 #define SIZE 3
