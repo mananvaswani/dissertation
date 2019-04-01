@@ -100,12 +100,14 @@ void runOneSample(int n, int m) {
     // Run boson sampling algorithm A
     vector<int> output;
     output = bosonSampler(A, n, m, timeInPerms);
-    cout << "[ ";
-    for (int i = 0; i < output.size(); i++) {
-        cout << output[i] << " ";
-    }
-    cout << "]";
-    cout << endl;
+
+    // Print
+    // cout << "[ ";
+    // for (int i = 0; i < output.size(); i++) {
+    //     cout << output[i] << " ";
+    // }
+    // cout << "]";
+    // cout << endl;
 
     // Stop clock
     auto end = chrono::steady_clock::now();

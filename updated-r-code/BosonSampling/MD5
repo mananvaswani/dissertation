@@ -1,0 +1,16 @@
+f4ae47e9550bd520c7b1dadc4126837e *DESCRIPTION
+e2643abefd0003a611f4f8e02e553126 *NAMESPACE
+8d5450f461598900dcf54645694e0575 *R/RcppExports.R
+fe02f3ebd0dc20073dd9fa8c7133ffcf *R/bosonSampler.R
+0ac32f15af05d224b32c7230919055f4 *R/randomUnitary.R
+43d134f33e0ea9b4e6fd713a9de2dcae *build/partial.rdb
+758a2706dd3b970a9fd3e3ee003e231c *man/BosonSampling-package.Rd
+74b3a9054d8ff84a096db7aab5afe28e *man/bosonSampler.Rd
+9b2d6aefb6d2b8f531599394817de2c6 *man/permanents.Rd
+2455255e499f2cc73a5c7f984b4d8f63 *man/randomUnitary.Rd
+7a08e5159ecdf1f9a4856b35d6c81f30 *src/Makevars
+7a08e5159ecdf1f9a4856b35d6c81f30 *src/Makevars.win
+9994fc176251a2f41e955ba6b2fb19cb *src/RcppExports.cpp
+3d82ba6a0d803aeccc6d4796a2d283de *src/cxPerm.cpp
+e8047bd5ad3671653bbbf9c93f95e25e *src/cxPermMinors.cpp
+ca1a17d7189a38bfbf44b7cdb1479651 *src/rePerm.cpp
