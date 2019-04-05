@@ -3,7 +3,7 @@ library (BosonSampling)
 run_one_sample <- function(n, m) {
     ptm <- proc.time()
     A <- randomUnitary(m)[,1:n]
-    valueList <- bosonSampler(A, sampleSize = 10)$values
+    valueList <- bosonSampler(A, sampleSize = 1)$values
     apply(valueList,2, sort)
     time <- c (n , (proc.time() - ptm)[3]*1000)
     return (time)

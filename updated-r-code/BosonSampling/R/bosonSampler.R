@@ -44,10 +44,10 @@ bosonSampler = function(A, sampleSize, perm = FALSE){
 			permVector <- t(subPerm) %*% Asub_in
 			probVector <- Mod(permVector)^2
 #
-# next mode in an individual sequence 
+# next mode in an individual sequence
 #
-			sampMatrix[modeLimit,k] <- 
-				sample.int(m, 
+			sampMatrix[modeLimit,k] <-
+				sample.int(m,
 					   size = 1,
 					   prob = probVector,
 					   useHash=FALSE)
@@ -64,9 +64,8 @@ bosonSampler = function(A, sampleSize, perm = FALSE){
 	}
 
 	if(perm){
-		list(sampMatrix, perms = permList, pmfs = pmfList)
+		list(values = sampMatrix, perms = permList, pmfs = pmfList)
 	} else {
-		list(sampMatrix, perms = NULL, pmfs = NULL)
+		list(values = sampMatrix, perms = NULL, pmfs = NULL)
 	}
 }
-

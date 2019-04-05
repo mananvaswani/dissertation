@@ -1,11 +1,4 @@
-// [[Rcpp::depends(RcppArmadillo)]]
-
-// #include <RcppArmadillo.h>
 #include "header.h"
-
-// using namespace Rcpp;
-
-// [[Rcpp::export]]
 
 arma::cx_vec cxPermMinors(arma::cx_mat C) {
 // Declarations
@@ -30,17 +23,28 @@ arma::cx_vec cxPermMinors(arma::cx_mat C) {
 	arma::ivec g = arma::regspace< arma::ivec>(0,(n-1));
 // Initialise delta sums v and partial products p
 //
-    v = arma::sum(C,1)/2;
-    q = arma::cumprod(v); t = v[m-1];
+// p is just partial products of v
+// e.g. if v = [a b c]
+// p = [bc ac ab]
+    v = arma::sum(C,1)/2;	// row sums divided by 2
+    q = arma::cumprod(v);
+	t = v[m-1];	// last element of v
     p[m-1] = q[m-2];
-    for(i = m-2; i > 0; i--){
+    for(i = m-2; i > 0; i--) {
         p[i] = t*q[i-1];
         t *= v[i];
     }
+
     p[0] = t;
 	while(j < n-1){
+		//cout << j << " ";
+		//printArmaVector(d);
+
         if(d[j]) v -= C.col(j); else v += C.col(j);
-        q = arma::cumprod(v); t = v[m-1];
+		printArmaVector(v);
+
+        q = arma::cumprod(v);
+		t = v[m-1];
         if(s){
             p[m-1] -= q[m-2];
             for(i = m-2; i > 0; i--){
@@ -58,14 +62,13 @@ arma::cx_vec cxPermMinors(arma::cx_mat C) {
         }
 		d[j] = !d[j]; s = !s;
 // iterate Gray code: j is active index
-// QUESTION: Confused about whats going on here
 		if( j > 0){
             k = j + 1; g[j] = g[k]; g[k] = k; j = 0;
         } else {
             j = g[1]; g[1] = 1;
         }
 	}
-  return 2.*p;
+	return 2.*p;
 }
 
 // END
