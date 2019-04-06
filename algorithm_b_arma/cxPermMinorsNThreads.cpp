@@ -57,9 +57,6 @@ arma::cx_vec cxPermMinorsThreads(arma::cx_mat C) {
 		exit (EXIT_FAILURE);
 	}
 
-	// long long ctr = 1LL; //org
-	long long ctr = 0LL;
-
     int i;
 	int j = 0;
 	int k;
@@ -71,10 +68,6 @@ arma::cx_vec cxPermMinorsThreads(arma::cx_mat C) {
     arma::uvec d(n); d.fill(true);  // almost a boolean vector
 //
     if(n == 1) return arma::flipud(C);
-//
-// g: initialize Gray code iterator
-//
-	// arma::ivec g = arma::regspace< arma::ivec>(0,(n-1));
 
 // Initialise delta sums v and partial products p
 //
@@ -88,7 +81,8 @@ arma::cx_vec cxPermMinorsThreads(arma::cx_mat C) {
     // }
     // p[0] = t;
 
-	while(ctr <= pow(2, n-1) - 1) {	// while ctr < (2^n-1) - 1
+
+	for (long long ctr = 0LL; ctr <= pow(2, n-1) - 1; ctr++) {
 		j = nextGrayCode(ctr);
 		//cout << j << " ";
 
@@ -98,8 +92,6 @@ arma::cx_vec cxPermMinorsThreads(arma::cx_mat C) {
 		v = getV(d, j, n, (int) ctr, C);
 		printArmaVector(v);
         //if(d[j] == 1) v -= C.col(j); else v += C.col(j);
-
-		ctr++;
 
 		q = arma::cumprod(v); t = v[m-1];
         if(s) {
@@ -119,14 +111,6 @@ arma::cx_vec cxPermMinorsThreads(arma::cx_mat C) {
         }
 		//d[j] = 1 ^ d[j];
 		s = !s;
-
-// iterate Gray code: j is active index
-// QUESTION: Confused about whats going on here
-		// if( j > 0){
-        //     k = j + 1; g[j] = g[k]; g[k] = k; j = 0;
-        // } else {
-        //     j = g[1]; g[1] = 1;
-        // }
 	}
 	return 2.*p;
 }

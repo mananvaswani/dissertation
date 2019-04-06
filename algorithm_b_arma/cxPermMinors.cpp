@@ -41,7 +41,7 @@ arma::cx_vec cxPermMinors(arma::cx_mat C) {
 		//printArmaVector(d);
 
         if(d[j]) v -= C.col(j); else v += C.col(j);
-		printArmaVector(v);
+		//printArmaVector(v);
 
         q = arma::cumprod(v);
 		t = v[m-1];
