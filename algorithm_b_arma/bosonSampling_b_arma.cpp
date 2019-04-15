@@ -52,7 +52,8 @@ vector<int> bosonSampler(arma::cx_mat A, int n, int m, int &timeInPerms) {
         arma::cx_mat temp;
 
         auto startPerms = chrono::steady_clock::now();
-        perms = cxPermMinors(B_k.st());
+        //perms = cxPermMinors(B_k.st());
+        perms = cxPermMinorsThreads(B_k.st());
         auto endPerms = chrono::steady_clock::now();
         timeInPerms += chrono::duration_cast<chrono::milliseconds>(endPerms - startPerms).count();
 
@@ -101,18 +102,18 @@ void runOneSample(int n, int m) {
     vector<int> output;
     output = bosonSampler(A, n, m, timeInPerms);
 
-    // Print
-    // cout << "[ ";
-    // for (int i = 0; i < output.size(); i++) {
-    //     cout << output[i] << " ";
-    // }
-    // cout << "]";
-    // cout << endl;
-
     // Stop clock
     auto end = chrono::steady_clock::now();
 
-    cout << "Elapsed time in milliseconds : "
+    // Print
+    cout << "[ ";
+    for (int i = 0; i < output.size(); i++) {
+        cout << output[i] << " ";
+    }
+    cout << "]";
+    cout << endl;
+
+    cout << "Elapsed time in milliseconds for n = " << n << " : "
         << chrono::duration_cast<chrono::milliseconds>(end - start).count()
         << " ms" << endl;
 

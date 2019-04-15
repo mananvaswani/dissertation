@@ -28,6 +28,11 @@ arma::cx_vec cxPermMinors(arma::cx_mat C) {
 // p = [bc ac ab]
     v = arma::sum(C,1)/2;	// row sums divided by 2
     q = arma::cumprod(v);
+
+	// cout << j << "\t";
+	// printArmaVector(d);
+	printArmaVector(v);
+
 	t = v[m-1];	// last element of v
     p[m-1] = q[m-2];
     for(i = m-2; i > 0; i--) {
@@ -36,12 +41,15 @@ arma::cx_vec cxPermMinors(arma::cx_mat C) {
     }
 
     p[0] = t;
+	//printArmaVector(p);
+	int ctr = 1;
 	while(j < n-1){
-		//cout << j << " ";
-		//printArmaVector(d);
-
+		//cout << "d[j] = " << d[j] << endl << endl;
         if(d[j]) v -= C.col(j); else v += C.col(j);
-		//printArmaVector(v);
+		// cout << j << "\t";
+		// printArmaVector(d);
+		if (ctr == pow(2, n-2)) printArmaVector(v);
+		ctr++;
 
         q = arma::cumprod(v);
 		t = v[m-1];
@@ -67,6 +75,7 @@ arma::cx_vec cxPermMinors(arma::cx_mat C) {
         } else {
             j = g[1]; g[1] = 1;
         }
+		//printArmaVector(p);
 	}
 	return 2.*p;
 }
