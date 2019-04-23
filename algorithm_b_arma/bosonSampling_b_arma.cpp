@@ -1,6 +1,6 @@
 #include "header.h"
 
-vector<int> bosonSampler(arma::cx_mat A, int n, int m, int &timeInPerms) {
+vector<int> bosonSampler(arma::cx_mat A, int n, int m, int &timeInPerms, bool parallelFlag) {
     // Take first n columns of A
     A.set_size(m, n);
 
@@ -22,7 +22,6 @@ vector<int> bosonSampler(arma::cx_mat A, int n, int m, int &timeInPerms) {
     }
 
     // Line 3
-    // Note: Not using armadillo here as i'm not sure how to gnerate a discrete_distribution in arma, and i think its fine
     vector<double> w;
     for (int i = 1; i <= m; i++) {
         w.push_back(norm(A(i-1, 1)));
@@ -52,8 +51,8 @@ vector<int> bosonSampler(arma::cx_mat A, int n, int m, int &timeInPerms) {
         arma::cx_mat temp;
 
         auto startPerms = chrono::steady_clock::now();
-        //perms = cxPermMinors(B_k.st());
-        perms = cxPermMinorsThreads(B_k.st());
+        if (!parallelFlag) perms = cxPermMinors(B_k.st());
+        else perms = cxPermMinorsThreads(B_k.st());
         auto endPerms = chrono::steady_clock::now();
         timeInPerms += chrono::duration_cast<chrono::milliseconds>(endPerms - startPerms).count();
 
@@ -85,7 +84,7 @@ vector<int> bosonSampler(arma::cx_mat A, int n, int m, int &timeInPerms) {
     return z;
 }
 
-void runOneSample(int n, int m) {
+void runOneSample(int n, int m, bool parallelFlag) {
 
     // Start clock
     auto start = chrono::steady_clock::now();
@@ -96,11 +95,10 @@ void runOneSample(int n, int m) {
     // Make random unitary matrix A
     arma::cx_mat A;
     A = randomUnitary(m);
-    // print2dComplexVec(A);
 
     // Run boson sampling algorithm A
     vector<int> output;
-    output = bosonSampler(A, n, m, timeInPerms);
+    output = bosonSampler(A, n, m, timeInPerms, parallelFlag);
 
     // Stop clock
     auto end = chrono::steady_clock::now();
@@ -128,22 +126,42 @@ void runOneSample(int n, int m) {
 
 int main(int argc, char *argv[]) {
 
+    // Flags set at runtime
+    bool parallelFlag = false;
+    bool saveData = false;
+
     int n, m, num;
-    if (argc == 3) {
+    if (argc == 2) {
         n = stoi(argv[1]);
-        m = stoi(argv[2]);
-        runOneSample(n, m);
     }
-    else if (argc == 2) {
-        remove ("timings.csv");
-        num = stoi(argv[1]);
-        for (int i = 2; i <= num; i++) {
-            runOneSample(i, i*i);
+    else if (argc == 3) {
+        n = stoi(argv[1]);
+        if (strcmp(argv[2], "-parallel") == 0) parallelFlag = true;
+        else if (strcmp(argv[2], "-saveData") == 0) saveData = true;
+    }
+    else if (argc == 4) {
+        n = stoi(argv[1]);
+        if (((strcmp(argv[2], "-parallel") == 0) && (strcmp(argv[3], "-saveData") == 0)) ||
+            ((strcmp(argv[3], "-parallel") == 0) && (strcmp(argv[2], "-saveData") == 0))) {
+                parallelFlag = true;
+                saveData = true;
         }
     }
     else {
-        cout << "You didn't enter an n and an m!!!" << endl;
+        cout << "Your arguments are incorrect. Enter an n, followed by flags \'-parallel\' and \'-saveData\'" << endl;
         exit(0);
+    }
+
+    if (!saveData) {
+        m = n * n;
+        runOneSample(n, m, parallelFlag);
+    }
+    else {
+        remove ("timings.csv");
+        num = stoi(argv[1]);
+        for (int i = 2; i <= num; i++) {
+            runOneSample(i, i*i, parallelFlag);
+        }
     }
 
     return 0;

@@ -1,0 +1,95 @@
+\documentclass[11pt]{article}
+
+% Packages included
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{tikz, pgf}
+\usepackage{capt-of}
+\usetikzlibrary{quotes,angles,arrows}
+\usepackage{mathrsfs}
+\usepackage{float}
+\usepackage[nottoc]{tocbibind}
+\usepackage{mathtools}
+
+% Theorems, Definitions, Corollaries etc,
+
+\theoremstyle{theorem}
+\newtheorem{theorem}{Theorem}[section]
+
+\theoremstyle{theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+ 
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark}
+
+\theoremstyle{note}
+\newtheorem*{note}{Note}
+
+\theoremstyle{plain}
+\newtheorem{definition}[theorem]{Definition}% reset theorem numbering for each chapter
+
+\theoremstyle{definition}
+\newtheorem{example}[theorem]{Example}
+
+\linespread{1}
+
+% Special operators
+% Expectation symbol
+\DeclareMathOperator*{\E}{\mathbb{E}}
+\DeclareMathOperator*{\Var}{\mathrm{Var}}
+\DeclareMathOperator*{\Cov}{\mathrm{Cov}}
+
+\usepackage[margin=3.5cm]{geometry}
+
+\begin{document}
+\begin{titlepage}
+    \begin{center}
+        \vspace*{\fill}
+        
+        \Huge
+        \textbf{The Classical Complexity of Boson Sampling : A multi-core CPU implementation}
+        
+        \LARGE
+        
+        \vspace{2cm}
+        \textbf{Manan Vaswani}
+        
+        \vfill
+        
+        Level I\\
+        40cp project
+        
+        \vspace{0.8cm}
+        
+        
+        \Large
+        Supervisor: Dr. Rapha\"el Clifford\\
+	Date: 6th May, 2019
+        
+    \end{center}
+\end{titlepage}
+
+\newpage
+\section*{Acknowledgement of Sources}
+
+\newpage
+\tableofcontents
+\newpage
+\section{Introduction} %Introducing the problem and why it is interesting
+
+
+\section{Background} %Background/Literature Review
+
+
+\section{Describing the paper} %Rename section
+
+\section{Implementation} %Describe implementation and how things are sped up
+
+\section{Results}
+
+\section{Conclusion}
+
+\bibliographystyle{unsrt}
+\bibliography{project_bib}
+
+\end{document}

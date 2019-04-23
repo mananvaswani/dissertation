@@ -22,6 +22,8 @@ arma::cx_mat randomUnitary(int m);
 
 
 
+
+// Helper stuff
 void printArmaVector(arma::uvec d);
 void printArmaVector(arma::cx_vec d);
 
