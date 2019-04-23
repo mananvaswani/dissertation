@@ -130,7 +130,7 @@ int main(int argc, char *argv[]) {
     bool parallelFlag = false;
     bool saveData = false;
 
-    int n, m, num;
+    int n, num;
     if (argc == 2) {
         n = stoi(argv[1]);
     }
@@ -153,7 +153,7 @@ int main(int argc, char *argv[]) {
     }
 
     if (!saveData) {
-        m = n * n;
+        int m = n * n;
         runOneSample(n, m, parallelFlag);
     }
     else {

@@ -55,13 +55,12 @@ int main(int argc, char *argv[]) {
     d_test.fill(1);
 
     long long ctr = 1LL;
-    int j = 0;
-    int gray;
+    int j;
     while(ctr <= pow(2, n-1) - 1) {
         j = nextGrayCode(ctr);
         d = getDelta((int) ctr, n);
         v = getV(d, j, n);
-        cout << ctr << " " << j << " " << gray << " " << endl;
+        cout << ctr << " " << j << " " << endl;
         printArmaVector(v);
         printArmaVector(d);
         cout << "=========" << endl;

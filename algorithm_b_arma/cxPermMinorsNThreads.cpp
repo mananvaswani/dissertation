@@ -59,9 +59,8 @@ arma::cx_vec cxPermMinorsThreads(arma::cx_mat C) {
 		exit (EXIT_FAILURE);
 	}
 
-	int j = 0;
-	int k;
-	bool s = false;
+	int j;
+	bool s;
     arma::cx_vec p(m), q(m), v(m);
     arma::cx_double t;
 
@@ -87,6 +86,7 @@ arma::cx_vec cxPermMinorsThreads(arma::cx_mat C) {
 		long long my_end   = (this_thread+1) * upperBound / num_threads;
 
 		int i;
+
 
 		std::complex<double> t;
 
@@ -126,7 +126,7 @@ arma::cx_vec cxPermMinorsThreads(arma::cx_mat C) {
 			j = nextGrayCode(ctr+1);
 			if(d[j] == 1) v -= C.col(j); else v += C.col(j);
 		}
-		
+
 		#pragma omp critical
 		{
 			p+= p_local;
