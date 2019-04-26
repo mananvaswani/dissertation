@@ -87,7 +87,6 @@ arma::cx_vec cxPermMinorsThreads(arma::cx_mat C) {
 
 		int i;
 
-
 		std::complex<double> t;
 
 		d = getDelta(my_start, n);

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.11.13)  21 APR 2019 20:12
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.11.13)  26 APR 2019 18:14
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -812,15 +812,27 @@ LaTeX Info: Thecontrolsequence`\]'isalreadyrobust on input line 129.
 \l_MT_above_shortintertext_sep=\dimen168
 \l_MT_below_shortintertext_sep=\dimen169
 )
+(/usr/local/texlive/2017/texmf-dist/tex/latex/complexity/complexity.sty
+Package: complexity 11/24/06  v0.77
 
-Package amsthm Warning: Unknown theoremstyle `theorem' on input line 16.
+  +----------------------------------------------+
+    complexity LaTeX package 
+    version: 
+    author: Chris Bourke (cbourke@cse.unl.edu) 
+  +----------------------------------------------+
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/ifthen.sty
+Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
+)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/complexity/mycomplexity.sty))
+
+Package amsthm Warning: Unknown theoremstyle `theorem' on input line 17.
 
 \c@theorem=\count124
 
-Package amsthm Warning: Unknown theoremstyle `theorem' on input line 19.
+Package amsthm Warning: Unknown theoremstyle `theorem' on input line 20.
 
 
-Package amsthm Warning: Unknown theoremstyle `note' on input line 25.
+Package amsthm Warning: Unknown theoremstyle `note' on input line 26.
 
 (/usr/local/texlive/2017/texmf-dist/tex/latex/geometry/geometry.sty
 Package: geometry 2010/09/12 v5.6 Page Geometry
@@ -960,31 +972,63 @@ e
 [1
 
 {/usr/local/texlive/2017/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-[1] (./dissertation_manan_vaswani.toc)
+[1] (./dissertation_manan_vaswani.toc
+LaTeX Font Info:    Try loading font information for U+msa on input line 4.
+
+(/usr/local/texlive/2017/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Try loading font information for U+msb on input line 4.
+
+(/usr/local/texlive/2017/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
+LaTeX Font Info:    Try loading font information for U+rsfs on input line 4.
+
+(/usr/local/texlive/2017/texmf-dist/tex/latex/jknapltx/ursfs.fd
+File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
+))
 \tf@toc=\write4
 \openout4 = `dissertation_manan_vaswani.toc'.
 
  [2]
-No file dissertation_manan_vaswani.bbl.
-[3] (./dissertation_manan_vaswani.aux) ) 
+Overfull \hbox (31.69275pt too wide) in paragraph at lines 125--126
+[]\OT1/cmr/m/n/10.95 Another for-mula that is as fast as Ry-sers was in-de-pen-
+dently de-rived by Balasubramanian[[]],
+ []
+
+[3] [4] (./dissertation_manan_vaswani.bbl) [5]
+(./dissertation_manan_vaswani.aux) ) 
 Here is how much of TeX's memory you used:
- 14341 strings out of 492995
- 281377 string characters out of 6132703
- 319601 words of memory out of 5000000
- 17608 multiletter control sequences out of 15000+600000
- 6065 words of font info for 22 fonts, out of 8000000 for 9000
+ 14889 strings out of 492995
+ 285968 string characters out of 6132703
+ 328985 words of memory out of 5000000
+ 18111 multiletter control sequences out of 15000+600000
+ 15888 words of font info for 61 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 55i,5n,56p,427b,154s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/local/texlive/2017/texmf-dist/fon
-ts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2017/texmf-dist/font
-s/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2017/texmf-dist/fonts
-/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2017/texmf-dist/fonts/t
-ype1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2017/texmf-dist/fonts/typ
-e1/public/amsfonts/cm/cmr17.pfb>
-Output written on dissertation_manan_vaswani.pdf (4 pages, 61397 bytes).
+ 55i,8n,56p,798b,185s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/local/texlive/2017/texmf-dist/fonts/t
+ype1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2017/texmf-dist/fonts/ty
+pe1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2017/texmf-dist/fonts/typ
+e1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2017/texmf-dist/fonts/type
+1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1
+/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/p
+ublic/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/pub
+lic/amsfonts/cm/cmr10.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/publi
+c/amsfonts/cm/cmr12.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/
+amsfonts/cm/cmr17.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/am
+sfonts/cm/cmr6.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfo
+nts/cm/cmr8.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts
+/cm/cmr9.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm
+/cmss10.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/
+cmsy10.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/c
+msy8.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmt
+i10.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/symbols
+/msbm10.pfb>
+Output written on dissertation_manan_vaswani.pdf (6 pages, 194373 bytes).
 PDF statistics:
- 40 PDF objects out of 1000 (max. 8388607)
- 28 compressed objects within 1 object stream
+ 94 PDF objects out of 1000 (max. 8388607)
+ 68 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 

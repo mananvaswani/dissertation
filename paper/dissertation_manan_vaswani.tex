@@ -10,6 +10,7 @@
 \usepackage{float}
 \usepackage[nottoc]{tocbibind}
 \usepackage{mathtools}
+\usepackage{complexity}
 
 % Theorems, Definitions, Corollaries etc,
 
@@ -34,10 +35,9 @@
 \linespread{1}
 
 % Special operators
-% Expectation symbol
-\DeclareMathOperator*{\E}{\mathbb{E}}
 \DeclareMathOperator*{\Var}{\mathrm{Var}}
 \DeclareMathOperator*{\Cov}{\mathrm{Cov}}
+\DeclareMathOperator*{\Per}{\mathrm{Per}}
 
 \usepackage[margin=3.5cm]{geometry}
 
@@ -80,8 +80,72 @@
 
 \section{Background} %Background/Literature Review
 
+\section{Preliminaries}
+\subsection{Permanent of a matrix}
+Computing the permanent of large matrices is one of the key parts of the Boson Sampling problem, as will be discussed in detail while explaining the problem in the subsequent sections of the paper.
+\subsubsection{Definition}
+\begin{definition}{\cite{marcus_minc66}}
+The permanent of an $n \times n$ matrix $A = (a_{ij})$ is defined as
+\begin{equation}
+\Per A = \sum_{\sigma \in S_n} \prod_{i=1}^n a_{i\sigma(i)}
+\end{equation}
+where the sum is over all elements of the symmetric group $S_n$ i.e. over all permutations of the numbers in $[n] = \{1, 2, ... , n\}$
+\end{definition}
 
-\section{Describing the paper} %Rename section
+\begin{example}
+For a $2 \times 2$ matrix, the permanent is calculated as follows
+\begin{equation}
+\Per 
+\begin{bmatrix}
+a & b \\
+c & d
+\end{bmatrix}
+= ad + bc
+\end{equation}
+\end{example}
+\begin{example}
+For a $3 \times 3$ matrix, the permanent is calculated as follows
+\begin{equation}
+\Per 
+\begin{bmatrix}
+a & b & c\\
+d & e & f\\
+g & h & i\\ 
+\end{bmatrix}
+= aei +bfg + cdh + ceg + bdi + afh
+\end{equation}
+\end{example}
+One can observe that the definition of the permanent is similar to the more commonly used determinant function, differing in the fact that the permanent definition lacks the alternating signs. An important property to note about the permanent function is that it is invariant to transposition i.e. $\Per A = \Per A^T$ \cite{ryser_1963}.
+
+\subsubsection{Computing the permanent}
+Valiant showed that the problem of computing the permanent of a matrix is in the class $\# \P$-complete which implies that it is unlikely to have a polynomial time algorithm which implies that it is unlikely to have a polynomial-time algorithm \cite{valiant1979}. The naive algorithm obtained by directly translating the formula into an algorithm would run in $\mathcal{O}(n!n)$ time.
+
+A significant improvement on the naive approach, Rysers algorithm uses a variant of the inclusion-exclusion principle and can be evaluated in $\mathcal{O}(2^n n^2)$ time  \cite{ryser_1963}. Nijenhuis and Wilf sped this up to $\mathcal{O}(2^n n)$ time by iterating over the sum in Gray Code order \cite{Nijenhuis1978}.
+
+Another formula that is as fast as Rysers was independently derived by Balasubramanian\cite{balasubramanian1980}, Bax\cite{bax1998}, Franklin and Bax\cite{bax1996}, and Glynn\cite{glynn2010}, all using different methods. We shall henceforth refer to this as Glynn's formula and it is described as follows.
+
+Let $M = (m_{ij})$ be an $n \times n$ matrix with $m_{ij} \in \mathbb{C}$, then
+\begin{equation}
+\Per M = \frac{1}{2^{n-1}} \sum_\delta \left( \prod_{k=1}^m \delta_k \right) \prod_{j=1}^m \sum_{i=1}^m \delta_i m_{ij}
+\end{equation}
+where $\delta \in \{-1, 1\}^n$ with $\delta_1 = 1$. Hence there are $2^{n-1}$ such values for $\delta$.
+
+Implementing the formula as is would require $\mathcal{O}(2^n n^2)$ time. However, iterating over the $\delta$ arrays in Gray code order reduces it to $\mathcal{O}(2^n n)$ time.
+\section{Describing the paper and specifying the problem} %Rename section
+Cliiford and Clifford \cite{clifford17} gave a study and analysis of the classical complexity of the exact Boson Sampling problem and proposed an algorithm that is significantly faster than previous algorithms for the problem. The algorithm is simple to implement, and is able to solve the Boson Sampling problem for system sizes much greater than quantum computing systems currently available, which reduces the likelihood of achieving quantum supremacy in the context of Boson Sampling in the near future \textcolor{red}{rephrase last bit}.
+
+\subsection{Explaining the problem}
+A summary of the problem in purely mathematical terms is as follows. 
+
+Let $m$ and $n$ be positive integers. Consider all possible multisets\footnote{A multiset is a special kind of set in which elements can be repeated} of size $n$ with elements in $[m]$, where $[m] = \{1, ... , m\}$. Let $z = [z_1, z_2, ... , z_n]$ be an array representation of such a multiset, with its elements in non-decreasing order. In other words, $z$ is an array of $n$ integers taken from $[m]$ (with repetition) and arranged in non-decreasing order. Define $\Phi_{m,n}$ to be the set of all distinct values that $z$ can take. \textcolor{red}{Maybe explain size of phi m,n with stars and bars thing}. Define $\mu(z) = \prod_{j=1}^m s_j !$ where $s_j$ is the multiplicity of $j$ in the array $z$ i.e. the number of times it appears in $z$.
+
+$A = (a_{ij})$ is a complex-valued $m \times n$ matrix constructed by taking the first $n$ columns of a given $m \times m$ Haar random unitary matrix. For each $z$, build an $n \times n$ matrix $A_z$ where the $k^{\text{th}}$ row of $A_z$ is the $z_k^{\text{th}}$ row in $A$, for $k = 1, ... , n$. Finally, define a probability mass function over $\Phi_{m,n}$  as
+\[
+q (z) = \frac{1}{\mu(z)} |\Per A_z | ^2 = \frac{1}{\mu(z)}  \rvert\sum_{\sigma} \prod_{k=1}^n a_{z_k \sigma_k}\rvert^2, \quad z \in \Phi_{m,n}
+\]
+where $\Per A_z$ is the permanent of $A_z$ and $\pi[n]$ is the set of all permutations of $[n]$.
+
+The computing task is to simulate random samples from the above pmf $q(z)$.
 
 \section{Implementation} %Describe implementation and how things are sped up
 

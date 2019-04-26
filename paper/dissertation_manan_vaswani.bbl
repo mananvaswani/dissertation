@@ -1,0 +1,50 @@
+\begin{thebibliography}{1}
+
+\bibitem{marcus_minc66}
+Henryk~Minc Marvin~Marcus.
+\newblock Permanents.
+\newblock {\em The American Mathematical Monthly}, vol. 72:577--591, 1965.
+
+\bibitem{ryser_1963}
+Herbert~John Ryser.
+\newblock {\em Combinatorial Mathematics}.
+\newblock Mathematical Association of America, 1963.
+
+\bibitem{valiant1979}
+L.G. Valiant.
+\newblock The complexity of computing the permanent.
+\newblock {\em Theoretical Computer Science}, 8(2):189 -- 201, 1979.
+
+\bibitem{Nijenhuis1978}
+Albert Nijenhuis and Herbert~S. Wilf.
+\newblock 23 - the permanent function (perman).
+\newblock In ALBERT NIJENHUIS and HERBERT~S. WILF, editors, {\em Combinatorial
+  Algorithms (Second Edition)}, pages 217 -- 225. Academic Press, second
+  edition edition, 1978.
+
+\bibitem{balasubramanian1980}
+K~Balasubramanian.
+\newblock {\em Combinatorics and diagonals of matrices}.
+\newblock PhD thesis, Indian Statistical Institute, Calcutta, Dec 1980.
+
+\bibitem{bax1998}
+Eric Bax.
+\newblock {\em Finite-difference algorithms for counting problems}.
+\newblock PhD thesis, California Institute of Technology, February 1998.
+
+\bibitem{bax1996}
+Eric Bax and Joel Franklin.
+\newblock A finite-difference sieve to count paths and cycles by length.
+\newblock {\em Information Processing Letters}, 60(4):171 -- 176, 1996.
+
+\bibitem{glynn2010}
+David~G. Glynn.
+\newblock The permanent of a square matrix.
+\newblock {\em European Journal of Combinatorics}, 31(7):1887 -- 1891, 2010.
+
+\bibitem{clifford17}
+Peter Clifford and Rapha{\"{e}}l Clifford.
+\newblock The classical complexity of boson sampling.
+\newblock {\em CoRR}, abs/1706.01260, 2017.
+
+\end{thebibliography}
