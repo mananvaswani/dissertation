@@ -1,4 +1,4 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{10}
 
 \bibitem{marcus_minc66}
 Henryk~Minc Marvin~Marcus.
@@ -46,5 +46,17 @@ David~G. Glynn.
 Peter Clifford and Rapha{\"{e}}l Clifford.
 \newblock The classical complexity of boson sampling.
 \newblock {\em CoRR}, abs/1706.01260, 2017.
+
+\bibitem{feller1968}
+William Feller.
+\newblock {\em An Introduction to Probability Theory and its Applications},
+  volume~1.
+\newblock Wiley, 1968.
+
+\bibitem{walker1974}
+A.~J. {Walker}.
+\newblock New fast method for generating discrete random numbers with arbitrary
+  frequency distributions.
+\newblock {\em Electronics Letters}, 10(8):127--128, April 1974.
 
 \end{thebibliography}

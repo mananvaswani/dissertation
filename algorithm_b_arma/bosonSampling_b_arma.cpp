@@ -120,7 +120,9 @@ void runOneSample(int n, int m, bool parallelFlag) {
         << " ms" << endl;
 
     std::ofstream outfile;
-    outfile.open("timings.csv", std::ios_base::app);
+    string parallelStr;
+    if (parallelFlag) parallelStr = "_parallel"; else parallelStr = "_serial";
+    outfile.open("timings" + parallelStr + ".csv", std::ios_base::app);
     outfile << n << ", " << chrono::duration_cast<chrono::milliseconds>(end - start).count() << endl;
 }
 
@@ -157,7 +159,8 @@ int main(int argc, char *argv[]) {
         runOneSample(n, m, parallelFlag);
     }
     else {
-        remove ("timings.csv");
+        if (parallelFlag) remove ("timings_parallel.csv");
+        else remove("timings_serial.csv");
         num = stoi(argv[1]);
         for (int i = 2; i <= num; i++) {
             runOneSample(i, i*i, parallelFlag);

@@ -11,6 +11,8 @@
 \usepackage[nottoc]{tocbibind}
 \usepackage{mathtools}
 \usepackage{complexity}
+\usepackage{algorithm}
+\usepackage{algorithmic}
 
 % Theorems, Definitions, Corollaries etc,
 
@@ -117,7 +119,7 @@ g & h & i\\
 \end{example}
 One can observe that the definition of the permanent is similar to the more commonly used determinant function, differing in the fact that the permanent definition lacks the alternating signs. An important property to note about the permanent function is that it is invariant to transposition i.e. $\Per A = \Per A^T$ \cite{ryser_1963}.
 
-\subsubsection{Computing the permanent}
+\subsubsection{Computing the permanent}\label{prelim_permanent_calc}
 Valiant showed that the problem of computing the permanent of a matrix is in the class $\# \P$-complete which implies that it is unlikely to have a polynomial time algorithm which implies that it is unlikely to have a polynomial-time algorithm \cite{valiant1979}. The naive algorithm obtained by directly translating the formula into an algorithm would run in $\mathcal{O}(n!n)$ time.
 
 A significant improvement on the naive approach, Rysers algorithm uses a variant of the inclusion-exclusion principle and can be evaluated in $\mathcal{O}(2^n n^2)$ time  \cite{ryser_1963}. Nijenhuis and Wilf sped this up to $\mathcal{O}(2^n n)$ time by iterating over the sum in Gray Code order \cite{Nijenhuis1978}.
@@ -137,16 +139,66 @@ Cliiford and Clifford \cite{clifford17} gave a study and analysis of the classic
 \subsection{Explaining the problem}
 A summary of the problem in purely mathematical terms is as follows. 
 
-Let $m$ and $n$ be positive integers. Consider all possible multisets\footnote{A multiset is a special kind of set in which elements can be repeated} of size $n$ with elements in $[m]$, where $[m] = \{1, ... , m\}$. Let $z = [z_1, z_2, ... , z_n]$ be an array representation of such a multiset, with its elements in non-decreasing order. In other words, $z$ is an array of $n$ integers taken from $[m]$ (with repetition) and arranged in non-decreasing order. Define $\Phi_{m,n}$ to be the set of all distinct values that $z$ can take. \textcolor{red}{Maybe explain size of phi m,n with stars and bars thing}. Define $\mu(z) = \prod_{j=1}^m s_j !$ where $s_j$ is the multiplicity of $j$ in the array $z$ i.e. the number of times it appears in $z$.
+Let $m$ and $n$ be positive integers. Consider all possible multisets\footnote{A multiset is a special kind of set in which elements can be repeated} of size $n$ with elements in $[m]$, where $[m] = \{1, ... , m\}$. Let $z = [z_1, z_2, ... , z_n]$ be an array representation of such a multiset, with its elements in non-decreasing order. In other words, $z$ is an array of $n$ integers taken from $[m]$ (with repetition) and arranged in non-decreasing order. Define $\Phi_{m,n}$ to be the set of all distinct values that $z$ can take. Define $\mu(z) = \prod_{j=1}^m s_j !$ where $s_j$ is the multiplicity of $j$ in the array $z$ i.e. the number of times it appears in $z$.
 
 $A = (a_{ij})$ is a complex-valued $m \times n$ matrix constructed by taking the first $n$ columns of a given $m \times m$ Haar random unitary matrix. For each $z$, build an $n \times n$ matrix $A_z$ where the $k^{\text{th}}$ row of $A_z$ is the $z_k^{\text{th}}$ row in $A$, for $k = 1, ... , n$. Finally, define a probability mass function over $\Phi_{m,n}$  as
-\[
-q (z) = \frac{1}{\mu(z)} |\Per A_z | ^2 = \frac{1}{\mu(z)}  \rvert\sum_{\sigma} \prod_{k=1}^n a_{z_k \sigma_k}\rvert^2, \quad z \in \Phi_{m,n}
-\]
+\begin{equation}\label{boson_sampling_formula1}
+q (z) = \frac{1}{\mu(z)} \left|\Per A_z \right| ^2 = \frac{1}{\mu(z)}  \left|\sum_{\sigma} \prod_{k=1}^n a_{z_k \sigma_k}\right|^2, \quad z \in \Phi_{m,n}
+\end{equation}
 where $\Per A_z$ is the permanent of $A_z$ and $\pi[n]$ is the set of all permutations of $[n]$.
 
 The computing task is to simulate random samples from the above pmf $q(z)$.
+\subsubsection{Calculating the size of the sample space}
+The size of the sample space $ \Phi_{m,n}$ can be calculated using the `stars and bars' technique from combinatorics \cite{feller1968}. In our problem, we have $n$ `stars' representing the elements of the array $z$, and $m$ `buckets' representing all the values in $[m]$. Recall that $z$ is a sorted array representation of a multiset, so multiple `stars' can be in one `bucket'. Since there are $m$ `buckets', we need $m-1$ `bars' to divide the `stars' into `buckets'. Therefore, from a total of $m-1 + n$ objects, we need to pick $n$ of these to be the `stars'. There are $\binom{m+n-1}{n}$ ways to do this. Hence, there are $\binom{m+n-1}{n}$ possible values of $z$.
 
+\section{The Boson Sampling Algorithm}
+\subsection{The naive approach}
+Translating the formula above (\ref{boson_sampling_formula1}) directly to an algorithm would require $\mathcal{O}(\binom{m+n-1}{n} n 2^n)$ time to evaluate. The $\binom{m+n-1}{n}$ term comes from the size of the sample space of the pmf, and calculating the value of the permanent using the fastest known methods takes $\mathcal{O}(n 2^n)$ time (Section \ref{prelim_permanent_calc}). With $m = \mathcal{O}(n^2)$ as suggested in \textcolor{red}{Section????}, the total running time is $\mathcal{O}(\binom{n^2+n-1}{n} n 2^n) = $ \textcolor{red}{???}. Hence, even for relatively small values of $n$ (\textcolor{red}{(give some actual numbers)}, computing the Boson Sampling problem would be intractable for even very powerful supercomputers.
+
+In the literature \cite{clifford17}, two new algorithms are proposed for exact Boson Sampling. These are referred to as Algorithm A and Algorithm B, and both provide a significant speed up on the naive algorithm. The following subsections summarise the approach taken to obtain them.
+
+\subsection{Algorithm A}
+The approach to Algorithm A starts by expanding the sample space to a much larger size, which seems counterintuitive at first, but it allows us to express the pmf (Equation \ref{boson_sampling_formula1}) in a form that is much easier to compute. The sample space is expanded to the space of all arrays $\mathbf{r}=(r_1, r_2, ... , r_n)$ where each element $r_k$ is in $[m]$, which implies that we are considering a distribution on the product space $[m]^n$. It is stated and proved that sampling from $q(\mathbf{z})$ is equivalent to sampling from the pmf
+\begin{equation}
+p(\mathbf{r}) = \frac{1}{n!} \left| \Per A_\mathbf{r} \right| ^2 = \frac{1}{n!} \left| \sum_\sigma \prod_{i=1}^n a_{r_i \sigma_i} \right| ^2 , \quad \mathbf{r} \in [m]^n 
+\end{equation}
+where as before, $\sigma$ is the set of all permutations of $[n]$.
+
+This method requires $p(\mathbf{r}) = p(r_1, ... , r_n)$ to be rewritten as a product of conditional probabilities using the chain rule i.e.
+\begin{equation}\label{eqn:bosonSamplingConditional}
+p(\mathbf{r}) = p(r_1)p(r_2 | r_1) p (r_3 | r_1, r_2) ... p(r_n | r_1, r_2, ... , r_{n-1})
+\end{equation}
+
+We first sample $r_1$ from $p(r_1), r_1 \in [m]$. Then for $k=2, .. n$, we sample $r_k$ from the conditional pmf $p(r_k | r_1, r_2, ... , r_{k-1})$ with $r_1, ... , r_{k-1}$ fixed. After sampling all values of $r_k$, sort $(r_1, r_2, ... , r_n)$ in non-decreasing order, and that results in the array representation of a multiset sampled from the Boson Sampling distribution $q(\mathbf{z})$. In order to obtain the conditional probabilities, a formula for the joint pmf of the leading subsequences of $(r_1, ... , r_k)$ is given in Lemma 1 of the paper, and proved using arithmetic techniques and facts about probability measures. The formula in Lemma 1 is as follows:
+\begin{equation}
+p(r_1, ... , r_k) = \frac{(n-k)!}{n!} \sum_{c \in \mathcal{C}_k} \left| \Per A_{r_1, ... , r_k}^c \right| ^2 , \quad k = 1, ... , n
+\end{equation}
+where $\mathcal{C}_k$ is the set of $k-$combinations taken without replacement from $[n]$ and $A_{r_1, ... , r_k}^c$ is the matrix formed by taking only columns $c \in \mathcal{C}_k$ of the rows $(r_1, ... , r_k)$ of $A$.
+
+Notice in equation \ref{eqn:bosonSamplingConditional}, we need to sample $r_k$ from the conditional probability distribution $p(r_k | r_1, ... , r_{k-1})$. This can be rewritten as $p(r_1, ... , r_k)/p(r_1 ... r_{k-1})$. Since $r_k$ does not appear in the denominator, in order to sample $r_k$ from the conditional pmf, we can equivalently sample from the pmf proportional to the numerator, as $(r_1, ... r_{k-1})$ are fixed, known values at this stage in the algorithm. Therefore, the formula is Lemma 1 is used to calculate the conditional pmfs at each stage, giving way to the following algorithm.
+
+\begin{algorithm}
+\caption{Boson Sampler: Single sample $\mathbf{z}$ from $q(\mathbf{z})$ in $\mathcal{O}(mn3^n)$ time}
+\begin{algorithmic}[1]
+\REQUIRE $m, n \in \mathbb{Z}_+$; $A$ formed by first $n$ columns of $m \times m$ Haar random unitary matrix
+\STATE $\mathbf{r} \leftarrow \O $
+\FOR{$k \leftarrow 1$ \TO $n$}
+\STATE $w_i \leftarrow \sum_{c \in \mathcal{C}_k} \left| \Per A_{(\mathbf{r}, i)}^c \right| ^2, i \in [m] $
+\STATE $x \leftarrow \text{Sample}(w)$
+\STATE $\mathbf{r} \leftarrow (\mathbf{r}, x)$
+\ENDFOR
+\STATE $\mathbf{z} \leftarrow \text{IncSort}(\mathbf{r})$
+\RETURN $\mathbf{z}$
+\end{algorithmic}
+\end{algorithm}
+
+The correctness of the algorithm is clear as it is simply an evaluation of the required pmf using the chain rule of probability. The literature gives a mathematical proof to derive the runtime, however here we shall give an informal explanation to obtain the runtime using the algorithm above. The runtime is dominated by the $\textbf{for}$ loop in lines 2 to 6, as the sorting step in line 7 takes only $\mathcal{O}(n log n)$ using the fastest methods for sorting (\textcolor{red}{insert reference}). In each iteration of the $\textbf{for}$ loop, we first construct the conditional pmf on the sample space $[m]$. This is represented by a weighted array $\textbf{w}$. This involves calculating the permanents of $\left|\mathcal{C}_k\right|$ $k \times k$ matrices for each $i \in [m]$, where $k$ is the loop index variable. Sampling from this distribution (line 4) takes $\mathcal{O}(m)$ time \cite{walker1974}, but this too is dominated by the calculations in line 3, so we can ignore it. Therefore, the total time taken in the $k^\text{th}$ iteration is $\mathcal{O}(m \binom{n}{k} k 2^k)$, as $\left|\mathcal{C}_k\right| = \binom{n}{k}$ and calculating the permanent of a $k \times k$ matrix takes $\mathcal{O}(k 2^k)$ using the fastest methods. So for $n$ iterations,
+\begin{equation}
+\sum_{k=1}^n m k 2^k \binom{n}{k} = m \frac{2}{3} n 3^n = \mathcal{O}(mn3^n)
+\end{equation}
+Therefore the total time taken is $\mathcal{O}(mn3^n)$. In terms of space complexity, we only need to store one permanent calculation at a time, and the weight array for each pmf is of size $m$. These can also be stored only one at a time, so $\mathcal{O}(m)$ additional space is required.
+
+\subsection{Algorithm B}
 \section{Implementation} %Describe implementation and how things are sped up
 
 \section{Results}
