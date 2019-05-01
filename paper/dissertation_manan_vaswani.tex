@@ -12,7 +12,8 @@
 \usepackage{mathtools}
 \usepackage{complexity}
 \usepackage{algorithm}
-\usepackage{algorithmic}
+%\usepackage{algorithmic}
+\usepackage[noend]{algpseudocode}
 
 % Theorems, Definitions, Corollaries etc,
 
@@ -83,6 +84,8 @@
 \section{Background} %Background/Literature Review
 
 \section{Preliminaries}
+\subsection{Binary Gray Code}
+
 \subsection{Permanent of a matrix}
 Computing the permanent of large matrices is one of the key parts of the Boson Sampling problem, as will be discussed in detail while explaining the problem in the subsequent sections of the paper.
 \subsubsection{Definition}
@@ -122,17 +125,19 @@ One can observe that the definition of the permanent is similar to the more comm
 \subsubsection{Computing the permanent}\label{prelim_permanent_calc}
 Valiant showed that the problem of computing the permanent of a matrix is in the class $\# \P$-complete which implies that it is unlikely to have a polynomial time algorithm which implies that it is unlikely to have a polynomial-time algorithm \cite{valiant1979}. The naive algorithm obtained by directly translating the formula into an algorithm would run in $\mathcal{O}(n!n)$ time.
 
-A significant improvement on the naive approach, Rysers algorithm uses a variant of the inclusion-exclusion principle and can be evaluated in $\mathcal{O}(2^n n^2)$ time  \cite{ryser_1963}. Nijenhuis and Wilf sped this up to $\mathcal{O}(2^n n)$ time by iterating over the sum in Gray Code order \cite{Nijenhuis1978}.
+A significant improvement on the naive approach, Rysers algorithm uses a variant of the inclusion-exclusion principle and can be evaluated in $\mathcal{O}(n^2 2^n)$ time  \cite{ryser_1963}. Nijenhuis and Wilf sped this up to $\mathcal{O}(n2^n)$ time by iterating over the sum in Gray Code order \cite{Nijenhuis1978}.
 
 Another formula that is as fast as Rysers was independently derived by Balasubramanian\cite{balasubramanian1980}, Bax\cite{bax1998}, Franklin and Bax\cite{bax1996}, and Glynn\cite{glynn2010}, all using different methods. We shall henceforth refer to this as Glynn's formula and it is described as follows.
 
 Let $M = (m_{ij})$ be an $n \times n$ matrix with $m_{ij} \in \mathbb{C}$, then
 \begin{equation}
-\Per M = \frac{1}{2^{n-1}} \sum_\delta \left( \prod_{k=1}^m \delta_k \right) \prod_{j=1}^m \sum_{i=1}^m \delta_i m_{ij}
+\Per M = \frac{1}{2^{n-1}} \sum_\delta \left( \prod_{k=1}^n \delta_k \right) \prod_{j=1}^n\sum_{i=1}^n \delta_i m_{ij}
 \end{equation}
 where $\delta \in \{-1, 1\}^n$ with $\delta_1 = 1$. Hence there are $2^{n-1}$ such values for $\delta$.
 
-Implementing the formula as is would require $\mathcal{O}(2^n n^2)$ time. However, iterating over the $\delta$ arrays in Gray code order reduces it to $\mathcal{O}(2^n n)$ time.
+Implementing the formula as is would require $\mathcal{O}(2^n n^2)$ time. However, iterating over the $\delta$ arrays in Gray code order reduces it to $\mathcal{O}(n 2^n)$ time.
+
+In order to exploit this trick, let $v_j$ be the symbol used to denote the innermost sum i.e. $v_j = \sum_{i=1}^n \delta_i m_{ij}$. If $\delta$ is iterated through in Gray code order, then one can notice that the terms $\{ v_j, j \in [n]\}$ can actually be computed in $\mathcal{O}(n)$ time for a given value of $\delta$ rather than $\mathcal{O}(n^2)$ which is how long it would take if done naively. This is because successive elements of $\delta$ differ in only one position, so each successive $v_j$ differs only by the addition or subtraction of some $m_{ij}$ where $i$ is the position at which $\delta$ was changed. Hence, the product of $v_j$ terms can now be calculated in $\mathcal{O}(n)$ time.
 \section{Describing the paper and specifying the problem} %Rename section
 Cliiford and Clifford \cite{clifford17} gave a study and analysis of the classical complexity of the exact Boson Sampling problem and proposed an algorithm that is significantly faster than previous algorithms for the problem. The algorithm is simple to implement, and is able to solve the Boson Sampling problem for system sizes much greater than quantum computing systems currently available, which reduces the likelihood of achieving quantum supremacy in the context of Boson Sampling in the near future \textcolor{red}{rephrase last bit}.
 
@@ -159,7 +164,7 @@ In the literature \cite{clifford17}, two new algorithms are proposed for exact B
 
 \subsection{Algorithm A}
 The approach to Algorithm A starts by expanding the sample space to a much larger size, which seems counterintuitive at first, but it allows us to express the pmf (Equation \ref{boson_sampling_formula1}) in a form that is much easier to compute. The sample space is expanded to the space of all arrays $\mathbf{r}=(r_1, r_2, ... , r_n)$ where each element $r_k$ is in $[m]$, which implies that we are considering a distribution on the product space $[m]^n$. It is stated and proved that sampling from $q(\mathbf{z})$ is equivalent to sampling from the pmf
-\begin{equation}
+\begin{equation} \label{eqn:algADistribution}
 p(\mathbf{r}) = \frac{1}{n!} \left| \Per A_\mathbf{r} \right| ^2 = \frac{1}{n!} \left| \sum_\sigma \prod_{i=1}^n a_{r_i \sigma_i} \right| ^2 , \quad \mathbf{r} \in [m]^n 
 \end{equation}
 where as before, $\sigma$ is the set of all permutations of $[n]$.
@@ -180,25 +185,77 @@ Notice in equation \ref{eqn:bosonSamplingConditional}, we need to sample $r_k$ f
 \begin{algorithm}
 \caption{Boson Sampler: Single sample $\mathbf{z}$ from $q(\mathbf{z})$ in $\mathcal{O}(mn3^n)$ time}
 \begin{algorithmic}[1]
-\REQUIRE $m, n \in \mathbb{Z}_+$; $A$ formed by first $n$ columns of $m \times m$ Haar random unitary matrix
-\STATE $\mathbf{r} \leftarrow \O $
-\FOR{$k \leftarrow 1$ \TO $n$}
-\STATE $w_i \leftarrow \sum_{c \in \mathcal{C}_k} \left| \Per A_{(\mathbf{r}, i)}^c \right| ^2, i \in [m] $
-\STATE $x \leftarrow \text{Sample}(w)$
-\STATE $\mathbf{r} \leftarrow (\mathbf{r}, x)$
-\ENDFOR
-\STATE $\mathbf{z} \leftarrow \text{IncSort}(\mathbf{r})$
-\RETURN $\mathbf{z}$
+\Require $m, n \in \mathbb{Z}_+$; $A$ formed by first $n$ columns of $m \times m$ Haar random unitary matrix
+\State $\mathbf{r} \leftarrow \O $
+\For{$k \leftarrow 1 \to n$}
+\State $w_i \leftarrow \sum_{c \in \mathcal{C}_k} \left| \Per A_{(\mathbf{r}, i)}^c \right| ^2, i \in [m] $
+\State $x \leftarrow \text{Sample}(w)$
+\State $\mathbf{r} \leftarrow (\mathbf{r}, x)$
+\EndFor
+\State $\mathbf{z} \leftarrow \text{IncSort}(\mathbf{r})$
+\State \textbf{return} $\mathbf{z}$
 \end{algorithmic}
 \end{algorithm}
 
-The correctness of the algorithm is clear as it is simply an evaluation of the required pmf using the chain rule of probability. The literature gives a mathematical proof to derive the runtime, however here we shall give an informal explanation to obtain the runtime using the algorithm above. The runtime is dominated by the $\textbf{for}$ loop in lines 2 to 6, as the sorting step in line 7 takes only $\mathcal{O}(n log n)$ using the fastest methods for sorting (\textcolor{red}{insert reference}). In each iteration of the $\textbf{for}$ loop, we first construct the conditional pmf on the sample space $[m]$. This is represented by a weighted array $\textbf{w}$. This involves calculating the permanents of $\left|\mathcal{C}_k\right|$ $k \times k$ matrices for each $i \in [m]$, where $k$ is the loop index variable. Sampling from this distribution (line 4) takes $\mathcal{O}(m)$ time \cite{walker1974}, but this too is dominated by the calculations in line 3, so we can ignore it. Therefore, the total time taken in the $k^\text{th}$ iteration is $\mathcal{O}(m \binom{n}{k} k 2^k)$, as $\left|\mathcal{C}_k\right| = \binom{n}{k}$ and calculating the permanent of a $k \times k$ matrix takes $\mathcal{O}(k 2^k)$ using the fastest methods. So for $n$ iterations,
+The correctness of the algorithm is clear as it is simply an evaluation of the required pmf using the chain rule of probability. The literature gives a mathematical proof to derive the runtime, however here we shall give an informal explanation to obtain the runtime using the algorithm above. The runtime is dominated by the $\textbf{for}$ loop in lines 2 to 6, as the sorting step in line 7 takes only $\mathcal{O}(n \log n)$ using the fastest methods for sorting (\textcolor{red}{insert reference}). In each iteration of the $\textbf{for}$ loop, we first construct the conditional pmf on the sample space $[m]$. This is represented by a weighted array $\textbf{w}$. This involves calculating the permanents of $\left|\mathcal{C}_k\right|$ $k \times k$ matrices for each $i \in [m]$, where $k$ is the loop index variable. Sampling from this distribution (line 4) takes $\mathcal{O}(m)$ time \cite{walker1974}, but this too is dominated by the calculations in line 3, so we can ignore it. Therefore, the total time taken in the $k^\text{th}$ iteration is $\mathcal{O}(m \binom{n}{k} k 2^k)$, as $\left|\mathcal{C}_k\right| = \binom{n}{k}$ and calculating the permanent of a $k \times k$ matrix takes $\mathcal{O}(k 2^k)$ using the fastest methods. So for $n$ iterations,
 \begin{equation}
 \sum_{k=1}^n m k 2^k \binom{n}{k} = m \frac{2}{3} n 3^n = \mathcal{O}(mn3^n)
 \end{equation}
 Therefore the total time taken is $\mathcal{O}(mn3^n)$. In terms of space complexity, we only need to store one permanent calculation at a time, and the weight array for each pmf is of size $m$. These can also be stored only one at a time, so $\mathcal{O}(m)$ additional space is required.
 
 \subsection{Algorithm B}
+The main theorem of the paper(Theorem 1) states that the time complexity of the Boson Sampling problem is $\mathcal{O}(n2^n + \text{poly}(m, n))$ where $ \text{poly}(m, n) = \mathcal{O}(mn^2)$, with $\mathcal{O}(m)$ additional space required. This is achieved using the second algorithm proposed in the paper i.e. Algorithm B.
+
+Algorithm B makes use of the Laplace Expansion \cite{marcus_minc66} of permanents to obtain a significant speed up. The Laplace expansion allows us to calculate the permanent of a matrix using its permanent minors (the permanent of a submatrix with a column and a row removed). For any $k \times k$ matrix $B = (b_{i,j})$,
+\begin{equation}
+\Per B = \sum_{l=1}^k b_{k, l} \Per B_{k, l}^{\diamond},
+\end{equation}
+where $B_{k, l}^{\diamond}$  is the submatrix of $B$ with row $k$ and column $l$ removed. Hence the permanent of $B$ can be calculated in $\mathcal{O}(k)$ steps provided the permanent minors i.e. the values $\{ \Per B_{k, l}^{\diamond} \}$ are known.
+
+Computing $\{ \Per B_{k, l}^{\diamond} \}$ by calculating each of the permanents independently would collectively take $\mathcal{O}(k^2 2^k)$ time as there are $k$ permanents to compute and to compute the value of each one takes $\mathcal{O}(k 2^k)$ time. Lemma 2 of the paper states that the collection $\{ \Per B_{k, l}^{\diamond} \}$ can be collectively evaluated in $\mathcal{O}(k 2^k)$ time and $\mathcal{O}(k)$ extra space. using Glynn's formula to evaluate a permanent minor for a given value of $l$, we have
+\begin{equation}
+\Per B_{k, l}^{\diamond} = \frac{1}{2^{k-2}} \sum_\delta \left( \prod_{i=1}^{k-1} \delta_i \right) \prod_{j \in [k] \setminus l} v_j (\delta), \quad l \in [k],
+\end{equation}
+where $\delta \in \{-1, 1\}^{k-1}$ with $\delta_1 = 1$ and $v_j (\delta) = \sum_{i=1}^{k-1} \delta_i b_{ij}$.
+The usual trick of iterating over the values of $\delta$ in Gray code order is required to compute $\Per B_{k, l}^{\diamond}$ in $\mathcal{O}(k2^k)$ time for each value of $l$, but this would still have to be repeated $k$ times to cover all $l \in [k]$. The second and more novel trick used to achieve an additional speed up is used while calculating the products $\prod_{j \in [k] \setminus l} v_j (\delta)$. Observe that for each $l$, $\prod_{j \in [k] \setminus l} v_j (\delta) = \prod_{j \in [k]} v_j (\delta) / v_l(\delta)$. However, we cannot compute this method to compute the partial product as it would not work for cases when $v_l(\delta) = 0$. Instead, we first precompute two arrays $\mathbf{f}$ and $\mathbf{b}$ containing the forwards and backwards cumulative products of $v_j(\delta)$ respectively as follows,
+\begin{equation}
+f_i = \prod_{j=1}^i v_j(\delta) \quad b_i = \prod_{j=i}^k v_j(\delta), \quad i \in [k].
+\end{equation}
+Then each partial product $\prod_{j \in [k] \setminus l} v_j (\delta)$ can be expressed as a product of two terms from $\mathbf{f}$ and $\mathbf{b}$, $f_{l-1} b_{l+1}$ for any $l$. Since it takes $\mathcal{O}(k)$ time to compute the forward and backward cumulative product arrays and $\mathcal{O}(1)$ time to obtain each partial product $\prod_{j \in [k] \setminus l} v_j (\delta)$, for each value of $\delta$, the total time taken to simultaneously calculate the values of $\{ \Per B_{k, l}^{\diamond} \}$ is $\mathcal{O}(k2^k)$. Additional space required to store the partial products is $\mathcal{O}(k)$.
+
+Coming back to formulating the second Boson Sampling algorithm, the sample space is now expanded even further with an auxiliary array $\mathbf{\alpha} = (\alpha_1, \alpha_2, ... , \alpha_n)$ where $\mathbf{\alpha} \in \pi(n)$, which is the set of permutation of $[n]$. The approach is similar to that of Algorithm A in that the goal is to create a succession of pmfs for leading subsequences of $\mathbf{r}$ and then progressively sampling $r_i$ from conditional pmfs on $(r_1, ... , r_{i-1})$. The conditioning variable $\mathbf{\alpha}$ helps us reformulate the pmf in such a way that we can use the permanent minors that we are able to calculate efficiently, while still ensuring that it is equivalent to sampling from the pmf $p(\mathbf{r})$ in equation \ref{eqn:algADistribution}.
+Define
+\begin{equation}
+\phi(r_1, ... r_k | \mathbf{\alpha}) = \frac{1}{k!} \left| \Per A_{r_1, ... r_k}^{[n] \setminus \{\alpha_{k+1},  ... , \alpha_n\}} \right|^2, \quad k = 1, ... , n-1.
+\end{equation}
+In Lemma 3 of the paper, it is shown that $p(\mathbf{r}) = \mathbb{E}_{\mathbf{\alpha}}\{\phi(\mathbf{r} | \mathbf{\alpha})\}$, which is the expectation taken over $\mathbf{\alpha}$, uniformly distributed over $\pi(n)$ for fixed $\mathbf{r}$. The chain rule of expectation is used to prove the equality, and this full proof is provided in the literature. As in Algorithm A, a chain of conditional pmfs as follows is used,
+\begin{equation}
+\phi(\mathbf{r} | \mathbf{\alpha}) = \phi(r_1 | \mathbf{\alpha}) \phi(r_2 | r_1, \mathbf{\alpha}) \phi(r_3 | r_1, r_2, \mathbf{\alpha}) ... \phi(r_n | r_1, ... r_{n-1}, \mathbf{\alpha}), 
+\end{equation}
+where $\phi(r_k | r_1, ... r_{k-1}, \mathbf{\alpha}) = \phi(r_1, r_2, ... r_k | \mathbf{\alpha}) / \sum_{r_k} \phi(r_1, ... r_k | \mathbf{\alpha})$, using conditional probabilities and the law of total probability. The algorithm starts off by sampling $r_1$ from the pmf $\phi(r_1 | \mathbf{\alpha})$. Then for stages $k = 2 , ... , n$, $r_k$ is sampled from $\phi(r_k | r_1, ... r_{k-1}, \mathbf{\alpha})$ with $(r_1, ... , r_{k-1})$ fixed. Since the terms in the denominator are fixed, known values, sampling from $\phi(r_k | r_1, ... r_{k-1}$ is equivalent to sampling from the numerator, which can be evaluated by taking advantage of the Laplace Expansion of permanents. At stage $n$, the array $(r_1, ... , r_n)$ will have been sampled from $p(\mathbf{r})$. Sorting $(r_1, ... , r_n)$ in non-decreasing order gives $\mathbf{z}$, the array representation of the multiset sampled from the Boson Sampling distribution $q(\mathbf{z})$.
+\begin{algorithm}
+\caption{Boson Sampler: Single sample $\mathbf{z}$ from $q(\mathbf{z})$ in $\mathcal{O}(n2^n + \text{poly}(m, n))$ time}
+\begin{algorithmic}[1]
+\Require $m, n \in \mathbb{Z}_+$; $A$ formed by first $n$ columns of $m \times m$ Haar random unitary matrix
+\State $\mathbf{r} \leftarrow \O $	\Comment{Empty array}
+\State $A \leftarrow \text{Permute}(A)$	\Comment{Randomly permute columns of $A$}
+\State $w_i \leftarrow \left|a_{i, 1}\right|^2, i \in [m]$	\Comment{Make indexed weighted array $w$}
+\State $x \leftarrow \text{Sample}(w)$	\Comment{Sample index $x$ from $w$}
+\State $\mathbf{r} \leftarrow (\mathbf{r}, x)$	\Comment{Append $x$ to $\mathbf{r}$}
+\For{$k \leftarrow 2 \text{ to } n$}
+\State $B_k^\diamond \leftarrow A_{\mathbf{r}}^{[k]}$
+\State Compute  $\{ \Per B_{k, l}^{\diamond}, l \in [k] \}$	\Comment{From Lemma 2}
+\State $w_i \leftarrow \left| \sum_{l = 1}^k \Per B_{k, l}^{\diamond} \right| ^2, i \in [m] $	\Comment{Using Laplace Expansion}
+\State $x \leftarrow \text{Sample}(w)$
+\State $\mathbf{r} \leftarrow (\mathbf{r}, x)$
+\EndFor
+\State $\mathbf{z} \leftarrow \text{IncSort}(\mathbf{r})$	\Comment{Sort $\mathbf{r}$ in non-decreasing order}
+\State \textbf{return} $\mathbf{z}$
+\end{algorithmic}
+\end{algorithm}
+
+Correctness of the algorithm ...
+
 \section{Implementation} %Describe implementation and how things are sped up
 
 \section{Results}

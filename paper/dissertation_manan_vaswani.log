@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.11.13)  30 APR 2019 15:57
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.11.13)  1 MAY 2019 19:40
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -830,24 +830,35 @@ nment
 \@float@every@algorithm=\toks42
 \c@algorithm=\count124
 )
-(/usr/local/texlive/2017/texmf-dist/tex/latex/algorithms/algorithmic.sty
-Package: algorithmic 2009/08/24 v0.1 Document Style `algorithmic'
-\c@ALC@unique=\count125
-\c@ALC@line=\count126
-\c@ALC@rem=\count127
-\c@ALC@depth=\count128
-\ALC@tlm=\skip53
-\algorithmicindent=\skip54
+(/usr/local/texlive/2017/texmf-dist/tex/latex/algorithmicx/algpseudocode.sty
+Package: algpseudocode 
+
+(/usr/local/texlive/2017/texmf-dist/tex/latex/algorithmicx/algorithmicx.sty
+Package: algorithmicx 2005/04/27 v1.2 Algorithmicx
+
+Document Style algorithmicx 1.2 - a greatly improved `algorithmic' style
+\c@ALG@line=\count125
+\c@ALG@rem=\count126
+\c@ALG@nested=\count127
+\ALG@tlm=\skip53
+\ALG@thistlm=\skip54
+\c@ALG@Lnr=\count128
+\c@ALG@blocknr=\count129
+\c@ALG@storecount=\count130
+\c@ALG@tmpcounter=\count131
+\ALG@tmplength=\skip55
+)
+Document Style - pseudocode environments for use with the `algorithmicx' style
 )
 
-Package amsthm Warning: Unknown theoremstyle `theorem' on input line 19.
+Package amsthm Warning: Unknown theoremstyle `theorem' on input line 20.
 
-\c@theorem=\count129
+\c@theorem=\count132
 
-Package amsthm Warning: Unknown theoremstyle `theorem' on input line 22.
+Package amsthm Warning: Unknown theoremstyle `theorem' on input line 23.
 
 
-Package amsthm Warning: Unknown theoremstyle `note' on input line 28.
+Package amsthm Warning: Unknown theoremstyle `note' on input line 29.
 
 (/usr/local/texlive/2017/texmf-dist/tex/latex/geometry/geometry.sty
 Package: geometry 2010/09/12 v5.6 Page Geometry
@@ -862,9 +873,9 @@ Package ifvtex Info: VTeX not detected.
 (/usr/local/texlive/2017/texmf-dist/tex/generic/ifxetex/ifxetex.sty
 Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
 )
-\Gm@cnth=\count130
-\Gm@cntv=\count131
-\c@Gm@tempcnt=\count132
+\Gm@cnth=\count133
+\Gm@cntv=\count134
+\c@Gm@tempcnt=\count135
 \Gm@bindingoffset=\dimen170
 \Gm@wd@mp=\dimen171
 \Gm@odd@mp=\dimen172
@@ -878,31 +889,31 @@ Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
 (./dissertation_manan_vaswani.aux)
 \openout1 = `dissertation_manan_vaswani.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 46.
-LaTeX Font Info:    ... okay on input line 46.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 46.
-LaTeX Font Info:    ... okay on input line 46.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 46.
-LaTeX Font Info:    ... okay on input line 46.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 46.
-LaTeX Font Info:    ... okay on input line 46.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 46.
-LaTeX Font Info:    ... okay on input line 46.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 46.
-LaTeX Font Info:    ... okay on input line 46.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 47.
+LaTeX Font Info:    ... okay on input line 47.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 47.
+LaTeX Font Info:    ... okay on input line 47.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 47.
+LaTeX Font Info:    ... okay on input line 47.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 47.
+LaTeX Font Info:    ... okay on input line 47.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 47.
+LaTeX Font Info:    ... okay on input line 47.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 47.
+LaTeX Font Info:    ... okay on input line 47.
  ABD: EveryShipout initializing macros
 (/usr/local/texlive/2017/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count133
+\scratchcounter=\count136
 \scratchdimen=\dimen178
 \scratchbox=\box41
-\nofMPsegments=\count134
-\nofMParguments=\count135
+\nofMPsegments=\count137
+\nofMParguments=\count138
 \everyMPshowfont=\toks44
-\MPscratchCnt=\count136
+\MPscratchCnt=\count139
 \MPscratchDim=\dimen179
-\MPnumerator=\count137
-\makeMPintoPDFobject=\count138
+\MPnumerator=\count140
+\makeMPintoPDFobject=\count141
 \everyMPtoPDFconversion=\toks45
 ) (/usr/local/texlive/2017/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
 Package: pdftexcmds 2017/03/19 v0.25 Utility functions of pdfTeX for LuaTeX (HO
@@ -1007,25 +1018,29 @@ File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 \openout4 = `dissertation_manan_vaswani.toc'.
 
  [2]
-Overfull \hbox (31.69275pt too wide) in paragraph at lines 127--128
+Overfull \hbox (31.69275pt too wide) in paragraph at lines 130--131
 []\OT1/cmr/m/n/10.95 Another for-mula that is as fast as Ry-sers was in-de-pen-
 dently de-rived by Balasubramanian[[]],
  []
 
 [3] [4] [5]
 
-LaTeX Warning: Command \O invalid in math mode on input line 184.
+LaTeX Warning: Command \O invalid in math mode on input line 189.
 
-[6] (./dissertation_manan_vaswani.bbl [7]) [8]
+[6] [7]
+
+LaTeX Warning: Command \O invalid in math mode on input line 240.
+
+[8] (./dissertation_manan_vaswani.bbl [9]) [10]
 (./dissertation_manan_vaswani.aux) ) 
 Here is how much of TeX's memory you used:
- 15073 strings out of 492995
- 288308 string characters out of 6132703
- 332448 words of memory out of 5000000
- 18286 multiletter control sequences out of 15000+600000
+ 15405 strings out of 492995
+ 293619 string characters out of 6132703
+ 341754 words of memory out of 5000000
+ 18614 multiletter control sequences out of 15000+600000
  16509 words of font info for 63 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 55i,8n,56p,1322b,445s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 55i,8n,56p,1323b,301s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2017/texmf-dist/fonts/t
 ype1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2017/texmf-dist/fonts/ty
 pe1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2017/texmf-dist/fonts/typ
@@ -1045,10 +1060,10 @@ sy10.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cms
 y8.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmti1
 0.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/symbols/m
 sbm10.pfb>
-Output written on dissertation_manan_vaswani.pdf (9 pages, 219438 bytes).
+Output written on dissertation_manan_vaswani.pdf (11 pages, 232660 bytes).
 PDF statistics:
- 109 PDF objects out of 1000 (max. 8388607)
- 79 compressed objects within 1 object stream
+ 115 PDF objects out of 1000 (max. 8388607)
+ 83 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 
