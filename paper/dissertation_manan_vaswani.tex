@@ -14,6 +14,8 @@
 \usepackage{algorithm}
 %\usepackage{algorithmic}
 \usepackage[noend]{algpseudocode}
+\usepackage{listings}
+\usepackage{minted}
 
 % Theorems, Definitions, Corollaries etc,
 
@@ -229,7 +231,7 @@ Define
 \phi(r_1, ... r_k | \mathbf{\alpha}) = \frac{1}{k!} \left| \Per A_{r_1, ... r_k}^{[n] \setminus \{\alpha_{k+1},  ... , \alpha_n\}} \right|^2, \quad k = 1, ... , n-1.
 \end{equation}
 In Lemma 3 of the paper, it is shown that $p(\mathbf{r}) = \mathbb{E}_{\mathbf{\alpha}}\{\phi(\mathbf{r} | \mathbf{\alpha})\}$, which is the expectation taken over $\mathbf{\alpha}$, uniformly distributed over $\pi(n)$ for fixed $\mathbf{r}$. The chain rule of expectation is used to prove the equality, and this full proof is provided in the literature. As in Algorithm A, a chain of conditional pmfs as follows is used,
-\begin{equation}
+\begin{equation} \label{eqn:algBChainRule}
 \phi(\mathbf{r} | \mathbf{\alpha}) = \phi(r_1 | \mathbf{\alpha}) \phi(r_2 | r_1, \mathbf{\alpha}) \phi(r_3 | r_1, r_2, \mathbf{\alpha}) ... \phi(r_n | r_1, ... r_{n-1}, \mathbf{\alpha}), 
 \end{equation}
 where $\phi(r_k | r_1, ... r_{k-1}, \mathbf{\alpha}) = \phi(r_1, r_2, ... r_k | \mathbf{\alpha}) / \sum_{r_k} \phi(r_1, ... r_k | \mathbf{\alpha})$, using conditional probabilities and the law of total probability. The algorithm starts off by sampling $r_1$ from the pmf $\phi(r_1 | \mathbf{\alpha})$. Then for stages $k = 2 , ... , n$, $r_k$ is sampled from $\phi(r_k | r_1, ... r_{k-1}, \mathbf{\alpha})$ with $(r_1, ... , r_{k-1})$ fixed. Since the terms in the denominator are fixed, known values, sampling from $\phi(r_k | r_1, ... r_{k-1}$ is equivalent to sampling from the numerator, which can be evaluated by taking advantage of the Laplace Expansion of permanents. At stage $n$, the array $(r_1, ... , r_n)$ will have been sampled from $p(\mathbf{r})$. Sorting $(r_1, ... , r_n)$ in non-decreasing order gives $\mathbf{z}$, the array representation of the multiset sampled from the Boson Sampling distribution $q(\mathbf{z})$.
@@ -254,9 +256,35 @@ where $\phi(r_k | r_1, ... r_{k-1}, \mathbf{\alpha}) = \phi(r_1, r_2, ... r_k | 
 \end{algorithmic}
 \end{algorithm}
 
-Correctness of the algorithm ...
+Correctness holds as Algorithm B samples from successive conditional pmfs, which is equivalent to sampling from $\phi (r | \mathbf{\alpha})$ due to the chain rule of probability (Equation \ref{eqn:algBChainRule}), for a given $\mathbf{\alpha}$. Since  $\mathbf{\alpha}$ is uniformly distributed over the sample space $\pi(n)$, the algorithm equivalently samples from $\mathbb{E}_{\mathbf{\alpha}}\{\phi(\mathbf{r} | \mathbf{\alpha})\}$ which is shown to be equal to $p(r)$ in Lemma 3.
+
+Once again, we will analyse the time complexity of the algorithm by going through the actual steps of the algorithm rather than the more mathematical explanation given in \cite{clifford17}. The time complexity of the algorithm is dominated by the \textbf{for} loop as expected. Permuting the columns of $A$ (Line 2) can be carried out in $\mathcal{O}(n)$ time using the Knuth shuffling algorithm \cite{knuth1969}. Lines 3 and 4 take $\mathcal{O}(m)$ time, in order to generate the weight array representing the pmf and sample from it. In the \textbf{for} loop from lines 6 to 11, computing the permanent minors (Line 8) takes $\mathcal{O}(k 2^k)$ time in the $k^{\text{th}}$ iteration, as discussed previously. Subsequently, the weight array in Line 9 is computed in $\mathcal{O}(mk)$ time as it is an array of size $m$, with each element taking $\mathcal{O}(k)$ time to compute as it is a sum of $k$ known terms. Sampling from this pmf takes $\mathcal{O}(m)$ time. The final sorting step outside the loop, in Line 12 takes $\mathcal{O}(n \log n)$ time, so it is dominated by the loop. Each iteration of the loop takes $\mathcal{O}(k 2^k) + \mathcal{O}(mk)$ time in total. So for all iterations, this takes
+\begin{equation}
+\sum_{k=2}^n \mathcal{O}(k2^k) + \mathcal{O}(mk) = \mathcal{O}(n2^n) + \mathcal{O}(mn^2)
+\end{equation}
+time. 
+
+The space is dominated by the weight array in Line 9, which is of size $\mathcal{O}(m)$.
+
+Hence, the Boson Sampling Problem can be run in $\mathcal{O}(n2^n + \text{poly}(m, n))$ time using Algorithm B.
 
 \section{Implementation} %Describe implementation and how things are sped up
+
+In this section, we will discuss the actual implementation of Algorithm B described above. The paper by Clifford and Clifford which demonstrated the two new algorithms is still relatively new, which explains why there have not been any open-source large scale benchmark tests for actual implementations of the algorithm.
+
+\subsection{Original R Implementation}
+At the time of writing this paper, the only open-source implementation is at \cite{clifford_r2017}, by the authors of the paper. The implementation is in written as a package written in R and is freely available to download and use from CRAN. This package, named `Boson Sampling' contains an implementation of Algorithm B, along with the required functions that it depends on. The relevant functions are described below.
+\begin{description}
+\item[\mintinline{R}{bosonSampler}] \hfill \\ The package provides a function `\mintinline{R}{bosonSampler(A, sampleSize, perm=FALSE)}', which implements the Boson Sampling Algorithm B from \cite{clifford17}. As the function definition suggests, it takes three arguments
+\begin{itemize}
+\item \mintinline{R}{A}: The first $n$ columns of an $m \times m$ random unitary matrix.
+\item \mintinline{R}{sampleSize}: The number of independent sample values to be taken from the distribution, where each value is a vector of size $n$.
+\item \mintinline{R}{perm}: Takes the value \mintinline{R}{TRUE} if the permanents and pmfs associated to each sample are required to be returned. By default, \mintinline{R}{perm=FALSE} unless specified otherwise.
+\end{itemize}
+Note that we do not need to explicitly provide the values $m$ and $n$ as the algorithm suggests since those values are obtained by simply checking the dimensions of the input $m \times n$ matrix using the \mintinline{R}{ncol(A)} and \mintinline{R}{nrow(A)} functions from R. This implementation allows us to obtain multiple samples from the Boson Sampling distribution using the same input matrix $A$ by repeatedly looping over the algorithm the desired number of times. One notable difference is that the input matrix $A$ is transposed right at the start, with the reason being that R stores matrices in column order so transposing the matrix makes operations easier. When accessing elements of $A$, the indices have been adjusted accordingly. Semantically, the function implements the algorithm exactly as it is, which ensures its' correctness (provided the inputs received and additional functions used are also correct).
+\item[\mintinline{R}{cxPermMinors}] \hfill \\ The package provides a set of functions for computing permanents of matrices: \mintinline{R}{cxPerm(A), rePerm(B), cxPermMinors(C)}. Algorithm B requires the values $\{ \Per B_{k, l}^{\diamond}, l \in [k] \}$ to be computed in each iteration of the loop, and in order to do this, the \mintinline{R}{bosonSampler} function makes a call to the \mintinline{R}{cxPermMinors} function.
+\end{description}
+
 
 \section{Results}
 

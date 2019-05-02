@@ -58,4 +58,15 @@ A.~J. {Walker}.
   frequency distributions.
 \newblock {\em Electronics Letters}, 10(8):127--128, April 1974.
 
+\bibitem{knuth1969}
+Donald~E. Knuth.
+\newblock {\em The Art of Computer Programming, Volume {II:} Seminumerical
+  Algorithms}.
+\newblock Addison-Wesley, 1969.
+
+\bibitem{clifford_r2017}
+Peter Clifford and Raphaël Clifford.
+\newblock {\em BosonSampling: Classical Boson Sampling}, 2017.
+\newblock R package version 0.1.1.
+
 \end{thebibliography}
