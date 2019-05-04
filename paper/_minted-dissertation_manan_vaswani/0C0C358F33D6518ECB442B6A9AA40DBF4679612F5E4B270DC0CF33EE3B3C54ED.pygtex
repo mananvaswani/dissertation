@@ -1,0 +1,15 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{p}{...}
+\PYG{n}{s} \PYG{o}{=} \PYG{n+nb}{true}\PYG{p}{;}
+\PYG{p}{...}
+\PYG{k}{while}\PYG{p}{(}\PYG{n}{j} \PYG{o}{\PYGZlt{}} \PYG{n}{n}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{)\PYGZob{}}
+   \PYG{p}{...}
+   \PYG{k}{if}\PYG{p}{(}\PYG{n}{s}\PYG{p}{)\PYGZob{}}
+        \PYG{c+c1}{//Subtract partial products of v from p}
+    \PYG{p}{\PYGZcb{}} \PYG{k}{else} \PYG{p}{\PYGZob{}}
+        \PYG{c+c1}{//Subtract partial products from p}
+    \PYG{p}{\PYGZcb{}}
+    \PYG{n}{s} \PYG{o}{=} \PYG{o}{!}\PYG{n}{s}\PYG{p}{;}
+    \PYG{p}{...}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

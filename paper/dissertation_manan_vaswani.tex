@@ -313,8 +313,7 @@ The function was run in the R console to produce 5 samples with $n = 10$ and $m 
 \subsection{Implementation in C\texttt{++}}
 While choosing a programming language to implement a more efficient version of the Boson Sampling algorithm, performance was the key deciding factor. The language chosen was C\texttt{++} due to its reputation for speed in mathematical problems, ease of use especially for multi-threaded programs, and the availability of highly efficient linear algebra libraries such as Armadillo. As with the $R$ implementation, three core functions are required for the algorithm: a Boson Sampler (which runs the actual algorithm), a random unitary matrix generator, and a function to calculate the permanent minors of a matrix.
 
-\subsubsection*{Armadillo Library}
-In the implementation, we make extensive use of the C\texttt{++} Armadillo library\cite{armadillo}. Armadillo is a high quality linear algebra library that provides us with efficient implementations of matrix and vector operations. It greatly simplifies operations such as adding vectors, calculating cumulative products, and accessing matrix columns to name a few. Armadillo supports complex numbers as well, which was a necessary requirement for Boson Sampling. In addition, it supports the use of OpenMP for parallelisation, and automatically uses it in some cases to speed up computationally expensive operations.
+\paragraph{Armadillo Library:} In the implementation, we make extensive use of the C\texttt{++} Armadillo library\cite{armadillo}. Armadillo is a high quality linear algebra library that provides us with efficient implementations of matrix and vector operations. It greatly simplifies operations such as adding vectors, calculating cumulative products, and accessing matrix columns to name a few. Armadillo supports complex numbers as well, which was a necessary requirement for Boson Sampling. In addition, it supports the use of OpenMP for parallelisation, and automatically uses it in some cases to speed up computationally expensive operations.
 
 \subsubsection{Generating a random unitary matrix}
 The first step carried out was to create a function \mintinline{c++}{randomUnitary(int m)} to generate a complex-valued random unitary matrix $A$ which will be passed as an argument to the Boson Sampler. In order to generate a Haar random unitary matrix, the following algorithm from \cite{ozols2009} was used.
@@ -332,20 +331,20 @@ The first step carried out was to create a function \mintinline{c++}{randomUnita
 
 QR Decomposition decomposes a given matrix $A$ into an orthogonal matrix $Q$ and a right triangular matrix $R$ such that $Q * R = A$. Armadillo provides the all the required supplementary functions used in the implementation, which made the C\texttt{++} implementation straightforward. Since this function is run only once as a preprocessing step before the Boson Sampling, extra steps to optimise or parallelise it were not taken. Firstly, because the primary aim of the project is to optimise the implementation of the Boson Sampling algorithm itself, which receives the random unitary matrix as an input, and secondly, it is already a highly efficient implementation since all the functions used are from Armadillo so have already been optimised, as mentioned before. The object returned by \mintinline{c++}{randomUnitary(int m)} is an $m \times m$ random unitary armadillo matrix.
 \subsubsection{Computing the Permanent Minors}
-Line 8 of the algorithm requires the permanent minors of a given $k-1 \times k$ matrix to be computed. We use a separate function \mintinline{c++}{cxPermMinors(arma::cx_mat C)} which does exactly this for us. Once again, Armadillo data types and functions and data classes have been used extensively. Since the original R package (Section \ref{sec:r_code}) already had an implementation of this particular function in C\texttt{++}, we used this in our implementation to begin with and then optimised it as required. Recall the formula for calculating the permanent minors,
+Line 8 of the algorithm requires the permanent minors of a given $k-1 \times k$ matrix to be computed. We use a separate function \mintinline{c++}{cxPermMinors(arma::cx_mat C)} which does exactly this for us. Once again, Armadillo data types and functions and data classes have been used extensively. Since the original R package (Section \ref{sec:r_code}) already had an implementation of this particular function in C\texttt{++}, we used this in our implementation to begin with and then optimised it as required. In our code, \mintinline{c++}{m} denotes number of rows and \mintinline{c++}{n} denotes number of columns of the input matrix. Since the transpose of the matrix is being used from the Boson Sampling function, \mintinline{c++}{m == n+1}. Using this notation, recall the formula for calculating the permanent minors,
 \begin{equation}
-\Per B_{k, l}^{\diamond} = \frac{1}{2^{k-2}} \sum_\delta \left( \prod_{i=1}^{k-1} \delta_i \right) \prod_{i \in [k] \setminus l} v_i (\delta), \quad l \in [k],
+\Per B_{m, l}^{\diamond} = \frac{1}{2^{m-2}} \sum_\delta \left( \prod_{s=1}^{m-1} \delta_s \right) \prod_{i \in [m] \setminus l} v_i (\delta), \quad l \in [m],
 \end{equation}
-where $\mathbf{\delta} \in \{-1, 1\}^{k-1}$ with $\delta_1 = 1$ and $v_j (\delta) = \sum_{j=1}^{k-1} \delta_j b_{ji}$. The two tricks to speed up the naive implementation were to iterate the values of $\mathbf{\delta}$ over the Gray code, and to compute the innermost product $\prod_{i \in [k] \setminus l} v_i (\delta), l \in [k]$ with the help of the forward and backward cumulative products (Section \ref{sec:algB}). Since there is a lot going on in this single formula, we divide the operations being performed into 4 parts for a clearer explanation:
-% and calculating $v_i (\delta)$
-\paragraph{a) Iterating $\mathbf{\delta}$ over Gray code:} In order to iterate over values of $\mathbf{\delta} \in \{-1, 1\}^{k-1}$ with $\delta_1 = 1$ in Gray code order (Section \ref{sec:gray_code}), the code uses the help of two additional variables, \mintinline{c++}{int j} and \mintinline{c++}{arma::ivec g}. \mintinline{c++}{arma::ivec} is a vector of integers from Armadillo. \mintinline{c++}{j} is the active index i.e. to go from one value in the Gray code to the next, the $j^\text{th}$ bit is flipped. Additionally, the original code uses an auxiliary array \mintinline{c++}{g} to change from one value of  \mintinline{c++}{j} to the next. The condition of the \mintinline{c++}{while} loop ensures that all the gray codes of size $n-2$ are iterated over. The relevant snippets of code from the function are shown below.
+where $\mathbf{\delta} \in \{-1, 1\}^{m-1}$ with $\delta_1 = 1$ and $v_i (\delta) = \sum_{j=1}^{m-1} \delta_j b_{ji}$. The two tricks to speed up the naive implementation were to iterate the values of $\mathbf{\delta}$ over the Gray code, and to compute the innermost product $\prod_{i \in [m] \setminus l} v_i (\delta), l \in [m]$ with the help of the forward and backward cumulative products (Section \ref{sec:algB}). Since there is a lot going on in this single formula, we divide the operations being performed into 5 parts for a clearer explanation:
+\paragraph{a) Iterating $\mathbf{\delta}$ over Gray code:} In order to iterate over values of $\mathbf{\delta} \in \{-1, 1\}^{m-1}$ with $\delta_1 = 1$ in Gray code order (Section \ref{sec:gray_code}), the code uses the help of two additional variables, \mintinline{c++}{int j} and \mintinline{c++}{arma::ivec g}. \mintinline{c++}{arma::ivec} is a vector of integers from Armadillo. \mintinline{c++}{j} is the active index i.e. to go from one value in the Gray code to the next, the $j^\text{th}$ bit is flipped. Additionally, the original code uses an auxiliary array \mintinline{c++}{g} to change from one value of  \mintinline{c++}{j} to the next. The condition of the \mintinline{c++}{while} loop ensures that all the gray codes of size $n-2$ are iterated over. $\mathbf{\delta}$ is represented by a boolean valued vector \mintinline{c++}{d}, and \mintinline{c++}{true} is considered equivalent to 1, and \mintinline{c++}{false} equivalent to -1.
+The relevant snippets of code from the function are shown below.
 \begin{minted}[frame=lines,framesep=8pt]{c++}
 int j = 0, k;
 arma::uvec d(n); d.fill(true);
 arma::ivec g = arma::regspace< arma::ivec>(0,(n-1));
-// Preprocessing, and first iteration of sum
+...
 while(j < n-1){
-    // Contents of loop
+   ...
     d[j] = !d[j];
     // Iterate Gray code: j is active index
     if( j > 0){
@@ -354,11 +353,59 @@ while(j < n-1){
         j = g[1]; g[1] = 1;
     }
 }
-
-
 \end{minted}
 
+\paragraph{b) Computing $\mathbf{v}(\mathbf{\delta}) = \{v_i (\mathbf{\delta}), i \in [m]\}$ efficiently for each $\mathbf{\delta}$:} At the start of the function, $\mathbf{v}(\mathbf{\delta})$ is initialised to the row-sums of the input matrix \mintinline{c++}{C}, divided by two. This is because $\mathbf{\delta}$ is initialised to an all-1 (or equivalently all-\mintinline{c++}{true}) vector, so $v_i (\delta) = \sum_{j=1}^{m-1} \delta_j b_{ji} =  \sum_{j=1}^{m-1} b_{ji}$. The actual code does a row sum instead of a column sum like the formula suggests due to the matrix being transposed. The reason for dividing by 2 is explained later. In each iteration of the loop over $\mathbf{\delta}$, the active index $j$ is used to check the value of $\delta_j$, which is the element of $\mathbf{\delta}$ about to be flipped, and accordingly adds or subtracts the $j^{th}$ column to $\mathbf{v}(\mathbf{\delta})$. These operations are performed in the following lines of code.
+\begin{minted}[frame=lines,framesep=8pt]{c++}
+...
+v = arma::sum(C,1)/2;
+...
+while( ... ){
+    if(d[j]) v -= C.col(j); else v += C.col(j);
+    ...
+}
+\end{minted}
 
+\paragraph{c) Computing the partial products $\prod_{i \in [m] \setminus l} v_i (\delta), \quad l \in [m]$:} In order to exploit the trick of calculating the partial products of $\mathbf{v}(\mathbf{\delta})$ quickly, we use a vector \mintinline{c++}{p} to store the accumulated result of calculating the permanent minors, and directly add or subtract the partial products to this vector. \mintinline{c++}{p} is initialised with the partial products of the initial values of \mintinline{c++}{v} which can be seen in the lines of code that follow
+\begin{minted}[frame=lines,framesep=8pt]{c++}
+...
+arma::cx_vec p(m), q(m);
+arma::cx_double t;
+...
+q = arma::cumprod(v);
+
+t = v[m-1];	// last element of v
+p[m-1] = q[m-2];
+for(i = m-2; i > 0; i--) {
+    p[i] = t*q[i-1];
+    t *= v[i];
+}
+p[0] = t;
+...
+}
+\end{minted}
+In this code, \mintinline{c++}{q} is the vector of forward cumulative products, and  \mintinline{c++}{t} is a single variable being used to successively store values of the backward cumulative product without having to precompute and store all of them. The same method as above is used while adding or subtracting these partial products in each iteration of the loop.
+
+\paragraph{d) Computing the value $\left( \prod_{s=1}^{m-1} \delta_s \right)$:} Another result of iterating over $\delta$ in Gray code order is that the product $\prod_{s=1}^{m-1} \delta_s$ does not need to be calculated in each iteration of the loop. The reason being that exactly one element of $\delta$ is flipped in each iteration, so $\prod_{s=1}^{m-1} \delta_s$ alternates between the values $+1$ and $-1$ in every successive iteration. Equivalently, it means that we alternate between adding and subtracting the partial products to the accumulator in successive iterations of the loop. Therefore, this product is represented by a single boolean variable \mintinline{c++}{s} that is negated at the end of each loop iteration. %Maybe explain s being false or true.
+\begin{minted}[frame=lines,framesep=8pt]{c++}
+...
+s = true;
+...
+while(j < n-1){
+   ...
+   if(s){
+        //Subtract partial products of v from p
+    } else {
+        //Subtract partial products from p
+    }
+    s = !s;
+    ...
+}
+\end{minted}
+
+\paragraph{e) $Multiplying by \frac{1}{2^{m-2}}$ term:} Finally, the sum in the formula is divided by $2^{m-2}$, but rather than evaluating this separately, and dividing all the elements of the result by it, we initially divide each element of $\mathbf{v}(\mathbf{\delta})$ by 2. Then, when the partial products of $\mathbf{v}(\mathbf{\delta})$ are being computed, each partial product is divided by a factor $2^{m-1}$, and then assigned to the accumulator \mintinline{c++}{p}. Before returning  \mintinline{c++}{p} at the end of the function, it is multiplied by 2 in order to give the desired value of $2^{m-2}$ in the denominator.
+
+\subsection{Simulating exact Boson Sampling using Algorithm B}
 \section{Results}
 
 \section{Conclusion}

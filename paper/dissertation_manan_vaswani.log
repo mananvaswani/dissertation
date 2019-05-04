@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.11.13)  4 MAY 2019 02:29
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.11.13)  4 MAY 2019 19:37
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -1450,6 +1450,21 @@ E4B270DC0CF33EE3B3C54ED.pygtex)
 \openout6 = `dissertation_manan_vaswani.pyg'.
 
 
+(./_minted-dissertation_manan_vaswani/69B64623F86DEF16CE17D454B8BE41AE4679612F5
+E4B270DC0CF33EE3B3C54ED.pygtex)
+\openout6 = `dissertation_manan_vaswani.pyg'.
+
+
+(./_minted-dissertation_manan_vaswani/FE13119FB084FE8BBF5FE3AB7CC89B3B4679612F5
+E4B270DC0CF33EE3B3C54ED.pygtex)
+\openout6 = `dissertation_manan_vaswani.pyg'.
+
+
+(./_minted-dissertation_manan_vaswani/BCF3CF55F7D0D5E4E5C121C9E3313EE14679612F5
+E4B270DC0CF33EE3B3C54ED.pygtex)
+\openout6 = `dissertation_manan_vaswani.pyg'.
+
+
 (./_minted-dissertation_manan_vaswani/2FC816C1E3F52A81DF5B5B64D7BE16C54679612F5
 E4B270DC0CF33EE3B3C54ED.pygtex)
 \openout6 = `dissertation_manan_vaswani.pyg'.
@@ -1482,28 +1497,100 @@ E4B270DC0CF33EE3B3C54ED.pygtex)
 
 (./_minted-dissertation_manan_vaswani/304D82C0867E556F1B5E676E0D11F5204679612F5
 E4B270DC0CF33EE3B3C54ED.pygtex)
+\openout6 = `dissertation_manan_vaswani.pyg'.
+
+
+(./_minted-dissertation_manan_vaswani/E29311F6F1BF1AF907F9EF9F44B8328B4679612F5
+E4B270DC0CF33EE3B3C54ED.pygtex)
+\openout6 = `dissertation_manan_vaswani.pyg'.
+
+
+(./_minted-dissertation_manan_vaswani/74D9A83219CABAAB06A69FD318873F334679612F5
+E4B270DC0CF33EE3B3C54ED.pygtex)
+\openout6 = `dissertation_manan_vaswani.pyg'.
+
+
+(./_minted-dissertation_manan_vaswani/D42F2DA1DF5ECDF29BE4AC27EDDA0C124679612F5
+E4B270DC0CF33EE3B3C54ED.pygtex)
 \openout4 = `dissertation_manan_vaswani.pyg'.
 
-runsystem(pygmentize -l c++ -f latex -P commandprefix=PYG -F tokenmerge -o _min
-ted-dissertation_manan_vaswani/ADF7EE3400A917CE22ABAA97CA046B724679612F5E4B270D
-C0CF33EE3B3C54ED.pygtex dissertation_manan_vaswani.pyg)...executed.
+
+(./_minted-dissertation_manan_vaswani/4FFB2384F093FD721F4793C04F0414534679612F5
+E4B270DC0CF33EE3B3C54ED.pygtex [13])
+\openout6 = `dissertation_manan_vaswani.pyg'.
 
 
-(./_minted-dissertation_manan_vaswani/ADF7EE3400A917CE22ABAA97CA046B724679612F5
-E4B270DC0CF33EE3B3C54ED.pygtex [13]) (./dissertation_manan_vaswani.bbl [14])
-runsystem(rm _minted-dissertation_manan_vaswani/FB5242F1D3FEE9D34E2008A43748681
-44679612F5E4B270DC0CF33EE3B3C54ED.pygtex)...executed.
+(./_minted-dissertation_manan_vaswani/B39BFC0E26A30024C76E4DCB8A1EAE874679612F5
+E4B270DC0CF33EE3B3C54ED.pygtex)
+\openout6 = `dissertation_manan_vaswani.pyg'.
 
 
-[15] (./dissertation_manan_vaswani.aux)
+(./_minted-dissertation_manan_vaswani/74D9A83219CABAAB06A69FD318873F334679612F5
+E4B270DC0CF33EE3B3C54ED.pygtex)
+\openout4 = `dissertation_manan_vaswani.pyg'.
+
+
+(./_minted-dissertation_manan_vaswani/81F84AD55009A2089AA6F731B2E070B34679612F5
+E4B270DC0CF33EE3B3C54ED.pygtex)
+\openout6 = `dissertation_manan_vaswani.pyg'.
+
+
+(./_minted-dissertation_manan_vaswani/9D7BF075372908F55E2D945C39E0A6134679612F5
+E4B270DC0CF33EE3B3C54ED.pygtex)
+\openout6 = `dissertation_manan_vaswani.pyg'.
+
+
+(./_minted-dissertation_manan_vaswani/9D7BF075372908F55E2D945C39E0A6134679612F5
+E4B270DC0CF33EE3B3C54ED.pygtex)
+\openout6 = `dissertation_manan_vaswani.pyg'.
+
+
+(./_minted-dissertation_manan_vaswani/E734A88A1110FA3D657454B2DD3488224679612F5
+E4B270DC0CF33EE3B3C54ED.pygtex)
+\openout4 = `dissertation_manan_vaswani.pyg'.
+
+
+(./_minted-dissertation_manan_vaswani/6413B0F40D0CEBA8D14CEA15AEAFBF194679612F5
+E4B270DC0CF33EE3B3C54ED.pygtex [14])
+\openout6 = `dissertation_manan_vaswani.pyg'.
+
+
+(./_minted-dissertation_manan_vaswani/C3BE117041A113540DEB0FF532B195434679612F5
+E4B270DC0CF33EE3B3C54ED.pygtex)
+\openout6 = `dissertation_manan_vaswani.pyg'.
+
+
+(./_minted-dissertation_manan_vaswani/B7269FA2508548E4032C455818F1E3214679612F5
+E4B270DC0CF33EE3B3C54ED.pygtex)
+\openout6 = `dissertation_manan_vaswani.pyg'.
+
+
+(./_minted-dissertation_manan_vaswani/F4D5D0C0671BE202BC241807C243E80B4679612F5
+E4B270DC0CF33EE3B3C54ED.pygtex)
+\openout4 = `dissertation_manan_vaswani.pyg'.
+
+
+(./_minted-dissertation_manan_vaswani/0C0C358F33D6518ECB442B6A9AA40DBF4679612F5
+E4B270DC0CF33EE3B3C54ED.pygtex)
+\openout6 = `dissertation_manan_vaswani.pyg'.
+
+
+(./_minted-dissertation_manan_vaswani/9D7BF075372908F55E2D945C39E0A6134679612F5
+E4B270DC0CF33EE3B3C54ED.pygtex)
+\openout6 = `dissertation_manan_vaswani.pyg'.
+
+
+(./_minted-dissertation_manan_vaswani/9D7BF075372908F55E2D945C39E0A6134679612F5
+E4B270DC0CF33EE3B3C54ED.pygtex) (./dissertation_manan_vaswani.bbl [15] [16])
+[17] (./dissertation_manan_vaswani.aux)
 runsystem(rm dissertation_manan_vaswani.pyg)...executed.
 
  ) 
 Here is how much of TeX's memory you used:
- 20099 strings out of 492995
- 385145 string characters out of 6132703
- 464325 words of memory out of 5000000
- 23136 multiletter control sequences out of 15000+600000
+ 20166 strings out of 492995
+ 391382 string characters out of 6132703
+ 469897 words of memory out of 5000000
+ 23151 multiletter control sequences out of 15000+600000
  17355 words of font info for 67 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  55i,8n,56p,1632b,394s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1524,16 +1611,17 @@ e/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2
 017/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2017
 /texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/local/texlive/2017/
 texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2017/t
-exmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2017/tex
-mf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2017/texm
-f-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2017/texmf
--dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/local/texlive/2017/texmf-
-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2017/te
-xmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb>
-Output written on dissertation_manan_vaswani.pdf (16 pages, 289106 bytes).
+exmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2017/tex
+mf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2017/texmf
+-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2017/texmf-
+dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2017/texmf-d
+ist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/local/texlive/2017/texmf-di
+st/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2017/texm
+f-dist/fonts/type1/public/cm-super/sfrm1095.pfb>
+Output written on dissertation_manan_vaswani.pdf (18 pages, 303875 bytes).
 PDF statistics:
- 149 PDF objects out of 1000 (max. 8388607)
- 107 compressed objects within 2 object streams
+ 159 PDF objects out of 1000 (max. 8388607)
+ 114 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -1,0 +1,17 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{p}{...}
+\PYG{n}{arma}\PYG{o}{::}\PYG{n}{cx\PYGZus{}vec} \PYG{n}{p}\PYG{p}{(}\PYG{n}{m}\PYG{p}{),} \PYG{n}{q}\PYG{p}{(}\PYG{n}{m}\PYG{p}{);}
+\PYG{n}{arma}\PYG{o}{::}\PYG{n}{cx\PYGZus{}double} \PYG{n}{t}\PYG{p}{;}
+\PYG{p}{...}
+\PYG{n}{q} \PYG{o}{=} \PYG{n}{arma}\PYG{o}{::}\PYG{n}{cumprod}\PYG{p}{(}\PYG{n}{v}\PYG{p}{);}
+
+\PYG{n}{t} \PYG{o}{=} \PYG{n}{v}\PYG{p}{[}\PYG{n}{m}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{];}	\PYG{c+c1}{// last element of v}
+\PYG{n}{p}\PYG{p}{[}\PYG{n}{m}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{]} \PYG{o}{=} \PYG{n}{q}\PYG{p}{[}\PYG{n}{m}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{2}\PYG{p}{];}
+\PYG{k}{for}\PYG{p}{(}\PYG{n}{i} \PYG{o}{=} \PYG{n}{m}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{2}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZgt{}} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{i}\PYG{o}{\PYGZhy{}\PYGZhy{}}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+    \PYG{n}{p}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{=} \PYG{n}{t}\PYG{o}{*}\PYG{n}{q}\PYG{p}{[}\PYG{n}{i}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{];}
+    \PYG{n}{t} \PYG{o}{*=} \PYG{n}{v}\PYG{p}{[}\PYG{n}{i}\PYG{p}{];}
+\PYG{p}{\PYGZcb{}}
+\PYG{n}{p}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]} \PYG{o}{=} \PYG{n}{t}\PYG{p}{;}
+\PYG{p}{...}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}
