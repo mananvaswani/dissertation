@@ -100,9 +100,9 @@
 // }
 
 arma::cx_mat randomUnitary(int m) {
-    random_device rd;
-    mt19937 gen(rd());
-    normal_distribution<> d(0,1);   // mean = 0, std dev = 1
+    // random_device rd;
+    // mt19937 gen(rd());
+    // normal_distribution<> d(0,1);   // mean = 0, std dev = 1
 
     arma::mat A_real(m, m, arma::fill::randn);
     arma::mat A_imag(m, m, arma::fill::randn);

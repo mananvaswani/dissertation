@@ -12,7 +12,9 @@
 \@writefile{toc}{\contentsline {section}{\numberline {2}Background}{3}}
 \@writefile{toc}{\contentsline {section}{\numberline {3}Preliminaries}{3}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Binary Gray Code}{3}}
+\newlabel{sec:gray_code}{{3.1}{3}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Permanent of a matrix}{3}}
+\newlabel{sec:permanent}{{3.2}{3}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.1}Definition}{3}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.2}Computing the permanent}{3}}
 \newlabel{prelim_permanent_calc}{{3.2.2}{3}}
@@ -32,14 +34,27 @@
 \@writefile{loa}{\contentsline {algorithm}{\numberline {1}{\ignorespaces Boson Sampler: Single sample $\mathbf  {z}$ from $q(\mathbf  {z})$ in $\mathcal  {O}(mn3^n)$ time}}{6}}
 \citation{marcus_minc66}
 \@writefile{toc}{\contentsline {subsection}{\numberline {5.3}Algorithm B}{7}}
+\newlabel{sec:algB}{{5.3}{7}}
 \newlabel{eqn:algBChainRule}{{14}{8}}
 \citation{clifford17}
 \citation{knuth1969}
 \@writefile{loa}{\contentsline {algorithm}{\numberline {2}{\ignorespaces Boson Sampler: Single sample $\mathbf  {z}$ from $q(\mathbf  {z})$ in $\mathcal  {O}(n2^n + \text  {poly}(m, n))$ time}}{9}}
 \citation{clifford_r2017}
 \citation{clifford17}
+\citation{rcpp}
+\citation{armadillo}
+\citation{glynn2010}
+\citation{Nijenhuis1978}
 \@writefile{toc}{\contentsline {section}{\numberline {6}Implementation}{10}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {6.1}Original R Implementation}{10}}
+\newlabel{sec:r_code}{{6.1}{10}}
+\citation{armadillo}
+\citation{ozols2009}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.2}Implementation in C\texttt  {++}}{12}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {6.2.1}Generating a random unitary matrix}{12}}
+\@writefile{loa}{\contentsline {algorithm}{\numberline {3}{\ignorespaces Random Unitary: Generate an $m \times m$ complex-valued random unitary matrix}}{12}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {6.2.2}Computing the Permanent Minors}{13}}
+\@writefile{toc}{\contentsline {paragraph}{a) Iterating $\mathbf  {\delta }$ over Gray code:}{13}}
 \bibstyle{unsrt}
 \bibdata{project_bib}
 \bibcite{marcus_minc66}{1}
@@ -55,6 +70,12 @@
 \bibcite{walker1974}{11}
 \bibcite{knuth1969}{12}
 \bibcite{clifford_r2017}{13}
+\bibcite{rcpp}{14}
+\@writefile{toc}{\contentsline {section}{\numberline {7}Results}{14}}
+\@writefile{toc}{\contentsline {section}{\numberline {8}Conclusion}{14}}
+\@writefile{toc}{\contentsline {section}{References}{14}}
+\bibcite{armadillo}{15}
+\bibcite{ozols2009}{16}
 \gdef\minted@oldcachelist{,
   default-pyg-prefix.pygstyle,
   default.pygstyle,
@@ -70,7 +91,21 @@
   42C381262AA635DA1A71D2023C78CD5C7C0A8BE947228FE10A120597CF7F0BAB.pygtex,
   54C586EC43518471270C6734851ECFC87C0A8BE947228FE10A120597CF7F0BAB.pygtex,
   2A8F45B6FC1C9E2839E9427029E17F077C0A8BE947228FE10A120597CF7F0BAB.pygtex,
-  42C381262AA635DA1A71D2023C78CD5C7C0A8BE947228FE10A120597CF7F0BAB.pygtex}
-\@writefile{toc}{\contentsline {section}{\numberline {7}Results}{11}}
-\@writefile{toc}{\contentsline {section}{\numberline {8}Conclusion}{11}}
-\@writefile{toc}{\contentsline {section}{References}{11}}
+  42C381262AA635DA1A71D2023C78CD5C7C0A8BE947228FE10A120597CF7F0BAB.pygtex,
+  2A8F45B6FC1C9E2839E9427029E17F077C0A8BE947228FE10A120597CF7F0BAB.pygtex,
+  42C381262AA635DA1A71D2023C78CD5C7C0A8BE947228FE10A120597CF7F0BAB.pygtex,
+  34959797D744009050C7971A45695CFA7C0A8BE947228FE10A120597CF7F0BAB.pygtex,
+  6F56742BF038E2448AEEE840B84A3AFA7C0A8BE947228FE10A120597CF7F0BAB.pygtex,
+  645D0AC840C62F57C46E38CEF15674267C0A8BE947228FE10A120597CF7F0BAB.pygtex,
+  0459F18D4533013DC30626C7161EC5C1A94FD2410815947246E6D971BF228B41.pygtex,
+  A69D6B70A3287BE11B07CBED4B5F49314679612F5E4B270DC0CF33EE3B3C54ED.pygtex,
+  A69D6B70A3287BE11B07CBED4B5F49314679612F5E4B270DC0CF33EE3B3C54ED.pygtex,
+  F14DBBCF225241D6CD9F55B7E8D62E034679612F5E4B270DC0CF33EE3B3C54ED.pygtex,
+  2FC816C1E3F52A81DF5B5B64D7BE16C54679612F5E4B270DC0CF33EE3B3C54ED.pygtex,
+  8537FF3395FAE990908F8479B62586784679612F5E4B270DC0CF33EE3B3C54ED.pygtex,
+  C8E1B1575C96B45784C6187BBD65B6824679612F5E4B270DC0CF33EE3B3C54ED.pygtex,
+  DDD5752B5FE66FD98FB9DCDEE48B44734679612F5E4B270DC0CF33EE3B3C54ED.pygtex,
+  F5302386464F953ED581EDAC03556E554679612F5E4B270DC0CF33EE3B3C54ED.pygtex,
+  DDD5752B5FE66FD98FB9DCDEE48B44734679612F5E4B270DC0CF33EE3B3C54ED.pygtex,
+  304D82C0867E556F1B5E676E0D11F5204679612F5E4B270DC0CF33EE3B3C54ED.pygtex,
+  ADF7EE3400A917CE22ABAA97CA046B724679612F5E4B270DC0CF33EE3B3C54ED.pygtex}

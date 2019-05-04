@@ -86,9 +86,9 @@
 \section{Background} %Background/Literature Review
 
 \section{Preliminaries}
-\subsection{Binary Gray Code}
+\subsection{Binary Gray Code} \label{sec:gray_code}
 
-\subsection{Permanent of a matrix}
+\subsection{Permanent of a matrix} \label{sec:permanent}
 Computing the permanent of large matrices is one of the key parts of the Boson Sampling problem, as will be discussed in detail while explaining the problem in the subsequent sections of the paper.
 \subsubsection{Definition}
 \begin{definition}{\cite{marcus_minc66}}
@@ -139,7 +139,7 @@ where $\delta \in \{-1, 1\}^n$ with $\delta_1 = 1$. Hence there are $2^{n-1}$ su
 
 Implementing the formula as is would require $\mathcal{O}(2^n n^2)$ time. However, iterating over the $\delta$ arrays in Gray code order reduces it to $\mathcal{O}(n 2^n)$ time.
 
-In order to exploit this trick, let $v_j$ be the symbol used to denote the innermost sum i.e. $v_j = \sum_{i=1}^n \delta_i m_{ij}$. If $\delta$ is iterated through in Gray code order, then one can notice that the terms $\{ v_j, j \in [n]\}$ can actually be computed in $\mathcal{O}(n)$ time for a given value of $\delta$ rather than $\mathcal{O}(n^2)$ which is how long it would take if done naively. This is because successive elements of $\delta$ differ in only one position, so each successive $v_j$ differs only by the addition or subtraction of some $m_{ij}$ where $i$ is the position at which $\delta$ was changed. Hence, the product of $v_j$ terms can now be calculated in $\mathcal{O}(n)$ time.
+In order to exploit this trick, let $v_j$ be the symbol used to denote the innermost sum i.e. $v_j = \sum_{i=1}^n \delta_i m_{ij}$. If $\delta$ is iterated through in Gray code order, then one can notice that the terms $\{ v_j, j \in [n]\}$ can actually be computed in $\mathcal{O}(n)$ time for a given value of $\delta$ rather than $\mathcal{O}(n^2)$ which is how long it would take if done naively. This is because successive elements of $\delta$ differ in only one position, so each successive $v_j$ differs only by the addition or subtraction of some $m_{ij}$ where $i$ is the position at which $\delta$ was last changed. Hence, the product of $v_j$ terms can now be calculated in $\mathcal{O}(n)$ time.
 \section{Describing the paper and specifying the problem} %Rename section
 Cliiford and Clifford \cite{clifford17} gave a study and analysis of the classical complexity of the exact Boson Sampling problem and proposed an algorithm that is significantly faster than previous algorithms for the problem. The algorithm is simple to implement, and is able to solve the Boson Sampling problem for system sizes much greater than quantum computing systems currently available, which reduces the likelihood of achieving quantum supremacy in the context of Boson Sampling in the near future \textcolor{red}{rephrase last bit}.
 
@@ -205,7 +205,7 @@ The correctness of the algorithm is clear as it is simply an evaluation of the r
 \end{equation}
 Therefore the total time taken is $\mathcal{O}(mn3^n)$. In terms of space complexity, we only need to store one permanent calculation at a time, and the weight array for each pmf is of size $m$. These can also be stored only one at a time, so $\mathcal{O}(m)$ additional space is required.
 
-\subsection{Algorithm B}
+\subsection{Algorithm B} \label{sec:algB}
 The main theorem of the paper(Theorem 1) states that the time complexity of the Boson Sampling problem is $\mathcal{O}(n2^n + \text{poly}(m, n))$ where $ \text{poly}(m, n) = \mathcal{O}(mn^2)$, with $\mathcal{O}(m)$ additional space required. This is achieved using the second algorithm proposed in the paper i.e. Algorithm B.
 
 Algorithm B makes use of the Laplace Expansion \cite{marcus_minc66} of permanents to obtain a significant speed up. The Laplace expansion allows us to calculate the permanent of a matrix using its permanent minors (the permanent of a submatrix with a column and a row removed). For any $k \times k$ matrix $B = (b_{i,j})$,
@@ -219,11 +219,12 @@ Computing $\{ \Per B_{k, l}^{\diamond} \}$ by calculating each of the permanents
 \Per B_{k, l}^{\diamond} = \frac{1}{2^{k-2}} \sum_\delta \left( \prod_{i=1}^{k-1} \delta_i \right) \prod_{j \in [k] \setminus l} v_j (\delta), \quad l \in [k],
 \end{equation}
 where $\delta \in \{-1, 1\}^{k-1}$ with $\delta_1 = 1$ and $v_j (\delta) = \sum_{i=1}^{k-1} \delta_i b_{ij}$.
-The usual trick of iterating over the values of $\delta$ in Gray code order is required to compute $\Per B_{k, l}^{\diamond}$ in $\mathcal{O}(k2^k)$ time for each value of $l$, but this would still have to be repeated $k$ times to cover all $l \in [k]$. The second and more novel trick used to achieve an additional speed up is used while calculating the products $\prod_{j \in [k] \setminus l} v_j (\delta)$. Observe that for each $l$, $\prod_{j \in [k] \setminus l} v_j (\delta) = \prod_{j \in [k]} v_j (\delta) / v_l(\delta)$. However, we cannot compute this method to compute the partial product as it would not work for cases when $v_l(\delta) = 0$. Instead, we first precompute two arrays $\mathbf{f}$ and $\mathbf{b}$ containing the forwards and backwards cumulative products of $v_j(\delta)$ respectively as follows,
+The usual trick of iterating over the values of $\delta$ in Gray code order is required to compute $\Per B_{k, l}^{\diamond}$ in $\mathcal{O}(k2^k)$ time for each value of $l$, but this would still have to be repeated $k$ times to cover all $l \in [k]$. The second and more novel trick used to achieve an additional speed up is used while calculating the products $\prod_{j \in [k] \setminus l} v_j (\delta)$. Observe that for each $l$, $\prod_{j \in [k] \setminus l} v_j (\delta) = \prod_{j \in [k]} v_j (\delta) / v_l(\delta)$. However, we cannot compute this method to compute the partial product as it would not work for cases when $v_l(\delta) = 0$. Instead, we first precompute two arrays $\mathbf{f}$ and $\mathbf{b}$ containing the forwards and backwards cumulative products of $\mathbf{v}(\delta) = (v_j(\delta), j\in [k])$ respectively as follows,
 \begin{equation}
-f_i = \prod_{j=1}^i v_j(\delta) \quad b_i = \prod_{j=i}^k v_j(\delta), \quad i \in [k].
+f_i = \prod_{j=1}^i v_j(\delta), \quad f_0 = 1,
+\quad b_i = \prod_{j=i}^k v_j(\delta), \quad b_{k+1} = 1 \quad i \in [k].
 \end{equation}
-Then each partial product $\prod_{j \in [k] \setminus l} v_j (\delta)$ can be expressed as a product of two terms from $\mathbf{f}$ and $\mathbf{b}$, $f_{l-1} b_{l+1}$ for any $l$. Since it takes $\mathcal{O}(k)$ time to compute the forward and backward cumulative product arrays and $\mathcal{O}(1)$ time to obtain each partial product $\prod_{j \in [k] \setminus l} v_j (\delta)$, for each value of $\delta$, the total time taken to simultaneously calculate the values of $\{ \Per B_{k, l}^{\diamond} \}$ is $\mathcal{O}(k2^k)$. Additional space required to store the partial products is $\mathcal{O}(k)$.
+Then each partial product $\prod_{j \in [k] \setminus l} v_j (\delta)$ can be expressed as a product of two terms from $\mathbf{f}$ and $\mathbf{b}$, $f_{l-1} b_{l+1}$ for any $l \in [k]$. Since it takes $\mathcal{O}(k)$ time to compute the forward and backward cumulative product arrays and $\mathcal{O}(1)$ time to obtain each partial product $\prod_{j \in [k] \setminus l} v_j (\delta)$, for each value of $\delta$, the total time taken to simultaneously calculate the values of $\{ \Per B_{k, l}^{\diamond} \}$ is $\mathcal{O}(k2^k)$. Additional space required to store the partial products is $\mathcal{O}(k)$.
 
 Coming back to formulating the second Boson Sampling algorithm, the sample space is now expanded even further with an auxiliary array $\mathbf{\alpha} = (\alpha_1, \alpha_2, ... , \alpha_n)$ where $\mathbf{\alpha} \in \pi(n)$, which is the set of permutation of $[n]$. The approach is similar to that of Algorithm A in that the goal is to create a succession of pmfs for leading subsequences of $\mathbf{r}$ and then progressively sampling $r_i$ from conditional pmfs on $(r_1, ... , r_{i-1})$. The conditioning variable $\mathbf{\alpha}$ helps us reformulate the pmf in such a way that we can use the permanent minors that we are able to calculate efficiently, while still ensuring that it is equivalent to sampling from the pmf $p(\mathbf{r})$ in equation \ref{eqn:algADistribution}.
 Define
@@ -272,7 +273,7 @@ Hence, the Boson Sampling Problem can be run in $\mathcal{O}(n2^n + \text{poly}(
 
 In this section, we will discuss the actual implementation of Algorithm B described above. The paper by Clifford and Clifford which demonstrated the two new algorithms is still relatively new, which explains why there have not been any open-source large scale benchmark tests for actual implementations of the algorithm.
 
-\subsection{Original R Implementation}
+\subsection{Original R Implementation} \label{sec:r_code}
 At the time of writing this paper, the only open-source implementation is at \cite{clifford_r2017}, by the authors of the paper. The implementation is in written as a package written in R and is freely available to download and use from CRAN. This package, named `Boson Sampling' contains an implementation of Algorithm B, along with the required functions that it depends on. The relevant functions are described below.
 \begin{description}
 \item[\mintinline{R}{bosonSampler}] \hfill \\ The package provides a function `\mintinline{R}{bosonSampler(A, sampleSize, perm=FALSE)}', which implements the Boson Sampling Algorithm B from \cite{clifford17}. As the function definition suggests, it takes three arguments
@@ -282,8 +283,80 @@ At the time of writing this paper, the only open-source implementation is at \ci
 \item \mintinline{R}{perm}: Takes the value \mintinline{R}{TRUE} if the permanents and pmfs associated to each sample are required to be returned. By default, \mintinline{R}{perm=FALSE} unless specified otherwise.
 \end{itemize}
 Note that we do not need to explicitly provide the values $m$ and $n$ as the algorithm suggests since those values are obtained by simply checking the dimensions of the input $m \times n$ matrix using the \mintinline{R}{ncol(A)} and \mintinline{R}{nrow(A)} functions from R. This implementation allows us to obtain multiple samples from the Boson Sampling distribution using the same input matrix $A$ by repeatedly looping over the algorithm the desired number of times. One notable difference is that the input matrix $A$ is transposed right at the start, with the reason being that R stores matrices in column order so transposing the matrix makes operations easier. When accessing elements of $A$, the indices have been adjusted accordingly. Semantically, the function implements the algorithm exactly as it is, which ensures its' correctness (provided the inputs received and additional functions used are also correct).
-\item[\mintinline{R}{cxPermMinors}] \hfill \\ The package provides a set of functions for computing permanents of matrices: \mintinline{R}{cxPerm(A), rePerm(B), cxPermMinors(C)}. Algorithm B requires the values $\{ \Per B_{k, l}^{\diamond}, l \in [k] \}$ to be computed in each iteration of the loop, and in order to do this, the \mintinline{R}{bosonSampler} function makes a call to the \mintinline{R}{cxPermMinors} function.
+\item[\mintinline{R}{cxPermMinors}] \hfill \\ The package provides a set of functions for computing permanents of matrices: \mintinline{R}{cxPerm(A), rePerm(B), cxPermMinors(C)}. Algorithm B requires the values $\{ \Per B_{k, l}^{\diamond}, l \in [k] \}$ to be computed in each iteration of the loop, and in order to do this, the \mintinline{R}{bosonSampler} function makes a call to the \mintinline{R}{cxPermMinors} function. This function takes an input matrix $A$ of size $k \times k-1$. Note that this is actually the transpose of the $B_k^{\diamond}$ in Line 7 of the algorithm, since the original matrix in \mintinline{R}{bosonSampler} was transposed. \mintinline{R}{cxPermMinors} is written in C\texttt{++} and is integrated into the R package using `RCpp', which is another package in R \cite{rcpp}. The package facilitates  mapping R datatypes to C\texttt{++} equivalents and vice-versa. The function also extensively uses the Armadillo package from C\texttt{++}\cite{armadillo}, which is a linear algebra library providing efficient functions and classes for vectors, matrices, and operations on them. This function calculates the permanent minors using Glynn's algorithm \cite{glynn2010} using the technique of iterating over Gray codes, by Nijenhuis and Wilf\cite{Nijenhuis1978} to iterate over Gray codes , and the trick of calculating forward and backward cumulative products described in Section \ref{sec:algB}.
+\item[\mintinline{R}{randomUnitary}] \hfill \\The function \mintinline{R}{randomUnitary(size)} takes in an integer \mintinline{R}{size} as an input, and returns a $\text{size} \times \text{size}$ complex-valued random unitary matrix.
 \end{description}
+\subsubsection*{Example}
+The function was run in the R console to produce 5 samples with $n = 10$ and $m = 100$.
+\begin{minted}[frame=single,framesep=8pt]{console}
+> library(BosonSampling)	# load the BosonSampling package
+> set.seed(7)	# set the random seed in R
+> n <- 10
+> m <- 100
+> A <- randomUnitary(m)[,1:n]	#construct random unitary matrix
+> valueList <- bosonSampler(A, sampleSize = 5)$values
+> #run Boson Sampling algorithm
+> apply(valueList, 2, sort) #sort each sample
+      [,1] [,2] [,3] [,4] [,5]
+ [1,]    6    2    6   15    5
+ [2,]    6    5    8   15   15
+ [3,]   24    5    8   24   23
+ [4,]   36   15   30   45   24
+ [5,]   54   16   32   60   44
+ [6,]   61   52   35   65   50
+ [7,]   77   68   41   77   62
+ [8,]   78   69   46   80   77
+ [9,]   78   81   50   80   89
+[10,]   79   99   52   96   95
+\end{minted}
+
+\subsection{Implementation in C\texttt{++}}
+While choosing a programming language to implement a more efficient version of the Boson Sampling algorithm, performance was the key deciding factor. The language chosen was C\texttt{++} due to its reputation for speed in mathematical problems, ease of use especially for multi-threaded programs, and the availability of highly efficient linear algebra libraries such as Armadillo. As with the $R$ implementation, three core functions are required for the algorithm: a Boson Sampler (which runs the actual algorithm), a random unitary matrix generator, and a function to calculate the permanent minors of a matrix.
+
+\subsubsection*{Armadillo Library}
+In the implementation, we make extensive use of the C\texttt{++} Armadillo library\cite{armadillo}. Armadillo is a high quality linear algebra library that provides us with efficient implementations of matrix and vector operations. It greatly simplifies operations such as adding vectors, calculating cumulative products, and accessing matrix columns to name a few. Armadillo supports complex numbers as well, which was a necessary requirement for Boson Sampling. In addition, it supports the use of OpenMP for parallelisation, and automatically uses it in some cases to speed up computationally expensive operations.
+
+\subsubsection{Generating a random unitary matrix}
+The first step carried out was to create a function \mintinline{c++}{randomUnitary(int m)} to generate a complex-valued random unitary matrix $A$ which will be passed as an argument to the Boson Sampler. In order to generate a Haar random unitary matrix, the following algorithm from \cite{ozols2009} was used.
+\begin{algorithm}
+\caption{Random Unitary: Generate an $m \times m$ complex-valued random unitary matrix}
+\begin{algorithmic}[1]
+\Require $m \in \mathbb{Z}_+$
+\State $A \leftarrow$ createRandomMatrix($m$)
+\State $Q, R \leftarrow$ QRDecomposition($A$)
+\State $R_{\text{diag}} \leftarrow$ Sign (Real (Diagonal ($R$)))
+\State $U \leftarrow Q * R_{\text{diag}}$
+\State \textbf{return} $U$
+\end{algorithmic}
+\end{algorithm}
+
+QR Decomposition decomposes a given matrix $A$ into an orthogonal matrix $Q$ and a right triangular matrix $R$ such that $Q * R = A$. Armadillo provides the all the required supplementary functions used in the implementation, which made the C\texttt{++} implementation straightforward. Since this function is run only once as a preprocessing step before the Boson Sampling, extra steps to optimise or parallelise it were not taken. Firstly, because the primary aim of the project is to optimise the implementation of the Boson Sampling algorithm itself, which receives the random unitary matrix as an input, and secondly, it is already a highly efficient implementation since all the functions used are from Armadillo so have already been optimised, as mentioned before. The object returned by \mintinline{c++}{randomUnitary(int m)} is an $m \times m$ random unitary armadillo matrix.
+\subsubsection{Computing the Permanent Minors}
+Line 8 of the algorithm requires the permanent minors of a given $k-1 \times k$ matrix to be computed. We use a separate function \mintinline{c++}{cxPermMinors(arma::cx_mat C)} which does exactly this for us. Once again, Armadillo data types and functions and data classes have been used extensively. Since the original R package (Section \ref{sec:r_code}) already had an implementation of this particular function in C\texttt{++}, we used this in our implementation to begin with and then optimised it as required. Recall the formula for calculating the permanent minors,
+\begin{equation}
+\Per B_{k, l}^{\diamond} = \frac{1}{2^{k-2}} \sum_\delta \left( \prod_{i=1}^{k-1} \delta_i \right) \prod_{i \in [k] \setminus l} v_i (\delta), \quad l \in [k],
+\end{equation}
+where $\mathbf{\delta} \in \{-1, 1\}^{k-1}$ with $\delta_1 = 1$ and $v_j (\delta) = \sum_{j=1}^{k-1} \delta_j b_{ji}$. The two tricks to speed up the naive implementation were to iterate the values of $\mathbf{\delta}$ over the Gray code, and to compute the innermost product $\prod_{i \in [k] \setminus l} v_i (\delta), l \in [k]$ with the help of the forward and backward cumulative products (Section \ref{sec:algB}). Since there is a lot going on in this single formula, we divide the operations being performed into 4 parts for a clearer explanation:
+% and calculating $v_i (\delta)$
+\paragraph{a) Iterating $\mathbf{\delta}$ over Gray code:} In order to iterate over values of $\mathbf{\delta} \in \{-1, 1\}^{k-1}$ with $\delta_1 = 1$ in Gray code order (Section \ref{sec:gray_code}), the code uses the help of two additional variables, \mintinline{c++}{int j} and \mintinline{c++}{arma::ivec g}. \mintinline{c++}{arma::ivec} is a vector of integers from Armadillo. \mintinline{c++}{j} is the active index i.e. to go from one value in the Gray code to the next, the $j^\text{th}$ bit is flipped. Additionally, the original code uses an auxiliary array \mintinline{c++}{g} to change from one value of  \mintinline{c++}{j} to the next. The condition of the \mintinline{c++}{while} loop ensures that all the gray codes of size $n-2$ are iterated over. The relevant snippets of code from the function are shown below.
+\begin{minted}[frame=lines,framesep=8pt]{c++}
+int j = 0, k;
+arma::uvec d(n); d.fill(true);
+arma::ivec g = arma::regspace< arma::ivec>(0,(n-1));
+// Preprocessing, and first iteration of sum
+while(j < n-1){
+    // Contents of loop
+    d[j] = !d[j];
+    // Iterate Gray code: j is active index
+    if( j > 0){
+        k = j + 1; g[j] = g[k]; g[k] = k; j = 0;
+    } else {
+        j = g[1]; g[1] = 1;
+    }
+}
+
+
+\end{minted}
 
 
 \section{Results}

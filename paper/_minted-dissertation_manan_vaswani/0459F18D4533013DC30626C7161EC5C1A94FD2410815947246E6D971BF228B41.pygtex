@@ -1,0 +1,21 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{g+gp}{\PYGZgt{}} library\PYG{o}{(}BosonSampling\PYG{o}{)}	\PYG{c+c1}{\PYGZsh{} load the BosonSampling package}
+\PYG{g+gp}{\PYGZgt{}} set.seed\PYG{o}{(}\PYG{l+m}{7}\PYG{o}{)}	\PYG{c+c1}{\PYGZsh{} set the random seed in R}
+\PYG{g+gp}{\PYGZgt{}} n \PYGZlt{}\PYGZhy{} \PYG{l+m}{10}
+\PYG{g+gp}{\PYGZgt{}} m \PYGZlt{}\PYGZhy{} \PYG{l+m}{100}
+\PYG{g+gp}{\PYGZgt{}} A \PYGZlt{}\PYGZhy{} randomUnitary\PYG{o}{(}m\PYG{o}{)[},1:n\PYG{o}{]}	\PYG{c+c1}{\PYGZsh{}construct random unitary matrix}
+\PYG{g+gp}{\PYGZgt{}} valueList \PYGZlt{}\PYGZhy{} bosonSampler\PYG{o}{(}A, \PYG{n+nv}{sampleSize} \PYG{o}{=} \PYG{l+m}{5}\PYG{o}{)}\PYG{n+nv}{\PYGZdl{}values}
+\PYG{g+gp}{\PYGZgt{}} \PYG{c+c1}{\PYGZsh{}run Boson Sampling algorithm}
+\PYG{g+gp}{\PYGZgt{}} apply\PYG{o}{(}valueList, \PYG{l+m}{2}, sort\PYG{o}{)} \PYG{c+c1}{\PYGZsh{}sort each sample}
+\PYG{g+go}{      [,1] [,2] [,3] [,4] [,5]}
+\PYG{g+go}{ [1,]    6    2    6   15    5}
+\PYG{g+go}{ [2,]    6    5    8   15   15}
+\PYG{g+go}{ [3,]   24    5    8   24   23}
+\PYG{g+go}{ [4,]   36   15   30   45   24}
+\PYG{g+go}{ [5,]   54   16   32   60   44}
+\PYG{g+go}{ [6,]   61   52   35   65   50}
+\PYG{g+go}{ [7,]   77   68   41   77   62}
+\PYG{g+go}{ [8,]   78   69   46   80   77}
+\PYG{g+go}{ [9,]   78   81   50   80   89}
+\PYG{g+go}{[10,]   79   99   52   96   95}
+\end{Verbatim}

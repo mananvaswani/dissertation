@@ -1,7 +1,7 @@
 \begin{thebibliography}{10}
 
 \bibitem{marcus_minc66}
-Henryk~Minc Marvin~Marcus.
+Marvin Marcus and Henryk Minc.
 \newblock Permanents.
 \newblock {\em The American Mathematical Monthly}, vol. 72:577--591, 1965.
 
@@ -65,8 +65,23 @@ Donald~E. Knuth.
 \newblock Addison-Wesley, 1969.
 
 \bibitem{clifford_r2017}
-Peter Clifford and Raphaël Clifford.
+Peter Clifford and Rapha{\"e}l Clifford.
 \newblock {\em BosonSampling: Classical Boson Sampling}, 2017.
 \newblock R package version 0.1.1.
+
+\bibitem{rcpp}
+Dirk Eddelbuettel, Romain Francois, JJ~Allaire, Kevin Ushey, Qiang Kou, Nathan
+  Russell, Douglas Bates, and John Chambers.
+\newblock {\em RCpp}, 2017.
+\newblock R package version 0.12.12.
+
+\bibitem{armadillo}
+Conrad Sanderson.
+\newblock Armadillo c++ linear algebra library, June 2016.
+
+\bibitem{ozols2009}
+Maris Ozols.
+\newblock How to generate a random unitary matrix.
+\newblock Technical report, 2009.
 
 \end{thebibliography}

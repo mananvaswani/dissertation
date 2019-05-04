@@ -1,0 +1,16 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kt}{int} \PYG{n}{j} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{n}{k}\PYG{p}{;}
+\PYG{n}{arma}\PYG{o}{::}\PYG{n}{uvec} \PYG{n}{d}\PYG{p}{(}\PYG{n}{n}\PYG{p}{);} \PYG{n}{d}\PYG{p}{.}\PYG{n}{fill}\PYG{p}{(}\PYG{n+nb}{true}\PYG{p}{);}
+\PYG{n}{arma}\PYG{o}{::}\PYG{n}{ivec} \PYG{n}{g} \PYG{o}{=} \PYG{n}{arma}\PYG{o}{::}\PYG{n}{regspace}\PYG{o}{\PYGZlt{}} \PYG{n}{arma}\PYG{o}{::}\PYG{n}{ivec}\PYG{o}{\PYGZgt{}}\PYG{p}{(}\PYG{l+m+mi}{0}\PYG{p}{,(}\PYG{n}{n}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{));}
+\PYG{c+c1}{// Preprocessing, and first iteration of sum}
+\PYG{k}{while}\PYG{p}{(}\PYG{n}{j} \PYG{o}{\PYGZlt{}} \PYG{n}{n}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{)\PYGZob{}}
+    \PYG{c+c1}{// Contents of loop}
+    \PYG{n}{d}\PYG{p}{[}\PYG{n}{j}\PYG{p}{]} \PYG{o}{=} \PYG{o}{!}\PYG{n}{d}\PYG{p}{[}\PYG{n}{j}\PYG{p}{];}
+    \PYG{c+c1}{// Iterate Gray code: j is active index}
+    \PYG{k}{if}\PYG{p}{(} \PYG{n}{j} \PYG{o}{\PYGZgt{}} \PYG{l+m+mi}{0}\PYG{p}{)\PYGZob{}}
+        \PYG{n}{k} \PYG{o}{=} \PYG{n}{j} \PYG{o}{+} \PYG{l+m+mi}{1}\PYG{p}{;} \PYG{n}{g}\PYG{p}{[}\PYG{n}{j}\PYG{p}{]} \PYG{o}{=} \PYG{n}{g}\PYG{p}{[}\PYG{n}{k}\PYG{p}{];} \PYG{n}{g}\PYG{p}{[}\PYG{n}{k}\PYG{p}{]} \PYG{o}{=} \PYG{n}{k}\PYG{p}{;} \PYG{n}{j} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+    \PYG{p}{\PYGZcb{}} \PYG{k}{else} \PYG{p}{\PYGZob{}}
+        \PYG{n}{j} \PYG{o}{=} \PYG{n}{g}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{];} \PYG{n}{g}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{]} \PYG{o}{=} \PYG{l+m+mi}{1}\PYG{p}{;}
+    \PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

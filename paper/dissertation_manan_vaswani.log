@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.11.13)  2 MAY 2019 19:00
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.11.13)  4 MAY 2019 02:29
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -1290,131 +1290,43 @@ Package textcomp Info: Setting ptmj sub-encoding to TS1/4 on input line 409.
 [1
 
 {/usr/local/texlive/2017/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-[1] (./dissertation_manan_vaswani.toc)
-\tf@toc=\write7
-\openout7 = `dissertation_manan_vaswani.toc'.
+[1] (./dissertation_manan_vaswani.toc
+LaTeX Font Info:    Try loading font information for U+msa on input line 4.
 
- [2]
-
-LaTeX Warning: Citation `marcus_minc66' on page 3 undefined on input line 94.
-
-LaTeX Font Info:    Try loading font information for U+msa on input line 95.
 (/usr/local/texlive/2017/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 95.
+LaTeX Font Info:    Try loading font information for U+msb on input line 4.
 
 (/usr/local/texlive/2017/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Try loading font information for U+rsfs on input line 95.
+LaTeX Font Info:    Try loading font information for U+rsfs on input line 4.
 
 (/usr/local/texlive/2017/texmf-dist/tex/latex/jknapltx/ursfs.fd
 File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
-)
+))
+\tf@toc=\write7
+\openout7 = `dissertation_manan_vaswani.toc'.
 
-LaTeX Warning: Citation `ryser_1963' on page 3 undefined on input line 125.
-
-
-LaTeX Warning: Citation `valiant1979' on page 3 undefined on input line 128.
-
-
-LaTeX Warning: Citation `ryser_1963' on page 3 undefined on input line 130.
-
-
-LaTeX Warning: Citation `Nijenhuis1978' on page 3 undefined on input line 130.
-
-
-LaTeX Warning: Citation `balasubramanian1980' on page 3 undefined on input line
- 132.
-
-
-LaTeX Warning: Citation `bax1998' on page 3 undefined on input line 132.
-
-
-LaTeX Warning: Citation `bax1996' on page 3 undefined on input line 132.
-
-
-LaTeX Warning: Citation `glynn2010' on page 3 undefined on input line 132.
-
-
-Overfull \hbox (32.16415pt too wide) in paragraph at lines 132--133
+ [2]
+Overfull \hbox (31.69275pt too wide) in paragraph at lines 132--133
 []\OT1/cmr/m/n/10.95 Another for-mula that is as fast as Ry-sers was in-de-pen-
 dently de-rived by Balasubramanian[[]],
  []
 
-[3]
-
-LaTeX Warning: Citation `clifford17' on page 4 undefined on input line 144.
-
-[4]
-
-LaTeX Warning: Citation `feller1968' on page 5 undefined on input line 159.
-
-
-LaTeX Warning: Reference `boson_sampling_formula1' on page 5 undefined on input
- line 163.
-
-
-LaTeX Warning: Reference `prelim_permanent_calc' on page 5 undefined on input l
-ine 163.
-
-
-Overfull \hbox (6.41528pt too wide) in paragraph at lines 163--164
-\OT1/cmr/m/n/10.95 Translating the for-mula above ([]) di-rectly to an al-go-ri
-thm would re-quire $\OMS/cmsy/m/n/10.95 O\OT1/cmr/m/n/10.95 ([]\OML/cmm/m/it/10
-.95 n\OT1/cmr/m/n/10.95 2[])$
- []
-
-
-LaTeX Warning: Citation `clifford17' on page 5 undefined on input line 165.
-
-
-LaTeX Warning: Reference `boson_sampling_formula1' on page 5 undefined on input
- line 168.
-
-[5]
-
-LaTeX Warning: Reference `eqn:bosonSamplingConditional' on page 6 undefined on 
-input line 185.
-
+[3] [4] [5]
 
 LaTeX Warning: Command \O invalid in math mode on input line 191.
 
+[6] [7]
 
-LaTeX Warning: Citation `walker1974' on page 6 undefined on input line 202.
+LaTeX Warning: Command \O invalid in math mode on input line 243.
 
-[6]
-
-LaTeX Warning: Citation `marcus_minc66' on page 7 undefined on input line 211.
-
-[7]
-
-LaTeX Warning: Reference `eqn:algADistribution' on page 8 undefined on input li
-ne 228.
-
-
-LaTeX Warning: Command \O invalid in math mode on input line 242.
-
-
-LaTeX Warning: Reference `eqn:algBChainRule' on page 8 undefined on input line 
-259.
-
-[8]
-
-LaTeX Warning: Citation `clifford17' on page 9 undefined on input line 261.
-
-
-LaTeX Warning: Citation `knuth1969' on page 9 undefined on input line 261.
-
-[9]
-
-LaTeX Warning: Citation `clifford_r2017' on page 10 undefined on input line 276
-.
-
+[8] [9]
 \openout6 = `dissertation_manan_vaswani.pyg'.
 
-(./_minted-dissertation_manan_vaswani/default-pyg-prefix.pygstyle)
+ (./_minted-dissertation_manan_vaswani/default-pyg-prefix.pygstyle)
 (./_minted-dissertation_manan_vaswani/default.pygstyle)
 (./_minted-dissertation_manan_vaswani/2A8F45B6FC1C9E2839E9427029E17F077C0A8BE94
 7228FE10A120597CF7F0BAB.pygtex
@@ -1426,10 +1338,8 @@ LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <10.95> not available
 
 (./_minted-dissertation_manan_vaswani/A129CEDD75D5C885814A875EB83E33F17C0A8BE94
 7228FE10A120597CF7F0BAB.pygtex)
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 281.
 
-LaTeX Warning: Citation `clifford17' on page 10 undefined on input line 278.
-
-LaTeX Font Info:    Try loading font information for TS1+cmr on input line 280.
 
 (/usr/local/texlive/2017/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
@@ -1488,30 +1398,121 @@ File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 
 
 (./_minted-dissertation_manan_vaswani/42C381262AA635DA1A71D2023C78CD5C7C0A8BE94
-7228FE10A120597CF7F0BAB.pygtex) [10] (./dissertation_manan_vaswani.bbl)
-[11] (./dissertation_manan_vaswani.aux)
-
-LaTeX Warning: There were undefined references.
+7228FE10A120597CF7F0BAB.pygtex)
+\openout6 = `dissertation_manan_vaswani.pyg'.
 
 
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+(./_minted-dissertation_manan_vaswani/2A8F45B6FC1C9E2839E9427029E17F077C0A8BE94
+7228FE10A120597CF7F0BAB.pygtex)
+\openout6 = `dissertation_manan_vaswani.pyg'.
 
+
+(./_minted-dissertation_manan_vaswani/42C381262AA635DA1A71D2023C78CD5C7C0A8BE94
+7228FE10A120597CF7F0BAB.pygtex) [10]
+\openout6 = `dissertation_manan_vaswani.pyg'.
+
+
+(./_minted-dissertation_manan_vaswani/34959797D744009050C7971A45695CFA7C0A8BE94
+7228FE10A120597CF7F0BAB.pygtex)
+\openout6 = `dissertation_manan_vaswani.pyg'.
+
+
+(./_minted-dissertation_manan_vaswani/6F56742BF038E2448AEEE840B84A3AFA7C0A8BE94
+7228FE10A120597CF7F0BAB.pygtex)
+\openout6 = `dissertation_manan_vaswani.pyg'.
+
+
+(./_minted-dissertation_manan_vaswani/645D0AC840C62F57C46E38CEF15674267C0A8BE94
+7228FE10A120597CF7F0BAB.pygtex)
+\openout4 = `dissertation_manan_vaswani.pyg'.
+
+
+(./_minted-dissertation_manan_vaswani/0459F18D4533013DC30626C7161EC5C1A94FD2410
+815947246E6D971BF228B41.pygtex)
+LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <12> not available
+(Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 313.
+ [11]
+\openout6 = `dissertation_manan_vaswani.pyg'.
+
+
+(./_minted-dissertation_manan_vaswani/A69D6B70A3287BE11B07CBED4B5F49314679612F5
+E4B270DC0CF33EE3B3C54ED.pygtex)
+\openout6 = `dissertation_manan_vaswani.pyg'.
+
+
+(./_minted-dissertation_manan_vaswani/A69D6B70A3287BE11B07CBED4B5F49314679612F5
+E4B270DC0CF33EE3B3C54ED.pygtex) [12]
+\openout6 = `dissertation_manan_vaswani.pyg'.
+
+
+(./_minted-dissertation_manan_vaswani/F14DBBCF225241D6CD9F55B7E8D62E034679612F5
+E4B270DC0CF33EE3B3C54ED.pygtex)
+\openout6 = `dissertation_manan_vaswani.pyg'.
+
+
+(./_minted-dissertation_manan_vaswani/2FC816C1E3F52A81DF5B5B64D7BE16C54679612F5
+E4B270DC0CF33EE3B3C54ED.pygtex)
+\openout6 = `dissertation_manan_vaswani.pyg'.
+
+
+(./_minted-dissertation_manan_vaswani/8537FF3395FAE990908F8479B62586784679612F5
+E4B270DC0CF33EE3B3C54ED.pygtex)
+\openout6 = `dissertation_manan_vaswani.pyg'.
+
+
+(./_minted-dissertation_manan_vaswani/C8E1B1575C96B45784C6187BBD65B6824679612F5
+E4B270DC0CF33EE3B3C54ED.pygtex)
+\openout6 = `dissertation_manan_vaswani.pyg'.
+
+
+(./_minted-dissertation_manan_vaswani/DDD5752B5FE66FD98FB9DCDEE48B44734679612F5
+E4B270DC0CF33EE3B3C54ED.pygtex)
+\openout6 = `dissertation_manan_vaswani.pyg'.
+
+
+(./_minted-dissertation_manan_vaswani/F5302386464F953ED581EDAC03556E554679612F5
+E4B270DC0CF33EE3B3C54ED.pygtex)
+\openout6 = `dissertation_manan_vaswani.pyg'.
+
+
+(./_minted-dissertation_manan_vaswani/DDD5752B5FE66FD98FB9DCDEE48B44734679612F5
+E4B270DC0CF33EE3B3C54ED.pygtex)
+\openout6 = `dissertation_manan_vaswani.pyg'.
+
+
+(./_minted-dissertation_manan_vaswani/304D82C0867E556F1B5E676E0D11F5204679612F5
+E4B270DC0CF33EE3B3C54ED.pygtex)
+\openout4 = `dissertation_manan_vaswani.pyg'.
+
+runsystem(pygmentize -l c++ -f latex -P commandprefix=PYG -F tokenmerge -o _min
+ted-dissertation_manan_vaswani/ADF7EE3400A917CE22ABAA97CA046B724679612F5E4B270D
+C0CF33EE3B3C54ED.pygtex dissertation_manan_vaswani.pyg)...executed.
+
+
+(./_minted-dissertation_manan_vaswani/ADF7EE3400A917CE22ABAA97CA046B724679612F5
+E4B270DC0CF33EE3B3C54ED.pygtex [13]) (./dissertation_manan_vaswani.bbl [14])
+runsystem(rm _minted-dissertation_manan_vaswani/FB5242F1D3FEE9D34E2008A43748681
+44679612F5E4B270DC0CF33EE3B3C54ED.pygtex)...executed.
+
+
+[15] (./dissertation_manan_vaswani.aux)
 runsystem(rm dissertation_manan_vaswani.pyg)...executed.
 
  ) 
 Here is how much of TeX's memory you used:
- 20014 strings out of 492995
- 379072 string characters out of 6132703
- 461946 words of memory out of 5000000
- 23101 multiletter control sequences out of 15000+600000
- 17018 words of font info for 65 fonts, out of 8000000 for 9000
+ 20099 strings out of 492995
+ 385145 string characters out of 6132703
+ 464325 words of memory out of 5000000
+ 23136 multiletter control sequences out of 15000+600000
+ 17355 words of font info for 67 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 55i,8n,56p,1323b,394s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 55i,8n,56p,1632b,394s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2017/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc
 }</usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb>
 </usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><
 /usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></u
 sr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></us
+r/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmitt10.pfb></us
 r/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr
 /local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/l
 ocal/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/loc
@@ -1526,12 +1527,13 @@ texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2017/t
 exmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2017/tex
 mf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2017/texm
 f-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2017/texmf
--dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2017/t
-exmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb>
-Output written on dissertation_manan_vaswani.pdf (12 pages, 257299 bytes).
+-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/local/texlive/2017/texmf-
+dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2017/te
+xmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb>
+Output written on dissertation_manan_vaswani.pdf (16 pages, 289106 bytes).
 PDF statistics:
- 127 PDF objects out of 1000 (max. 8388607)
- 92 compressed objects within 1 object stream
+ 149 PDF objects out of 1000 (max. 8388607)
+ 107 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 
