@@ -1,0 +1,3 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{bosonSampler}\PYG{p}{(}\PYG{n}{arma}\PYG{o}{::}\PYG{n}{cx\PYGZus{}mat}\PYG{p}{,} \PYG{k+kt}{int}\PYG{p}{,} \PYG{k+kt}{int}\PYG{p}{)}
+\end{Verbatim}

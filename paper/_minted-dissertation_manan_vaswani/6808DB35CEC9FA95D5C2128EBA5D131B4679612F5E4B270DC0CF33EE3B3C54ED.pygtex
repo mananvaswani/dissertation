@@ -1,0 +1,5 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{// Line 8}
+\PYG{n}{arma}\PYG{o}{::}\PYG{n}{cx\PYGZus{}vec} \PYG{n}{perms}\PYG{p}{;}
+\PYG{n}{perms} \PYG{o}{=} \PYG{n}{cxPermMinors}\PYG{p}{(}\PYG{n}{B\PYGZus{}k}\PYG{p}{);}
+\end{Verbatim}

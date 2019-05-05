@@ -22,8 +22,15 @@
 \contentsline {paragraph}{b) Computing $\mathbf {v}(\mathbf {\delta }) = \{v_i (\mathbf {\delta }), i \in [m]\}$ efficiently for each $\mathbf {\delta }$:}{14}
 \contentsline {paragraph}{c) Computing the partial products $\DOTSB \prod@ \slimits@ _{i \in [m] \setminus l} v_i (\delta ), \hskip 1em\relax l \in [m]$:}{14}
 \contentsline {paragraph}{d) Computing the value $\left ( \DOTSB \prod@ \slimits@ _{s=1}^{m-1} \delta _s \right )$:}{15}
-\contentsline {paragraph}{e) $Multiplying by \frac {1}{2^{m-2}}$ term:}{15}
+\contentsline {paragraph}{e) Multiplying by $\frac {1}{2^{m-2}}$ term:}{15}
 \contentsline {subsection}{\numberline {6.3}Simulating exact Boson Sampling using Algorithm B}{16}
-\contentsline {section}{\numberline {7}Results}{16}
-\contentsline {section}{\numberline {8}Conclusion}{16}
-\contentsline {section}{References}{16}
+\contentsline {paragraph}{Preprocessing steps}{16}
+\contentsline {paragraph}{Line 2}{16}
+\contentsline {paragraph}{Line 3 and 4}{16}
+\contentsline {paragraph}{Lines 6 to 11}{17}
+\contentsline {paragraph}{Line 12}{17}
+\contentsline {subsection}{\numberline {6.4}Running the code}{17}
+\contentsline {subsection}{\numberline {6.5}Profiling the code}{18}
+\contentsline {section}{\numberline {7}Results}{18}
+\contentsline {section}{\numberline {8}Conclusion}{18}
+\contentsline {section}{References}{18}

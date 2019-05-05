@@ -1,0 +1,6 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{g+gp}{\PYGZgt{}} g++\PYGZhy{}8 bosonSampling\PYGZus{}b\PYGZus{}arma.cpp cxPermMinors.cpp randomUnitary.cpp \PYG{l+s+se}{\PYGZbs{}}
+\PYGZgt{}	 \PYGZhy{}o a.out \PYGZhy{}std\PYG{o}{=}c++11 \PYGZhy{}larmadillo
+\PYG{g+gp}{\PYGZgt{}} ./a.out \PYG{l+m}{25}
+\PYG{g+go}{[ 7 21 28 37 38 47 63 67 91 97 ]}
+\end{Verbatim}

@@ -328,8 +328,8 @@ The first step carried out was to create a function \mintinline{c++}{randomUnita
 \State \textbf{return} $U$
 \end{algorithmic}
 \end{algorithm}
-
 QR Decomposition decomposes a given matrix $A$ into an orthogonal matrix $Q$ and a right triangular matrix $R$ such that $Q * R = A$. Armadillo provides the all the required supplementary functions used in the implementation, which made the C\texttt{++} implementation straightforward. Since this function is run only once as a preprocessing step before the Boson Sampling, extra steps to optimise or parallelise it were not taken. Firstly, because the primary aim of the project is to optimise the implementation of the Boson Sampling algorithm itself, which receives the random unitary matrix as an input, and secondly, it is already a highly efficient implementation since all the functions used are from Armadillo so have already been optimised, as mentioned before. The object returned by \mintinline{c++}{randomUnitary(int m)} is an $m \times m$ random unitary armadillo matrix.
+
 \subsubsection{Computing the Permanent Minors}
 Line 8 of the algorithm requires the permanent minors of a given $k-1 \times k$ matrix to be computed. We use a separate function \mintinline{c++}{cxPermMinors(arma::cx_mat C)} which does exactly this for us. Once again, Armadillo data types and functions and data classes have been used extensively. Since the original R package (Section \ref{sec:r_code}) already had an implementation of this particular function in C\texttt{++}, we used this in our implementation to begin with and then optimised it as required. In our code, \mintinline{c++}{m} denotes number of rows and \mintinline{c++}{n} denotes number of columns of the input matrix. Since the transpose of the matrix is being used from the Boson Sampling function, \mintinline{c++}{m == n+1}. Using this notation, recall the formula for calculating the permanent minors,
 \begin{equation}
@@ -403,9 +403,68 @@ while(j < n-1){
 }
 \end{minted}
 
-\paragraph{e) $Multiplying by \frac{1}{2^{m-2}}$ term:} Finally, the sum in the formula is divided by $2^{m-2}$, but rather than evaluating this separately, and dividing all the elements of the result by it, we initially divide each element of $\mathbf{v}(\mathbf{\delta})$ by 2. Then, when the partial products of $\mathbf{v}(\mathbf{\delta})$ are being computed, each partial product is divided by a factor $2^{m-1}$, and then assigned to the accumulator \mintinline{c++}{p}. Before returning  \mintinline{c++}{p} at the end of the function, it is multiplied by 2 in order to give the desired value of $2^{m-2}$ in the denominator.
+\paragraph{e) Multiplying by $\frac{1}{2^{m-2}}$ term:} Finally, the sum in the formula is divided by $2^{m-2}$, but rather than evaluating this separately, and dividing all the elements of the result by it, we initially divide each element of $\mathbf{v}(\mathbf{\delta})$ by 2. Then, when the partial products of $\mathbf{v}(\mathbf{\delta})$ are being computed, each partial product is divided by a factor $2^{m-1}$, and then assigned to the accumulator \mintinline{c++}{p}. Before returning  \mintinline{c++}{p} at the end of the function, it is multiplied by 2 in order to give the desired value of $2^{m-2}$ in the denominator.
+
+The object \mintinline{c++}{p} returned is a vector containing the set of permanent minors of the input matrix \mintinline{c++}{C}.
 
 \subsection{Simulating exact Boson Sampling using Algorithm B}
+The function \mintinline{c++}{bosonSampler(arma::cx_mat A, int n, int m)} is an implementation of Algorithm B (Section \ref{sec:algB}) of the exact Boson Sampling problem in C\texttt{++}. We followed the algorithm exactly as it is, and describe a line-by-line explanation below (excluding trivial steps). The function takes as arguments a complex-valued Armadillo matrix \mintinline{c++}{A} which is a random unitary matrix as required by the algorithm, an integer \mintinline{c++}{n} representing input size, and an integer \mintinline{c++}{m} representing output modes.
+\paragraph{Preprocessing steps} Before we start the actual algorithm, $A$ is required to be an $m \times n$ matrix as we require only the first $n$ columns. A random seed is generated using a Mersenne twister engine which is a uniform fast pseudo-random number generator \cite{matsumoto1998}. The random seed is required later for the sampling steps in the algorithm.
+\begin{minted}[frame=lines,framesep=8pt]{c++}
+// Take first n columns of A
+A.set_size(m, n);
+
+// Generate random seed
+random_device rd;
+mt19937 gen(rd());
+\end{minted}
+\paragraph{Line 2} requires the columns of $A$ to be randomly permuted. In order to do this, we have implemented a simple Knuth-shuffle algorithm \cite{knuth1969}. 
+\begin{minted}[frame=lines,framesep=8pt]{c++}
+// Line 2 : Permute columns
+for (int i = 0; i <= n-2; i++) {
+    uniform_int_distribution<int> uni(i, n-1);
+    int j = uni(gen);
+    A.swap_cols(i, j);
+}
+\end{minted}
+\paragraph{Line 3 and 4} involves making a weighted array $\mathbf{w}$ and sampling a value $x$ from it. We created a C\texttt{++} standard vector of doubles to represent the weighted array using the formula provided in Line 3 of the algorithm. C\texttt{++} provides a class for creating creating discrete distributions using indexed weight arrays or vectors. This was used to generate the distribution and the random seed generated earlier was used to sample $x$ from it. 1 is added to the value sampled, as indices of C\texttt{++} vectors start at 0, but the problem requires the indices to start at 1. This sampling was carried out in the code snippet below.
+\begin{minted}[frame=lines,framesep=8pt]{c++}
+// Line 3
+vector<double> w;
+for (int i = 1; i <= m; i++) {
+    w.push_back(norm(A(i-1, 1)));
+}
+
+// Line 4
+discrete_distribution<> d(w.begin(), w.end());
+int x = d(gen) + 1;
+\end{minted}
+\paragraph{Lines 6 to 11} contains the loop for repeatedly generating the marginal distributions and sampling values from them. Firstly, the permanent minors are computed of the submatrix of $A$ and stored in an Armadillo vector, by making a call to \mintinline{c++}{cxPermMinors(arma::cx_mat)}:
+\begin{minted}[frame=lines,framesep=8pt]{c++}
+// Line 8
+arma::cx_vec perms;
+perms = cxPermMinors(B_k);
+\end{minted}
+The permanent minors are used to create a weight vector using the formula in Line 9. As before, an integer $x$ is sampled from the discrete distribution represented by a weight vector $\mathbf{w}$, and then appended to the vector $\mathbf{r}$.
+\paragraph{Line 12} is the final step of sorting the vector of sampled values $r$ in non-decreasing order. The \mintinline{c++}{sort()} function in the standard C\texttt{++} library does exactly this for vectors.
+\begin{minted}[frame=lines,framesep=8pt]{c++}
+// Line 12
+vector<int> z;
+sort(r.begin(), r.end());
+z = r;
+\end{minted}
+
+\subsection{Running the code}
+The files containing the functions were initially compiled on a personal computer, using the g\texttt{++} compiler with no extra flags added for optimisation. The \mintinline{c++}{main()} function required the user to enter a value of $n$ when running the function, and then set $m = n^2$. An $m \times m$ complex valued random unitary matrix is generated using the \mintinline{c++}{randomUnitary(int)} function. Subsequently, the \mintinline{c++}{bosonSampler(arma::cx_mat, int, int)} function is called, and a single sample from the Boson Sampling distribution with input size $n$ and $m$ output modes is obtained. Finally, this sample is printed out to the command line. An example of this process with $n = 10$ is shown below. The following instructions are run in the same directory as the C\texttt{++} files.
+\begin{minted}[frame=single,framesep=8pt]{console}
+> g++-8 bosonSampling_b_arma.cpp cxPermMinors.cpp randomUnitary.cpp \
+>	 -o a.out -std=c++11 -larmadillo
+> ./a.out 25
+[ 7 21 28 37 38 47 63 67 91 97 ]
+\end{minted}
+
+\subsection{Profiling the code}
+
 \section{Results}
 
 \section{Conclusion}

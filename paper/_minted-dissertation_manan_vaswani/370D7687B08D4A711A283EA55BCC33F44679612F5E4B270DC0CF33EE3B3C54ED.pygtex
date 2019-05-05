@@ -1,0 +1,8 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{// Take first n columns of A}
+\PYG{n}{A}\PYG{p}{.}\PYG{n}{set\PYGZus{}size}\PYG{p}{(}\PYG{n}{m}\PYG{p}{,} \PYG{n}{n}\PYG{p}{);}
+
+\PYG{c+c1}{// Generate random seed}
+\PYG{n}{random\PYGZus{}device} \PYG{n}{rd}\PYG{p}{;}
+\PYG{n}{mt19937} \PYG{n+nf}{gen}\PYG{p}{(}\PYG{n}{rd}\PYG{p}{());}
+\end{Verbatim}

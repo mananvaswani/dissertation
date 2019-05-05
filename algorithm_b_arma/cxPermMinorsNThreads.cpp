@@ -82,8 +82,24 @@ arma::cx_vec cxPermMinorsThreads(arma::cx_mat C) {
 		// Initialise starting variables for each thread
 		int this_thread = omp_get_thread_num();
 		int num_threads = omp_get_num_threads();
-		long long my_start = (this_thread) * upperBound / num_threads;
-		long long my_end   = (this_thread+1) * upperBound / num_threads;
+
+		int minItsPerThread = upperBound / num_threads;
+		int threadsWithExtra = upperBound % num_threads;
+
+		long long my_start;
+		long long my_end;
+
+		if (this_thread < threadsWithExtra) {
+			my_start = (this_thread) * (minItsPerThread + 1);
+			my_end   = (this_thread+1) * (minItsPerThread + 1);
+		}
+		else {
+			my_start = threadsWithExtra * (minItsPerThread + 1) +(this_thread) * (minItsPerThread);
+			my_end   = threadsWithExtra * (minItsPerThread + 1) +(this_thread + 1) * (minItsPerThread);
+		}
+
+		// long long my_start = (this_thread) * upperBound / num_threads;
+		// long long my_end   = (this_thread+1) * upperBound / num_threads;
 
 		int i;
 
@@ -104,20 +120,20 @@ arma::cx_vec cxPermMinorsThreads(arma::cx_mat C) {
 		for(long ctr = my_start; ctr < my_end; ctr++) {
 			q = arma::cumprod(v);
 			t = v[m-1];
-	        if(s){
-	            p_local[m-1] -= q[m-2];
-	            for(i = m-2; i > 0; i--){
-	                p_local[i] -= t*q[i-1];
-	                t *= v[i];
-	            }
-	            p_local[0] -= t;
+			if(s){
+				p_local[m-1] -= q[m-2];
+				for(i = m-2; i > 0; i--){
+					p_local[i] -= t*q[i-1];
+					t *= v[i];
+				}
+				p_local[0] -= t;
 	        } else {
-	           p_local[m-1] += q[m-2];
-	           for(i = m-2; i > 0; i--){
-	                p_local[i] += t*q[i-1];
-	                t *= v[i];
-	            }
-	            p_local[0] += t;
+				p_local[m-1] += q[m-2];
+				for(i = m-2; i > 0; i--){
+					p_local[i] += t*q[i-1];
+					t *= v[i];
+				}
+				p_local[0] += t;
 			}
 
 			s = !s;
@@ -133,5 +149,4 @@ arma::cx_vec cxPermMinorsThreads(arma::cx_mat C) {
 	}
 	return 2.*p;
 }
-
 // END
