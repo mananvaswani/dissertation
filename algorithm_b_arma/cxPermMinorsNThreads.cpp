@@ -1,17 +1,18 @@
 #include "header.h"
 #define NUM_THREADS 4
 
-int nextGrayCode(long long ctr) {
+int getActiveIndex(long long ctr) {
 	return __builtin_ctzll(ctr);
+	// _mm_tzcnt_64 for intel compiler
 }
 
-int getNthGrayCode(long long n) {
-    n--;
-    return n ^ (n >> 1);
+int getKthGrayCode(long long k) {
+    //k--;
+    return k ^ (k >> 1);
 }
 
 arma::uvec getDelta(long long ctr, int n) {
-    int gray = getNthGrayCode(ctr);
+    int gray = getKthGrayCode(ctr);
     arma::uvec d(n);
     d.fill(1);
     // first flip the bits
@@ -105,9 +106,9 @@ arma::cx_vec cxPermMinorsThreads(arma::cx_mat C) {
 
 		std::complex<double> t;
 
-		d = getDelta(my_start, n);
+		d = getDelta(my_start-1, n);
 
-		j = nextGrayCode(my_start);
+		if (my_start != 0) j = getActiveIndex(my_start); else j = 0;
 
 		v = getV(d, j, n, my_start, C);
 
@@ -115,6 +116,7 @@ arma::cx_vec cxPermMinorsThreads(arma::cx_mat C) {
 		else s = true;
 
 		arma::cx_vec p_local(m);
+
 		p_local.zeros();
 
 		for(long ctr = my_start; ctr < my_end; ctr++) {
@@ -138,7 +140,7 @@ arma::cx_vec cxPermMinorsThreads(arma::cx_mat C) {
 
 			s = !s;
 			if (ctr!=0) d[j] = 1 ^ d[j];
-			j = nextGrayCode(ctr+1);
+			j = getActiveIndex(ctr+1);
 			if(d[j] == 1) v -= C.col(j); else v += C.col(j);
 		}
 

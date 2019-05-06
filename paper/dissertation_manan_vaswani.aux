@@ -56,6 +56,7 @@
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {6.2.1}Generating a random unitary matrix}{12}}
 \@writefile{loa}{\contentsline {algorithm}{\numberline {3}{\ignorespaces Random Unitary: Generate an $m \times m$ complex-valued random unitary matrix}}{12}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {6.2.2}Computing the Permanent Minors}{13}}
+\newlabel{sec:permMinors}{{6.2.2}{13}}
 \@writefile{toc}{\contentsline {paragraph}{a) Iterating $\mathbf  {\delta }$ over Gray code:}{13}}
 \@writefile{toc}{\contentsline {paragraph}{b) Computing $\mathbf  {v}(\mathbf  {\delta }) = \{v_i (\mathbf  {\delta }), i \in [m]\}$ efficiently for each $\mathbf  {\delta }$:}{14}}
 \@writefile{toc}{\contentsline {paragraph}{c) Computing the partial products $\DOTSB \prod@ \slimits@ _{i \in [m] \setminus l} v_i (\delta ), \hskip 1em\relax l \in [m]$:}{14}}
@@ -76,9 +77,17 @@
 \newlabel{fig:vtune_hotspots_initial}{{1}{18}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {6.5}Profiling the code}{18}}
 \citation{muldc3}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.6}Parallelising the code}{19}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {6.6.1}Parallelisation technique}{19}}
+\@writefile{toc}{\contentsline {paragraph}{a) Getting the value of the active index $j$ in the $k^{\text  {th}}$ iteration:}{19}}
+\@writefile{toc}{\contentsline {paragraph}{b) Getting the value of $k^{\text  {th}}$ element of the Gray code:}{20}}
+\@writefile{toc}{\contentsline {paragraph}{c) Getting the value of \mintinline {c++}{s}:}{20}}
 \bibstyle{unsrt}
 \bibdata{project_bib}
 \bibcite{marcus_minc66}{1}
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Elements of Gray code and active indices for $n = 4$}}{21}}
+\newlabel{tab:graycode}{{1}{21}}
+\@writefile{toc}{\contentsline {paragraph}{d) Computing the $\mathbf  {v}$ array for iteration $k$:}{21}}
 \bibcite{ryser_1963}{2}
 \bibcite{valiant1979}{3}
 \bibcite{Nijenhuis1978}{4}
@@ -86,16 +95,17 @@
 \bibcite{bax1998}{6}
 \bibcite{bax1996}{7}
 \bibcite{glynn2010}{8}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.6}Parallelising the code}{19}}
-\@writefile{toc}{\contentsline {section}{\numberline {7}Results}{19}}
-\@writefile{toc}{\contentsline {section}{\numberline {8}Conclusion}{19}}
-\@writefile{toc}{\contentsline {section}{References}{19}}
 \bibcite{clifford17}{9}
 \bibcite{feller1968}{10}
 \bibcite{walker1974}{11}
 \bibcite{knuth1969}{12}
 \bibcite{clifford_r2017}{13}
 \bibcite{rcpp}{14}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {6.6.2}Using OpenMP to implement the code for multiple threads}{22}}
+\@writefile{toc}{\contentsline {section}{\numberline {7}Results}{22}}
+\@writefile{toc}{\contentsline {section}{\numberline {8}Further Works}{22}}
+\@writefile{toc}{\contentsline {section}{\numberline {9}Conclusion}{22}}
+\@writefile{toc}{\contentsline {section}{References}{22}}
 \bibcite{armadillo}{15}
 \bibcite{ozols2009}{16}
 \bibcite{matsumoto1998}{17}
@@ -172,4 +182,17 @@
   E941C00B6500CA59E1135FCC7DAC61544679612F5E4B270DC0CF33EE3B3C54ED.pygtex,
   91E454EBA04C1ACA45D1EF5D17C652854679612F5E4B270DC0CF33EE3B3C54ED.pygtex,
   CD89E96C15671AAE28071AE4BDE0F5DD4679612F5E4B270DC0CF33EE3B3C54ED.pygtex,
-  0DD39AC17007B59ADB3913C513A3229B4679612F5E4B270DC0CF33EE3B3C54ED.pygtex}
+  FBB4A3B994E042CCE1DBA0E1CBA1C7AF4679612F5E4B270DC0CF33EE3B3C54ED.pygtex,
+  91E454EBA04C1ACA45D1EF5D17C652854679612F5E4B270DC0CF33EE3B3C54ED.pygtex,
+  9254250AC77C1A6EC7A5B6A51A7C96EE4679612F5E4B270DC0CF33EE3B3C54ED.pygtex,
+  F5302386464F953ED581EDAC03556E554679612F5E4B270DC0CF33EE3B3C54ED.pygtex,
+  F2C10CAA22613B4EC903975D5E0FA7B14679612F5E4B270DC0CF33EE3B3C54ED.pygtex,
+  86B8994567EFAB4549F06911C06B3C0F4679612F5E4B270DC0CF33EE3B3C54ED.pygtex,
+  F4D5D0C0671BE202BC241807C243E80B4679612F5E4B270DC0CF33EE3B3C54ED.pygtex,
+  F4D5D0C0671BE202BC241807C243E80B4679612F5E4B270DC0CF33EE3B3C54ED.pygtex,
+  F4D5D0C0671BE202BC241807C243E80B4679612F5E4B270DC0CF33EE3B3C54ED.pygtex,
+  D42F2DA1DF5ECDF29BE4AC27EDDA0C124679612F5E4B270DC0CF33EE3B3C54ED.pygtex,
+  74D9A83219CABAAB06A69FD318873F334679612F5E4B270DC0CF33EE3B3C54ED.pygtex,
+  F4D5D0C0671BE202BC241807C243E80B4679612F5E4B270DC0CF33EE3B3C54ED.pygtex,
+  2F28123BE7D65FC3719156BD534322D74679612F5E4B270DC0CF33EE3B3C54ED.pygtex,
+  19ABB95F684871BAF6B057B74A0330AB4679612F5E4B270DC0CF33EE3B3C54ED.pygtex}

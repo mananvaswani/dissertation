@@ -32,6 +32,13 @@
 \contentsline {subsection}{\numberline {6.4}Running the code}{17}
 \contentsline {subsection}{\numberline {6.5}Profiling the code}{18}
 \contentsline {subsection}{\numberline {6.6}Parallelising the code}{19}
-\contentsline {section}{\numberline {7}Results}{19}
-\contentsline {section}{\numberline {8}Conclusion}{19}
-\contentsline {section}{References}{19}
+\contentsline {subsubsection}{\numberline {6.6.1}Parallelisation technique}{19}
+\contentsline {paragraph}{a) Getting the value of the active index $j$ in the $k^{\text {th}}$ iteration:}{19}
+\contentsline {paragraph}{b) Getting the value of $k^{\text {th}}$ element of the Gray code:}{20}
+\contentsline {paragraph}{c) Getting the value of \mintinline {c++}{s}:}{20}
+\contentsline {paragraph}{d) Computing the $\mathbf {v}$ array for iteration $k$:}{21}
+\contentsline {subsubsection}{\numberline {6.6.2}Using OpenMP to implement the code for multiple threads}{22}
+\contentsline {section}{\numberline {7}Results}{22}
+\contentsline {section}{\numberline {8}Further Works}{22}
+\contentsline {section}{\numberline {9}Conclusion}{22}
+\contentsline {section}{References}{22}

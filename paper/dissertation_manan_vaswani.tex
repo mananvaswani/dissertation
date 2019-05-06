@@ -334,7 +334,7 @@ The first step carried out was to create a function \mintinline{c++}{randomUnita
 \end{algorithm}
 QR Decomposition decomposes a given matrix $A$ into an orthogonal matrix $Q$ and a right triangular matrix $R$ such that $Q * R = A$. Armadillo provides the all the required supplementary functions used in the implementation, which made the C\texttt{++} implementation straightforward. Since this function is run only once as a preprocessing step before the Boson Sampling, extra steps to optimise or parallelise it were not taken. Firstly, because the primary aim of the project is to optimise the implementation of the Boson Sampling algorithm itself, which receives the random unitary matrix as an input, and secondly, it is already a highly efficient implementation since all the functions used are from Armadillo so have already been optimised, as mentioned before. The object returned by \mintinline{c++}{randomUnitary(int m)} is an $m \times m$ random unitary armadillo matrix.
 
-\subsubsection{Computing the Permanent Minors}
+\subsubsection{Computing the Permanent Minors} \label{sec:permMinors}
 Line 8 of the algorithm requires the permanent minors of a given $k-1 \times k$ matrix to be computed. We use a separate function \mintinline{c++}{cxPermMinors(arma::cx_mat C)} which does exactly this for us. Once again, Armadillo data types and functions and data classes have been used extensively. Since the original R package (Section \ref{sec:r_code}) already had an implementation of this particular function in C\texttt{++}, we used this in our implementation to begin with and then optimised it as required. In our code, \mintinline{c++}{m} denotes number of rows and \mintinline{c++}{n} denotes number of columns of the input matrix. Since the transpose of the matrix is being used from the Boson Sampling function, \mintinline{c++}{m == n+1}. Using this notation, recall the formula for calculating the permanent minors,
 \begin{equation}
 \Per B_{m, l}^{\diamond} = \frac{1}{2^{m-2}} \sum_\delta \left( \prod_{s=1}^{m-1} \delta_s \right) \prod_{i \in [m] \setminus l} v_i (\delta), \quad l \in [m],
@@ -482,12 +482,80 @@ Note that the second hotspot `\_\_muldc3' is an internal library routine, which 
 \end{equation}
 which is an operation that one would expect to be calculated very efficiently in C\texttt{++} as it is reduced to a few basic arithmetic calculations on real numbers. However, an open-source implementation of `\_\_muldc3' \cite{muldc3} shows that the function is much larger than expected, due to a number of checks being made for edge cases on complex numbers. This is another bottleneck that could potentially be resolved. The third hotspot is simply a mangled name for an internal library routine that deals with complex numbers in C\texttt{++}.
 
-To avoid having to run the profiler every single time, a timer function was added into the code to keep track of how long the entire program takes to run, as well as the cumulative runtime of the \mintinline{c++}{cxPermMinors( ...)} function.
+To avoid having to run the profiler every single time, a timer function was added into the code to keep track of how long the entire program takes to run, as well as the cumulative runtime of the \mintinline{c++}{cxPermMinors(...)} function.
 
 \subsection{Parallelising the code}
+\subsubsection{Parallelisation technique}
+The most obvious solution to speed up the process of calculating the permanent minors is to parallelise Lines 6 to 11 of the algorithm which corresponds to the \mintinline{c++}{for} loop in the code which iterates over the values of $\delta$.For an input matrix of size $n \times n-1$, there are $(2^{n-1} -1)$ iterations of the loop. As $n$ grows, this number grows exponentially, so making the iterations run in parallel would have a significant impact. The reason that the loop is in fact parallelisable is that its purpose is essentially to generate some values in each iteration and add them to an accumulator. In order to parallelise it, each thread would have to maintain its own local accumulator, and the total number of iterations could be divided equally among the threads. After each thread completes its assigned set of iterations, it would add the values in its local accumulator to a global accumulator to a global accumulator, which would finally hold the required end result. However, this was not as trivial as it sounds since a number of variables within the loop were dependent on their values in the previous iteration. Hence, we needed to find a way to initialise these variables to the correct values for any iteration number so that a thread could be given these values to start with, and then start its set of iterations. The modifications made for this parallelisation to work are explained as follows,
+\paragraph{a) Getting the value of the active index $j$ in the $k^{\text{th}}$ iteration:} The loop in the original code iterates over $\delta$ in Gray Code order by keeping track of the `active index' $j$ and then flipping the $j^{\text{th}}$ bit of $\delta$ at the end of each loop iteration. This active index $j$ is also required in calculating successive values of the vector $\mathbf{v}$, so it was also essential to derive a method for finding the value of $j$ in the $k^{\text{th}}$ iteration. To see how the value of $j$ relates to the iteration number $k$, refer to Table \ref{tab:graycode}. Notice that $j$ is equal to the position of the least significant bit set to 0 in the binary representation for $k$. Equivalently, it is the number of of trailing 0-bits in $j+1$, starting at the least significant bit position. There exists an intrinsic function (or built-in function) which does this exact operation for us. Intrinsics are a special collection of functions which are handled directly by the compiler, and are mapped directly to x86 SIMD(Single instruction, multiple data) instructions. Since these intrinsics are nearly equivalent to directly using actual assembly code, they are also highly efficient. For example, the corresponding intrinsic in the g\texttt{++} compiler is \mintinline{c++}{__builtin_ctzll (unsigned long long)}. Using this function in each iteration of the loop also allows us to get rid of the auxiliary array \mintinline{c++}{g} in the original code. it is used in the following way:
+\begin{minted}[frame=lines,framesep=8pt]{c++}
+int getActiveIndex(long long ctr) {
+	return __builtin_ctzll(ctr);
+	// _mm_tzcnt_64 for intel compiler
+}
+...
+for (...) {
+    ...
+    j = getActiveIndex(ctr+1);
+}
+\end{minted}
+
+\paragraph{b) Getting the value of $k^{\text{th}}$ element of the Gray code:} Once we have the correct values of $j$ in each iteration of the loop, we can use it as before to iterate from one element in the Gray code to the next in the same way as in the original implementation. However, if a thread is made to start from the $k^{\text{th}}$ iteration, it also needs to be assigned an initial value for $\delta$. Once again, refer to the example in Table \ref{tab:graycode} to see how elements of the Gray code are related to iteration number $k$. Notice that the Gray code corresponding to index $j$ is actually equal to $j \text{ XOR } j >> 1$ where $j >> 1$ represents a single bit shift to the right. \textcolor{red}{A proof of this formula by induction is shown in the appendix.} Additionally, integer representation of the Gray code element is required to be converted to the $\delta$ representation, where 1s in the Gray code are represented by 0s in $\delta$ and 0s in the Gray code are represented by 1s. The functions for these operations are called by each thread right before it starts its loop iterations.
+\begin{minted}[frame=lines,framesep=8pt]{c++}
+int getKthGrayCode(long long k) {
+    return k ^ (k >> 1);
+}
+\end{minted}
+
+\paragraph{c) Getting the value of \mintinline{c++}{s}:} Recall that \mintinline{c++}{s} was a boolean variable which decided whether partial products would be added or subtracted to the accumulator. Since in the original serial code, the value of $s$ alternated between true and false across iterations, we use the fact that for an even iteration number, \mintinline{c++}{s} was set to \mintinline{c++}{false} and for odd iterations, \mintinline{c++}{true}. This needs to be done only once for each thread, as the value of \mintinline{c++}{s} could simply be flipped at the end of each iteration to update the value correctly.
+\begin{minted}[frame=lines,framesep=8pt]{c++}
+//my_start is the starting index for a thread
+if (my_start%2 == 0) s = false;
+		else s = true;
+\end{minted}
+
+\paragraph{d) Computing the $\mathbf{v}$ array for iteration $k$:} Computing the value of $\mathbf{v}$ for a given $\delta$ requires a direct interpretation of the formula $v_i (\delta) = \sum_{j=1}^{m-1} \delta_j b_{ji}$ from the equation for calculating permanent minors. Once again, this only needs to be done once for each thread since we use a different and more efficient method to iterate from one value of $\mathbf{v}$ to the next, which was described in section \ref{sec:permMinors}.
+\begin{minted}[frame=lines,framesep=8pt]{c++}
+arma::cx_vec getV(arma::uvec d, int j, int n, long long ctr, arma::cx_mat C) {
+    arma::cx_vec v(n);
+    v = arma::sum(C,1)/2;
+    for (int i = 0; i < n; i++) {
+        if(d[i] == 0) v -= C.col(i);
+    }
+    ...
+    return v;
+}
+\end{minted}
+
+\begin{table}
+  \begin{center}
+    \caption{Elements of Gray code and active indices for $n = 4$}
+    \label{tab:graycode}
+    \begin{tabular}{c|c|c|c}
+      \textbf{Iteration number} & $k$ \textbf{in binary} & \textbf{Active index} & \textbf{Gray code elements}\\
+      $k$ & & $j$ & $\delta$\\
+      \hline
+      0 & 000 & 0 & 000 \\
+      1 & 001 & 1 & 001 \\
+      2 & 010 & 0 & 011 \\
+      3 & 011 & 2 & 010 \\
+      4 & 100 & 0 & 110 \\
+      5 & 101 & 1 & 100 \\
+      6 & 110 & 0 & 101 \\
+      7 & 111 & 3 & 111 \\
+    \end{tabular}
+  \end{center}
+\end{table}
+
+\subsubsection{Using OpenMP to implement the code for multiple threads}
+
+%Using the techniques discussed above, we were able to parallelise the code. Checks were run on the code and it was tested against known values of permanents of matrices to ensure correctness.
+
+
 
 
 \section{Results}
+\section{Further Works}
 \section{Conclusion}
 
 \bibliographystyle{unsrt}

@@ -31,6 +31,6 @@ arma::cx_vec getV(arma::uvec d, int j, int n, int ctr, arma::cx_mat C);
 
 arma::uvec getDelta(int ctr, int n);
 
-int getNthGrayCode(int n);
+int getKthGrayCode(int k);
 
-int nextGrayCode(long long ctr);
+int getActiveIndex(long long ctr);

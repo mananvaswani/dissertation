@@ -1,0 +1,11 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kt}{int} \PYG{n+nf}{getActiveIndex}\PYG{p}{(}\PYG{k+kt}{long} \PYG{k+kt}{long} \PYG{n}{ctr}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+	\PYG{k}{return} \PYG{n}{\PYGZus{}\PYGZus{}builtin\PYGZus{}ctzll}\PYG{p}{(}\PYG{n}{ctr}\PYG{p}{);}
+	\PYG{c+c1}{// \PYGZus{}mm\PYGZus{}tzcnt\PYGZus{}64 for intel compiler}
+\PYG{p}{\PYGZcb{}}
+\PYG{p}{...}
+\PYG{k}{for} \PYG{p}{(...)} \PYG{p}{\PYGZob{}}
+    \PYG{p}{...}
+    \PYG{n}{j} \PYG{o}{=} \PYG{n}{getActiveIndex}\PYG{p}{(}\PYG{n}{ctr}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{);}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}
