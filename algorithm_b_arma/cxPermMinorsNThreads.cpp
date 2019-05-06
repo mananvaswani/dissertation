@@ -1,5 +1,4 @@
 #include "header.h"
-#define NUM_THREADS 4
 
 int getActiveIndex(long long ctr) {
 	return __builtin_ctzll(ctr);
@@ -51,7 +50,7 @@ void printArmaVector(arma::cx_vec d) {
     cout << endl;
 }
 
-arma::cx_vec cxPermMinorsThreads(arma::cx_mat C) {
+arma::cx_vec cxPermMinorsThreads(arma::cx_mat C, int numThreads) {
 // Declarations
 	int n = C.n_cols, m = C.n_rows; // m = n + 1
 
@@ -78,7 +77,7 @@ arma::cx_vec cxPermMinorsThreads(arma::cx_mat C) {
 // #pragma omp declare reduction( + : arma::cx_vec : omp_out += omp_in ) \
 // initializer( omp_priv = arma::zeros<arma::cx_vec>(omp_orig.n_rows))
 
-	#pragma omp parallel num_threads(NUM_THREADS) private(d, v, s, q, j) shared(C, p)//reduction (+:p) private(d, v, s, q)
+	#pragma omp parallel num_threads(numThreads) private(d, v, s, q, j) shared(C, p)//reduction (+:p) private(d, v, s, q)
 	{
 		// Initialise starting variables for each thread
 		int this_thread = omp_get_thread_num();

@@ -1,8 +1,9 @@
 #include "header.h"
 
-vector<int> bosonSampler(arma::cx_mat A, int n, int m, int &timeInPerms, bool parallelFlag) {
+vector<int> bosonSampler(arma::cx_mat A, int n, int m, int &timeInPerms, bool parallelFlag, int numThreads) {
     // Take first n columns of A
-    A.set_size(m, n);
+    A.st();
+    A.set_size(n, m);
 
     // Generate random seed
     random_device rd;
@@ -18,13 +19,13 @@ vector<int> bosonSampler(arma::cx_mat A, int n, int m, int &timeInPerms, bool pa
     for (int i = 0; i <= n-2; i++) {
         uniform_int_distribution<int> uni(i, n-1);
         int j = uni(gen);
-        A.swap_cols(i, j);
+        A.swap_rows(i, j);
     }
 
     // Line 3
     vector<double> w;
     for (int i = 1; i <= m; i++) {
-        w.push_back(norm(A(i-1, 1)));
+        w.push_back(norm(A(0, i-1)));
     }
 
     // Line 4
@@ -39,10 +40,10 @@ vector<int> bosonSampler(arma::cx_mat A, int n, int m, int &timeInPerms, bool pa
     for (int k = 2; k <= n; k++) {
         // Line 7 Make B_k = A_kr (B_k is B_k diamond)
         arma::cx_mat B_k;
-        B_k.set_size(k-1, k);
+        B_k.set_size(k, k-1);
         for (int a = 0; a < r.size(); a++) {
             for (int b = 0; b < k; b++) {
-                B_k(a,b) = A(r[a]-1, b);
+                B_k(b,a) = A(b, r[a]-1);
             }
         }
 
@@ -51,8 +52,8 @@ vector<int> bosonSampler(arma::cx_mat A, int n, int m, int &timeInPerms, bool pa
         arma::cx_mat temp;
 
         auto startPerms = chrono::steady_clock::now();
-        if (!parallelFlag) perms = cxPermMinors(B_k.st());  // TODO: Change transpose here
-        else perms = cxPermMinorsThreads(B_k.st());
+        if (!parallelFlag) perms = cxPermMinors(B_k);  // TODO: Change transpose here
+        else perms = cxPermMinorsThreads(B_k, numThreads);
         auto endPerms = chrono::steady_clock::now();
         timeInPerms += chrono::duration_cast<chrono::milliseconds>(endPerms - startPerms).count();
 
@@ -60,7 +61,7 @@ vector<int> bosonSampler(arma::cx_mat A, int n, int m, int &timeInPerms, bool pa
         for (int i = 1; i <= m; i++) {
             arma::cx_double w_i = 0;
             for (int l = 1; l <= k; l++) {
-                w_i = w_i + A(i-1, l-1) * perms[l-1];
+                w_i = w_i + A(l-1, i-1) * perms[l-1];
             }
             w.push_back(norm(w_i));
         }
@@ -83,7 +84,7 @@ vector<int> bosonSampler(arma::cx_mat A, int n, int m, int &timeInPerms, bool pa
     return z;
 }
 
-void runOneSample(int n, int m, bool parallelFlag) {
+void runOneSample(int n, int m, bool parallelFlag, bool saveData, int numThreads, string filename) {
 
     // Start clock
     auto start = chrono::steady_clock::now();
@@ -97,7 +98,7 @@ void runOneSample(int n, int m, bool parallelFlag) {
 
     // Run boson sampling algorithm A
     vector<int> output;
-    output = bosonSampler(A, n, m, timeInPerms, parallelFlag);
+    output = bosonSampler(A, n, m, timeInPerms, parallelFlag, numThreads);
 
     // Stop clock
     auto end = chrono::steady_clock::now();
@@ -118,11 +119,13 @@ void runOneSample(int n, int m, bool parallelFlag) {
         << timeInPerms
         << " ms" << endl;
 
-    std::ofstream outfile;
-    string parallelStr;
-    if (parallelFlag) parallelStr = "_parallel"; else parallelStr = "_serial";
-    outfile.open("timings" + parallelStr + ".csv", std::ios_base::app);
-    outfile << n << ", " << chrono::duration_cast<chrono::milliseconds>(end - start).count() << endl;
+    if (saveData) {
+        std::ofstream outfile;
+        string parallelStr;
+        if (parallelFlag) parallelStr = "_parallel"; else parallelStr = "_serial";
+        outfile.open(filename + parallelStr + ".csv", std::ios_base::app);
+        outfile << n << ", " << chrono::duration_cast<chrono::milliseconds>(end - start).count() << endl;
+    }
 }
 
 int main(int argc, char *argv[]) {
@@ -131,38 +134,55 @@ int main(int argc, char *argv[]) {
     bool parallelFlag = false;
     bool saveData = false;
 
-    int n, num;
-    if (argc == 2) {
+    int n, numSamples, numThreads=0;
+    string filename="";
+
+    if (argc == 3) {
         n = stoi(argv[1]);
+        numSamples = stoi(argv[2]);
     }
-    else if (argc == 3) {
+
+    else if (argc == 5) {
         n = stoi(argv[1]);
-        if (strcmp(argv[2], "-parallel") == 0) parallelFlag = true;
-        else if (strcmp(argv[2], "-saveData") == 0) saveData = true;
-    }
-    else if (argc == 4) {
-        n = stoi(argv[1]);
-        if (((strcmp(argv[2], "-parallel") == 0) && (strcmp(argv[3], "-saveData") == 0)) ||
-            ((strcmp(argv[3], "-parallel") == 0) && (strcmp(argv[2], "-saveData") == 0))) {
-                parallelFlag = true;
-                saveData = true;
+        numSamples = stoi(argv[2]);
+        if (strcmp(argv[3], "-parallel") == 0) {
+            parallelFlag = true;
+            numThreads = stoi(argv[4]);
+        }
+        else if (strcmp(argv[3], "-saveData") == 0) {
+            saveData = true;
+            filename = argv[4];
         }
     }
+
+    else if (argc == 7) {
+        n = stoi(argv[1]);
+        numSamples = stoi(argv[2]);
+        if ((strcmp(argv[3], "-parallel") == 0) && (strcmp(argv[5], "-saveData") == 0)){
+            parallelFlag = true;
+            numThreads = stoi(argv[4]);
+
+            saveData = true;
+            filename = argv[6];
+        }
+    }
+
     else {
-        cout << "Your arguments are incorrect. Enter an n, followed by flags \'-parallel\' and \'-saveData\'" << endl;
+        cout << "Your arguments are incorrect. Enter an n, followed by number of samples, then flags \'-parallel\' along with number of threads and/or \'-saveData\' along with a file name to save data to, in that order." << endl;
         exit(0);
     }
 
     if (!saveData) {
         int m = n * n;
-        runOneSample(n, m, parallelFlag);
+        for (int j = 1; j <= numSamples; j++) {
+            runOneSample(n, m, parallelFlag, saveData, numThreads, filename);
+        }
     }
     else {
-        if (parallelFlag) remove ("timings_parallel.csv");
-        else remove("timings_serial.csv");
-        num = stoi(argv[1]);
-        for (int i = 2; i <= num; i++) {
-            runOneSample(i, i*i, parallelFlag);
+        for (int i = 2; i <= n; i++) {
+            for (int j = 1; j <= numSamples; j++) {
+                runOneSample(i, i*i, parallelFlag, saveData, numThreads, filename);
+            }
         }
     }
 

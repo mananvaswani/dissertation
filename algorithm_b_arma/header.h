@@ -15,7 +15,7 @@ using namespace std;
 arma::cx_vec cxPermMinors(arma::cx_mat C);
 
 // Threaded Get Permanents
-arma::cx_vec cxPermMinorsThreads(arma::cx_mat C);
+arma::cx_vec cxPermMinorsThreads(arma::cx_mat C, int numThreads);
 
 // Random unitary
 arma::cx_mat randomUnitary(int m);

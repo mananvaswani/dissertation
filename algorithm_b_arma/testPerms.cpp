@@ -24,7 +24,7 @@ int main(int argc, char *argv[]) {
 
     cout << "==================" << endl;
     start = chrono::steady_clock::now();
-    p2 = cxPermMinorsThreads(C);
+    p2 = cxPermMinorsThreads(C, 4);
     end = chrono::steady_clock::now();
     cout << endl;
     printArmaVector(p2);
