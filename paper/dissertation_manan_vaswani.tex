@@ -16,20 +16,23 @@
 \usepackage[noend]{algpseudocode}
 \usepackage{listings}
 \usepackage{minted}
+\usepackage{graphicx}
+\usepackage[export]{adjustbox}
+
 
 % Theorems, Definitions, Corollaries etc,
 
 \theoremstyle{theorem}
 \newtheorem{theorem}{Theorem}[section]
 
-\theoremstyle{theorem}
-\newtheorem{lemma}[theorem]{Lemma}
+%\theoremstyle{theorem}
+%\newtheorem{lemma}[theorem]{Lemma}
  
 \theoremstyle{remark}
 \newtheorem*{remark}{Remark}
 
-\theoremstyle{note}
-\newtheorem*{note}{Note}
+%\theoremstyle{note}
+%\newtheorem*{note}{Note}
 
 \theoremstyle{plain}
 \newtheorem{definition}[theorem]{Definition}% reset theorem numbering for each chapter
@@ -139,7 +142,8 @@ where $\delta \in \{-1, 1\}^n$ with $\delta_1 = 1$. Hence there are $2^{n-1}$ su
 
 Implementing the formula as is would require $\mathcal{O}(2^n n^2)$ time. However, iterating over the $\delta$ arrays in Gray code order reduces it to $\mathcal{O}(n 2^n)$ time.
 
-In order to exploit this trick, let $v_j$ be the symbol used to denote the innermost sum i.e. $v_j = \sum_{i=1}^n \delta_i m_{ij}$. If $\delta$ is iterated through in Gray code order, then one can notice that the terms $\{ v_j, j \in [n]\}$ can actually be computed in $\mathcal{O}(n)$ time for a given value of $\delta$ rather than $\mathcal{O}(n^2)$ which is how long it would take if done naively. This is because successive elements of $\delta$ differ in only one position, so each successive $v_j$ differs only by the addition or subtraction of some $m_{ij}$ where $i$ is the position at which $\delta$ was last changed. Hence, the product of $v_j$ terms can now be calculated in $\mathcal{O}(n)$ time.
+In order to exploit this trick, let $v_j$ be the symbol used to denote the innermost sum i.e. $v_j = \sum_{i=1}^n \delta_i m_{ij}$. If $\delta$ is iterated over in Gray code order, then one can notice that the terms $\{ v_j, j \in [n]\}$ can actually be computed in $\mathcal{O}(n)$ time for a given value of $\delta$ rather than $\mathcal{O}(n^2)$ which is how long it would take if done naively. This is because successive elements of $\delta$ differ in only one position, so each successive $v_j$ differs only by the addition or subtraction of some $m_{ij}$ where $i$ is the position at which $\delta$ was last changed. Hence, the product of $v_j$ terms can now be calculated in $\mathcal{O}(n)$ time. Note that $\delta \in \{-1, 1\}^n$ but elements of the Gray code of size $n$ are in $\{0, 1\}^n$. To resolve this, map each 0 in the Gray code to a 1 of the $\delta$ array, and each 1 in the Gray Code to a -1 of the $\delta$ array.
+
 \section{Describing the paper and specifying the problem} %Rename section
 Cliiford and Clifford \cite{clifford17} gave a study and analysis of the classical complexity of the exact Boson Sampling problem and proposed an algorithm that is significantly faster than previous algorithms for the problem. The algorithm is simple to implement, and is able to solve the Boson Sampling problem for system sizes much greater than quantum computing systems currently available, which reduces the likelihood of achieving quantum supremacy in the context of Boson Sampling in the near future \textcolor{red}{rephrase last bit}.
 
@@ -336,7 +340,7 @@ Line 8 of the algorithm requires the permanent minors of a given $k-1 \times k$ 
 \Per B_{m, l}^{\diamond} = \frac{1}{2^{m-2}} \sum_\delta \left( \prod_{s=1}^{m-1} \delta_s \right) \prod_{i \in [m] \setminus l} v_i (\delta), \quad l \in [m],
 \end{equation}
 where $\mathbf{\delta} \in \{-1, 1\}^{m-1}$ with $\delta_1 = 1$ and $v_i (\delta) = \sum_{j=1}^{m-1} \delta_j b_{ji}$. The two tricks to speed up the naive implementation were to iterate the values of $\mathbf{\delta}$ over the Gray code, and to compute the innermost product $\prod_{i \in [m] \setminus l} v_i (\delta), l \in [m]$ with the help of the forward and backward cumulative products (Section \ref{sec:algB}). Since there is a lot going on in this single formula, we divide the operations being performed into 5 parts for a clearer explanation:
-\paragraph{a) Iterating $\mathbf{\delta}$ over Gray code:} In order to iterate over values of $\mathbf{\delta} \in \{-1, 1\}^{m-1}$ with $\delta_1 = 1$ in Gray code order (Section \ref{sec:gray_code}), the code uses the help of two additional variables, \mintinline{c++}{int j} and \mintinline{c++}{arma::ivec g}. \mintinline{c++}{arma::ivec} is a vector of integers from Armadillo. \mintinline{c++}{j} is the active index i.e. to go from one value in the Gray code to the next, the $j^\text{th}$ bit is flipped. Additionally, the original code uses an auxiliary array \mintinline{c++}{g} to change from one value of  \mintinline{c++}{j} to the next. The condition of the \mintinline{c++}{while} loop ensures that all the gray codes of size $n-2$ are iterated over. $\mathbf{\delta}$ is represented by a boolean valued vector \mintinline{c++}{d}, and \mintinline{c++}{true} is considered equivalent to 1, and \mintinline{c++}{false} equivalent to -1.
+\paragraph{a) Iterating $\mathbf{\delta}$ over Gray code:} In order to iterate over values of $\mathbf{\delta} \in \{-1, 1\}^{m-1}$ with $\delta_1 = 1$ in Gray code order (Section \ref{sec:gray_code}), the function uses the help of two additional variables, \mintinline{c++}{int j} and \mintinline{c++}{arma::ivec g}: an integer, and a vector of integers from Armadillo respectively. \mintinline{c++}{j} is the `active index' of the Gray code. In order to go from one value in the Gray code to the next, the $j^\text{th}$ bit is flipped. Additionally, the original code uses an auxiliary array \mintinline{c++}{g} to change from one value of  \mintinline{c++}{j} to the next. The condition of the \mintinline{c++}{while} loop ensures that all the Gray codes of size $n-2$ are iterated over. The $\mathbf{\delta}$ array is represented by a boolean valued vector \mintinline{c++}{d}, with \mintinline{c++}{true} being equivalent to 1, and \mintinline{c++}{false} equivalent to -1.
 The relevant snippets of code from the function are shown below.
 \begin{minted}[frame=lines,framesep=8pt]{c++}
 int j = 0, k;
@@ -464,9 +468,26 @@ The files containing the functions were initially compiled on a personal compute
 \end{minted}
 
 \subsection{Profiling the code}
+Once the code was running as expected, we could begin working on its efficiency and reducing the observed runtime. In order to gain a better understanding of the how the runtime of the program was divided across the functions, the Intel Vtune profiler\cite{vtune2018} was used. Code profilers dynamically analyse executable code that is running, and identify bottlenecks by giving a detailed break down of information about CPU usage, and time taken to run individual lines of the code. The profiler was run on the compiled code, and a screenshot of the results observed is shown in figure \ref{fig:vtune_hotspots_initial}.
+\begin{figure}
+  \includegraphics[width=\linewidth, frame]{vtune_hotspots_initial.png}
+  \caption{A summary of `hotspots' in the code identified by the Intel Vtune Profiler}
+  \label{fig:vtune_hotspots_initial}
+\end{figure}
+The top 4 `hotspots' identified were all related to the operation of multiplying two objects of type \mintinline{c++}{std::complex<double>}. The Bottom-Up representation within the profiler gives information on where exactly in the code the hotspots can be found. This representation showed that the top 4 hotspots were all within the \mintinline{c++}{for} loop of \mintinline{c++}{cxPermMinors( ... )}, which is exactly as expected since the runtime of the algorithm is dominated by the loop required for computing the permanent minors.
+
+Note that the second hotspot `\_\_muldc3' is an internal library routine, which is run by the C\texttt{++} compiler when two complex numbers are multiplied. To see this, we used an online tool called GodBolt \cite{god-bolt} which converts high-level code in some programming language (C\texttt{++} in our case) to low-level, compiler-dependent assembly code that. This showed that in assembly-level language, the g\texttt{++} compiler essentially replaced lines containing the multiplication of two complex numbers with a list of instructions, one of which was `\_\_muldc3'. Complex multiplication is a fairly straightforward operation that can be simplified as follows,
+\begin{equation}
+(a + bi) * (c+di) = (ac - bd) + (ad + bc)i
+\end{equation}
+which is an operation that one would expect to be calculated very efficiently in C\texttt{++} as it is reduced to a few basic arithmetic calculations on real numbers. However, an open-source implementation of `\_\_muldc3' \cite{muldc3} shows that the function is much larger than expected, due to a number of checks being made for edge cases on complex numbers. This is another bottleneck that could potentially be resolved. The third hotspot is simply a mangled name for an internal library routine that deals with complex numbers in C\texttt{++}.
+
+To avoid having to run the profiler every single time, a timer function was added into the code to keep track of how long the entire program takes to run, as well as the cumulative runtime of the \mintinline{c++}{cxPermMinors( ...)} function.
+
+\subsection{Parallelising the code}
+
 
 \section{Results}
-
 \section{Conclusion}
 
 \bibliographystyle{unsrt}

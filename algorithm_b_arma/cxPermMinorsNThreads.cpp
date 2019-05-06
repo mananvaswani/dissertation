@@ -94,8 +94,8 @@ arma::cx_vec cxPermMinorsThreads(arma::cx_mat C) {
 			my_end   = (this_thread+1) * (minItsPerThread + 1);
 		}
 		else {
-			my_start = threadsWithExtra * (minItsPerThread + 1) +(this_thread) * (minItsPerThread);
-			my_end   = threadsWithExtra * (minItsPerThread + 1) +(this_thread + 1) * (minItsPerThread);
+			my_start = threadsWithExtra * (minItsPerThread + 1) + (this_thread - threadsWithExtra) * (minItsPerThread);
+			my_end   = threadsWithExtra * (minItsPerThread + 1) + (this_thread - threadsWithExtra + 1) * (minItsPerThread);
 		}
 
 		// long long my_start = (this_thread) * upperBound / num_threads;

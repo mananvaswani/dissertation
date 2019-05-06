@@ -1,4 +1,5 @@
 \relax 
+\providecommand \oddpage@label [2]{}
 \citation{marcus_minc66}
 \citation{ryser_1963}
 \citation{valiant1979}
@@ -31,8 +32,8 @@
 \citation{walker1974}
 \newlabel{eqn:algADistribution}{{6}{6}}
 \newlabel{eqn:bosonSamplingConditional}{{7}{6}}
-\@writefile{loa}{\contentsline {algorithm}{\numberline {1}{\ignorespaces Boson Sampler: Single sample $\mathbf  {z}$ from $q(\mathbf  {z})$ in $\mathcal  {O}(mn3^n)$ time}}{6}}
 \citation{marcus_minc66}
+\@writefile{loa}{\contentsline {algorithm}{\numberline {1}{\ignorespaces Boson Sampler: Single sample $\mathbf  {z}$ from $q(\mathbf  {z})$ in $\mathcal  {O}(mn3^n)$ time}}{7}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {5.3}Algorithm B}{7}}
 \newlabel{sec:algB}{{5.3}{7}}
 \newlabel{eqn:algBChainRule}{{14}{8}}
@@ -41,13 +42,13 @@
 \@writefile{loa}{\contentsline {algorithm}{\numberline {2}{\ignorespaces Boson Sampler: Single sample $\mathbf  {z}$ from $q(\mathbf  {z})$ in $\mathcal  {O}(n2^n + \text  {poly}(m, n))$ time}}{9}}
 \citation{clifford_r2017}
 \citation{clifford17}
+\@writefile{toc}{\contentsline {section}{\numberline {6}Implementation}{10}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.1}Original R Implementation}{10}}
+\newlabel{sec:r_code}{{6.1}{10}}
 \citation{rcpp}
 \citation{armadillo}
 \citation{glynn2010}
 \citation{Nijenhuis1978}
-\@writefile{toc}{\contentsline {section}{\numberline {6}Implementation}{10}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.1}Original R Implementation}{10}}
-\newlabel{sec:r_code}{{6.1}{10}}
 \citation{armadillo}
 \citation{ozols2009}
 \@writefile{toc}{\contentsline {subsection}{\numberline {6.2}Implementation in C\texttt  {++}}{12}}
@@ -69,6 +70,12 @@
 \@writefile{toc}{\contentsline {paragraph}{Lines 6 to 11}{17}}
 \@writefile{toc}{\contentsline {paragraph}{Line 12}{17}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {6.4}Running the code}{17}}
+\citation{vtune2018}
+\citation{god-bolt}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces A summary of `hotspots' in the code identified by the Intel Vtune Profiler}}{18}}
+\newlabel{fig:vtune_hotspots_initial}{{1}{18}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.5}Profiling the code}{18}}
+\citation{muldc3}
 \bibstyle{unsrt}
 \bibdata{project_bib}
 \bibcite{marcus_minc66}{1}
@@ -79,19 +86,21 @@
 \bibcite{bax1998}{6}
 \bibcite{bax1996}{7}
 \bibcite{glynn2010}{8}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.6}Parallelising the code}{19}}
+\@writefile{toc}{\contentsline {section}{\numberline {7}Results}{19}}
+\@writefile{toc}{\contentsline {section}{\numberline {8}Conclusion}{19}}
+\@writefile{toc}{\contentsline {section}{References}{19}}
 \bibcite{clifford17}{9}
 \bibcite{feller1968}{10}
 \bibcite{walker1974}{11}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.5}Profiling the code}{18}}
-\@writefile{toc}{\contentsline {section}{\numberline {7}Results}{18}}
-\@writefile{toc}{\contentsline {section}{\numberline {8}Conclusion}{18}}
-\@writefile{toc}{\contentsline {section}{References}{18}}
 \bibcite{knuth1969}{12}
 \bibcite{clifford_r2017}{13}
 \bibcite{rcpp}{14}
 \bibcite{armadillo}{15}
 \bibcite{ozols2009}{16}
 \bibcite{matsumoto1998}{17}
+\bibcite{vtune2018}{18}
+\bibcite{god-bolt}{19}
 \gdef\minted@oldcachelist{,
   default-pyg-prefix.pygstyle,
   default.pygstyle,
@@ -122,7 +131,6 @@
   BCF3CF55F7D0D5E4E5C121C9E3313EE14679612F5E4B270DC0CF33EE3B3C54ED.pygtex,
   2FC816C1E3F52A81DF5B5B64D7BE16C54679612F5E4B270DC0CF33EE3B3C54ED.pygtex,
   8537FF3395FAE990908F8479B62586784679612F5E4B270DC0CF33EE3B3C54ED.pygtex,
-  C8E1B1575C96B45784C6187BBD65B6824679612F5E4B270DC0CF33EE3B3C54ED.pygtex,
   DDD5752B5FE66FD98FB9DCDEE48B44734679612F5E4B270DC0CF33EE3B3C54ED.pygtex,
   F5302386464F953ED581EDAC03556E554679612F5E4B270DC0CF33EE3B3C54ED.pygtex,
   DDD5752B5FE66FD98FB9DCDEE48B44734679612F5E4B270DC0CF33EE3B3C54ED.pygtex,
@@ -160,4 +168,8 @@
   58CA95C5B364C5229A72C650AD459C324679612F5E4B270DC0CF33EE3B3C54ED.pygtex,
   DD900030A4866E463B4E2DF60CF0EEB64679612F5E4B270DC0CF33EE3B3C54ED.pygtex,
   83ECB2EA82980EFB02852343D3C747AC4679612F5E4B270DC0CF33EE3B3C54ED.pygtex,
-  3365B9E32D0FB7A8A84E9AC857C44E82A94FD2410815947246E6D971BF228B41.pygtex}
+  3365B9E32D0FB7A8A84E9AC857C44E82A94FD2410815947246E6D971BF228B41.pygtex,
+  E941C00B6500CA59E1135FCC7DAC61544679612F5E4B270DC0CF33EE3B3C54ED.pygtex,
+  91E454EBA04C1ACA45D1EF5D17C652854679612F5E4B270DC0CF33EE3B3C54ED.pygtex,
+  CD89E96C15671AAE28071AE4BDE0F5DD4679612F5E4B270DC0CF33EE3B3C54ED.pygtex,
+  0DD39AC17007B59ADB3913C513A3229B4679612F5E4B270DC0CF33EE3B3C54ED.pygtex}
