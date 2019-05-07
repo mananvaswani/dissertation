@@ -1,0 +1,58 @@
+This is BibTeX, Version 0.99d (TeX Live 2017)
+Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
+The top-level auxiliary file: dissertation_manan_vaswani.aux
+The style file: unsrt.bst
+Database file #1: project_bib.bib
+Warning--entry type for "gcc_flags" isn't style-file defined
+--line 11 of file project_bib.bib
+Warning--entry type for "intel_compiler" isn't style-file defined
+--line 16 of file project_bib.bib
+Warning--entry type for "muldc3" isn't style-file defined
+--line 28 of file project_bib.bib
+Warning--entry type for "god-bolt" isn't style-file defined
+--line 34 of file project_bib.bib
+Warning--empty institution in ozols2009
+Warning--all relevant fields are empty in intel_compiler
+Warning--all relevant fields are empty in gcc_flags
+You've used 23 entries,
+            1791 wiz_defined-function locations,
+            559 strings with 5832 characters,
+and the built_in function-call counts, 3864 in all, are:
+= -- 325
+> -- 130
+< -- 2
++ -- 56
+- -- 33
+* -- 199
+:= -- 588
+add.period$ -- 61
+call.type$ -- 23
+change.case$ -- 15
+chr.to.int$ -- 0
+cite$ -- 26
+duplicate$ -- 187
+empty$ -- 448
+format.name$ -- 33
+if$ -- 884
+int.to.chr$ -- 0
+int.to.str$ -- 23
+missing$ -- 14
+newline$ -- 109
+num.names$ -- 19
+pop$ -- 85
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 0
+skip$ -- 107
+stack$ -- 0
+substring$ -- 181
+swap$ -- 37
+text.length$ -- 2
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 0
+warning$ -- 3
+while$ -- 28
+width$ -- 25
+write$ -- 220
+(There were 7 warnings)

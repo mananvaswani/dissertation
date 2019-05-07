@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.11.13)  7 MAY 2019 04:08
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.11.13)  7 MAY 2019 18:56
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -1741,9 +1741,6 @@ E4B270DC0CF33EE3B3C54ED.pygtex)
 
 (./_minted-dissertation_manan_vaswani/CD89E96C15671AAE28071AE4BDE0F5DD4679612F5
 E4B270DC0CF33EE3B3C54ED.pygtex) [18 <./vtune_hotspots_initial.png>]
-
-LaTeX Warning: Citation `muldc3' on page 19 undefined on input line 483.
-
 \openout6 = `dissertation_manan_vaswani.pyg'.
 
 
@@ -1841,42 +1838,106 @@ E4B270DC0CF33EE3B3C54ED.pygtex)
 E4B270DC0CF33EE3B3C54ED.pygtex)
 \openout6 = `dissertation_manan_vaswani.pyg'.
 
-runsystem(pygmentize -l c++ -f latex -P commandprefix=PYG -F tokenmerge -o _min
-ted-dissertation_manan_vaswani/B5DC35017540AB2283655A7F67F78E2F4679612F5E4B270D
-C0CF33EE3B3C54ED.pygtex dissertation_manan_vaswani.pyg)...executed.
-
 
 (./_minted-dissertation_manan_vaswani/B5DC35017540AB2283655A7F67F78E2F4679612F5
 E4B270DC0CF33EE3B3C54ED.pygtex)
 \openout4 = `dissertation_manan_vaswani.pyg'.
 
-runsystem(pygmentize -l c++ -f latex -P commandprefix=PYG -F tokenmerge -o _min
-ted-dissertation_manan_vaswani/68FFD4BC5D282C9D1047CF02444CAD5D4679612F5E4B270D
-C0CF33EE3B3C54ED.pygtex dissertation_manan_vaswani.pyg)...executed.
-
 
 (./_minted-dissertation_manan_vaswani/68FFD4BC5D282C9D1047CF02444CAD5D4679612F5
-E4B270DC0CF33EE3B3C54ED.pygtex) [22] (./dissertation_manan_vaswani.bbl [23]
+E4B270DC0CF33EE3B3C54ED.pygtex) [22]
+\openout6 = `dissertation_manan_vaswani.pyg'.
+
+
+(./_minted-dissertation_manan_vaswani/0EEB9037121F451B1DC41FB6C27FFF7FA94FD2410
+815947246E6D971BF228B41.pygtex)
+\openout6 = `dissertation_manan_vaswani.pyg'.
+
+
+(./_minted-dissertation_manan_vaswani/5E4E9973CA77A56F692A8DD4D00E68C9A94FD2410
+815947246E6D971BF228B41.pygtex)
+\openout6 = `dissertation_manan_vaswani.pyg'.
+
+
+(./_minted-dissertation_manan_vaswani/0EEB9037121F451B1DC41FB6C27FFF7FA94FD2410
+815947246E6D971BF228B41.pygtex)
+\openout6 = `dissertation_manan_vaswani.pyg'.
+
+
+(./_minted-dissertation_manan_vaswani/279528005957EEBE23DCEE256F1328BCA94FD2410
+815947246E6D971BF228B41.pygtex)
+\openout6 = `dissertation_manan_vaswani.pyg'.
+
+
+(./_minted-dissertation_manan_vaswani/E56D4E9F421E07016AD2D95D966096A7A94FD2410
+815947246E6D971BF228B41.pygtex)
+\openout6 = `dissertation_manan_vaswani.pyg'.
+
+
+(./_minted-dissertation_manan_vaswani/582D0988CAE9FE53D8A1E300504F5618A94FD2410
+815947246E6D971BF228B41.pygtex)
+\openout6 = `dissertation_manan_vaswani.pyg'.
+
+
+(./_minted-dissertation_manan_vaswani/C0DC1A097E3E17B99CBC2F3B3A86A2BBA94FD2410
+815947246E6D971BF228B41.pygtex)
+\openout6 = `dissertation_manan_vaswani.pyg'.
+
+
+(./_minted-dissertation_manan_vaswani/48CC55C85D3BD2F71D2CFAF3876AAE78A94FD2410
+815947246E6D971BF228B41.pygtex)
+Overfull \hbox (23.99998pt too wide) in paragraph at lines 593--606
+ [][] 
+ []
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+\openout6 = `dissertation_manan_vaswani.pyg'.
+
+
+(./_minted-dissertation_manan_vaswani/279528005957EEBE23DCEE256F1328BCA94FD2410
+815947246E6D971BF228B41.pygtex)
+\openout6 = `dissertation_manan_vaswani.pyg'.
+
+
+(./_minted-dissertation_manan_vaswani/5E4E9973CA77A56F692A8DD4D00E68C9A94FD2410
+815947246E6D971BF228B41.pygtex)
+\openout6 = `dissertation_manan_vaswani.pyg'.
+
+
+(./_minted-dissertation_manan_vaswani/279528005957EEBE23DCEE256F1328BCA94FD2410
+815947246E6D971BF228B41.pygtex)
+\openout6 = `dissertation_manan_vaswani.pyg'.
+
+
+(./_minted-dissertation_manan_vaswani/AD4B4546CB4EB05C1420B6A4F5BA39B5A94FD2410
+815947246E6D971BF228B41.pygtex)
+Overfull \hbox (23.99998pt too wide) in paragraph at lines 611--620
+ [][] 
+ []
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+(./dissertation_manan_vaswani.bbl [23] [24]
 Underfull \hbox (badness 6284) in paragraph at lines 94--97
 []\OT1/cmr/m/n/10.95 Intel Soft-ware.  In-tel vtune am-pli-fier 2018.  Soft-war
 e avail-able at
  []
 
-) [24] (./dissertation_manan_vaswani.aux)
-
-LaTeX Warning: There were undefined references.
-
+[25]) [26] (./dissertation_manan_vaswani.aux)
 runsystem(rm dissertation_manan_vaswani.pyg)...executed.
 
  ) 
 Here is how much of TeX's memory you used:
- 21031 strings out of 492995
- 415658 string characters out of 6132703
- 498634 words of memory out of 5000000
- 23873 multiletter control sequences out of 15000+600000
+ 21076 strings out of 492995
+ 419509 string characters out of 6132703
+ 503439 words of memory out of 5000000
+ 23886 multiletter control sequences out of 15000+600000
  17355 words of font info for 67 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 55i,9n,68p,1702b,436s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 55i,13n,68p,1702b,513s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2017/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc
 }</usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb>
 </usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><
@@ -1901,10 +1962,10 @@ dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2017/texmf-d
 ist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/local/texlive/2017/texmf-di
 st/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2017/texm
 f-dist/fonts/type1/public/cm-super/sfrm1095.pfb>
-Output written on dissertation_manan_vaswani.pdf (25 pages, 379122 bytes).
+Output written on dissertation_manan_vaswani.pdf (27 pages, 384502 bytes).
 PDF statistics:
- 185 PDF objects out of 1000 (max. 8388607)
- 131 compressed objects within 2 object streams
+ 191 PDF objects out of 1000 (max. 8388607)
+ 135 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  18 words of extra memory for PDF output out of 10000 (max. 10000000)
 

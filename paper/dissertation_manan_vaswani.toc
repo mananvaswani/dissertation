@@ -38,7 +38,12 @@
 \contentsline {paragraph}{c) Getting the value of \mintinline {c++}{s}:}{20}
 \contentsline {paragraph}{d) Computing the $\mathbf {v}$ array for iteration $k$:}{21}
 \contentsline {subsubsection}{\numberline {6.5.2}Using OpenMP to modify the code for use with multiple threads}{22}
-\contentsline {section}{\numberline {7}Results}{23}
-\contentsline {section}{\numberline {8}Further Works}{23}
-\contentsline {section}{\numberline {9}Conclusion}{23}
-\contentsline {section}{References}{23}
+\contentsline {subsection}{\numberline {6.6}Other Oprtmisations}{23}
+\contentsline {subsubsection}{\numberline {6.6.1}Compiler choice}{23}
+\contentsline {paragraph}{GCC compiler: }{23}
+\contentsline {paragraph}{Intel C\texttt {++} compiler: }{23}
+\contentsline {subsubsection}{\numberline {6.6.2}Compiler options}{23}
+\contentsline {section}{\numberline {7}Results}{24}
+\contentsline {section}{\numberline {8}Further Works}{24}
+\contentsline {section}{\numberline {9}Conclusion}{24}
+\contentsline {section}{References}{24}

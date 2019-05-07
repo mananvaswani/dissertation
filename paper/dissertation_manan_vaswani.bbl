@@ -98,4 +98,18 @@ Intel Software.
 \bibitem{god-bolt}
 God-bolt.
 
+\bibitem{muldc3}
+muldc3.c - implement \_\_muldc3.
+
+\bibitem{gcc_compiler}
+Richard~M. Stallman and the GCC Developer~Community.
+\newblock {\em Using the GNU Compiler Collection}.
+\newblock GNU Press.
+
+\bibitem{intel_compiler}
+
+
+\bibitem{gcc_flags}
+
+
 \end{thebibliography}

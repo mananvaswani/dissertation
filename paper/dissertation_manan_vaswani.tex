@@ -578,7 +578,47 @@ As the code shows, only the matrix \mintinline{c++}{C} and global accumulator \m
 \end{minted}
 Using the techniques discussed above, we were able to parallelise the code. Checks were run on the code and it was tested against known values of permanents of matrices to ensure correctness.
 
+\subsection{Other Oprtmisations}
+\subsubsection{Compiler choice}
+The execution time of the code is determined by the number of instructions that the CPU executes. Since the compiler is responsible for translating our high-level C\texttt{++} code to a set of low-level assembly instructions, the choice of compiler can have a significant effect on performance. We test our code with two different compilers: the GCC compiler, and the Intel C\texttt{++} compiler, both of which provide support for OpenMP.
+\paragraph{GCC compiler: } GCC (or GNU Compiler Collection) actually refers to a collection of compilers for different programming languages, and is widely used especially for C\texttt{++}. The version we use is GCC 7.2. GCC is a portable, multi-platform compiler and can produce outputs for most types of processors. It is a free software, distributed under the GNU General Public License \cite{gcc_compiler}.
 
+\paragraph{Intel C\texttt{++} compiler: } The Intel C\texttt{++} compiler is a highly optimised compiler for systems using processors that support Intel architectures. The Intel compiler automatically performs operations such as Single Instruction Multiple Data vectorisation, which speeds up standard operations by performing them simultaneously using the processors hardware. In addition, it also carries out loop and memory transformations to speed up a program. The only caveat is that it may not carry out these intensive optimisations for systems without Intel architectures. It is freely available for students, educators and open-source developers \cite{intel_compiler}.
+
+\subsubsection{Compiler options}
+Both compilers offer useful optimisation options, which we test on our program as well. Compiler options are not required to compile the program, but they do provide the ability to change how the code is processed by the compiler. The options we tested are summarised in the following tables \cite{gcc_flags}.
+
+\begin{table}[h!]
+\centering
+	\begin{tabular}{ |p{0.25\textwidth} | p{0.75\textwidth} |}
+    	\hline
+	\textbf{Option} & \textbf{Notes} \\
+   	\hline
+	\mintinline{console}{-Ofast} & Flags beginning with \mintinline{console}{-O} enable a number of different optimisation options. \mintinline{console}{-Ofast} actually combines  \mintinline{console}{-O3}, which provides the highest level of optimisations and \mintinline{console}{-ffast-math}, which tells the compiler to ignore a number of IEEE or ISO rules/specifications for some math functions. Hence, this may speed up code greatly, but is not always safe to use.\\
+	\hline
+	\mintinline{console}{-march=native} & This tells the compiler what exact code it should produce for the systems processor architecture, since different CPUs support different instruction sets.\\
+	\hline
+	\mintinline{console}{-funroll-loops} & Unrolls loops whose number of iterations can be determined at compile time or entry to the loop. This option does make the code larger, and may or may not speed up the code.\\
+	\hline
+	\mintinline{console}{-pipe} & Has no effect on the generated code, but it speeds up the compilation process.\\
+	\hline
+	 \end{tabular}
+\caption{Compiler options used with the GCC compiler} \label{tab:gcc_compiler_flags}
+\end{table}
+
+\begin{table}[h!]
+\centering
+	\begin{tabular}{ |p{0.25\textwidth} | p{0.75\textwidth} |}
+    	\hline
+	\textbf{Option} & \textbf{Notes} \\
+   	\hline
+	\mintinline{console}{-O3} & Flags beginning with \mintinline{console}{-O} enable a number of different optimisation options. \mintinline{console}{-O3} provides the highest level of optimisation by enabling compiler vectorisation, and aggressive loop transformations among other techniques.\\
+	\hline
+	\mintinline{console}{-xHOST} & This tells the compiler what exact code it should produce for the systems processor architecture, since different CPUs support different instruction sets.\\
+	\hline
+	 \end{tabular}
+\caption{Compiler options used with the Intel C\texttt{++} compiler} \label{tab:intel_compiler_flags}
+\end{table}
 
 \section{Results}
 \section{Further Works}

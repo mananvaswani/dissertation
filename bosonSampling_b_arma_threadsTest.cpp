@@ -172,27 +172,11 @@ int main(int argc, char *argv[]) {
         exit(0);
     }
 
-    if (!saveData) {
-        int m = n * n;
+    for (int i = 1; i <= 28; i++) {
         for (int j = 1; j <= numSamples; j++) {
-            runOneSample(n, m, parallelFlag, saveData, numThreads, filename);
-        }
-    }
-    else {
-        for (int i = 2; i <= n; i++) {
-            for (int j = 1; j <= numSamples; j++) {
-                runOneSample(i, i*i, parallelFlag, saveData, numThreads, filename);
-            }
+            runOneSample(30, 900, true, true, i, filename);
         }
     }
 
     return 0;
-}
-
-void specialTest() {
-    for (int i = 1; i <= 28; i++) {
-        for (int j = 1; j <= numSamples; j++) {
-            runOneSample(30, 900, parallelFlag, saveData, i, filename);
-        }
-    }
 }
