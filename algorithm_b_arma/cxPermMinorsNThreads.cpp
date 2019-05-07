@@ -77,7 +77,7 @@ arma::cx_vec cxPermMinorsThreads(arma::cx_mat C, int numThreads) {
 // #pragma omp declare reduction( + : arma::cx_vec : omp_out += omp_in ) \
 // initializer( omp_priv = arma::zeros<arma::cx_vec>(omp_orig.n_rows))
 
-	#pragma omp parallel num_threads(numThreads) private(d, v, s, q, j) shared(C, p)//reduction (+:p) private(d, v, s, q)
+	#pragma omp parallel num_threads(numThreads) private(d, v, s, q, j) shared(C, p)
 	{
 		// Initialise starting variables for each thread
 		int this_thread = omp_get_thread_num();
@@ -97,9 +97,6 @@ arma::cx_vec cxPermMinorsThreads(arma::cx_mat C, int numThreads) {
 			my_start = threadsWithExtra * (minItsPerThread + 1) + (this_thread - threadsWithExtra) * (minItsPerThread);
 			my_end   = threadsWithExtra * (minItsPerThread + 1) + (this_thread - threadsWithExtra + 1) * (minItsPerThread);
 		}
-
-		// long long my_start = (this_thread) * upperBound / num_threads;
-		// long long my_end   = (this_thread+1) * upperBound / num_threads;
 
 		int i;
 

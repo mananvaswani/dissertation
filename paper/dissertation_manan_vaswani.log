@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.11.13)  6 MAY 2019 20:39
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.11.13)  7 MAY 2019 04:08
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -1813,13 +1813,56 @@ E4B270DC0CF33EE3B3C54ED.pygtex [20])
 
 
 (./_minted-dissertation_manan_vaswani/19ABB95F684871BAF6B057B74A0330AB4679612F5
-E4B270DC0CF33EE3B3C54ED.pygtex) (./dissertation_manan_vaswani.bbl [21] [22]
+E4B270DC0CF33EE3B3C54ED.pygtex) [21]
+\openout6 = `dissertation_manan_vaswani.pyg'.
+
+
+(./_minted-dissertation_manan_vaswani/1F99C3314DED63E70A066162CE456E1D4679612F5
+E4B270DC0CF33EE3B3C54ED.pygtex)
+\openout6 = `dissertation_manan_vaswani.pyg'.
+
+
+(./_minted-dissertation_manan_vaswani/EF08968D291DB9C712F42508E909FD754679612F5
+E4B270DC0CF33EE3B3C54ED.pygtex)
+\openout4 = `dissertation_manan_vaswani.pyg'.
+
+
+(./_minted-dissertation_manan_vaswani/BD2B4E573D5A641A666C5284FD26C2284679612F5
+E4B270DC0CF33EE3B3C54ED.pygtex)
+\openout6 = `dissertation_manan_vaswani.pyg'.
+
+
+(./_minted-dissertation_manan_vaswani/B39BFC0E26A30024C76E4DCB8A1EAE874679612F5
+E4B270DC0CF33EE3B3C54ED.pygtex)
+\openout6 = `dissertation_manan_vaswani.pyg'.
+
+
+(./_minted-dissertation_manan_vaswani/9D7BF075372908F55E2D945C39E0A6134679612F5
+E4B270DC0CF33EE3B3C54ED.pygtex)
+\openout6 = `dissertation_manan_vaswani.pyg'.
+
+runsystem(pygmentize -l c++ -f latex -P commandprefix=PYG -F tokenmerge -o _min
+ted-dissertation_manan_vaswani/B5DC35017540AB2283655A7F67F78E2F4679612F5E4B270D
+C0CF33EE3B3C54ED.pygtex dissertation_manan_vaswani.pyg)...executed.
+
+
+(./_minted-dissertation_manan_vaswani/B5DC35017540AB2283655A7F67F78E2F4679612F5
+E4B270DC0CF33EE3B3C54ED.pygtex)
+\openout4 = `dissertation_manan_vaswani.pyg'.
+
+runsystem(pygmentize -l c++ -f latex -P commandprefix=PYG -F tokenmerge -o _min
+ted-dissertation_manan_vaswani/68FFD4BC5D282C9D1047CF02444CAD5D4679612F5E4B270D
+C0CF33EE3B3C54ED.pygtex dissertation_manan_vaswani.pyg)...executed.
+
+
+(./_minted-dissertation_manan_vaswani/68FFD4BC5D282C9D1047CF02444CAD5D4679612F5
+E4B270DC0CF33EE3B3C54ED.pygtex) [22] (./dissertation_manan_vaswani.bbl [23]
 Underfull \hbox (badness 6284) in paragraph at lines 94--97
 []\OT1/cmr/m/n/10.95 Intel Soft-ware.  In-tel vtune am-pli-fier 2018.  Soft-war
 e avail-able at
  []
 
-) [23] (./dissertation_manan_vaswani.aux)
+) [24] (./dissertation_manan_vaswani.aux)
 
 LaTeX Warning: There were undefined references.
 
@@ -1827,10 +1870,10 @@ runsystem(rm dissertation_manan_vaswani.pyg)...executed.
 
  ) 
 Here is how much of TeX's memory you used:
- 21007 strings out of 492995
- 413415 string characters out of 6132703
- 497117 words of memory out of 5000000
- 23868 multiletter control sequences out of 15000+600000
+ 21031 strings out of 492995
+ 415658 string characters out of 6132703
+ 498634 words of memory out of 5000000
+ 23873 multiletter control sequences out of 15000+600000
  17355 words of font info for 67 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  55i,9n,68p,1702b,436s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1858,10 +1901,10 @@ dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2017/texmf-d
 ist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/local/texlive/2017/texmf-di
 st/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2017/texm
 f-dist/fonts/type1/public/cm-super/sfrm1095.pfb>
-Output written on dissertation_manan_vaswani.pdf (24 pages, 374839 bytes).
+Output written on dissertation_manan_vaswani.pdf (25 pages, 379122 bytes).
 PDF statistics:
- 181 PDF objects out of 1000 (max. 8388607)
- 128 compressed objects within 2 object streams
+ 185 PDF objects out of 1000 (max. 8388607)
+ 131 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  18 words of extra memory for PDF output out of 10000 (max. 10000000)
 

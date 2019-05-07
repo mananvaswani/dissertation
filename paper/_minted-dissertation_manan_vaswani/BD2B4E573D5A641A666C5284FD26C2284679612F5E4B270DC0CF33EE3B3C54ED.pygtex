@@ -1,0 +1,6 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+cp}{\PYGZsh{}pragma omp parallel num\PYGZus{}threads(numThreads) private(d, v, s, q, j) shared(C, p)}
+\PYG{p}{\PYGZob{}}
+    \PYG{p}{...}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

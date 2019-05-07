@@ -1,0 +1,6 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+cp}{\PYGZsh{}pragma omp critical}
+\PYG{p}{\PYGZob{}}
+    \PYG{n}{p}\PYG{o}{+=} \PYG{n}{p\PYGZus{}local}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

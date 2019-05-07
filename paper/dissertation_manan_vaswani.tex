@@ -411,7 +411,7 @@ while(j < n-1){
 
 The object \mintinline{c++}{p} returned is a vector containing the set of permanent minors of the input matrix \mintinline{c++}{C}.
 
-\subsection{Simulating exact Boson Sampling using Algorithm B}
+\subsubsection{Simulating exact Boson Sampling using Algorithm B}
 The function \mintinline{c++}{bosonSampler(arma::cx_mat A, int n, int m)} is an implementation of Algorithm B (Section \ref{sec:algB}) of the exact Boson Sampling problem in C\texttt{++}. We followed the algorithm exactly as it is, and describe a line-by-line explanation below (excluding trivial steps). The function takes as arguments a complex-valued Armadillo matrix \mintinline{c++}{A} which is a random unitary matrix as required by the algorithm, an integer \mintinline{c++}{n} representing input size, and an integer \mintinline{c++}{m} representing output modes.
 \paragraph{Preprocessing steps} Before we start the actual algorithm, $A$ is required to be an $m \times n$ matrix as we require only the first $n$ columns. A random seed is generated using a Mersenne twister engine which is a uniform fast pseudo-random number generator \cite{matsumoto1998}. The random seed is required later for the sampling steps in the algorithm.
 \begin{minted}[frame=lines,framesep=8pt]{c++}
@@ -547,10 +547,36 @@ arma::cx_vec getV(arma::uvec d, int j, int n, long long ctr, arma::cx_mat C) {
   \end{center}
 \end{table}
 
-\subsubsection{Using OpenMP to implement the code for multiple threads}
+\subsubsection{Using OpenMP to modify the code for use with multiple threads}
+The code was parallelised using OpenMP pragmas (Section \textcolor{red}{??}). The loop was converted from a `while' loop to a `for' loop. In addition, instead of carrying out the first iteration before the loop and then running the loop for $2^{n-1} -1$ iterations, the loop is made to run for a collective total of $2^n$ iterations.
 
-%Using the techniques discussed above, we were able to parallelise the code. Checks were run on the code and it was tested against known values of permanents of matrices to ensure correctness.
+Consider the case where the number of threads is equal to a multiple of 2. In this case, dividing the iterations between the threads is fairly straightforward. The threads are indexed $0 ... t-1$, if there are $t$ threads being used. The starting loop index for each thread is defined by the following formula:
+\begin{equation}
+\text{Start Index} = \frac{2^{n-1}}{t} * \text{threadIndex}
+\end{equation}
+and similarly, the ending loop index for a thread is calculated in the following way
+\begin{equation}
+\text{End Index} = \frac{2^{n-1}}{t} * (\text{threadIndex} + 1).
+\end{equation}
+Hence, each thread runs $ {2^{n-1}}/{t} $ loop iterations.
 
+However, in the case that the number of threads is not a power of 2, the iterations are not divided equally among all threads but we do ensure that they are divided in such a way that each thread has no more than 1 extra iteration compared to any other thread. This is done with a slight modification on the formulas above, where the if there are $x$ extra iterations, the first $x$ threads get $\text{floor}( {2^{n-1}}/{t} ) + 1$ iterations.
+
+Threads are created using the \mintinline{c++}{pragma omp parallel} construct, and then the start and end index of the loop is defined for each thread, Along with this, the number of threads, and scope of variables is specified in the \mintinline{c++}{pragma}.
+\begin{minted}[frame=lines,framesep=8pt]{c++}
+#pragma omp parallel num_threads(numThreads) private(d, v, s, q, j) shared(C, p)
+{
+    ...
+}
+\end{minted}
+As the code shows, only the matrix \mintinline{c++}{C} and global accumulator \mintinline{c++}{p} are shared across threads. The rest of the variables are made thread local as they are modified by each thread individually at the same time. The variables local to the loop are initialised to the appropriate values, and then the loop is run. Finally, the local accumulator is added to the global accumulator using the \mintinline{c++}{pragma omp critical} construct.
+\begin{minted}[frame=lines,framesep=8pt]{c++}
+#pragma omp critical
+{
+    p+= p_local;
+}
+\end{minted}
+Using the techniques discussed above, we were able to parallelise the code. Checks were run on the code and it was tested against known values of permanents of matrices to ensure correctness.
 
 
 

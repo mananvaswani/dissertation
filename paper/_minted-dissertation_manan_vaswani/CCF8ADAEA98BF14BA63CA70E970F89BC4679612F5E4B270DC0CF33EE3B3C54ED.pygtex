@@ -1,0 +1,22 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+cp}{\PYGZsh{}pragma omp parallel num\PYGZus{}threads(numThreads) private(d, v, s, q, j) shared(C, p)}
+\PYG{p}{\PYGZob{}}
+	\PYG{c+c1}{// Initialise starting variables for each thread}
+	\PYG{k+kt}{int} \PYG{n}{this\PYGZus{}thread} \PYG{o}{=} \PYG{n}{omp\PYGZus{}get\PYGZus{}thread\PYGZus{}num}\PYG{p}{();}
+	\PYG{k+kt}{int} \PYG{n}{num\PYGZus{}threads} \PYG{o}{=} \PYG{n}{omp\PYGZus{}get\PYGZus{}num\PYGZus{}threads}\PYG{p}{();}
+
+	\PYG{k+kt}{int} \PYG{n}{minItsPerThread} \PYG{o}{=} \PYG{n}{upperBound} \PYG{o}{/} \PYG{n}{num\PYGZus{}threads}\PYG{p}{;}
+	\PYG{k+kt}{int} \PYG{n}{threadsWithExtra} \PYG{o}{=} \PYG{n}{upperBound} \PYG{o}{\PYGZpc{}} \PYG{n}{num\PYGZus{}threads}\PYG{p}{;}
+
+	\PYG{k+kt}{long} \PYG{k+kt}{long} \PYG{n}{my\PYGZus{}start}\PYG{p}{;}
+	\PYG{k+kt}{long} \PYG{k+kt}{long} \PYG{n}{my\PYGZus{}end}\PYG{p}{;}
+
+	\PYG{k}{if} \PYG{p}{(}\PYG{n}{this\PYGZus{}thread} \PYG{o}{\PYGZlt{}} \PYG{n}{threadsWithExtra}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+		\PYG{n}{my\PYGZus{}start} \PYG{o}{=} \PYG{p}{(}\PYG{n}{this\PYGZus{}thread}\PYG{p}{)} \PYG{o}{*} \PYG{p}{(}\PYG{n}{minItsPerThread} \PYG{o}{+} \PYG{l+m+mi}{1}\PYG{p}{);}
+		\PYG{n}{my\PYGZus{}end}   \PYG{o}{=} \PYG{p}{(}\PYG{n}{this\PYGZus{}thread}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{)} \PYG{o}{*} \PYG{p}{(}\PYG{n}{minItsPerThread} \PYG{o}{+} \PYG{l+m+mi}{1}\PYG{p}{);}
+	\PYG{p}{\PYGZcb{}}
+	\PYG{k}{else} \PYG{p}{\PYGZob{}}
+		\PYG{n}{my\PYGZus{}start} \PYG{o}{=} \PYG{n}{threadsWithExtra} \PYG{o}{*} \PYG{p}{(}\PYG{n}{minItsPerThread} \PYG{o}{+} \PYG{l+m+mi}{1}\PYG{p}{)} \PYG{o}{+} \PYG{p}{(}\PYG{n}{this\PYGZus{}thread} \PYG{o}{\PYGZhy{}} \PYG{n}{threadsWithExtra}\PYG{p}{)} \PYG{o}{*} \PYG{p}{(}\PYG{n}{minItsPerThread}\PYG{p}{);}
+		\PYG{n}{my\PYGZus{}end}   \PYG{o}{=} \PYG{n}{threadsWithExtra} \PYG{o}{*} \PYG{p}{(}\PYG{n}{minItsPerThread} \PYG{o}{+} \PYG{l+m+mi}{1}\PYG{p}{)} \PYG{o}{+} \PYG{p}{(}\PYG{n}{this\PYGZus{}thread} \PYG{o}{\PYGZhy{}} \PYG{n}{threadsWithExtra} \PYG{o}{+} \PYG{l+m+mi}{1}\PYG{p}{)} \PYG{o}{*} \PYG{p}{(}\PYG{n}{minItsPerThread}\PYG{p}{);}
+	\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

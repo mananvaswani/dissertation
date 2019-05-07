@@ -1,0 +1,3 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{pragma} \PYG{n}{omp} \PYG{n}{critical}
+\end{Verbatim}

@@ -53,7 +53,7 @@ vector<int> bosonSampler(arma::cx_mat A, int n, int m, int &timeInPerms, bool pa
 
         auto startPerms = chrono::steady_clock::now();
         if (!parallelFlag) perms = cxPermMinors(B_k);  // TODO: Change transpose here
-        else perms = cxPermMinorsThreads(B_k, numThreads);
+        //else perms = cxPermMinorsThreads(B_k, numThreads);
         auto endPerms = chrono::steady_clock::now();
         timeInPerms += chrono::duration_cast<chrono::milliseconds>(endPerms - startPerms).count();
 
@@ -124,7 +124,7 @@ void runOneSample(int n, int m, bool parallelFlag, bool saveData, int numThreads
         string parallelStr;
         if (parallelFlag) parallelStr = "_parallel"; else parallelStr = "_serial";
         outfile.open(filename + parallelStr + ".csv", std::ios_base::app);
-        outfile << n << ", " << chrono::duration_cast<chrono::milliseconds>(end - start).count() << endl;
+        outfile << n << ", " << chrono::duration_cast<chrono::milliseconds>(end - start).count() << ", " << timeInPerms << endl;
     }
 }
 
