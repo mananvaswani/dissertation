@@ -7,14 +7,15 @@
 \citation{harrow2017}
 \citation{monz2016}
 \citation{vartiainen2004}
-\@writefile{toc}{\contentsline {section}{\numberline {1}Introduction}{3}}
-\@writefile{toc}{\contentsline {section}{\numberline {2}Background}{3}}
 \citation{boixo2016}
 \citation{pednault2017}
+\@writefile{toc}{\contentsline {section}{\numberline {1}Background}{4}\protected@file@percent }
 \citation{knill2001}
 \citation{aaronson2011}
 \citation{galton_board}
 \citation{galton_board}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces A Galton board, used to demonstrate sampling from a binomial distribution \cite  {galton_board}}}{5}\protected@file@percent }
+\newlabel{fig:galton_board}{{1}{5}}
 \citation{toda1991}
 \citation{Caianiello1953}
 \citation{roga2019}
@@ -23,119 +24,143 @@
 \citation{hastings1970}
 \citation{neville2017}
 \citation{wu2018}
-\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces A Galton board, used to demonstrate sampling from a binomial distribution \cite  {galton_board}}}{5}}
-\newlabel{fig:galton_board}{{1}{5}}
 \citation{clifford17}
 \citation{marcus_minc66}
 \citation{ryser_1963}
 \citation{valiant1979}
-\@writefile{toc}{\contentsline {section}{\numberline {3}Preliminaries}{6}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Binary Gray Code}{6}}
-\newlabel{sec:gray_code}{{3.1}{6}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Permanent of a matrix}{6}}
-\newlabel{sec:permanent}{{3.2}{6}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.1}Definition}{6}}
+\@writefile{toc}{\contentsline {section}{\numberline {2}Technologies used}{7}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.1}Blue Crystal 4}{7}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2}OpenMP}{7}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.3}Intel Vtune}{7}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {3}Preliminaries}{7}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Binary Gray Code}{7}\protected@file@percent }
+\newlabel{sec:gray_code}{{3.1}{7}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Permanent of a matrix}{7}\protected@file@percent }
+\newlabel{sec:permanent}{{3.2}{7}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.1}Definition}{7}\protected@file@percent }
 \citation{ryser_1963}
 \citation{Nijenhuis1978}
 \citation{balasubramanian1980}
 \citation{bax1998}
 \citation{bax1996}
 \citation{glynn2010}
-\citation{clifford17}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.2}Computing the permanent}{7}}
-\newlabel{prelim_permanent_calc}{{3.2.2}{7}}
-\@writefile{toc}{\contentsline {section}{\numberline {4}Describing the paper and specifying the problem}{7}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.2}Computing the permanent}{8}\protected@file@percent }
+\newlabel{prelim_permanent_calc}{{3.2.2}{8}}
+\@writefile{toc}{\contentsline {section}{\numberline {4}Describing the paper and specifying the problem}{8}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Explaining the problem}{8}\protected@file@percent }
 \citation{feller1968}
 \citation{clifford17}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Explaining the problem}{8}}
-\newlabel{boson_sampling_formula1}{{5}{8}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.1.1}Calculating the size of the sample space}{8}}
-\@writefile{toc}{\contentsline {section}{\numberline {5}The Boson Sampling Algorithm}{8}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}The naive approach}{8}}
+\newlabel{boson_sampling_formula1}{{5}{9}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.1.1}Calculating the size of the sample space}{9}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {5}The Boson Sampling Algorithm}{9}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}The naive approach}{9}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}Algorithm A}{9}\protected@file@percent }
 \citation{walker1974}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}Algorithm A}{9}}
-\newlabel{eqn:algADistribution}{{6}{9}}
-\newlabel{eqn:bosonSamplingConditional}{{7}{9}}
+\newlabel{eqn:algADistribution}{{6}{10}}
+\newlabel{eqn:bosonSamplingConditional}{{7}{10}}
 \citation{marcus_minc66}
-\@writefile{loa}{\contentsline {algorithm}{\numberline {1}{\ignorespaces Boson Sampler: Single sample $\mathbf  {z}$ from $q(\mathbf  {z})$ in $\mathcal  {O}(mn3^n)$ time}}{10}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.3}Algorithm B}{10}}
-\newlabel{sec:algB}{{5.3}{10}}
+\@writefile{loa}{\contentsline {algorithm}{\numberline {1}{\ignorespaces Boson Sampler: Single sample $\mathbf  {z}$ from $q(\mathbf  {z})$ in $\mathcal  {O}(mn3^n)$ time}}{11}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3}Algorithm B}{11}\protected@file@percent }
+\newlabel{sec:algB}{{5.3}{11}}
+\newlabel{eqn:algBChainRule}{{14}{12}}
 \citation{clifford17}
 \citation{knuth1969}
-\newlabel{eqn:algBChainRule}{{14}{12}}
-\@writefile{loa}{\contentsline {algorithm}{\numberline {2}{\ignorespaces Boson Sampler: Single sample $\mathbf  {z}$ from $q(\mathbf  {z})$ in $\mathcal  {O}(n2^n + \text  {poly}(m, n))$ time}}{12}}
+\@writefile{loa}{\contentsline {algorithm}{\numberline {2}{\ignorespaces Boson Sampler: Single sample $\mathbf  {z}$ from $q(\mathbf  {z})$ in $\mathcal  {O}(n2^n + \text  {poly}(m, n))$ time}}{13}\protected@file@percent }
 \citation{clifford_r2017}
 \citation{clifford17}
-\@writefile{toc}{\contentsline {section}{\numberline {6}Implementation}{13}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.1}Original R Implementation}{13}}
-\newlabel{sec:r_code}{{6.1}{13}}
+\@writefile{toc}{\contentsline {section}{\numberline {6}Implementation}{14}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.1}Original R Implementation}{14}\protected@file@percent }
+\newlabel{sec:r_code}{{6.1}{14}}
 \citation{rcpp}
 \citation{armadillo}
 \citation{glynn2010}
 \citation{Nijenhuis1978}
 \citation{armadillo}
 \citation{ozols2009}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.2}Implementation in C\texttt  {++}}{15}}
-\@writefile{toc}{\contentsline {paragraph}{Armadillo Library:}{15}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {6.2.1}Generating a random unitary matrix}{15}}
-\@writefile{loa}{\contentsline {algorithm}{\numberline {3}{\ignorespaces Random Unitary: Generate an $m \times m$ complex-valued random unitary matrix}}{15}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {6.2.2}Computing the Permanent Minors}{16}}
-\newlabel{sec:permMinors}{{6.2.2}{16}}
-\@writefile{toc}{\contentsline {paragraph}{a) Iterating $\mathbf  {\delta }$ over Gray code:}{16}}
-\@writefile{toc}{\contentsline {paragraph}{b) Computing $\mathbf  {v}(\mathbf  {\delta }) = \{v_i (\mathbf  {\delta }), i \in [m]\}$ efficiently for each $\mathbf  {\delta }$:}{17}}
-\@writefile{toc}{\contentsline {paragraph}{c) Computing the partial products $\DOTSB \prod@ \slimits@ _{i \in [m] \setminus l} v_i (\delta ), \hskip 1em\relax l \in [m]$:}{17}}
-\@writefile{toc}{\contentsline {paragraph}{d) Computing the value $\left ( \DOTSB \prod@ \slimits@ _{s=1}^{m-1} \delta _s \right )$:}{18}}
-\@writefile{toc}{\contentsline {paragraph}{e) Multiplying by $\frac  {1}{2^{m-2}}$ term:}{18}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.2}Implementation in C\texttt  {++}}{16}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Armadillo Library:}{16}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {6.2.1}Generating a random unitary matrix}{16}\protected@file@percent }
+\@writefile{loa}{\contentsline {algorithm}{\numberline {3}{\ignorespaces Random Unitary: Generate an $m \times m$ complex-valued random unitary matrix}}{16}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {6.2.2}Computing the Permanent Minors}{17}\protected@file@percent }
+\newlabel{sec:permMinors}{{6.2.2}{17}}
+\@writefile{toc}{\contentsline {paragraph}{a) Iterating $\mathbf  {\delta }$ over Gray code:}{17}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{b) Computing $\mathbf  {v}(\mathbf  {\delta }) = \{v_i (\mathbf  {\delta }), i \in [m]\}$ efficiently for each $\mathbf  {\delta }$:}{18}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{c) Computing the partial products $\DOTSB \prod@ \slimits@ _{i \in [m] \setminus l} v_i (\delta ), \hskip 1em\relax l \in [m]$:}{18}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{d) Computing the value $\left ( \DOTSB \prod@ \slimits@ _{s=1}^{m-1} \delta _s \right )$:}{19}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{e) Multiplying by $\frac  {1}{2^{m-2}}$ term:}{19}\protected@file@percent }
 \citation{matsumoto1998}
 \citation{knuth1969}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {6.2.3}Simulating exact Boson Sampling using Algorithm B}{19}}
-\@writefile{toc}{\contentsline {paragraph}{Preprocessing steps}{19}}
-\@writefile{toc}{\contentsline {paragraph}{Line 2}{19}}
-\@writefile{toc}{\contentsline {paragraph}{Line 3 and 4}{19}}
-\@writefile{toc}{\contentsline {paragraph}{Lines 6 to 11}{20}}
-\@writefile{toc}{\contentsline {paragraph}{Line 12}{20}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.3}Running the code}{20}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {6.2.3}Simulating exact Boson Sampling using Algorithm B}{20}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Preprocessing steps}{20}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Line 2}{20}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Line 3 and 4}{20}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Lines 6 to 11}{21}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Line 12}{21}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.3}Running the code}{21}\protected@file@percent }
 \citation{vtune2018}
 \citation{god-bolt}
-\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces A summary of `hotspots' in the code identified by the Intel Vtune Profiler}}{21}}
-\newlabel{fig:vtune_hotspots_initial}{{2}{21}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.4}Profiling the code}{21}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces A summary of `hotspots' in the code identified by the Intel Vtune Profiler}}{22}\protected@file@percent }
+\newlabel{fig:vtune_hotspots_initial}{{2}{22}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.4}Profiling the code}{22}\protected@file@percent }
 \citation{muldc3}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.5}Parallelising the code}{22}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {6.5.1}Parallelisation technique}{22}}
-\@writefile{toc}{\contentsline {paragraph}{a) Getting the value of the active index $j$ in the $k^{\text  {th}}$ iteration:}{22}}
-\@writefile{toc}{\contentsline {paragraph}{b) Getting the value of $k^{\text  {th}}$ element of the Gray code:}{23}}
-\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Elements of Gray code and active indices for $n = 4$}}{24}}
-\newlabel{tab:graycode}{{1}{24}}
-\@writefile{toc}{\contentsline {paragraph}{c) Getting the value of \mintinline {c++}{s}:}{24}}
-\@writefile{toc}{\contentsline {paragraph}{d) Computing the $\mathbf  {v}$ array for iteration $k$:}{24}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {6.5.2}Using OpenMP to modify the code for use with multiple threads}{25}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.5}Parallelising the code}{23}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {6.5.1}Parallelisation technique}{23}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{a) Getting the value of the active index $j$ in the $k^{\text  {th}}$ iteration:}{23}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{b) Getting the value of $k^{\text  {th}}$ element of the Gray code:}{24}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{c) Getting the value of \mintinline {c++}{s}:}{24}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Elements of Gray code and active indices for $n = 4$}}{25}\protected@file@percent }
+\newlabel{tab:graycode}{{1}{25}}
+\@writefile{toc}{\contentsline {paragraph}{d) Computing the $\mathbf  {v}$ array for iteration $k$:}{25}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {6.5.2}Using OpenMP to modify the code for use with multiple threads}{26}\protected@file@percent }
 \citation{gcc_compiler}
 \citation{intel_compiler}
 \citation{gcc_flags}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.6}Other Oprtmisations}{26}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {6.6.1}Compiler choice}{26}}
-\@writefile{toc}{\contentsline {paragraph}{GCC compiler: }{26}}
-\@writefile{toc}{\contentsline {paragraph}{Intel C\texttt  {++} compiler: }{26}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {6.6.2}Compiler options}{26}}
-\@writefile{toc}{\contentsline {section}{\numberline {7}Critical Evaluation}{26}}
-\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Compiler options used with the GCC compiler}}{27}}
-\newlabel{tab:gcc_compiler_flags}{{2}{27}}
-\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces Compiler options used with the Intel C\texttt  {++} compiler}}{27}}
-\newlabel{tab:intel_compiler_flags}{{3}{27}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.1}Initial implementation}{27}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.6}Other Oprtmisations}{27}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {6.6.1}Compiler choice}{27}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{GCC compiler: }{27}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Intel C\texttt  {++} compiler: }{27}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {6.6.2}Compiler options}{27}\protected@file@percent }
+\newlabel{sec:flags}{{6.6.2}{27}}
+\@writefile{toc}{\contentsline {section}{\numberline {7}Critical Evaluation}{27}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Compiler options used with the GCC compiler}}{28}\protected@file@percent }
+\newlabel{tab:gcc_compiler_flags}{{2}{28}}
+\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces Compiler options used with the Intel C\texttt  {++} compiler}}{28}\protected@file@percent }
+\newlabel{tab:intel_compiler_flags}{{3}{28}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.1}Initial implementation}{28}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Original implementations}}{29}\protected@file@percent }
+\newlabel{fig:org}{{3}{29}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.2}Testing the different compiler option/flags}{29}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {7.2.1}gcc}{29}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Comparing different gcc compiler options}}{30}\protected@file@percent }
+\newlabel{fig:gcc_flags}{{4}{30}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {7.2.2}Intel compiler}{30}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces A summary of hotspots found in the code identified by the Intel Vtune Profiler after enabling the -Ofast flag}}{31}\protected@file@percent }
+\newlabel{fig:vtune_Ofast}{{5}{31}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Comparing different Intel compiler options}}{31}\protected@file@percent }
+\newlabel{fig:intel_flags}{{6}{31}}
+\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Comparing different number of threads used with gcc compiled code}}{32}\protected@file@percent }
+\newlabel{fig:gcc_threads}{{7}{32}}
+\@writefile{lot}{\contentsline {table}{\numberline {4}{\ignorespaces Timings to run code (in seconds), as number of threads is changed, for $n=30$}}{32}\protected@file@percent }
+\newlabel{tab:threads}{{4}{32}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {7.2.3}Multiple threads}{32}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces Comparing different number of threads used with intel compiled code}}{33}\protected@file@percent }
+\newlabel{fig:intel_threads}{{8}{33}}
+\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces Comparing different number of threads used}}{33}\protected@file@percent }
+\newlabel{fig:threadCurve}{{9}{33}}
+\citation{wu2018}
 \bibstyle{unsrt}
 \bibdata{project_bib}
 \bibcite{kaye2007}{1}
 \bibcite{shor1995}{2}
+\@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces Comparing final results}}{34}\protected@file@percent }
+\newlabel{fig:final_graph}{{10}{34}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {7.2.4}Final result}{34}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {8}Conclusion}{34}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {8.0.1}Further Works}{34}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{References}{34}\protected@file@percent }
 \bibcite{rsa1978}{3}
 \bibcite{papadimitriou2003}{4}
 \bibcite{harrow2017}{5}
-\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Original implementations}}{28}}
-\newlabel{fig:org}{{3}{28}}
-\@writefile{toc}{\contentsline {section}{\numberline {8}Further Works}{28}}
-\@writefile{toc}{\contentsline {section}{\numberline {9}Conclusion}{28}}
-\@writefile{toc}{\contentsline {section}{References}{28}}
 \bibcite{monz2016}{6}
 \bibcite{vartiainen2004}{7}
 \bibcite{boixo2016}{8}
@@ -278,4 +303,8 @@
   5E4E9973CA77A56F692A8DD4D00E68C9A94FD2410815947246E6D971BF228B41.pygtex,
   279528005957EEBE23DCEE256F1328BCA94FD2410815947246E6D971BF228B41.pygtex,
   AD4B4546CB4EB05C1420B6A4F5BA39B5A94FD2410815947246E6D971BF228B41.pygtex,
-  BFDD14487827B806DFC0B0E3C5E38A54085B29184225E76D63475C13C465AC61.pygtex}
+  BFDD14487827B806DFC0B0E3C5E38A54085B29184225E76D63475C13C465AC61.pygtex,
+  701D24185B3A6F1E1779CB6F95BFDF03A94FD2410815947246E6D971BF228B41.pygtex,
+  582D0988CAE9FE53D8A1E300504F5618A94FD2410815947246E6D971BF228B41.pygtex,
+  0EEB9037121F451B1DC41FB6C27FFF7FA94FD2410815947246E6D971BF228B41.pygtex,
+  0EEB9037121F451B1DC41FB6C27FFF7FA94FD2410815947246E6D971BF228B41.pygtex}

@@ -4,8 +4,8 @@ import numpy as np
 from matplotlib.pyplot import figure, show
 from matplotlib.ticker import MaxNLocator
 
-n1, times1, perms1 = np.loadtxt('timings/threads/gcc/gcc_28thread_parallel.csv', delimiter=',', unpack=True)
-n2, times2, perms2 = np.loadtxt('timings/threads/intel/intel_28thread_parallel.csv', delimiter=',', unpack=True)
+n1, times1, perms1 = np.loadtxt('timings/org/gcc_noflags_serial.csv', delimiter=',', unpack=True)
+n2, times2, perms2 = np.loadtxt('timings/org/intel_noflags_2_serial.csv', delimiter=',', unpack=True)
 # n2, times3, perms1 = np.loadtxt('timings/threads/intel/intel_4thread_parallel.csv', delimiter=',', unpack=True)
 # n2, times4, perms1 = np.loadtxt('timings/threads/intel/intel_8thread_parallel.csv', delimiter=',', unpack=True)
 # n2, times5, perms1 = np.loadtxt('timings/threads/intel/intel_16thread_parallel.csv', delimiter=',', unpack=True)
@@ -147,6 +147,8 @@ for ele in timesList4:
 n = list(range (2, len(meanTimesList1) + 2))
 #n = list(range (2, 29))
 
+print (stdDevList1)
+print (stdDevList3)
 
 ax = figure().gca()
 
@@ -171,6 +173,6 @@ ax.set_ylabel('time (in milliseconds)')
 plt.title('Input size n v. Time taken \n Parallel implementation, 28 threads, all flags enabled')
 
 ax.xaxis.set_major_locator(MaxNLocator(integer=True))
-ax.set_yscale('linear')
+ax.set_yscale('log')
 
 show()

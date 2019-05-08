@@ -55,7 +55,7 @@
         \vspace*{\fill}
         
         \Huge
-        \textbf{The Classical Complexity of Boson Sampling : A multi-core CPU implementation}
+        \textbf{A multi-core CPU implementation of the classical Boson Sampling algorithm}
         
         \LARGE
         
@@ -83,9 +83,6 @@
 \newpage
 \tableofcontents
 \newpage
-\section{Introduction} %Introducing the problem and why it is interesting
-
-
 \section{Background} %Background/Literature Review
 The advances made in the field of quantum algorithms in the past 25 years has given rise to questions about whether a number of classical hypotheses still hold true in light of modern quantum research The most notable example is the Extended Church-Turing Thesis which in simple terms says that all computational problems that are efficiently solvable by realistic physical devices are efficiently solvable by a probabilistic Turing machine \cite{kaye2007}. However, Shor's algorithm \cite{shor1995} potentially disproves this. Informally, Shor's discovery stated that if a classical computer could accurately simulate a quantum-mechanical experiment in probabilisitic polynomial time, then it must be able to factor integers in polynomial time as well. The problem of factoring integers is known to have no polynomial-time algorithm on a classical computer. It is so widely accepted that factoring integers is a hard problem that a number of cryptographic systems are built on its hardness, including the famous RSA algorithm \cite{rsa1978}. Hence, Shor's algorithm has a strong implication: A classical computer that is able to simulate quantum experiments efficiently, it would be able to break widely used cryptosystems such as RSA.
 
@@ -125,6 +122,12 @@ The Aaronson and Arkhipov paper provoked much interest in the classical computat
 In terms of actual implementations of the Boson Sampling algorithm, there have been few, with the most significant benchmark being the test of the simulation run on the Tianhe-2 supercomputer \cite{wu2018} which managed to simulate Boson Sampling for 50 photons with a runtime of approximately 100 minutes.
 
 However, in the groundbreaking paper by Clifford and Clifford \cite{clifford17}, a new significantly faster algorithm was proposed which showed promise of carrying out classical Boson Sampling in an even shorter time. The algorithm proposed in this paper is central to our work. We give a highly optimised implementation of this algorithm with the aim of setting a new benchmark for the classical Boson Sampling problem, and in the process pushing away the imminence of quantum supremacy in the near future.
+
+\section{Technologies used}
+\subsection{Blue Crystal 4}
+\subsection{OpenMP}
+\subsection{Intel Vtune}
+%mention python matplotlib
 
 \section{Preliminaries}
 \subsection{Binary Gray Code} \label{sec:gray_code}
@@ -182,8 +185,8 @@ Implementing the formula as is would require $\mathcal{O}(2^n n^2)$ time. Howeve
 
 In order to exploit this trick, let $v_j$ be the symbol used to denote the innermost sum i.e. $v_j = \sum_{i=1}^n \delta_i m_{ij}$. If $\delta$ is iterated over in Gray code order, then one can notice that the terms $\{ v_j, j \in [n]\}$ can actually be computed in $\mathcal{O}(n)$ time for a given value of $\delta$ rather than $\mathcal{O}(n^2)$ which is how long it would take if done naively. This is because successive elements of $\delta$ differ in only one position, so each successive $v_j$ differs only by the addition or subtraction of some $m_{ij}$ where $i$ is the position at which $\delta$ was last changed. Hence, the product of $v_j$ terms can now be calculated in $\mathcal{O}(n)$ time. Note that $\delta \in \{-1, 1\}^n$ but elements of the Gray code of size $n$ are in $\{0, 1\}^n$. To resolve this, map each 0 in the Gray code to a 1 of the $\delta$ array, and each 1 in the Gray Code to a -1 of the $\delta$ array.
 
-\section{Describing the paper and specifying the problem} %Rename section
-Cliiford and Clifford \cite{clifford17} gave a study and analysis of the classical complexity of the exact Boson Sampling problem and proposed an algorithm that is significantly faster than previous algorithms for the problem. The algorithm is simple to implement, and is able to solve the Boson Sampling problem for system sizes much greater than quantum computing systems currently available, which reduces the likelihood of achieving quantum supremacy in the context of Boson Sampling in the near future \textcolor{red}{rephrase last bit}.
+\section{Describing the paper and specifying the problem}
+%Cliiford and Clifford \cite{clifford17} gave a study and analysis of the classical complexity of the exact Boson Sampling problem and proposed an algorithm that is significantly faster than previous algorithms for the problem. The algorithm is simple to implement, and is able to solve the Boson Sampling problem for system sizes much greater than quantum computing systems currently available as mentioned before, which reduces the likelihood of achieving quantum supremacy in the context of Boson Sampling in the near future.
 
 \subsection{Explaining the problem}
 A summary of the problem in purely mathematical terms is as follows. 
@@ -623,7 +626,7 @@ The execution time of the code is determined by the number of instructions that 
 
 \paragraph{Intel C\texttt{++} compiler: } The Intel C\texttt{++} compiler is a highly optimised compiler for systems using processors that support Intel architectures. The Intel compiler automatically performs operations such as Single Instruction Multiple Data vectorisation, which speeds up standard operations by performing them simultaneously using the processors hardware. In addition, it also carries out loop and memory transformations to speed up a program. The only caveat is that it may not carry out these intensive optimisations for systems without Intel architectures. It is freely available for students, educators and open-source developers \cite{intel_compiler}.
 
-\subsubsection{Compiler options}
+\subsubsection{Compiler options} \label{sec:flags}
 Both compilers offer useful optimisation options, which we test on our program as well. Compiler options are not required to compile the program, but they do provide the ability to change how the code is processed by the compiler. The options we tested are summarised in the following tables \cite{gcc_flags}.
 
 \begin{table}[h!]
@@ -664,6 +667,8 @@ We tested out the above implementation at each stage on the Blue Crystal superco
 We first tested out the C\texttt{++} code written by us without any optimisations made, compiled with both the Intel and gcc compilers. This has been plotted as a graph shown in figure \ref{fig:org}. For each value of $n$ from 2 to 30, 10 results were recorded, with their timing taken. The mean and standard deviation of the code runtimes for each of these values was calculated and is depicted in the graph. The error bars represent one standard deviation in the data. Notice that the y-axis of the graph uses a log-scale, which is why the lines appear to be roughly linear. We expected the time taken to grow exponentially, and this was the observed result. These results are as expected, with the Intel compiled code being significantly faster than the gcc compiled code. The average time for the gcc compiled code to complete the algorithm was roughly 1100 seconds, whereas for the intel compiled code, it was 100 seconds. The reason that the Intel compiled code is over 10 times faster is that it is highly optimised by the compiler even without specifying any additional optimisation options. 
 %gcc =1132s, intel = 100s
 Additionally, we can see that the time taken for computation of permanents is consistently only a bit less than the total time taken, except for smaller values of $n$, in which case the amount of time taken to compute permanents was 0. This is because for small sizes of matrices, calculating the permanents requires only a few simple mathematical calculations. The overheads of running the rest of the algorithm appears to dominate for these small values of $n$.
+
+It was also interesting to note that the timings to run the Intel compiled code were a lot more consistent than the timings for the gcc compiled code. The standard deviation for the gcc code with higher values of $n$ was roughly 130, whereas for intel, it never exceeded 0.8, giving the coefficients of variation 11\% and 0.8\% respectively.
 \begin{figure}
 	\centering
   \includegraphics[width=25em]{Graphs/org_log.png}
@@ -672,12 +677,95 @@ Additionally, we can see that the time taken for computation of permanents is co
 \end{figure}
 
 \subsection{Testing the different compiler option/flags}
+After parallelising the code, in order to compare the different compiler options, the code was run on 16 cores with different options enabled each time. As before, 10 samples were taken for each value of $n$, and the values plotted in the graphs are the means
 \subsubsection{gcc}
+We had four different compiler options to test with gcc, as explained in section \ref{sec:flags}. The \mintinline{console}{-funroll} option makes almost no difference, which we anticipated since it is known to not improve timings in every case. Specifically, in the case of our loop which was run an exponential number of times for permanent calculation, unrolling loops would potentially make the process of going from one iteration to the next faster, but a lot more memory would be used as a cost, which would slow it back down. What was more surprising was that the \mintinline{console}{-march=native} flag had only a minute effect (1 to 2 seconds for n=30) in speeding up the time. On the other hand, the \mintinline{console}{-Ofast} flag provided a major speed up, making the code over 10 times faster to run than with no compiler options enabled. The code was profiled again at this stage to understand how such a significant speed up was made. The results are shown in figure \ref{fig:vtune_Ofast}. The difference is that the top few hotspots are no longer dominated by the inbuilt function `\_\_muldc3', and other specific operations related to multiplying complex numbers. The reason this has happened is that using \mintinline{console}{-Ofast} tells the compiler to ignore strict ISO standards, and instead of running the complex number multiplication function with a lot of checks, it simply performs the bare operations. While it does make the code susceptible to errors in edge cases (specifically involving operations where the real part of the number is set to infinity), we expect to never encounter these cases in our code, and can ensure that we don't by adding in some checks of our own.
 
+\begin{figure}
+	\centering
+  \includegraphics[width=25em]{Graphs/gcc_flags_log.png}
+  \caption{Comparing different gcc compiler options}
+  \label{fig:gcc_flags}
+\end{figure}
 
+\begin{figure}
+	\centering
+  \includegraphics[width=\textwidth, frame]{vtune_hotspots_Ofast.png}
+  \caption{A summary of hotspots found in the code identified by the Intel Vtune Profiler after enabling the -Ofast flag}
+  \label{fig:vtune_Ofast}
+\end{figure}
 
-\section{Further Works}
+\subsubsection{Intel compiler}
+The two chosen flags were tested on the Intel compiler and surprisingly, neither of the two made a big difference to the timing. This is shown in figure \ref{fig:intel_flags}. Considering how much faster the Intel compiled code was even before any options were added, we presume that the Intel compiler available on Blue Crystal is maximally optimised for speed by default.
+\begin{figure}
+	\centering
+  \includegraphics[width=25em]{Graphs/intel_flags_log.png}
+  \caption{Comparing different Intel compiler options}
+  \label{fig:intel_flags}
+\end{figure}
+
+After enabling optimisation flags, the gcc and Intel compiled code have similar timings for $n=30$, with the gcc compiled code occasionally being 1-2 seconds faster.
+
+\subsubsection{Multiple threads}
+One of the main results of our paper was to parallelise the algorithm, and the results obtained by doing so were as expected. The code was run after being compiled with both compilers and all listed flags enabled, with a different number of threads available each time for the sake of comparison. The results we obtained showed a speed up proportional to the number of threads used, shown in figures \ref{fig:gcc_threads} and \ref{fig:intel_threads}. In a few cases for values between $n=8$ and $n=12$, we can see that in figure \ref{fig:threadCurve} there are some inconsistencies, and using more threads might take a few milliseconds more than with less threads. This is because multithreading does have overheads with assigning values to threads as well as with creating threads.
+\begin{figure}
+	\centering
+  \includegraphics[width=25em]{Graphs/gcc_threads_log.png}
+  \caption{Comparing different number of threads used with gcc compiled code}
+  \label{fig:gcc_threads}
+\end{figure}
+
+\begin{figure}
+	\centering
+  \includegraphics[width=25em]{Graphs/intel_threads_log.png}
+  \caption{Comparing different number of threads used with intel compiled code}
+  \label{fig:intel_threads}
+\end{figure}
+
+Another set of timings were taken for running the Boson Sampling code with $n=30$, and successively increasing the number of threads, shown in figure \ref{fig:threadCurve}. The results show that the timing reduces in steps as the number of cores used is increased. One can also notice the trend that as the number of threads is doubled, the timing is roughly halved. A summary of the actual timings are also shown in table \ref{tab:threads}.
+\begin{figure}
+	\centering
+  \includegraphics[width=25em]{Graphs/threadCurve_log.png}
+  \caption{Comparing different number of threads used}
+  \label{fig:threadCurve}
+\end{figure}
+
+\begin{table}
+  \begin{center}
+    \caption{Timings to run code (in seconds), as number of threads is changed, for $n=30$}
+    \label{tab:threads}
+    \begin{tabular}{|c|cc|}
+    \hline
+      \textbf{No. of cores} & \textbf{Time for gcc} & \textbf{Time for Intel} \\
+      \hline
+      1 & 85 & 88 \\
+      2 & 44 & 46  \\
+      4 & 23 & 24 \\
+      8 & 13 & 14 \\
+      16 & 8 & 8 \\
+      28 & 5 & 5 \\
+      \hline
+    \end{tabular}
+  \end{center}
+\end{table}
+
+\subsubsection{Final result}
+Using all the optimisations we have made, we ran the code on Blue Crystal, using 28 cores, and with all mentioned compiler-flags enabled for optimisation. The results are shown in \ref{fig:final_graph}. The gcc compiled code gives marginally faster results as compared to the Intel compiled code, and the times taken to simulate sampling bosons for $n=30$ are 5.1 seconds and 5.3 seconds respectively.
+\begin{figure}
+	\centering
+  \includegraphics[width=25em]{Graphs/fastest_linear.png}
+  \caption{Comparing final results}
+  \label{fig:final_graph}
+\end{figure}
+
 \section{Conclusion}
+The final results produced by us showed a speed up of around 200 times with the gcc compiler, and 20 times for the Intel compiler, as compared to our initial measurments. We also ran a few tests for $n=35$, and it took roughly 320 seconds to run. While these numbers may not seem impressive compared to the benchmark on the Tianhe-2 supercomputer \cite{wu2018}, our implementation uses a maximum of 28 cores, whereas the benchmark for $n=50$ computed in 600 minutes was made using 312?,000 cores. We project that in order to break that benchmark, we would need access to a supercomputer with only $\approx 10,000$ cores.
+\subsubsection{Further Works}
+%Testing for correctness
+%Running it on larger supercomputer
+%Running it on multiple processors
+%Other optimsations
+%Running it on a GPU
 
 \bibliographystyle{unsrt}
 \bibliography{project_bib}

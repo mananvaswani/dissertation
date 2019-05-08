@@ -188,11 +188,3 @@ int main(int argc, char *argv[]) {
 
     return 0;
 }
-
-void specialTest() {
-    for (int i = 1; i <= 28; i++) {
-        for (int j = 1; j <= numSamples; j++) {
-            runOneSample(30, 900, parallelFlag, saveData, i, filename);
-        }
-    }
-}

@@ -2,7 +2,6 @@
 
 int getActiveIndex(long long ctr) {
 	return __builtin_ctzll(ctr);
-	// _mm_tzcnt_64 for intel compiler
 }
 
 int getKthGrayCode(long long k) {
