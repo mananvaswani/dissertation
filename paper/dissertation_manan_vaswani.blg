@@ -4,55 +4,55 @@ The top-level auxiliary file: dissertation_manan_vaswani.aux
 The style file: unsrt.bst
 Database file #1: project_bib.bib
 Warning--entry type for "gcc_flags" isn't style-file defined
---line 11 of file project_bib.bib
+--line 37 of file project_bib.bib
 Warning--entry type for "intel_compiler" isn't style-file defined
---line 16 of file project_bib.bib
+--line 43 of file project_bib.bib
 Warning--entry type for "muldc3" isn't style-file defined
---line 28 of file project_bib.bib
+--line 56 of file project_bib.bib
 Warning--entry type for "god-bolt" isn't style-file defined
---line 34 of file project_bib.bib
+--line 62 of file project_bib.bib
 Warning--empty institution in ozols2009
 Warning--all relevant fields are empty in intel_compiler
 Warning--all relevant fields are empty in gcc_flags
-You've used 28 entries,
+You've used 37 entries,
             1791 wiz_defined-function locations,
-            593 strings with 6518 characters,
-and the built_in function-call counts, 5317 in all, are:
-= -- 472
-> -- 168
-< -- 4
-+ -- 71
-- -- 43
-* -- 293
-:= -- 789
-add.period$ -- 77
-call.type$ -- 28
-change.case$ -- 19
+            651 strings with 8352 characters,
+and the built_in function-call counts, 8286 in all, are:
+= -- 760
+> -- 304
+< -- 7
++ -- 120
+- -- 83
+* -- 481
+:= -- 1201
+add.period$ -- 105
+call.type$ -- 37
+change.case$ -- 28
 chr.to.int$ -- 0
-cite$ -- 31
-duplicate$ -- 259
-empty$ -- 593
-format.name$ -- 43
-if$ -- 1231
+cite$ -- 40
+duplicate$ -- 414
+empty$ -- 833
+format.name$ -- 83
+if$ -- 1931
 int.to.chr$ -- 0
-int.to.str$ -- 28
-missing$ -- 20
-newline$ -- 134
-num.names$ -- 24
-pop$ -- 101
+int.to.str$ -- 37
+missing$ -- 28
+newline$ -- 179
+num.names$ -- 33
+pop$ -- 122
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 151
+skip$ -- 288
 stack$ -- 0
-substring$ -- 318
-swap$ -- 64
-text.length$ -- 4
+substring$ -- 534
+swap$ -- 148
+text.length$ -- 7
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
 warning$ -- 3
-while$ -- 41
-width$ -- 30
-write$ -- 277
+while$ -- 63
+width$ -- 39
+write$ -- 377
 (There were 7 warnings)

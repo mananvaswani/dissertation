@@ -28,6 +28,61 @@ Aram~W. {Harrow} and Ashley {Montanaro}.
 \newblock Quantum computational supremacy.
 \newblock {\em Nature}, 549(7671):203--209, Sep 2017.
 
+\bibitem{monz2016}
+Thomas Monz, Daniel Nigg, Esteban~A. Martinez, Matthias~F. Brandl, Philipp
+  Schindler, Richard Rines, Shannon~X. Wang, Isaac~L. Chuang, and Rainer Blatt.
+\newblock Realization of a scalable shor algorithm.
+\newblock {\em Science}, 351(6277):1068--1070, 2016.
+
+\bibitem{vartiainen2004}
+Juha~J. {Vartiainen}, Antti~O. {Niskanen}, Mikio {Nakahara}, and Martti~M.
+  {Salomaa}.
+\newblock {Implementing Shor's algorithm on Josephson charge qubits}.
+\newblock {\em Phys. Rev. A}, 70(1):012319, Jul 2004.
+
+\bibitem{boixo2016}
+Sergio {Boixo}, Sergei~V. {Isakov}, Vadim~N. {Smelyanskiy}, Ryan {Babbush}, Nan
+  {Ding}, Zhang {Jiang}, Michael~J. {Bremner}, John~M. {Martinis}, and Hartmut
+  {Neven}.
+\newblock {Characterizing Quantum Supremacy in Near-Term Devices}.
+\newblock {\em arXiv e-prints}, page arXiv:1608.00263, Jul 2016.
+
+\bibitem{pednault2017}
+Edwin {Pednault}, John~A. {Gunnels}, Giacomo {Nannicini}, Lior {Horesh}, Thomas
+  {Magerlein}, Edgar {Solomonik}, Erik~W. {Draeger}, Eric~T. {Holland}, and
+  Robert {Wisnieff}.
+\newblock {Breaking the 49-Qubit Barrier in the Simulation of Quantum
+  Circuits}.
+\newblock {\em arXiv e-prints}, page arXiv:1710.05867, Oct 2017.
+
+\bibitem{knill2001}
+E.~Knill, R.~Laflamme, and G.~J. Milburn.
+\newblock A scheme for efficient quantum computation with linear optics.
+\newblock {\em Nature}, 409(6816):46--52, 2001.
+
+\bibitem{aaronson2011}
+Scott Aaronson and Alex Arkhipov.
+\newblock The computational complexity of linear optics.
+\newblock In {\em Proceedings of the Forty-third Annual ACM Symposium on Theory
+  of Computing}, STOC '11, pages 333--342, New York, NY, USA, 2011. ACM.
+
+\bibitem{galton_board}
+Margherita Barile and Eric~W Weisstein.
+\newblock Galton board.
+\newblock From MathWorld--A Wolfram Web Resource.
+  http://mathworld.wolfram.com/GaltonBoard.html.
+
+\bibitem{toda1991}
+Seinosuke Toda.
+\newblock Pp is as hard as the polynomial-time hierarchy.
+\newblock {\em SIAM J. Comput.}, 20:865--877, 10 1991.
+
+\bibitem{Caianiello1953}
+E.~R. Caianiello.
+\newblock On quantum field theory --- i: explicit solution of dyson's equation
+  in electrodynamics without use of feynman graphs.
+\newblock {\em Il Nuovo Cimento (1943-1954)}, 10(12):1634--1652, Dec 1953.
+
 \bibitem{marcus_minc66}
 Marvin Marcus and Henryk Minc.
 \newblock Permanents.
