@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.11.13)  7 MAY 2019 18:56
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.11.13)  8 MAY 2019 03:03
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -1354,20 +1354,39 @@ File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 \openout7 = `dissertation_manan_vaswani.toc'.
 
  [2]
-Overfull \hbox (31.69275pt too wide) in paragraph at lines 135--136
+Overfull \hbox (6.32527pt too wide) in paragraph at lines 94--95
+[]\OT1/cmr/m/n/10.95 Linking back to Shor's al-go-rithm and its po-ten-tial to 
+demon-strate quan-tum supremacy
+ []
+
+
+LaTeX Warning: Citation `monz2016' on page 3 undefined on input line 98.
+
+
+LaTeX Warning: Citation `vartiainen2004' on page 3 undefined on input line 98.
+
+[3]
+
+LaTeX Warning: Citation `boixo2016' on page 4 undefined on input line 102.
+
+
+LaTeX Warning: Citation `pednault2017' on page 4 undefined on input line 102.
+
+[4]
+Overfull \hbox (37.16776pt too wide) in paragraph at lines 148--149
 []\OT1/cmr/m/n/10.95 Another for-mula that is as fast as Ry-sers was in-de-pen-
 dently de-rived by Balasubramanian[[]],
  []
 
-[3] [4] [5]
+[5] [6]
 
-LaTeX Warning: Command \O invalid in math mode on input line 195.
+LaTeX Warning: Command \O invalid in math mode on input line 208.
 
-[6] [7]
+[7] [8]
 
-LaTeX Warning: Command \O invalid in math mode on input line 247.
+LaTeX Warning: Command \O invalid in math mode on input line 260.
 
-[8] [9]
+[9] [10]
 \openout6 = `dissertation_manan_vaswani.pyg'.
 
  (./_minted-dissertation_manan_vaswani/default-pyg-prefix.pygstyle)
@@ -1382,7 +1401,7 @@ LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <10.95> not available
 
 (./_minted-dissertation_manan_vaswani/A129CEDD75D5C885814A875EB83E33F17C0A8BE94
 7228FE10A120597CF7F0BAB.pygtex)
-LaTeX Font Info:    Try loading font information for TS1+cmr on input line 285.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 298.
 
 
 (/usr/local/texlive/2017/texmf-dist/tex/latex/base/ts1cmr.fd
@@ -1422,7 +1441,7 @@ File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 
 
 (./_minted-dissertation_manan_vaswani/EFC67BB84D993B93621761205F1D21AF7C0A8BE94
-7228FE10A120597CF7F0BAB.pygtex) [10]
+7228FE10A120597CF7F0BAB.pygtex) [11]
 \openout6 = `dissertation_manan_vaswani.pyg'.
 
 
@@ -1472,9 +1491,9 @@ File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 
 
 (./_minted-dissertation_manan_vaswani/0459F18D4533013DC30626C7161EC5C1A94FD2410
-815947246E6D971BF228B41.pygtex [11])
+815947246E6D971BF228B41.pygtex [12])
 LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <12> not available
-(Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 317.
+(Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 330.
 \openout6 = `dissertation_manan_vaswani.pyg'.
 
 
@@ -1484,7 +1503,7 @@ E4B270DC0CF33EE3B3C54ED.pygtex)
 
 
 (./_minted-dissertation_manan_vaswani/A69D6B70A3287BE11B07CBED4B5F49314679612F5
-E4B270DC0CF33EE3B3C54ED.pygtex) [12]
+E4B270DC0CF33EE3B3C54ED.pygtex) [13]
 \openout6 = `dissertation_manan_vaswani.pyg'.
 
 
@@ -1554,7 +1573,7 @@ E4B270DC0CF33EE3B3C54ED.pygtex)
 
 
 (./_minted-dissertation_manan_vaswani/4FFB2384F093FD721F4793C04F0414534679612F5
-E4B270DC0CF33EE3B3C54ED.pygtex [13])
+E4B270DC0CF33EE3B3C54ED.pygtex [14])
 \openout6 = `dissertation_manan_vaswani.pyg'.
 
 
@@ -1589,7 +1608,7 @@ E4B270DC0CF33EE3B3C54ED.pygtex)
 
 
 (./_minted-dissertation_manan_vaswani/6413B0F40D0CEBA8D14CEA15AEAFBF194679612F5
-E4B270DC0CF33EE3B3C54ED.pygtex [14])
+E4B270DC0CF33EE3B3C54ED.pygtex [15])
 \openout6 = `dissertation_manan_vaswani.pyg'.
 
 
@@ -1619,7 +1638,7 @@ E4B270DC0CF33EE3B3C54ED.pygtex)
 
 
 (./_minted-dissertation_manan_vaswani/9D7BF075372908F55E2D945C39E0A6134679612F5
-E4B270DC0CF33EE3B3C54ED.pygtex)
+E4B270DC0CF33EE3B3C54ED.pygtex) [16]
 \openout6 = `dissertation_manan_vaswani.pyg'.
 
 
@@ -1629,7 +1648,7 @@ E4B270DC0CF33EE3B3C54ED.pygtex)
 
 
 (./_minted-dissertation_manan_vaswani/B39BFC0E26A30024C76E4DCB8A1EAE874679612F5
-E4B270DC0CF33EE3B3C54ED.pygtex) [15]
+E4B270DC0CF33EE3B3C54ED.pygtex)
 \openout6 = `dissertation_manan_vaswani.pyg'.
 
 
@@ -1664,7 +1683,7 @@ E4B270DC0CF33EE3B3C54ED.pygtex)
 
 
 (./_minted-dissertation_manan_vaswani/70DF27D16797EFAEDCD2084C308B76AC4679612F5
-E4B270DC0CF33EE3B3C54ED.pygtex [16])
+E4B270DC0CF33EE3B3C54ED.pygtex [17])
 \openout6 = `dissertation_manan_vaswani.pyg'.
 
 
@@ -1675,7 +1694,7 @@ E4B270DC0CF33EE3B3C54ED.pygtex)
 
 (./_minted-dissertation_manan_vaswani/6808DB35CEC9FA95D5C2128EBA5D131B4679612F5
 E4B270DC0CF33EE3B3C54ED.pygtex
-Overfull \hbox (46.53728pt too wide) in paragraph at lines 446--1
+Overfull \hbox (46.53728pt too wide) in paragraph at lines 459--1
 \OT1/cmr/m/n/10.95 ma-trix of $\OML/cmm/m/it/10.95 A$ \OT1/cmr/m/n/10.95 and st
 ored in an Ar-madillo vec-tor, by mak-ing a call to []: 
  []
@@ -1711,18 +1730,18 @@ E4B270DC0CF33EE3B3C54ED.pygtex)
 
 (./_minted-dissertation_manan_vaswani/3365B9E32D0FB7A8A84E9AC857C44E82A94FD2410
 815947246E6D971BF228B41.pygtex
-Overfull \hbox (29.94801pt too wide) in paragraph at lines 462--1
+Overfull \hbox (29.94801pt too wide) in paragraph at lines 475--1
 [] \OT1/cmr/m/n/10.95 func-tion. Sub-se-quently, the []
  []
 
-[17]) <vtune_hotspots_initial.png, id=85, 1074.0125pt x 364.36125pt>
+[18]) <vtune_hotspots_initial.png, id=89, 1074.0125pt x 364.36125pt>
 File: vtune_hotspots_initial.png Graphic file (type png)
 
 <use vtune_hotspots_initial.png>
-Package pdftex.def Info: vtune_hotspots_initial.png used on input line 473.
+Package pdftex.def Info: vtune_hotspots_initial.png used on input line 486.
 (pdftex.def)             Requested size: 415.12572pt x 140.8327pt.
 
-Overfull \hbox (0.79999pt too wide) in paragraph at lines 473--474
+Overfull \hbox (0.79999pt too wide) in paragraph at lines 486--487
 [][] 
  []
 
@@ -1740,7 +1759,7 @@ E4B270DC0CF33EE3B3C54ED.pygtex)
 
 
 (./_minted-dissertation_manan_vaswani/CD89E96C15671AAE28071AE4BDE0F5DD4679612F5
-E4B270DC0CF33EE3B3C54ED.pygtex) [18 <./vtune_hotspots_initial.png>]
+E4B270DC0CF33EE3B3C54ED.pygtex) [19 <./vtune_hotspots_initial.png>]
 \openout6 = `dissertation_manan_vaswani.pyg'.
 
 
@@ -1765,7 +1784,7 @@ E4B270DC0CF33EE3B3C54ED.pygtex)
 
 
 (./_minted-dissertation_manan_vaswani/F2C10CAA22613B4EC903975D5E0FA7B14679612F5
-E4B270DC0CF33EE3B3C54ED.pygtex [19])
+E4B270DC0CF33EE3B3C54ED.pygtex [20])
 \openout4 = `dissertation_manan_vaswani.pyg'.
 
 
@@ -1805,12 +1824,12 @@ E4B270DC0CF33EE3B3C54ED.pygtex)
 
 
 (./_minted-dissertation_manan_vaswani/2F28123BE7D65FC3719156BD534322D74679612F5
-E4B270DC0CF33EE3B3C54ED.pygtex [20])
+E4B270DC0CF33EE3B3C54ED.pygtex [21])
 \openout4 = `dissertation_manan_vaswani.pyg'.
 
 
 (./_minted-dissertation_manan_vaswani/19ABB95F684871BAF6B057B74A0330AB4679612F5
-E4B270DC0CF33EE3B3C54ED.pygtex) [21]
+E4B270DC0CF33EE3B3C54ED.pygtex) [22]
 \openout6 = `dissertation_manan_vaswani.pyg'.
 
 
@@ -1845,7 +1864,7 @@ E4B270DC0CF33EE3B3C54ED.pygtex)
 
 
 (./_minted-dissertation_manan_vaswani/68FFD4BC5D282C9D1047CF02444CAD5D4679612F5
-E4B270DC0CF33EE3B3C54ED.pygtex) [22]
+E4B270DC0CF33EE3B3C54ED.pygtex) [23]
 \openout6 = `dissertation_manan_vaswani.pyg'.
 
 
@@ -1886,7 +1905,7 @@ E4B270DC0CF33EE3B3C54ED.pygtex) [22]
 
 (./_minted-dissertation_manan_vaswani/48CC55C85D3BD2F71D2CFAF3876AAE78A94FD2410
 815947246E6D971BF228B41.pygtex)
-Overfull \hbox (23.99998pt too wide) in paragraph at lines 593--606
+Overfull \hbox (23.99998pt too wide) in paragraph at lines 606--619
  [][] 
  []
 
@@ -1913,28 +1932,34 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 (./_minted-dissertation_manan_vaswani/AD4B4546CB4EB05C1420B6A4F5BA39B5A94FD2410
 815947246E6D971BF228B41.pygtex)
-Overfull \hbox (23.99998pt too wide) in paragraph at lines 611--620
+Overfull \hbox (23.99998pt too wide) in paragraph at lines 624--633
  [][] 
  []
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-(./dissertation_manan_vaswani.bbl [23] [24]
-Underfull \hbox (badness 6284) in paragraph at lines 94--97
+(./dissertation_manan_vaswani.bbl [24] [25] [26]
+Underfull \hbox (badness 6284) in paragraph at lines 122--125
 []\OT1/cmr/m/n/10.95 Intel Soft-ware.  In-tel vtune am-pli-fier 2018.  Soft-war
 e avail-able at
  []
 
-[25]) [26] (./dissertation_manan_vaswani.aux)
+) [27] (./dissertation_manan_vaswani.aux)
+
+LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
 runsystem(rm dissertation_manan_vaswani.pyg)...executed.
 
  ) 
 Here is how much of TeX's memory you used:
- 21076 strings out of 492995
- 419509 string characters out of 6132703
- 503439 words of memory out of 5000000
- 23886 multiletter control sequences out of 15000+600000
+ 21085 strings out of 492995
+ 419620 string characters out of 6132703
+ 504155 words of memory out of 5000000
+ 23895 multiletter control sequences out of 15000+600000
  17355 words of font info for 67 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  55i,13n,68p,1702b,513s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1962,10 +1987,10 @@ dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2017/texmf-d
 ist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/local/texlive/2017/texmf-di
 st/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2017/texm
 f-dist/fonts/type1/public/cm-super/sfrm1095.pfb>
-Output written on dissertation_manan_vaswani.pdf (27 pages, 384502 bytes).
+Output written on dissertation_manan_vaswani.pdf (28 pages, 390697 bytes).
 PDF statistics:
- 191 PDF objects out of 1000 (max. 8388607)
- 135 compressed objects within 2 object streams
+ 194 PDF objects out of 1000 (max. 8388607)
+ 137 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  18 words of extra memory for PDF output out of 10000 (max. 10000000)
 

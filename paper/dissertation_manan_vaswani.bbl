@@ -1,5 +1,33 @@
 \begin{thebibliography}{10}
 
+\bibitem{kaye2007}
+Phillip Kaye, Raymond Laflamme, and Michele Mosca.
+\newblock {\em An Introduction to Quantum Computing}.
+\newblock Oxford University Press, Inc., New York, NY, USA, 2007.
+
+\bibitem{shor1995}
+Peter~W. {Shor}.
+\newblock {Polynomial-Time Algorithms for Prime Factorization and Discrete
+  Logarithms on a Quantum Computer}.
+\newblock {\em arXiv e-prints}, pages quant--ph/9508027, Aug 1995.
+
+\bibitem{rsa1978}
+R.~L. Rivest, A.~Shamir, and L.~Adleman.
+\newblock A method for obtaining digital signatures and public-key
+  cryptosystems.
+\newblock {\em Commun. ACM}, 21(2):120--126, February 1978.
+
+\bibitem{papadimitriou2003}
+Christos~H. Papadimitriou.
+\newblock Computational complexity.
+\newblock In {\em Encyclopedia of Computer Science}, pages 260--265. John Wiley
+  and Sons Ltd., Chichester, UK, 2003.
+
+\bibitem{harrow2017}
+Aram~W. {Harrow} and Ashley {Montanaro}.
+\newblock Quantum computational supremacy.
+\newblock {\em Nature}, 549(7671):203--209, Sep 2017.
+
 \bibitem{marcus_minc66}
 Marvin Marcus and Henryk Minc.
 \newblock Permanents.

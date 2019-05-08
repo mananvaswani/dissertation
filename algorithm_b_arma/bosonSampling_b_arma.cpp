@@ -52,7 +52,7 @@ vector<int> bosonSampler(arma::cx_mat A, int n, int m, int &timeInPerms, bool pa
         arma::cx_mat temp;
 
         auto startPerms = chrono::steady_clock::now();
-        if (!parallelFlag) perms = cxPermMinors(B_k);  // TODO: Change transpose here
+        if (!parallelFlag) perms = cxPermMinors(B_k);
         else perms = cxPermMinorsThreads(B_k, numThreads);
         auto endPerms = chrono::steady_clock::now();
         timeInPerms += chrono::duration_cast<chrono::milliseconds>(endPerms - startPerms).count();
