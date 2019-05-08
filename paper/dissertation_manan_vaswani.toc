@@ -43,7 +43,8 @@
 \contentsline {paragraph}{GCC compiler: }{26}
 \contentsline {paragraph}{Intel C\texttt {++} compiler: }{26}
 \contentsline {subsubsection}{\numberline {6.6.2}Compiler options}{26}
-\contentsline {section}{\numberline {7}Results}{27}
-\contentsline {section}{\numberline {8}Further Works}{27}
-\contentsline {section}{\numberline {9}Conclusion}{27}
-\contentsline {section}{References}{27}
+\contentsline {section}{\numberline {7}Critical Evaluation}{26}
+\contentsline {subsection}{\numberline {7.1}Initial implementation}{27}
+\contentsline {section}{\numberline {8}Further Works}{28}
+\contentsline {section}{\numberline {9}Conclusion}{28}
+\contentsline {section}{References}{28}

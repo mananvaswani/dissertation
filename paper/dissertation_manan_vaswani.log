@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.11.13)  8 MAY 2019 16:03
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.11.13)  8 MAY 2019 18:54
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -1365,26 +1365,7 @@ File: galton_board.png Graphic file (type png)
 <use galton_board.png>
 Package pdftex.def Info: galton_board.png used on input line 110.
 (pdftex.def)             Requested size: 138.37523pt x 165.90242pt.
- [4]
-
-LaTeX Warning: Citation `roga2019' on page 5 undefined on input line 123.
-
-
-LaTeX Warning: Citation `lundow2019' on page 5 undefined on input line 123.
-
-
-LaTeX Warning: Citation `rahimi2016' on page 5 undefined on input line 123.
-
-
-LaTeX Warning: Citation `hastings1970' on page 5 undefined on input line 123.
-
-
-LaTeX Warning: Citation `neville2017' on page 5 undefined on input line 123.
-
-
-LaTeX Warning: Citation `wu2018' on page 5 undefined on input line 125.
-
-[5 <./galton_board.png>] [6]
+ [4] [5 <./galton_board.png>] [6]
 Overfull \hbox (37.16776pt too wide) in paragraph at lines 173--174
 []\OT1/cmr/m/n/10.95 Another for-mula that is as fast as Ry-sers was in-de-pen-
 dently de-rived by Balasubramanian[[]],
@@ -1951,27 +1932,33 @@ Overfull \hbox (23.99998pt too wide) in paragraph at lines 649--658
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-(./dissertation_manan_vaswani.bbl [26] [27] [28]
-Underfull \hbox (badness 6284) in paragraph at lines 177--180
+\openout6 = `dissertation_manan_vaswani.pyg'.
+
+
+(./_minted-dissertation_manan_vaswani/BFDD14487827B806DFC0B0E3C5E38A54085B29184
+225E76D63475C13C465AC61.pygtex) [26]
+<Graphs/org_log.png, id=120, 462.528pt x 346.896pt>
+File: Graphs/org_log.png Graphic file (type png)
+ <use Graphs/org_log.png>
+Package pdftex.def Info: Graphs/org_log.png used on input line 670.
+(pdftex.def)             Requested size: 273.75069pt x 205.32321pt.
+
+[27] (./dissertation_manan_vaswani.bbl [28 <./Graphs/org_log.png>] [29]
+[30]
+Underfull \hbox (badness 6284) in paragraph at lines 213--216
 []\OT1/cmr/m/n/10.95 Intel Soft-ware.  In-tel vtune am-pli-fier 2018.  Soft-war
 e avail-able at
  []
 
-[29]) [30] (./dissertation_manan_vaswani.aux)
-
-LaTeX Warning: There were undefined references.
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
+) [31] (./dissertation_manan_vaswani.aux)
 runsystem(rm dissertation_manan_vaswani.pyg)...executed.
 
  ) 
 Here is how much of TeX's memory you used:
- 21102 strings out of 492995
- 419871 string characters out of 6132703
- 501655 words of memory out of 5000000
- 23911 multiletter control sequences out of 15000+600000
+ 21118 strings out of 492995
+ 420472 string characters out of 6132703
+ 502793 words of memory out of 5000000
+ 23922 multiletter control sequences out of 15000+600000
  17355 words of font info for 67 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  55i,13n,68p,1702b,513s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -2000,10 +1987,10 @@ st/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2017/texmf-dis
 t/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/local/texlive/2017/texmf-dist
 /fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2017/texmf-
 dist/fonts/type1/public/cm-super/sfrm1095.pfb>
-Output written on dissertation_manan_vaswani.pdf (31 pages, 414487 bytes).
+Output written on dissertation_manan_vaswani.pdf (32 pages, 506252 bytes).
 PDF statistics:
- 210 PDF objects out of 1000 (max. 8388607)
- 147 compressed objects within 2 object streams
+ 215 PDF objects out of 1000 (max. 8388607)
+ 149 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
- 23 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 28 words of extra memory for PDF output out of 10000 (max. 10000000)
 

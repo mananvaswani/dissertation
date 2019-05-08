@@ -658,7 +658,24 @@ Both compilers offer useful optimisation options, which we test on our program a
 \caption{Compiler options used with the Intel C\texttt{++} compiler} \label{tab:intel_compiler_flags}
 \end{table}
 
-\section{Results}
+\section{Critical Evaluation}
+We tested out the above implementation at each stage on the Blue Crystal supercomputer and recorded the timings. The relevant graphs were generated using the \mintinline{python}{matplotlib} library from Python.
+\subsection{Initial implementation}
+We first tested out the C\texttt{++} code written by us without any optimisations made, compiled with both the Intel and gcc compilers. This has been plotted as a graph shown in figure \ref{fig:org}. For each value of $n$ from 2 to 30, 10 results were recorded, with their timing taken. The mean and standard deviation of the code runtimes for each of these values was calculated and is depicted in the graph. The error bars represent one standard deviation in the data. Notice that the y-axis of the graph uses a log-scale, which is why the lines appear to be roughly linear. We expected the time taken to grow exponentially, and this was the observed result. These results are as expected, with the Intel compiled code being significantly faster than the gcc compiled code. The average time for the gcc compiled code to complete the algorithm was roughly 1100 seconds, whereas for the intel compiled code, it was 100 seconds. The reason that the Intel compiled code is over 10 times faster is that it is highly optimised by the compiler even without specifying any additional optimisation options. 
+%gcc =1132s, intel = 100s
+Additionally, we can see that the time taken for computation of permanents is consistently only a bit less than the total time taken, except for smaller values of $n$, in which case the amount of time taken to compute permanents was 0. This is because for small sizes of matrices, calculating the permanents requires only a few simple mathematical calculations. The overheads of running the rest of the algorithm appears to dominate for these small values of $n$.
+\begin{figure}
+	\centering
+  \includegraphics[width=25em]{Graphs/org_log.png}
+  \caption{Original implementations}
+  \label{fig:org}
+\end{figure}
+
+\subsection{Testing the different compiler option/flags}
+\subsubsection{gcc}
+
+
+
 \section{Further Works}
 \section{Conclusion}
 

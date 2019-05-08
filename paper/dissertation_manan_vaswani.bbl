@@ -83,6 +83,47 @@ E.~R. Caianiello.
   in electrodynamics without use of feynman graphs.
 \newblock {\em Il Nuovo Cimento (1943-1954)}, 10(12):1634--1652, Dec 1953.
 
+\bibitem{roga2019}
+Wojciech {Roga} and Masahiro {Takeoka}.
+\newblock {Classical simulation of boson sampling with sparse output}.
+\newblock {\em arXiv e-prints}, page arXiv:1904.05494, Apr 2019.
+
+\bibitem{lundow2019}
+P.~H. {Lundow} and K.~{Markstr{\"o}m}.
+\newblock {Efficient computation of permanents, with applications to boson
+  sampling and random matrices}.
+\newblock {\em arXiv e-prints}, page arXiv:1904.06229, Apr 2019.
+
+\bibitem{rahimi2016}
+Saleh {Rahimi-Keshari}, Timothy~C. {Ralph}, and Carlton~M. {Caves}.
+\newblock {Sufficient Conditions for Efficient Classical Simulation of Quantum
+  Optics}.
+\newblock {\em Physical Review X}, 6(2):021039, Apr 2016.
+
+\bibitem{hastings1970}
+W.~Larry Hastings.
+\newblock Monte carlo sampling methods using markov chains and their
+  applications.
+\newblock 1970.
+
+\bibitem{neville2017}
+Alex Neville, Chris Sparrow, Rapha{\"e}l Clifford, Eric Johnston, Patrick~M.
+  Birchall, Ashley Montanaro, and Anthony Laing.
+\newblock Classical boson sampling algorithms with superior performance to
+  near-term experiments.
+\newblock {\em Nature Physics}, 13:1153 EP --, 10 2017.
+
+\bibitem{wu2018}
+Junjie Wu, Yong Liu, Baida Zhang, Xianmin Jin, Yang Wang, Huiquan Wang, and
+  Xuejun Yang.
+\newblock {A benchmark test of boson sampling on Tianhe-2 supercomputer}.
+\newblock {\em National Science Review}, 5(5):715--720, 07 2018.
+
+\bibitem{clifford17}
+Peter Clifford and Rapha{\"{e}}l Clifford.
+\newblock The classical complexity of boson sampling.
+\newblock {\em CoRR}, abs/1706.01260, 2017.
+
 \bibitem{marcus_minc66}
 Marvin Marcus and Henryk Minc.
 \newblock Permanents.
@@ -123,11 +164,6 @@ Eric Bax and Joel Franklin.
 David~G. Glynn.
 \newblock The permanent of a square matrix.
 \newblock {\em European Journal of Combinatorics}, 31(7):1887 -- 1891, 2010.
-
-\bibitem{clifford17}
-Peter Clifford and Rapha{\"{e}}l Clifford.
-\newblock The classical complexity of boson sampling.
-\newblock {\em CoRR}, abs/1706.01260, 2017.
 
 \bibitem{feller1968}
 William Feller.
