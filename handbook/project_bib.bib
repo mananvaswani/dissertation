@@ -1,12 +1,30 @@
 %% This BibTeX bibliography file was created using BibDesk.
 %% http://bibdesk.sourceforge.net/
 
-%% Created for Manan Vaswani at 2019-05-08 15:51:27 +0100
+%% Created for Manan Vaswani at 2019-05-09 03:16:07 +0100
 
 
 %% Saved with string encoding Unicode (UTF-8)
 
 
+
+@misc{god-bolt,
+	Author = {Matt Godbolt},
+	Date-Added = {2019-05-09 03:15:56 +0100},
+	Date-Modified = {2019-05-09 03:16:07 +0100},
+	Howpublished = {https://godbolt.org/},
+	Title = {Godbolt Compiler Explorer},
+	Year = {2012},
+	Bdsk-Url-1 = {https://godbolt.org/}}
+
+@misc{blue_crystal,
+	Author = {University of Bristol ACRC},
+	Date-Added = {2019-05-09 02:08:48 +0100},
+	Date-Modified = {2019-05-09 02:11:58 +0100},
+	Howpublished = {https://www.bristol.ac.uk/acrc/high-performance-computing/bluecrystal-tech-specs/},
+	Title = {Blue Crystal Phase 4},
+	Url = {https://www.bristol.ac.uk/acrc/high-performance-computing/bluecrystal-tech-specs/},
+	Bdsk-Url-1 = {https://www.bristol.ac.uk/acrc/high-performance-computing/bluecrystal-tech-specs/}}
 
 @article{neville2017,
 	Author = {Neville, Alex and Sparrow, Chris and Clifford, Rapha{\"e}l and Johnston, Eric and Birchall, Patrick M. and Montanaro, Ashley and Laing, Anthony},
@@ -17,8 +35,8 @@
 	Journal = {Nature Physics},
 	L3 = {10.1038/nphys4270; https://www.nature.com/articles/nphys4270#supplementary-information},
 	Month = {10},
-	Pages = {1153 EP  -},
-	Publisher = {Nature Publishing Group SN  -},
+	Pages = {1153 EP -},
+	Publisher = {Nature Publishing Group SN -},
 	Title = {Classical boson sampling algorithms with superior performance to near-term experiments},
 	Ty = {JOUR},
 	Url = {https://doi.org/10.1038/nphys4270},
@@ -77,13 +95,6 @@
 	Title = {muldc3.c - Implement \_\_muldc3},
 	Urldate = {http://www.mit.edu/afs.new/sipb.mit.edu/project/freebsd/head/contrib/compiler-rt/lib/muldc3.c}}
 
-@url{god-bolt,
-	Date-Added = {2019-05-06 01:21:02 +0100},
-	Date-Modified = {2019-05-06 01:33:37 +0100},
-	Title = {God-Bolt},
-	Url = {https://godbolt.org/},
-	Bdsk-Url-1 = {https://godbolt.org/}}
-
 @misc{vtune2018,
 	Author = {Intel Software},
 	Date-Added = {2019-05-06 00:07:30 +0100},
@@ -107,7 +118,8 @@
 	Title = {RCpp},
 	Url = {https://CRAN.R-project.org/package=Rcpp},
 	Year = {2017},
-	Bdsk-Url-1 = {%22https://CRAN.R-project.org/package=BosonSampling%22}}
+	Bdsk-Url-1 = {%22https://CRAN.R-project.org/package=BosonSampling%22},
+	Bdsk-Url-2 = {https://CRAN.R-project.org/package=Rcpp}}
 
 @book{feller1968,
 	Author = {William Feller},
@@ -544,17 +556,45 @@
 	Year = {1970}}
 
 @article{wu2018,
-	    author = {Wu, Junjie and Liu, Yong and Zhang, Baida and Jin, Xianmin and Wang, Yang and Wang, Huiquan and Yang, Xuejun},
-	    title = "{A benchmark test of boson sampling on Tianhe-2 supercomputer}",
-	    journal = {National Science Review},
-	    volume = {5},
-	    number = {5},
-	    pages = {715-720},
-	    year = {2018},
-	    month = {07},
-	    abstract = "{Boson sampling, thought to be intractable classically, can be solved by a quantum machine composed of merely generation, linear evolution and detection of single photons. Such an analog quantum computer for this specific problem provides a shortcut to boost the absolute computing power of quantum computers to beat classical ones. However, the capacity bound of classical computers for simulating boson sampling has not yet been identified. Here we simulate boson sampling on the Tianhe-2 supercomputer, which occupied the first place in the world ranking six times from 2013 to 2016. We computed the permanent of the largest matrix using up to 312 000 CPU cores of Tianhe-2, and inferred from the current most efficient permanent-computing algorithms that an upper bound on the performance of Tianhe-2 is one 50-photon sample per ∼100 min. In addition, we found a precision issue with one of two permanent-computing algorithms.}",
-	    issn = {2095-5138},
-	    doi = {10.1093/nsr/nwy079},
-	    url = {https://doi.org/10.1093/nsr/nwy079},
-	    eprint = {http://oup.prod.sis.lan/nsr/article-pdf/5/5/715/26664080/nwy079.pdf},
+	Abstract = {{Boson sampling, thought to be intractable classically, can be solved by a quantum machine composed of merely generation, linear evolution and detection of single photons. Such an analog quantum computer for this specific problem provides a shortcut to boost the absolute computing power of quantum computers to beat classical ones. However, the capacity bound of classical computers for simulating boson sampling has not yet been identified. Here we simulate boson sampling on the Tianhe-2 supercomputer, which occupied the first place in the world ranking six times from 2013 to 2016. We computed the permanent of the largest matrix using up to 312 000 CPU cores of Tianhe-2, and inferred from the current most efficient permanent-computing algorithms that an upper bound on the performance of Tianhe-2 is one 50-photon sample per ∼100 min. In addition, we found a precision issue with one of two permanent-computing algorithms.}},
+	Author = {Wu, Junjie and Liu, Yong and Zhang, Baida and Jin, Xianmin and Wang, Yang and Wang, Huiquan and Yang, Xuejun},
+	Doi = {10.1093/nsr/nwy079},
+	Eprint = {http://oup.prod.sis.lan/nsr/article-pdf/5/5/715/26664080/nwy079.pdf},
+	Issn = {2095-5138},
+	Journal = {National Science Review},
+	Month = {07},
+	Number = {5},
+	Pages = {715-720},
+	Title = {{A benchmark test of boson sampling on Tianhe-2 supercomputer}},
+	Url = {https://doi.org/10.1093/nsr/nwy079},
+	Volume = {5},
+	Year = {2018},
+	Bdsk-Url-1 = {https://doi.org/10.1093/nsr/nwy079}}
+
+@article{dagum1998openmp,
+	Author = {Dagum, Leonardo and Menon, Ramesh},
+	Date-Added = {2014-07-24 11:13:01 +0000},
+	Date-Modified = {2014-07-24 11:13:01 +0000},
+	Journal = {Computational Science \& Engineering, IEEE},
+	Number = {1},
+	Pages = {46--55},
+	Publisher = {IEEE},
+	Title = {OpenMP: an industry standard API for shared-memory programming},
+	Volume = {5},
+	Year = {1998}}
+
+@ARTICLE{preskill2012,
+	       author = {{Preskill}, John},
+	        title = "{Quantum computing and the entanglement frontier}",
+	      journal = {arXiv e-prints},
+	     keywords = {Quantum Physics, Condensed Matter - Strongly Correlated Electrons},
+	         year = "2012",
+	        month = "Mar",
+	          eid = {arXiv:1203.5813},
+	        pages = {arXiv:1203.5813},
+	archivePrefix = {arXiv},
+	       eprint = {1203.5813},
+	 primaryClass = {quant-ph},
+	       adsurl = {https://ui.adsabs.harvard.edu/abs/2012arXiv1203.5813P},
+	      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
 	}

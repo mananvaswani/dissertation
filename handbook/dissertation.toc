@@ -1,3 +1,11 @@
+\contentsline {section}{\numberline {0.1}Blue Crystal 4}{iv}{section.0.1}% 
+\contentsline {section}{\numberline {0.2}C\texttt {++} libraries/APIs}{iv}{section.0.2}% 
+\contentsline {subsection}{\numberline {0.2.1}OpenMP}{iv}{subsection.0.2.1}% 
+\contentsline {subsection}{\numberline {0.2.2}Armadillo}{iv}{subsection.0.2.2}% 
+\contentsline {section}{\numberline {0.3}Intel VTune}{iv}{section.0.3}% 
+\contentsline {section}{\numberline {0.4}Miscellaneous Tools}{iv}{section.0.4}% 
+\contentsline {subsection}{\numberline {0.4.1}Python, Matplotlib}{iv}{subsection.0.4.1}% 
+\contentsline {subsection}{\numberline {0.4.2}Godbolt Compiler Explorer}{v}{subsection.0.4.2}% 
 \contentsline {chapter}{\numberline {1}Contextual Background}{1}{chapter.1}% 
 \contentsline {chapter}{\numberline {2}Technical Background}{4}{chapter.2}% 
 \contentsline {chapter}{\numberline {3}Project Execution}{5}{chapter.3}% 
@@ -7,4 +15,4 @@
 \contentsline {paragraph}{Example paragraph.}{8}{section*.7}% 
 \contentsline {chapter}{\numberline {4}Critical Evaluation}{9}{chapter.4}% 
 \contentsline {chapter}{\numberline {5}Conclusion}{10}{chapter.5}% 
-\contentsline {chapter}{\numberline {A}An Example Appendix}{11}{appendix.A}% 
+\contentsline {chapter}{\numberline {A}An Example Appendix}{13}{appendix.A}% 

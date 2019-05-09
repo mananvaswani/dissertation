@@ -1,0 +1,152 @@
+\begin{thebibliography}{10}
+
+\bibitem{aaronson2011}
+Scott Aaronson and Alex Arkhipov.
+\newblock The computational complexity of linear optics.
+\newblock In {\em Proceedings of the Forty-third Annual ACM Symposium on Theory
+  of Computing}, STOC '11, pages 333--342, New York, NY, USA, 2011. ACM.
+
+\bibitem{galton_board}
+Margherita Barile and Eric~W Weisstein.
+\newblock Galton board.
+\newblock From MathWorld--A Wolfram Web Resource.
+  http://mathworld.wolfram.com/GaltonBoard.html.
+
+\bibitem{boixo2016}
+Sergio {Boixo}, Sergei~V. {Isakov}, Vadim~N. {Smelyanskiy}, Ryan {Babbush}, Nan
+  {Ding}, Zhang {Jiang}, Michael~J. {Bremner}, John~M. {Martinis}, and Hartmut
+  {Neven}.
+\newblock {Characterizing Quantum Supremacy in Near-Term Devices}.
+\newblock {\em arXiv e-prints}, page arXiv:1608.00263, Jul 2016.
+
+\bibitem{Caianiello1953}
+E.~R. Caianiello.
+\newblock On quantum field theory --- i: explicit solution of dyson's equation
+  in electrodynamics without use of feynman graphs.
+\newblock {\em Il Nuovo Cimento (1943-1954)}, 10(12):1634--1652, Dec 1953.
+
+\bibitem{clifford17}
+Peter Clifford and Rapha{\"{e}}l Clifford.
+\newblock The classical complexity of boson sampling.
+\newblock {\em CoRR}, abs/1706.01260, 2017.
+
+\bibitem{dagum1998openmp}
+Leonardo Dagum and Ramesh Menon.
+\newblock Openmp: an industry standard api for shared-memory programming.
+\newblock {\em Computational Science \& Engineering, IEEE}, 5(1):46--55, 1998.
+
+\bibitem{god-bolt}
+Matt Godbolt.
+\newblock Godbolt compiler explorer.
+\newblock https://godbolt.org/, 2012.
+
+\bibitem{harrow2017}
+Aram~W. {Harrow} and Ashley {Montanaro}.
+\newblock Quantum computational supremacy.
+\newblock {\em Nature}, 549(7671):203--209, Sep 2017.
+
+\bibitem{hastings1970}
+W.~Larry Hastings.
+\newblock Monte carlo sampling methods using markov chains and their
+  applications.
+\newblock 1970.
+
+\bibitem{kaye2007}
+Phillip Kaye, Raymond Laflamme, and Michele Mosca.
+\newblock {\em An Introduction to Quantum Computing}.
+\newblock Oxford University Press, Inc., New York, NY, USA, 2007.
+
+\bibitem{knill2001}
+E.~Knill, R.~Laflamme, and G.~J. Milburn.
+\newblock A scheme for efficient quantum computation with linear optics.
+\newblock {\em Nature}, 409(6816):46--52, 2001.
+
+\bibitem{lundow2019}
+P.~H. {Lundow} and K.~{Markstr{\"o}m}.
+\newblock {Efficient computation of permanents, with applications to boson
+  sampling and random matrices}.
+\newblock {\em arXiv e-prints}, page arXiv:1904.06229, Apr 2019.
+
+\bibitem{monz2016}
+Thomas Monz, Daniel Nigg, Esteban~A. Martinez, Matthias~F. Brandl, Philipp
+  Schindler, Richard Rines, Shannon~X. Wang, Isaac~L. Chuang, and Rainer Blatt.
+\newblock Realization of a scalable shor algorithm.
+\newblock {\em Science}, 351(6277):1068--1070, 2016.
+
+\bibitem{neville2017}
+Alex Neville, Chris Sparrow, Rapha{\"e}l Clifford, Eric Johnston, Patrick~M.
+  Birchall, Ashley Montanaro, and Anthony Laing.
+\newblock Classical boson sampling algorithms with superior performance to
+  near-term experiments.
+\newblock {\em Nature Physics}, 13:1153 EP --, 10 2017.
+
+\bibitem{blue_crystal}
+University of~Bristol~ACRC.
+\newblock Blue crystal phase 4.
+\newblock
+  https://www.bristol.ac.uk/acrc/high-performance-computing/bluecrystal-tech-specs/.
+
+\bibitem{papadimitriou2003}
+Christos~H. Papadimitriou.
+\newblock Computational complexity.
+\newblock In {\em Encyclopedia of Computer Science}, pages 260--265. John Wiley
+  and Sons Ltd., Chichester, UK, 2003.
+
+\bibitem{pednault2017}
+Edwin {Pednault}, John~A. {Gunnels}, Giacomo {Nannicini}, Lior {Horesh}, Thomas
+  {Magerlein}, Edgar {Solomonik}, Erik~W. {Draeger}, Eric~T. {Holland}, and
+  Robert {Wisnieff}.
+\newblock {Breaking the 49-Qubit Barrier in the Simulation of Quantum
+  Circuits}.
+\newblock {\em arXiv e-prints}, page arXiv:1710.05867, Oct 2017.
+
+\bibitem{rahimi2016}
+Saleh {Rahimi-Keshari}, Timothy~C. {Ralph}, and Carlton~M. {Caves}.
+\newblock {Sufficient Conditions for Efficient Classical Simulation of Quantum
+  Optics}.
+\newblock {\em Physical Review X}, 6(2):021039, Apr 2016.
+
+\bibitem{rsa1978}
+R.~L. Rivest, A.~Shamir, and L.~Adleman.
+\newblock A method for obtaining digital signatures and public-key
+  cryptosystems.
+\newblock {\em Commun. ACM}, 21(2):120--126, February 1978.
+
+\bibitem{roga2019}
+Wojciech {Roga} and Masahiro {Takeoka}.
+\newblock {Classical simulation of boson sampling with sparse output}.
+\newblock {\em arXiv e-prints}, page arXiv:1904.05494, Apr 2019.
+
+\bibitem{armadillo}
+Conrad Sanderson.
+\newblock Armadillo c++ linear algebra library, June 2016.
+
+\bibitem{shor1995}
+Peter~W. {Shor}.
+\newblock {Polynomial-Time Algorithms for Prime Factorization and Discrete
+  Logarithms on a Quantum Computer}.
+\newblock {\em arXiv e-prints}, pages quant--ph/9508027, Aug 1995.
+
+\bibitem{vtune2018}
+Intel Software.
+\newblock Intel vtune amplifier 2018.
+\newblock Software available at https://software.intel.com/en-us/vtune, 2018.
+
+\bibitem{toda1991}
+Seinosuke Toda.
+\newblock Pp is as hard as the polynomial-time hierarchy.
+\newblock {\em SIAM J. Comput.}, 20:865--877, 10 1991.
+
+\bibitem{vartiainen2004}
+Juha~J. {Vartiainen}, Antti~O. {Niskanen}, Mikio {Nakahara}, and Martti~M.
+  {Salomaa}.
+\newblock {Implementing Shor's algorithm on Josephson charge qubits}.
+\newblock {\em Phys. Rev. A}, 70(1):012319, Jul 2004.
+
+\bibitem{wu2018}
+Junjie Wu, Yong Liu, Baida Zhang, Xianmin Jin, Yang Wang, Huiquan Wang, and
+  Xuejun Yang.
+\newblock {A benchmark test of boson sampling on Tianhe-2 supercomputer}.
+\newblock {\em National Science Review}, 5(5):715--720, 07 2018.
+
+\end{thebibliography}
