@@ -1,7 +1,7 @@
 #include "header.h"
 
 vector<int> bosonSampler(arma::cx_mat A, int n, int m, int &timeInPerms, bool parallelFlag, int numThreads) {
-    // Take first n columns of A
+    // Transpose and take first n rows of A
     A.st();
     A.set_size(n, m);
 
@@ -13,7 +13,7 @@ vector<int> bosonSampler(arma::cx_mat A, int n, int m, int &timeInPerms, bool pa
     vector<int> r;
 
     // Line 2
-    // Permute columns of A
+    // Permute rows of A
     // Using Knuth shuffle algorithm https://en.wikipedia.org/wiki/Random_permutation#Knuth_shuffles
     // Random uniform integer taken from https://stackoverflow.com/questions/5008804/generating-random-integer-from-a-range/19728404
     for (int i = 0; i <= n-2; i++) {

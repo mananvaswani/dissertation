@@ -18,21 +18,27 @@
 \providecommand\HyField@AuxAddToCoFields[2]{}
 \bibstyle{plain}
 \providecommand \oddpage@label [2]{}
+\citation{clifford17}
+\citation{aaronson2011}
+\citation{wu2018}
 \citation{blue_crystal}
 \citation{dagum1998openmp}
 \citation{armadillo}
 \citation{vtune2018}
-\citation{god-bolt}
 \@writefile{toc}{\contentsline {section}{\numberline {0.1}Blue Crystal 4}{iv}{section.0.1}\protected@file@percent }
-\newlabel{bc4}{{0.1}{iv}{Blue Crystal 4}{section.0.1}{}}
+\newlabel{sec:bc4}{{0.1}{iv}{Blue Crystal 4}{section.0.1}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {0.2}C\texttt  {++} libraries/APIs}{iv}{section.0.2}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {0.2.1}OpenMP}{iv}{subsection.0.2.1}\protected@file@percent }
-\newlabel{openMP}{{0.2.1}{iv}{OpenMP}{subsection.0.2.1}{}}
+\newlabel{sec:openMP}{{0.2.1}{iv}{OpenMP}{subsection.0.2.1}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {0.2.2}Armadillo}{iv}{subsection.0.2.2}\protected@file@percent }
+\newlabel{sec:armadillo}{{0.2.2}{iv}{Armadillo}{subsection.0.2.2}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {0.3}Intel VTune}{iv}{section.0.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {0.4}Miscellaneous Tools}{iv}{section.0.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {0.4.1}Python, Matplotlib}{iv}{subsection.0.4.1}\protected@file@percent }
+\newlabel{sec:vtune}{{0.3}{iv}{Intel VTune}{section.0.3}{}}
+\citation{god-bolt}
+\@writefile{toc}{\contentsline {section}{\numberline {0.4}Miscellaneous Tools}{v}{section.0.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {0.4.1}Python, Matplotlib}{v}{subsection.0.4.1}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {0.4.2}Godbolt Compiler Explorer}{v}{subsection.0.4.2}\protected@file@percent }
+\newlabel{sec:godbolt}{{0.4.2}{v}{Godbolt Compiler Explorer}{subsection.0.4.2}{}}
 \citation{kaye2007}
 \citation{shor1995}
 \citation{rsa1978}
@@ -46,15 +52,14 @@
 \@writefile{toc}{\contentsline {chapter}{\numberline {1}Contextual Background}{1}{chapter.1}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\@writefile{loa}{\addvspace {10\p@ }}
 \newlabel{chap:context}{{1}{1}{Contextual Background}{chapter.1}{}}
 \citation{knill2001}
 \citation{aaronson2011}
 \citation{galton_board}
 \citation{toda1991}
-\citation{Caianiello1953}
 \@writefile{lof}{\contentsline {figure}{\numberline {1.1}{\ignorespaces A Galton board, used to demonstrate sampling from a binomial distribution \cite  {galton_board}}}{2}{figure.1.1}\protected@file@percent }
 \newlabel{fig:galton_board}{{1.1}{2}{A Galton board, used to demonstrate sampling from a binomial distribution \cite {galton_board}}{figure.1.1}{}}
+\citation{Caianiello1953}
 \citation{roga2019}
 \citation{lundow2019}
 \citation{rahimi2016}
@@ -63,67 +68,321 @@
 \citation{wu2018}
 \citation{clifford17}
 \citation{clifford17}
-\@writefile{toc}{\contentsline {chapter}{\numberline {2}Technical Background}{4}{chapter.2}\protected@file@percent }
+\citation{Nijenhuis1978}
+\citation{marcus_minc66}
+\@writefile{toc}{\contentsline {chapter}{\numberline {2}The Boson Sampling Algorithm}{4}{chapter.2}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\@writefile{loa}{\addvspace {10\p@ }}
-\newlabel{chap:technical}{{2}{4}{Technical Background}{chapter.2}{}}
-\@writefile{toc}{\contentsline {chapter}{\numberline {3}Project Execution}{5}{chapter.3}\protected@file@percent }
+\newlabel{chap:bosonSampling}{{2}{4}{The Boson Sampling Algorithm}{chapter.2}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {2.1}Mathematical Preliminaries}{4}{section.2.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.1.1}Binary Gray Code}{4}{subsection.2.1.1}\protected@file@percent }
+\newlabel{sec:gray_code}{{2.1.1}{4}{Binary Gray Code}{subsection.2.1.1}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {2.1}{\ignorespaces Elements of Gray code from 0 to 15}}{4}{table.2.1}\protected@file@percent }
+\newlabel{tab:gray_code_prelim}{{2.1}{4}{Elements of Gray code from 0 to 15}{table.2.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.1.2}Permanent of a matrix}{4}{subsection.2.1.2}\protected@file@percent }
+\newlabel{sec:permanent}{{2.1.2}{4}{Permanent of a matrix}{subsection.2.1.2}{}}
+\citation{ryser_1963}
+\citation{valiant1979}
+\citation{ryser_1963}
+\citation{Nijenhuis1978}
+\citation{balasubramanian1980}
+\citation{bax1998}
+\citation{bax1996}
+\citation{glynn2010}
+\citation{clifford17}
+\citation{aaronson2011}
+\@writefile{toc}{\contentsline {subsubsection}{Computing the permanent}{5}{section*.6}\protected@file@percent }
+\newlabel{prelim_permanent_calc}{{2.1.2}{5}{Computing the permanent}{section*.6}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.1.3}Specifying the problem}{5}{subsection.2.1.3}\protected@file@percent }
+\citation{aaronson2011}
+\citation{feller1968}
+\citation{aaronson2011}
+\citation{clifford17}
+\newlabel{boson_sampling_formula1}{{2.5}{6}{Specifying the problem}{equation.2.1.5}{}}
+\@writefile{toc}{\contentsline {subsubsection}{Calculating the size of the sample space}{6}{section*.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {2.2}The naive algorithm}{6}{section.2.2}\protected@file@percent }
+\@writefile{loa}{\contentsline {algorithm}{\numberline {1}{\ignorespaces Boson Sampler (Naive Algorithm): Single sample $\mathbf  {z}$ from $q(\mathbf  {z})$ in $\mathcal  {O}(\binom  {m+n-1}{n} n 2^n)$ time}}{6}{algorithm.1}\protected@file@percent }
+\newlabel{alg:naive}{{0}{6}{The naive algorithm}{algorithm.1}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {2.3}Algorithm A}{6}{section.2.3}\protected@file@percent }
+\newlabel{eqn:algADistribution}{{2.6}{6}{Algorithm A}{equation.2.3.6}{}}
+\citation{walker1974}
+\citation{clifford17}
+\newlabel{eqn:bosonSamplingConditional}{{2.7}{7}{Algorithm A}{equation.2.3.7}{}}
+\newlabel{eq:lemma1}{{2.8}{7}{Algorithm A}{equation.2.3.8}{}}
+\@writefile{loa}{\contentsline {algorithm}{\numberline {2}{\ignorespaces Boson Sampler (Algorithm A): Single sample $\mathbf  {z}$ from $q(\mathbf  {z})$ in $\mathcal  {O}(mn3^n)$ time}}{7}{algorithm.2}\protected@file@percent }
+\citation{marcus_minc66}
+\@writefile{toc}{\contentsline {section}{\numberline {2.4}Algorithm B}{8}{section.2.4}\protected@file@percent }
+\newlabel{sec:algB}{{2.4}{8}{Algorithm B}{section.2.4}{}}
+\citation{clifford17}
+\citation{knuth1969}
+\newlabel{eqn:algBChainRule}{{2.14}{9}{Algorithm B}{equation.2.4.14}{}}
+\@writefile{loa}{\contentsline {algorithm}{\numberline {3}{\ignorespaces Boson Sampler (Algorithm B): Single sample $\mathbf  {z}$ from $q(\mathbf  {z})$ in $\mathcal  {O}(n2^n + \text  {poly}(m, n))$ time}}{9}{algorithm.3}\protected@file@percent }
+\citation{clifford_r2017}
+\citation{cran}
+\citation{clifford17}
+\citation{rcpp}
+\citation{glynn2010}
+\citation{Nijenhuis1978}
+\@writefile{toc}{\contentsline {chapter}{\numberline {3}Algorithm Implementation}{11}{chapter.3}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\@writefile{loa}{\addvspace {10\p@ }}
-\newlabel{chap:execution}{{3}{5}{Project Execution}{chapter.3}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {3.1}Example Section}{5}{section.3.1}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {3.1}{\ignorespaces This is an example figure.}}{6}{figure.3.1}\protected@file@percent }
-\newlabel{fig}{{3.1}{6}{This is an example figure}{figure.3.1}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {3.1}{\ignorespaces This is an example table.}}{6}{table.3.1}\protected@file@percent }
-\newlabel{tab}{{3.1}{6}{This is an example table}{table.3.1}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.1.1}Example Sub-section}{6}{subsection.3.1.1}\protected@file@percent }
-\@writefile{loa}{\contentsline {algocf}{\numberline {3.1}{\ignorespaces This is an example algorithm.}}{7}{algocf.3.1}\protected@file@percent }
-\newlabel{alg}{{3.1}{7}{Example Sub-section}{algocf.3.1}{}}
-\newlabel{lst}{{3.1}{7}{This is an example listing}{lstlisting.3.1}{}}
-\@writefile{lol}{\contentsline {lstlisting}{\numberline {3.1}This is an example listing.}{7}{lstlisting.3.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{Example Sub-sub-section}{7}{section*.6}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Example paragraph.}{8}{section*.7}\protected@file@percent }
-\@writefile{toc}{\contentsline {chapter}{\numberline {4}Critical Evaluation}{9}{chapter.4}\protected@file@percent }
+\newlabel{chap:execution}{{3}{11}{Algorithm Implementation}{chapter.3}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {3.1}Original R Implementation}{11}{section.3.1}\protected@file@percent }
+\newlabel{sec:r_code}{{3.1}{11}{Original R Implementation}{section.3.1}{}}
+\citation{ozols2009}
+\@writefile{toc}{\contentsline {section}{\numberline {3.2}Implementation in C\texttt  {++}}{12}{section.3.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2.1}Generating a random unitary matrix}{13}{subsection.3.2.1}\protected@file@percent }
+\@writefile{loa}{\contentsline {algorithm}{\numberline {4}{\ignorespaces Random Unitary: Generate an $m \times m$ complex-valued random unitary matrix}}{13}{algorithm.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2.2}Computing the Permanent Minors}{13}{subsection.3.2.2}\protected@file@percent }
+\newlabel{sec:permMinors}{{3.2.2}{13}{Computing the Permanent Minors}{subsection.3.2.2}{}}
+\newlabel{eq:permMinors}{{3.1}{13}{Computing the Permanent Minors}{equation.3.2.1}{}}
+\@writefile{toc}{\contentsline {paragraph}{a) Iterating $\mathbf  {\delta }$ over Gray code:}{13}{section*.9}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{b) Computing $\mathbf  {v}(\mathbf  {\delta }) = \{v_i (\mathbf  {\delta }), i \in [m]\}$ efficiently for each $\mathbf  {\delta }$:}{14}{section*.10}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{c) Computing the partial products $\DOTSB \prod@ \slimits@ _{i \in [m] \setminus l} v_i (\delta ), \hskip 1em\relax l \in [m]$:}{14}{section*.11}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{d) Computing the value $\left ( \DOTSB \prod@ \slimits@ _{s=1}^{m-1} \delta _s \right )$:}{15}{section*.12}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{e) Multiplying by $\frac  {1}{2^{m-2}}$ term:}{15}{section*.13}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2.3}Simulating exact Boson Sampling using Algorithm B}{15}{subsection.3.2.3}\protected@file@percent }
+\citation{matsumoto1998}
+\citation{knuth1969}
+\@writefile{toc}{\contentsline {paragraph}{Preprocessing steps}{16}{section*.14}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Line 2}{16}{section*.15}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Line 3 and 4}{16}{section*.16}\protected@file@percent }
+\citation{vtune2018}
+\citation{god-bolt}
+\@writefile{toc}{\contentsline {paragraph}{Lines 6 to 11}{17}{section*.17}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Line 12}{17}{section*.18}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {3.3}Running the code}{17}{section.3.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {3.4}Profiling the code}{17}{section.3.4}\protected@file@percent }
+\citation{muldc3}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.1}{\ignorespaces A summary of `hotspots' in the code identified by the Intel Vtune Profiler}}{18}{figure.3.1}\protected@file@percent }
+\newlabel{fig:vtune_hotspots_initial}{{3.1}{18}{A summary of `hotspots' in the code identified by the Intel Vtune Profiler}{figure.3.1}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {3.5}Parallelising the code}{18}{section.3.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.5.1}Parallelisation technique}{18}{subsection.3.5.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{a) Getting the value of the active index $j$ in the $k^{\text  {th}}$ iteration:}{19}{section*.19}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{b) Getting the value of $k^{\text  {th}}$ element of the Gray code:}{19}{section*.20}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {3.1}{\ignorespaces Elements of Gray code and active indices for $n = 4$}}{20}{table.3.1}\protected@file@percent }
+\newlabel{tab:graycode}{{3.1}{20}{Elements of Gray code and active indices for $n = 4$}{table.3.1}{}}
+\@writefile{toc}{\contentsline {paragraph}{c) Getting the value of \mintinline {c++}{s}:}{20}{section*.21}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{d) Computing the $\mathbf  {v}$ array for iteration $k$:}{20}{section*.22}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.5.2}Using OpenMP to modify the code for use with multiple threads}{20}{subsection.3.5.2}\protected@file@percent }
+\citation{gcc_compiler}
+\@writefile{toc}{\contentsline {section}{\numberline {3.6}Other Optimisations}{21}{section.3.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.6.1}Compiler choice}{21}{subsection.3.6.1}\protected@file@percent }
+\citation{intel_compiler}
+\citation{gcc_flags}
+\@writefile{toc}{\contentsline {paragraph}{GCC g\texttt  {++} compiler: }{22}{section*.23}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Intel C\texttt  {++} compiler: }{22}{section*.24}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.6.2}Compiler options}{22}{subsection.3.6.2}\protected@file@percent }
+\newlabel{sec:flags}{{3.6.2}{22}{Compiler options}{subsection.3.6.2}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {3.2}{\ignorespaces Compiler options used with the g\texttt  {++} compiler}}{22}{table.3.2}\protected@file@percent }
+\newlabel{tab:gcc_compiler_flags}{{3.2}{22}{Compiler options used with the g\texttt {++} compiler}{table.3.2}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {3.3}{\ignorespaces Compiler options used with the Intel C\texttt  {++} compiler}}{22}{table.3.3}\protected@file@percent }
+\newlabel{tab:intel_compiler_flags}{{3.3}{22}{Compiler options used with the Intel C\texttt {++} compiler}{table.3.3}{}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {4}Critical Evaluation}{24}{chapter.4}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\@writefile{loa}{\addvspace {10\p@ }}
-\newlabel{chap:evaluation}{{4}{9}{Critical Evaluation}{chapter.4}{}}
-\@writefile{toc}{\contentsline {chapter}{\numberline {5}Conclusion}{10}{chapter.5}\protected@file@percent }
+\newlabel{chap:evaluation}{{4}{24}{Critical Evaluation}{chapter.4}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.1}Initial implementation}{24}{section.4.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {4.2}Testing the different compiler options/flags}{24}{section.4.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {4.1}{\ignorespaces Original implementations}}{25}{figure.4.1}\protected@file@percent }
+\newlabel{fig:org}{{4.1}{25}{Original implementations}{figure.4.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.1}g\texttt  {++}}{25}{subsection.4.2.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {4.2}{\ignorespaces Comparing different g\texttt  {++} compiler options}}{26}{figure.4.2}\protected@file@percent }
+\newlabel{fig:gcc_flags}{{4.2}{26}{Comparing different g\texttt {++} compiler options}{figure.4.2}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.3}{\ignorespaces A summary of hotspots found in the code identified by the Intel Vtune Profiler after enabling the -Ofast flag}}{26}{figure.4.3}\protected@file@percent }
+\newlabel{fig:vtune_Ofast}{{4.3}{26}{A summary of hotspots found in the code identified by the Intel Vtune Profiler after enabling the -Ofast flag}{figure.4.3}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.4}{\ignorespaces Comparing different Intel compiler options}}{27}{figure.4.4}\protected@file@percent }
+\newlabel{fig:intel_flags}{{4.4}{27}{Comparing different Intel compiler options}{figure.4.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.2}Intel compiler}{27}{subsection.4.2.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {4.3}Multiple threads}{27}{section.4.3}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {4.5}{\ignorespaces Comparing different number of threads used with g\texttt  {++} compiled code}}{28}{figure.4.5}\protected@file@percent }
+\newlabel{fig:gcc_threads}{{4.5}{28}{Comparing different number of threads used with g\texttt {++} compiled code}{figure.4.5}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.6}{\ignorespaces Comparing different number of threads used with intel compiled code}}{28}{figure.4.6}\protected@file@percent }
+\newlabel{fig:intel_threads}{{4.6}{28}{Comparing different number of threads used with intel compiled code}{figure.4.6}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.7}{\ignorespaces Comparing different number of threads used}}{29}{figure.4.7}\protected@file@percent }
+\newlabel{fig:threadCurve}{{4.7}{29}{Comparing different number of threads used}{figure.4.7}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {4.1}{\ignorespaces Timings to run code (in seconds), as number of threads is changed, for $n=30$}}{29}{table.4.1}\protected@file@percent }
+\newlabel{tab:threads}{{4.1}{29}{Timings to run code (in seconds), as number of threads is changed, for $n=30$}{table.4.1}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.4}Final result}{29}{section.4.4}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {4.8}{\ignorespaces Comparing final results}}{30}{figure.4.8}\protected@file@percent }
+\newlabel{fig:final_graph}{{4.8}{30}{Comparing final results}{figure.4.8}{}}
+\citation{wu2018}
+\citation{clifford17}
+\citation{openmpi}
+\@writefile{toc}{\contentsline {chapter}{\numberline {5}Conclusion}{31}{chapter.5}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\@writefile{loa}{\addvspace {10\p@ }}
-\newlabel{chap:conclusion}{{5}{10}{Conclusion}{chapter.5}{}}
+\newlabel{chap:conclusion}{{5}{31}{Conclusion}{chapter.5}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {5.1}Achievements}{31}{section.5.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {5.2}Future Works}{31}{section.5.2}\protected@file@percent }
+\newlabel{sec:future}{{5.2}{31}{Future Works}{section.5.2}{}}
+\citation{2016NJPh...18c2001W}
 \bibdata{project_bib}
 \bibcite{aaronson2011}{1}
-\bibcite{galton_board}{2}
-\bibcite{boixo2016}{3}
-\bibcite{Caianiello1953}{4}
-\bibcite{clifford17}{5}
-\bibcite{dagum1998openmp}{6}
-\bibcite{god-bolt}{7}
-\bibcite{harrow2017}{8}
-\bibcite{hastings1970}{9}
-\bibcite{kaye2007}{10}
-\bibcite{knill2001}{11}
-\bibcite{lundow2019}{12}
-\bibcite{monz2016}{13}
-\bibcite{neville2017}{14}
-\bibcite{blue_crystal}{15}
-\bibcite{papadimitriou2003}{16}
-\bibcite{pednault2017}{17}
-\bibcite{rahimi2016}{18}
-\bibcite{rsa1978}{19}
-\bibcite{roga2019}{20}
-\bibcite{armadillo}{21}
-\bibcite{shor1995}{22}
-\bibcite{vtune2018}{23}
-\bibcite{toda1991}{24}
-\bibcite{vartiainen2004}{25}
-\bibcite{wu2018}{26}
-\@writefile{toc}{\contentsline {chapter}{\numberline {A}An Example Appendix}{13}{appendix.A}\protected@file@percent }
+\bibcite{balasubramanian1980}{2}
+\bibcite{galton_board}{3}
+\bibcite{bax1998}{4}
+\bibcite{bax1996}{5}
+\bibcite{boixo2016}{6}
+\bibcite{Caianiello1953}{7}
+\bibcite{clifford_r2017}{8}
+\bibcite{clifford17}{9}
+\bibcite{dagum1998openmp}{10}
+\bibcite{rcpp}{11}
+\bibcite{feller1968}{12}
+\bibcite{gcc_flags}{13}
+\bibcite{glynn2010}{14}
+\bibcite{god-bolt}{15}
+\bibcite{harrow2017}{16}
+\bibcite{hastings1970}{17}
+\bibcite{muldc3}{18}
+\bibcite{kaye2007}{19}
+\bibcite{knill2001}{20}
+\bibcite{knuth1969}{21}
+\bibcite{lundow2019}{22}
+\bibcite{marcus_minc66}{23}
+\bibcite{matsumoto1998}{24}
+\bibcite{monz2016}{25}
+\bibcite{neville2017}{26}
+\bibcite{Nijenhuis1978}{27}
+\bibcite{blue_crystal}{28}
+\bibcite{ozols2009}{29}
+\bibcite{papadimitriou2003}{30}
+\bibcite{pednault2017}{31}
+\bibcite{preskill2012}{32}
+\bibcite{rahimi2016}{33}
+\bibcite{rsa1978}{34}
+\bibcite{roga2019}{35}
+\bibcite{ryser_1963}{36}
+\bibcite{armadillo}{37}
+\bibcite{shor1995}{38}
+\bibcite{intel_compiler}{39}
+\bibcite{vtune2018}{40}
+\bibcite{gcc_compiler}{41}
+\bibcite{cran}{42}
+\bibcite{openmpi}{43}
+\bibcite{toda1991}{44}
+\bibcite{valiant1979}{45}
+\bibcite{vartiainen2004}{46}
+\bibcite{walker1974}{47}
+\bibcite{2016NJPh...18c2001W}{48}
+\bibcite{wu2018}{49}
+\@writefile{toc}{\contentsline {chapter}{\numberline {A}Appendix A}{36}{appendix.A}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\@writefile{loa}{\addvspace {10\p@ }}
-\newlabel{appx:example}{{A}{13}{An Example Appendix}{appendix.A}{}}
+\newlabel{app:code}{{A}{36}{Appendix A}{appendix.A}{}}
+\gdef\minted@oldcachelist{,
+  default-pyg-prefix.pygstyle,
+  default.pygstyle,
+  2A8F45B6FC1C9E2839E9427029E17F0771C5E379F651D6174746934C595574ED.pygtex,
+  A129CEDD75D5C885814A875EB83E33F171C5E379F651D6174746934C595574ED.pygtex,
+  BF072E9119077B4E76437A93986787EF71C5E379F651D6174746934C595574ED.pygtex,
+  8F564BB92F52D206135D3BE24556986B71C5E379F651D6174746934C595574ED.pygtex,
+  9A55DBAA7DF2CE28A5DD29C835CE5F4271C5E379F651D6174746934C595574ED.pygtex,
+  1159184937F1A52D70A06A50D63B594771C5E379F651D6174746934C595574ED.pygtex,
+  D68A3C40A6AE13BA675590270A28A39971C5E379F651D6174746934C595574ED.pygtex,
+  109CB5BFCBACEC91787F2EDA292F406C71C5E379F651D6174746934C595574ED.pygtex,
+  EFC67BB84D993B93621761205F1D21AF71C5E379F651D6174746934C595574ED.pygtex,
+  42C381262AA635DA1A71D2023C78CD5C71C5E379F651D6174746934C595574ED.pygtex,
+  5C50FC74384362249E6EEE451AFD32C671C5E379F651D6174746934C595574ED.pygtex,
+  CF280F4A37879EA09251B9D201267A8271C5E379F651D6174746934C595574ED.pygtex,
+  3E796A1AFDDB4D36C0078F8FCCDF66A971C5E379F651D6174746934C595574ED.pygtex,
+  2A8F45B6FC1C9E2839E9427029E17F0771C5E379F651D6174746934C595574ED.pygtex,
+  42C381262AA635DA1A71D2023C78CD5C71C5E379F651D6174746934C595574ED.pygtex,
+  2A8F45B6FC1C9E2839E9427029E17F0771C5E379F651D6174746934C595574ED.pygtex,
+  42C381262AA635DA1A71D2023C78CD5C71C5E379F651D6174746934C595574ED.pygtex,
+  34959797D744009050C7971A45695CFA71C5E379F651D6174746934C595574ED.pygtex,
+  6F56742BF038E2448AEEE840B84A3AFA71C5E379F651D6174746934C595574ED.pygtex,
+  645D0AC840C62F57C46E38CEF156742671C5E379F651D6174746934C595574ED.pygtex,
+  0459F18D4533013DC30626C7161EC5C19BFF1CF972AC4DCBC64F6053862CB6A0.pygtex,
+  A69D6B70A3287BE11B07CBED4B5F49317DFF55D621C5CA53B529EB108472E699.pygtex,
+  A69D6B70A3287BE11B07CBED4B5F49317DFF55D621C5CA53B529EB108472E699.pygtex,
+  F14DBBCF225241D6CD9F55B7E8D62E037DFF55D621C5CA53B529EB108472E699.pygtex,
+  69B64623F86DEF16CE17D454B8BE41AE7DFF55D621C5CA53B529EB108472E699.pygtex,
+  FE13119FB084FE8BBF5FE3AB7CC89B3B7DFF55D621C5CA53B529EB108472E699.pygtex,
+  BCF3CF55F7D0D5E4E5C121C9E3313EE17DFF55D621C5CA53B529EB108472E699.pygtex,
+  2FC816C1E3F52A81DF5B5B64D7BE16C57DFF55D621C5CA53B529EB108472E699.pygtex,
+  8537FF3395FAE990908F8479B62586787DFF55D621C5CA53B529EB108472E699.pygtex,
+  DDD5752B5FE66FD98FB9DCDEE48B44737DFF55D621C5CA53B529EB108472E699.pygtex,
+  F5302386464F953ED581EDAC03556E557DFF55D621C5CA53B529EB108472E699.pygtex,
+  DDD5752B5FE66FD98FB9DCDEE48B44737DFF55D621C5CA53B529EB108472E699.pygtex,
+  304D82C0867E556F1B5E676E0D11F5207DFF55D621C5CA53B529EB108472E699.pygtex,
+  E29311F6F1BF1AF907F9EF9F44B8328B7DFF55D621C5CA53B529EB108472E699.pygtex,
+  74D9A83219CABAAB06A69FD318873F337DFF55D621C5CA53B529EB108472E699.pygtex,
+  D42F2DA1DF5ECDF29BE4AC27EDDA0C127DFF55D621C5CA53B529EB108472E699.pygtex,
+  4FFB2384F093FD721F4793C04F0414537DFF55D621C5CA53B529EB108472E699.pygtex,
+  B39BFC0E26A30024C76E4DCB8A1EAE877DFF55D621C5CA53B529EB108472E699.pygtex,
+  74D9A83219CABAAB06A69FD318873F337DFF55D621C5CA53B529EB108472E699.pygtex,
+  81F84AD55009A2089AA6F731B2E070B37DFF55D621C5CA53B529EB108472E699.pygtex,
+  9D7BF075372908F55E2D945C39E0A6137DFF55D621C5CA53B529EB108472E699.pygtex,
+  9D7BF075372908F55E2D945C39E0A6137DFF55D621C5CA53B529EB108472E699.pygtex,
+  E734A88A1110FA3D657454B2DD3488227DFF55D621C5CA53B529EB108472E699.pygtex,
+  6413B0F40D0CEBA8D14CEA15AEAFBF197DFF55D621C5CA53B529EB108472E699.pygtex,
+  C3BE117041A113540DEB0FF532B195437DFF55D621C5CA53B529EB108472E699.pygtex,
+  B7269FA2508548E4032C455818F1E3217DFF55D621C5CA53B529EB108472E699.pygtex,
+  F4D5D0C0671BE202BC241807C243E80B7DFF55D621C5CA53B529EB108472E699.pygtex,
+  FB43332A55D75062D3ACCB9E307D632C7DFF55D621C5CA53B529EB108472E699.pygtex,
+  9D7BF075372908F55E2D945C39E0A6137DFF55D621C5CA53B529EB108472E699.pygtex,
+  9D7BF075372908F55E2D945C39E0A6137DFF55D621C5CA53B529EB108472E699.pygtex,
+  9D7BF075372908F55E2D945C39E0A6137DFF55D621C5CA53B529EB108472E699.pygtex,
+  B39BFC0E26A30024C76E4DCB8A1EAE877DFF55D621C5CA53B529EB108472E699.pygtex,
+  343D1DE1BE097840816FD4705C8087B47DFF55D621C5CA53B529EB108472E699.pygtex,
+  BF072E9119077B4E76437A93986787EF7DFF55D621C5CA53B529EB108472E699.pygtex,
+  FE13119FB084FE8BBF5FE3AB7CC89B3B7DFF55D621C5CA53B529EB108472E699.pygtex,
+  69B64623F86DEF16CE17D454B8BE41AE7DFF55D621C5CA53B529EB108472E699.pygtex,
+  2B6540A20D07C26E1E07FB5CB337C4737DFF55D621C5CA53B529EB108472E699.pygtex,
+  27065FD790CB00A26CF710162905FF557DFF55D621C5CA53B529EB108472E699.pygtex,
+  92FCC906EDBDF021E12ED47753351FFB7DFF55D621C5CA53B529EB108472E699.pygtex,
+  43819325F93DF9433ED5CEA33D4379F07DFF55D621C5CA53B529EB108472E699.pygtex,
+  6808DB35CEC9FA95D5C2128EBA5D131B7DFF55D621C5CA53B529EB108472E699.pygtex,
+  AF7CE4B92C721AA418FF53FC133570007DFF55D621C5CA53B529EB108472E699.pygtex,
+  2C581D8B4B798C041CDA32DD44AB73197DFF55D621C5CA53B529EB108472E699.pygtex,
+  58CA95C5B364C5229A72C650AD459C327DFF55D621C5CA53B529EB108472E699.pygtex,
+  DD900030A4866E463B4E2DF60CF0EEB67DFF55D621C5CA53B529EB108472E699.pygtex,
+  83ECB2EA82980EFB02852343D3C747AC7DFF55D621C5CA53B529EB108472E699.pygtex,
+  9D6B770C4AC449815F278ADF9B1F527C9BFF1CF972AC4DCBC64F6053862CB6A0.pygtex,
+  E941C00B6500CA59E1135FCC7DAC61547DFF55D621C5CA53B529EB108472E699.pygtex,
+  91E454EBA04C1ACA45D1EF5D17C652857DFF55D621C5CA53B529EB108472E699.pygtex,
+  CD89E96C15671AAE28071AE4BDE0F5DD7DFF55D621C5CA53B529EB108472E699.pygtex,
+  FBB4A3B994E042CCE1DBA0E1CBA1C7AF7DFF55D621C5CA53B529EB108472E699.pygtex,
+  72E22C286080C00A00CDDA805912BF617DFF55D621C5CA53B529EB108472E699.pygtex,
+  91E454EBA04C1ACA45D1EF5D17C652857DFF55D621C5CA53B529EB108472E699.pygtex,
+  9254250AC77C1A6EC7A5B6A51A7C96EE7DFF55D621C5CA53B529EB108472E699.pygtex,
+  F5302386464F953ED581EDAC03556E557DFF55D621C5CA53B529EB108472E699.pygtex,
+  F2C10CAA22613B4EC903975D5E0FA7B17DFF55D621C5CA53B529EB108472E699.pygtex,
+  86B8994567EFAB4549F06911C06B3C0F7DFF55D621C5CA53B529EB108472E699.pygtex,
+  F4D5D0C0671BE202BC241807C243E80B7DFF55D621C5CA53B529EB108472E699.pygtex,
+  F4D5D0C0671BE202BC241807C243E80B7DFF55D621C5CA53B529EB108472E699.pygtex,
+  F4D5D0C0671BE202BC241807C243E80B7DFF55D621C5CA53B529EB108472E699.pygtex,
+  D42F2DA1DF5ECDF29BE4AC27EDDA0C127DFF55D621C5CA53B529EB108472E699.pygtex,
+  74D9A83219CABAAB06A69FD318873F337DFF55D621C5CA53B529EB108472E699.pygtex,
+  F4D5D0C0671BE202BC241807C243E80B7DFF55D621C5CA53B529EB108472E699.pygtex,
+  2F28123BE7D65FC3719156BD534322D77DFF55D621C5CA53B529EB108472E699.pygtex,
+  19ABB95F684871BAF6B057B74A0330AB7DFF55D621C5CA53B529EB108472E699.pygtex,
+  1F99C3314DED63E70A066162CE456E1D7DFF55D621C5CA53B529EB108472E699.pygtex,
+  EF08968D291DB9C712F42508E909FD757DFF55D621C5CA53B529EB108472E699.pygtex,
+  EF08968D291DB9C712F42508E909FD757DFF55D621C5CA53B529EB108472E699.pygtex,
+  BEC035E0FFDCB56B20D4376365D03E137DFF55D621C5CA53B529EB108472E699.pygtex,
+  BD2B4E573D5A641A666C5284FD26C2287DFF55D621C5CA53B529EB108472E699.pygtex,
+  B5DC35017540AB2283655A7F67F78E2F7DFF55D621C5CA53B529EB108472E699.pygtex,
+  68FFD4BC5D282C9D1047CF02444CAD5D7DFF55D621C5CA53B529EB108472E699.pygtex,
+  0EEB9037121F451B1DC41FB6C27FFF7F9BFF1CF972AC4DCBC64F6053862CB6A0.pygtex,
+  5E4E9973CA77A56F692A8DD4D00E68C99BFF1CF972AC4DCBC64F6053862CB6A0.pygtex,
+  0EEB9037121F451B1DC41FB6C27FFF7F9BFF1CF972AC4DCBC64F6053862CB6A0.pygtex,
+  279528005957EEBE23DCEE256F1328BC9BFF1CF972AC4DCBC64F6053862CB6A0.pygtex,
+  E56D4E9F421E07016AD2D95D966096A79BFF1CF972AC4DCBC64F6053862CB6A0.pygtex,
+  582D0988CAE9FE53D8A1E300504F56189BFF1CF972AC4DCBC64F6053862CB6A0.pygtex,
+  C0DC1A097E3E17B99CBC2F3B3A86A2BB9BFF1CF972AC4DCBC64F6053862CB6A0.pygtex,
+  48CC55C85D3BD2F71D2CFAF3876AAE789BFF1CF972AC4DCBC64F6053862CB6A0.pygtex,
+  279528005957EEBE23DCEE256F1328BC9BFF1CF972AC4DCBC64F6053862CB6A0.pygtex,
+  5E4E9973CA77A56F692A8DD4D00E68C99BFF1CF972AC4DCBC64F6053862CB6A0.pygtex,
+  279528005957EEBE23DCEE256F1328BC9BFF1CF972AC4DCBC64F6053862CB6A0.pygtex,
+  AD4B4546CB4EB05C1420B6A4F5BA39B59BFF1CF972AC4DCBC64F6053862CB6A0.pygtex,
+  701D24185B3A6F1E1779CB6F95BFDF039BFF1CF972AC4DCBC64F6053862CB6A0.pygtex,
+  582D0988CAE9FE53D8A1E300504F56189BFF1CF972AC4DCBC64F6053862CB6A0.pygtex,
+  582D0988CAE9FE53D8A1E300504F56189BFF1CF972AC4DCBC64F6053862CB6A0.pygtex,
+  0EEB9037121F451B1DC41FB6C27FFF7F9BFF1CF972AC4DCBC64F6053862CB6A0.pygtex,
+  0EEB9037121F451B1DC41FB6C27FFF7F9BFF1CF972AC4DCBC64F6053862CB6A0.pygtex,
+  18033A2819108B306B54F7DEFAAA1FDF7DFF55D621C5CA53B529EB108472E699.pygtex,
+  1437AD3C63BD805892CFF75A81C623887DFF55D621C5CA53B529EB108472E699.pygtex,
+  34425DB862851E2114C9554A59921F537DFF55D621C5CA53B529EB108472E699.pygtex}

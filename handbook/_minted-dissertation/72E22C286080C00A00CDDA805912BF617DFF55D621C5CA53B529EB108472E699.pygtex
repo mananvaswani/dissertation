@@ -1,0 +1,5 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{auto} \PYG{n}{start} \PYG{o}{=} \PYG{n}{chrono}\PYG{o}{::}\PYG{n}{steady\PYGZus{}clock}\PYG{o}{::}\PYG{n}{now}\PYG{p}{();}
+\PYG{p}{...}
+\PYG{k+kt}{int} \PYG{n}{totalTime} \PYG{o}{=} \PYG{n}{chrono}\PYG{o}{::}\PYG{n}{duration\PYGZus{}cast}\PYG{o}{\PYGZlt{}}\PYG{n}{chrono}\PYG{o}{::}\PYG{n}{milliseconds}\PYG{o}{\PYGZgt{}}\PYG{p}{(}\PYG{n}{end} \PYG{o}{\PYGZhy{}} \PYG{n}{start}\PYG{p}{).}\PYG{n}{count}\PYG{p}{();}
+\end{Verbatim}

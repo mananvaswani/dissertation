@@ -2,7 +2,7 @@
 
 #g++-8 bosonSampling_b_arma.cpp cxPermMinors.cpp randomUnitary.cpp -o a.out -std=c++11 -larmadillo
 
-g++-8 bosonSampling_b_arma.cpp cxPermMinors.cpp cxPermMinorsNThreads.cpp randomUnitary.cpp -o a.out -std=c++11 -larmadillo -fopenmp -Ofast -funroll-loops -pipe -march=native -mtune=native
+g++-8 bosonSampling_b_arma.cpp cxPermMinors.cpp cxPermMinorsNThreads.cpp randomUnitary.cpp -o a.out -std=c++11 -larmadillo -fopenmp -Ofast -funroll-loops -pipe
 
 #icpc bosonSampling_b_arma.cpp cxPermMinors.cpp cxPermMinorsNThreads.cpp randomUnitary.cpp -o a.out -std=c++11 -I ~/Downloads/armadillo-9.200.8/include -DARMA_DONT_USE_WRAPPER -lblas -llapack -qopenmp #-O3 -xHOST
 

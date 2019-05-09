@@ -1,58 +1,11 @@
-\contentsline {section}{\numberline {1}Background}{4}% 
-\contentsline {section}{\numberline {2}Technologies used}{7}% 
-\contentsline {subsection}{\numberline {2.1}Blue Crystal 4}{7}% 
-\contentsline {subsection}{\numberline {2.2}OpenMP}{7}% 
-\contentsline {subsection}{\numberline {2.3}Intel Vtune}{7}% 
-\contentsline {section}{\numberline {3}Preliminaries}{7}% 
-\contentsline {subsection}{\numberline {3.1}Binary Gray Code}{7}% 
-\contentsline {subsection}{\numberline {3.2}Permanent of a matrix}{7}% 
-\contentsline {subsubsection}{\numberline {3.2.1}Definition}{7}% 
-\contentsline {subsubsection}{\numberline {3.2.2}Computing the permanent}{8}% 
-\contentsline {section}{\numberline {4}Describing the paper and specifying the problem}{8}% 
-\contentsline {subsection}{\numberline {4.1}Explaining the problem}{8}% 
-\contentsline {subsubsection}{\numberline {4.1.1}Calculating the size of the sample space}{9}% 
-\contentsline {section}{\numberline {5}The Boson Sampling Algorithm}{9}% 
-\contentsline {subsection}{\numberline {5.1}The naive approach}{9}% 
-\contentsline {subsection}{\numberline {5.2}Algorithm A}{9}% 
-\contentsline {subsection}{\numberline {5.3}Algorithm B}{11}% 
-\contentsline {section}{\numberline {6}Implementation}{14}% 
-\contentsline {subsection}{\numberline {6.1}Original R Implementation}{14}% 
-\contentsline {subsection}{\numberline {6.2}Implementation in C\texttt {++}}{16}% 
-\contentsline {paragraph}{Armadillo Library:}{16}% 
-\contentsline {subsubsection}{\numberline {6.2.1}Generating a random unitary matrix}{16}% 
-\contentsline {subsubsection}{\numberline {6.2.2}Computing the Permanent Minors}{17}% 
-\contentsline {paragraph}{a) Iterating $\mathbf {\delta }$ over Gray code:}{17}% 
-\contentsline {paragraph}{b) Computing $\mathbf {v}(\mathbf {\delta }) = \{v_i (\mathbf {\delta }), i \in [m]\}$ efficiently for each $\mathbf {\delta }$:}{18}% 
-\contentsline {paragraph}{c) Computing the partial products $\DOTSB \prod@ \slimits@ _{i \in [m] \setminus l} v_i (\delta ), \hskip 1em\relax l \in [m]$:}{18}% 
-\contentsline {paragraph}{d) Computing the value $\left ( \DOTSB \prod@ \slimits@ _{s=1}^{m-1} \delta _s \right )$:}{19}% 
-\contentsline {paragraph}{e) Multiplying by $\frac {1}{2^{m-2}}$ term:}{19}% 
-\contentsline {subsubsection}{\numberline {6.2.3}Simulating exact Boson Sampling using Algorithm B}{20}% 
-\contentsline {paragraph}{Preprocessing steps}{20}% 
-\contentsline {paragraph}{Line 2}{20}% 
-\contentsline {paragraph}{Line 3 and 4}{20}% 
-\contentsline {paragraph}{Lines 6 to 11}{21}% 
-\contentsline {paragraph}{Line 12}{21}% 
-\contentsline {subsection}{\numberline {6.3}Running the code}{21}% 
-\contentsline {subsection}{\numberline {6.4}Profiling the code}{22}% 
-\contentsline {subsection}{\numberline {6.5}Parallelising the code}{23}% 
-\contentsline {subsubsection}{\numberline {6.5.1}Parallelisation technique}{23}% 
-\contentsline {paragraph}{a) Getting the value of the active index $j$ in the $k^{\text {th}}$ iteration:}{23}% 
-\contentsline {paragraph}{b) Getting the value of $k^{\text {th}}$ element of the Gray code:}{24}% 
-\contentsline {paragraph}{c) Getting the value of \mintinline {c++}{s}:}{24}% 
-\contentsline {paragraph}{d) Computing the $\mathbf {v}$ array for iteration $k$:}{25}% 
-\contentsline {subsubsection}{\numberline {6.5.2}Using OpenMP to modify the code for use with multiple threads}{26}% 
-\contentsline {subsection}{\numberline {6.6}Other Oprtmisations}{27}% 
-\contentsline {subsubsection}{\numberline {6.6.1}Compiler choice}{27}% 
-\contentsline {paragraph}{GCC compiler: }{27}% 
-\contentsline {paragraph}{Intel C\texttt {++} compiler: }{27}% 
-\contentsline {subsubsection}{\numberline {6.6.2}Compiler options}{27}% 
-\contentsline {section}{\numberline {7}Critical Evaluation}{27}% 
-\contentsline {subsection}{\numberline {7.1}Initial implementation}{28}% 
-\contentsline {subsection}{\numberline {7.2}Testing the different compiler option/flags}{29}% 
-\contentsline {subsubsection}{\numberline {7.2.1}gcc}{29}% 
-\contentsline {subsubsection}{\numberline {7.2.2}Intel compiler}{30}% 
-\contentsline {subsubsection}{\numberline {7.2.3}Multiple threads}{32}% 
-\contentsline {subsubsection}{\numberline {7.2.4}Final result}{34}% 
-\contentsline {section}{\numberline {8}Conclusion}{34}% 
-\contentsline {subsubsection}{\numberline {8.0.1}Further Works}{34}% 
-\contentsline {section}{References}{34}% 
+\contentsline {section}{\numberline {1}Implementation}{1}% 
+\contentsline {section}{\numberline {2}Critical Evaluation}{1}% 
+\contentsline {subsection}{\numberline {2.1}Initial implementation}{1}% 
+\contentsline {subsection}{\numberline {2.2}Testing the different compiler option/flags}{2}% 
+\contentsline {subsubsection}{\numberline {2.2.1}gcc}{3}% 
+\contentsline {subsubsection}{\numberline {2.2.2}Intel compiler}{4}% 
+\contentsline {subsubsection}{\numberline {2.2.3}Multiple threads}{4}% 
+\contentsline {subsubsection}{\numberline {2.2.4}Final result}{4}% 
+\contentsline {section}{\numberline {3}Conclusion}{7}% 
+\contentsline {subsubsection}{\numberline {3.0.1}Further Works}{7}% 
+\contentsline {section}{References}{7}% 

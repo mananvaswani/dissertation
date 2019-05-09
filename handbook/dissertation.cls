@@ -36,7 +36,7 @@
 
 % load base class, then general-purpose packages
 
-\LoadClass[10pt,a4paper,oneside]{book}
+\LoadClass[11pt,a4paper,oneside]{book}
 
 % http://www.ctan.org/tex-archive/macros/latex/required/graphics
 \RequirePackage{graphicx}
@@ -54,7 +54,7 @@
 % http://www.ctan.org/tex-archive/macros/latex/contrib/datetime
 \RequirePackage{datetime}
 % http://www.ctan.org/tex-archive/macros/latex/contrib/algorithm2e
-\RequirePackage[algochapter]{algorithm2e}
+\RequirePackage[Algorithm]{algorithm}
 % http://www.ctan.org/tex-archive/macros/latex/contrib/listings
 \RequirePackage{listings}
 % http://www.ctan.org/tex-archive/macros/latex/contrib/xstring
@@ -144,7 +144,7 @@
                               \vspace*{1.0cm}
                           DEPARTMENT OF COMPUTER SCIENCE                        \\
                               \vspace*{2.0cm}
-  \mbox{\IfEq{\dissertation@title@major}{}{}{\LARGE \dissertation@title@major}} \\
+  \LARGE \dissertation@title@major \\
                               \vspace*{0.5cm}
   \mbox{\IfEq{\dissertation@title@minor}{}{}{\Large \dissertation@title@minor}} \\
                               \vspace*{1.0cm}
@@ -154,8 +154,8 @@
                           \rule{0.5\textwidth}{0.5pt}
                               \vspace*{1.0cm}
 
-            A dissertation submitted to the University of Bristol
-            in accordance with the requirements of the degree of
+           \Large A dissertation submitted to the University of Bristol
+            \Large in accordance with the requirements of the degree of
                     \IfEqCase*{\dissertation@degree}{
                       {BSc} {Bachelor of     Science}
                       {MEng}{Master   of Engineering}

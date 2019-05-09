@@ -1,0 +1,150 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+cp}{\PYGZsh{}include} \PYG{c+cpf}{\PYGZdq{}header.h\PYGZdq{}}
+
+\PYG{k+kt}{int} \PYG{n+nf}{getActiveIndex}\PYG{p}{(}\PYG{k+kt}{long} \PYG{k+kt}{long} \PYG{n}{ctr}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+	\PYG{k}{return} \PYG{n}{\PYGZus{}\PYGZus{}builtin\PYGZus{}ctzll}\PYG{p}{(}\PYG{n}{ctr}\PYG{p}{);}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{k+kt}{int} \PYG{n+nf}{getKthGrayCode}\PYG{p}{(}\PYG{k+kt}{long} \PYG{k+kt}{long} \PYG{n}{k}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+    \PYG{c+c1}{//k\PYGZhy{}\PYGZhy{};}
+    \PYG{k}{return} \PYG{n}{k} \PYG{o}{\PYGZca{}} \PYG{p}{(}\PYG{n}{k} \PYG{o}{\PYGZgt{}\PYGZgt{}} \PYG{l+m+mi}{1}\PYG{p}{);}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{n}{arma}\PYG{o}{::}\PYG{n}{uvec} \PYG{n}{getDelta}\PYG{p}{(}\PYG{k+kt}{long} \PYG{k+kt}{long} \PYG{n}{ctr}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{n}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+    \PYG{k+kt}{int} \PYG{n}{gray} \PYG{o}{=} \PYG{n}{getKthGrayCode}\PYG{p}{(}\PYG{n}{ctr}\PYG{p}{);}
+    \PYG{n}{arma}\PYG{o}{::}\PYG{n}{uvec} \PYG{n}{d}\PYG{p}{(}\PYG{n}{n}\PYG{p}{);}
+    \PYG{n}{d}\PYG{p}{.}\PYG{n}{fill}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{);}
+    \PYG{c+c1}{// first flip the bits}
+    \PYG{k+kt}{int} \PYG{n}{temp} \PYG{o}{=} \PYG{n}{gray} \PYG{o}{\PYGZca{}} \PYG{p}{(}\PYG{k+kt}{int}\PYG{p}{)}\PYG{n}{pow}\PYG{p}{(}\PYG{l+m+mi}{2}\PYG{p}{,} \PYG{n}{n}\PYG{p}{)} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{1}\PYG{p}{;} \PYG{c+c1}{// 2\PYGZca{}(n) \PYGZhy{} 1}
+    \PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+    \PYG{k}{while} \PYG{p}{(}\PYG{n}{temp} \PYG{o}{!=} \PYG{l+m+mi}{0}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+        \PYG{n}{d}\PYG{p}{[}\PYG{n}{i}\PYG{o}{++}\PYG{p}{]} \PYG{o}{=} \PYG{n}{temp} \PYG{o}{\PYGZpc{}} \PYG{l+m+mi}{2}\PYG{p}{;}
+        \PYG{n}{temp} \PYG{o}{=} \PYG{n}{temp} \PYG{o}{/} \PYG{l+m+mi}{2}\PYG{p}{;}
+    \PYG{p}{\PYGZcb{}}
+    \PYG{k}{return} \PYG{n}{d}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{n}{arma}\PYG{o}{::}\PYG{n}{cx\PYGZus{}vec} \PYG{n}{getV}\PYG{p}{(}\PYG{n}{arma}\PYG{o}{::}\PYG{n}{uvec} \PYG{n}{d}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{j}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{n}\PYG{p}{,} \PYG{k+kt}{long} \PYG{k+kt}{long} \PYG{n}{ctr}\PYG{p}{,} \PYG{n}{arma}\PYG{o}{::}\PYG{n}{cx\PYGZus{}mat} \PYG{n}{C}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+	\PYG{n}{arma}\PYG{o}{::}\PYG{n}{cx\PYGZus{}vec} \PYG{n}{v}\PYG{p}{(}\PYG{n}{n}\PYG{p}{);}
+	\PYG{n}{v} \PYG{o}{=} \PYG{n}{arma}\PYG{o}{::}\PYG{n}{sum}\PYG{p}{(}\PYG{n}{C}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{)}\PYG{o}{/}\PYG{l+m+mi}{2}\PYG{p}{;}
+    \PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZlt{}} \PYG{n}{n}\PYG{p}{;} \PYG{n}{i}\PYG{o}{++}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+        \PYG{k}{if}\PYG{p}{(}\PYG{n}{d}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{==} \PYG{l+m+mi}{0}\PYG{p}{)} \PYG{n}{v} \PYG{o}{\PYGZhy{}=} \PYG{n}{C}\PYG{p}{.}\PYG{n}{col}\PYG{p}{(}\PYG{n}{i}\PYG{p}{);}
+    \PYG{p}{\PYGZcb{}}
+	\PYG{k}{if} \PYG{p}{(}\PYG{n}{ctr}\PYG{o}{!=}\PYG{l+m+mi}{0}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+		\PYG{k}{if}\PYG{p}{(}\PYG{n}{d}\PYG{p}{[}\PYG{n}{j}\PYG{p}{]} \PYG{o}{==} \PYG{l+m+mi}{1}\PYG{p}{)} \PYG{n}{v} \PYG{o}{\PYGZhy{}=} \PYG{n}{C}\PYG{p}{.}\PYG{n}{col}\PYG{p}{(}\PYG{n}{j}\PYG{p}{);} \PYG{k}{else} \PYG{n}{v} \PYG{o}{+=} \PYG{n}{C}\PYG{p}{.}\PYG{n}{col}\PYG{p}{(}\PYG{n}{j}\PYG{p}{);}
+	\PYG{p}{\PYGZcb{}}
+    \PYG{k}{return} \PYG{n}{v}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{k+kt}{void} \PYG{n}{printArmaVector}\PYG{p}{(}\PYG{n}{arma}\PYG{o}{::}\PYG{n}{uvec} \PYG{n}{d}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+    \PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZlt{}} \PYG{n}{d}\PYG{p}{.}\PYG{n}{size}\PYG{p}{();} \PYG{n}{i}\PYG{o}{++}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+        \PYG{n}{cout} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{n}{d}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{l+s}{\PYGZdq{} \PYGZdq{}}\PYG{p}{;}
+    \PYG{p}{\PYGZcb{}}
+    \PYG{n}{cout} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{n}{endl}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{k+kt}{void} \PYG{n}{printArmaVector}\PYG{p}{(}\PYG{n}{arma}\PYG{o}{::}\PYG{n}{cx\PYGZus{}vec} \PYG{n}{d}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+    \PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZlt{}} \PYG{n}{d}\PYG{p}{.}\PYG{n}{size}\PYG{p}{();} \PYG{n}{i}\PYG{o}{++}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+        \PYG{n}{cout} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{n}{d}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{l+s}{\PYGZdq{} \PYGZdq{}}\PYG{p}{;}
+    \PYG{p}{\PYGZcb{}}
+    \PYG{n}{cout} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{n}{endl}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{n}{arma}\PYG{o}{::}\PYG{n}{cx\PYGZus{}vec} \PYG{n}{cxPermMinorsThreads}\PYG{p}{(}\PYG{n}{arma}\PYG{o}{::}\PYG{n}{cx\PYGZus{}mat} \PYG{n}{C}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{numThreads}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+\PYG{c+c1}{// Declarations}
+	\PYG{k+kt}{int} \PYG{n}{n} \PYG{o}{=} \PYG{n}{C}\PYG{p}{.}\PYG{n}{n\PYGZus{}cols}\PYG{p}{,} \PYG{n}{m} \PYG{o}{=} \PYG{n}{C}\PYG{p}{.}\PYG{n}{n\PYGZus{}rows}\PYG{p}{;} \PYG{c+c1}{// m = n + 1}
+
+	\PYG{k}{if}\PYG{p}{(}\PYG{n}{m} \PYG{o}{!=} \PYG{n}{n} \PYG{o}{+} \PYG{l+m+mi}{1}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+		\PYG{n}{cout} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{l+s}{\PYGZdq{}Input matrix has incorrect dimensions\PYGZdq{}} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{n}{endl}\PYG{p}{;}
+		\PYG{n}{exit} \PYG{p}{(}\PYG{n}{EXIT\PYGZus{}FAILURE}\PYG{p}{);}
+	\PYG{p}{\PYGZcb{}}
+
+	\PYG{k+kt}{int} \PYG{n}{j}\PYG{p}{;}
+	\PYG{k+kt}{bool} \PYG{n}{s}\PYG{p}{;}
+    \PYG{n}{arma}\PYG{o}{::}\PYG{n}{cx\PYGZus{}vec} \PYG{n}{p}\PYG{p}{(}\PYG{n}{m}\PYG{p}{),} \PYG{n}{q}\PYG{p}{(}\PYG{n}{m}\PYG{p}{),} \PYG{n}{v}\PYG{p}{(}\PYG{n}{m}\PYG{p}{);}
+    \PYG{n}{arma}\PYG{o}{::}\PYG{n}{cx\PYGZus{}double} \PYG{n}{t}\PYG{p}{;}
+
+    \PYG{n}{arma}\PYG{o}{::}\PYG{n}{uvec} \PYG{n}{d}\PYG{p}{(}\PYG{n}{n}\PYG{p}{);}
+	\PYG{n}{d}\PYG{p}{.}\PYG{n}{fill}\PYG{p}{(}\PYG{n+nb}{true}\PYG{p}{);}
+
+    \PYG{k}{if}\PYG{p}{(}\PYG{n}{n} \PYG{o}{==} \PYG{l+m+mi}{1}\PYG{p}{)} \PYG{k}{return} \PYG{n}{arma}\PYG{o}{::}\PYG{n}{flipud}\PYG{p}{(}\PYG{n}{C}\PYG{p}{);}
+
+	\PYG{n}{p}\PYG{p}{.}\PYG{n}{zeros}\PYG{p}{();}
+
+	\PYG{c+c1}{// Number of loop iterations}
+	\PYG{k+kt}{long} \PYG{n}{upperBound} \PYG{o}{=} \PYG{n}{pow}\PYG{p}{(}\PYG{l+m+mi}{2}\PYG{p}{,} \PYG{n}{n}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{);}
+
+\PYG{c+c1}{// \PYGZsh{}pragma omp declare reduction( + : arma::cx\PYGZus{}vec : omp\PYGZus{}out += omp\PYGZus{}in ) \PYGZbs{}}
+\PYG{c+c1}{// initializer( omp\PYGZus{}priv = arma::zeros\PYGZlt{}arma::cx\PYGZus{}vec\PYGZgt{}(omp\PYGZus{}orig.n\PYGZus{}rows))}
+
+	\PYG{c+cp}{\PYGZsh{}pragma omp parallel num\PYGZus{}threads(numThreads) private(d, v, s, q, j) shared(C, p)}
+	\PYG{p}{\PYGZob{}}
+		\PYG{c+c1}{// Initialise starting variables for each thread}
+		\PYG{k+kt}{int} \PYG{n}{this\PYGZus{}thread} \PYG{o}{=} \PYG{n}{omp\PYGZus{}get\PYGZus{}thread\PYGZus{}num}\PYG{p}{();}
+		\PYG{k+kt}{int} \PYG{n}{num\PYGZus{}threads} \PYG{o}{=} \PYG{n}{omp\PYGZus{}get\PYGZus{}num\PYGZus{}threads}\PYG{p}{();}
+
+		\PYG{k+kt}{int} \PYG{n}{minItsPerThread} \PYG{o}{=} \PYG{n}{upperBound} \PYG{o}{/} \PYG{n}{num\PYGZus{}threads}\PYG{p}{;}
+		\PYG{k+kt}{int} \PYG{n}{threadsWithExtra} \PYG{o}{=} \PYG{n}{upperBound} \PYG{o}{\PYGZpc{}} \PYG{n}{num\PYGZus{}threads}\PYG{p}{;}
+
+		\PYG{k+kt}{long} \PYG{k+kt}{long} \PYG{n}{my\PYGZus{}start}\PYG{p}{;}
+		\PYG{k+kt}{long} \PYG{k+kt}{long} \PYG{n}{my\PYGZus{}end}\PYG{p}{;}
+
+		\PYG{k}{if} \PYG{p}{(}\PYG{n}{this\PYGZus{}thread} \PYG{o}{\PYGZlt{}} \PYG{n}{threadsWithExtra}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+			\PYG{n}{my\PYGZus{}start} \PYG{o}{=} \PYG{p}{(}\PYG{n}{this\PYGZus{}thread}\PYG{p}{)} \PYG{o}{*} \PYG{p}{(}\PYG{n}{minItsPerThread} \PYG{o}{+} \PYG{l+m+mi}{1}\PYG{p}{);}
+			\PYG{n}{my\PYGZus{}end}   \PYG{o}{=} \PYG{p}{(}\PYG{n}{this\PYGZus{}thread}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{)} \PYG{o}{*} \PYG{p}{(}\PYG{n}{minItsPerThread} \PYG{o}{+} \PYG{l+m+mi}{1}\PYG{p}{);}
+		\PYG{p}{\PYGZcb{}}
+		\PYG{k}{else} \PYG{p}{\PYGZob{}}
+			\PYG{n}{my\PYGZus{}start} \PYG{o}{=} \PYG{n}{threadsWithExtra} \PYG{o}{*} \PYG{p}{(}\PYG{n}{minItsPerThread} \PYG{o}{+} \PYG{l+m+mi}{1}\PYG{p}{)} \PYG{o}{+} \PYG{p}{(}\PYG{n}{this\PYGZus{}thread} \PYG{o}{\PYGZhy{}} \PYG{n}{threadsWithExtra}\PYG{p}{)} \PYG{o}{*} \PYG{p}{(}\PYG{n}{minItsPerThread}\PYG{p}{);}
+			\PYG{n}{my\PYGZus{}end}   \PYG{o}{=} \PYG{n}{threadsWithExtra} \PYG{o}{*} \PYG{p}{(}\PYG{n}{minItsPerThread} \PYG{o}{+} \PYG{l+m+mi}{1}\PYG{p}{)} \PYG{o}{+} \PYG{p}{(}\PYG{n}{this\PYGZus{}thread} \PYG{o}{\PYGZhy{}} \PYG{n}{threadsWithExtra} \PYG{o}{+} \PYG{l+m+mi}{1}\PYG{p}{)} \PYG{o}{*} \PYG{p}{(}\PYG{n}{minItsPerThread}\PYG{p}{);}
+		\PYG{p}{\PYGZcb{}}
+
+		\PYG{k+kt}{int} \PYG{n}{i}\PYG{p}{;}
+
+		\PYG{n}{std}\PYG{o}{::}\PYG{n}{complex}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{double}\PYG{o}{\PYGZgt{}} \PYG{n}{t}\PYG{p}{;}
+
+		\PYG{n}{d} \PYG{o}{=} \PYG{n}{getDelta}\PYG{p}{(}\PYG{n}{my\PYGZus{}start}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{n}{n}\PYG{p}{);}
+
+		\PYG{k}{if} \PYG{p}{(}\PYG{n}{my\PYGZus{}start} \PYG{o}{!=} \PYG{l+m+mi}{0}\PYG{p}{)} \PYG{n}{j} \PYG{o}{=} \PYG{n}{getActiveIndex}\PYG{p}{(}\PYG{n}{my\PYGZus{}start}\PYG{p}{);} \PYG{k}{else} \PYG{n}{j} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+
+		\PYG{n}{v} \PYG{o}{=} \PYG{n}{getV}\PYG{p}{(}\PYG{n}{d}\PYG{p}{,} \PYG{n}{j}\PYG{p}{,} \PYG{n}{n}\PYG{p}{,} \PYG{n}{my\PYGZus{}start}\PYG{p}{,} \PYG{n}{C}\PYG{p}{);}
+
+		\PYG{k}{if} \PYG{p}{(}\PYG{n}{my\PYGZus{}start}\PYG{o}{\PYGZpc{}}\PYG{l+m+mi}{2} \PYG{o}{==} \PYG{l+m+mi}{0}\PYG{p}{)} \PYG{n}{s} \PYG{o}{=} \PYG{n+nb}{false}\PYG{p}{;}
+		\PYG{k}{else} \PYG{n}{s} \PYG{o}{=} \PYG{n+nb}{true}\PYG{p}{;}
+
+		\PYG{n}{arma}\PYG{o}{::}\PYG{n}{cx\PYGZus{}vec} \PYG{n}{p\PYGZus{}local}\PYG{p}{(}\PYG{n}{m}\PYG{p}{);}
+
+		\PYG{n}{p\PYGZus{}local}\PYG{p}{.}\PYG{n}{zeros}\PYG{p}{();}
+
+		\PYG{k}{for}\PYG{p}{(}\PYG{k+kt}{long} \PYG{n}{ctr} \PYG{o}{=} \PYG{n}{my\PYGZus{}start}\PYG{p}{;} \PYG{n}{ctr} \PYG{o}{\PYGZlt{}} \PYG{n}{my\PYGZus{}end}\PYG{p}{;} \PYG{n}{ctr}\PYG{o}{++}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+			\PYG{n}{q} \PYG{o}{=} \PYG{n}{arma}\PYG{o}{::}\PYG{n}{cumprod}\PYG{p}{(}\PYG{n}{v}\PYG{p}{);}
+			\PYG{n}{t} \PYG{o}{=} \PYG{n}{v}\PYG{p}{[}\PYG{n}{m}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{];}
+			\PYG{k}{if}\PYG{p}{(}\PYG{n}{s}\PYG{p}{)\PYGZob{}}
+				\PYG{n}{p\PYGZus{}local}\PYG{p}{[}\PYG{n}{m}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{]} \PYG{o}{\PYGZhy{}=} \PYG{n}{q}\PYG{p}{[}\PYG{n}{m}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{2}\PYG{p}{];}
+				\PYG{k}{for}\PYG{p}{(}\PYG{n}{i} \PYG{o}{=} \PYG{n}{m}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{2}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZgt{}} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{i}\PYG{o}{\PYGZhy{}\PYGZhy{}}\PYG{p}{)\PYGZob{}}
+					\PYG{n}{p\PYGZus{}local}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{\PYGZhy{}=} \PYG{n}{t}\PYG{o}{*}\PYG{n}{q}\PYG{p}{[}\PYG{n}{i}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{];}
+					\PYG{n}{t} \PYG{o}{*=} \PYG{n}{v}\PYG{p}{[}\PYG{n}{i}\PYG{p}{];}
+				\PYG{p}{\PYGZcb{}}
+				\PYG{n}{p\PYGZus{}local}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]} \PYG{o}{\PYGZhy{}=} \PYG{n}{t}\PYG{p}{;}
+	        \PYG{p}{\PYGZcb{}} \PYG{k}{else} \PYG{p}{\PYGZob{}}
+				\PYG{n}{p\PYGZus{}local}\PYG{p}{[}\PYG{n}{m}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{]} \PYG{o}{+=} \PYG{n}{q}\PYG{p}{[}\PYG{n}{m}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{2}\PYG{p}{];}
+				\PYG{k}{for}\PYG{p}{(}\PYG{n}{i} \PYG{o}{=} \PYG{n}{m}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{2}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZgt{}} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{i}\PYG{o}{\PYGZhy{}\PYGZhy{}}\PYG{p}{)\PYGZob{}}
+					\PYG{n}{p\PYGZus{}local}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{+=} \PYG{n}{t}\PYG{o}{*}\PYG{n}{q}\PYG{p}{[}\PYG{n}{i}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{];}
+					\PYG{n}{t} \PYG{o}{*=} \PYG{n}{v}\PYG{p}{[}\PYG{n}{i}\PYG{p}{];}
+				\PYG{p}{\PYGZcb{}}
+				\PYG{n}{p\PYGZus{}local}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]} \PYG{o}{+=} \PYG{n}{t}\PYG{p}{;}
+			\PYG{p}{\PYGZcb{}}
+
+			\PYG{n}{s} \PYG{o}{=} \PYG{o}{!}\PYG{n}{s}\PYG{p}{;}
+			\PYG{k}{if} \PYG{p}{(}\PYG{n}{ctr}\PYG{o}{!=}\PYG{l+m+mi}{0}\PYG{p}{)} \PYG{n}{d}\PYG{p}{[}\PYG{n}{j}\PYG{p}{]} \PYG{o}{=} \PYG{l+m+mi}{1} \PYG{o}{\PYGZca{}} \PYG{n}{d}\PYG{p}{[}\PYG{n}{j}\PYG{p}{];}
+			\PYG{n}{j} \PYG{o}{=} \PYG{n}{getActiveIndex}\PYG{p}{(}\PYG{n}{ctr}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{);}
+			\PYG{k}{if}\PYG{p}{(}\PYG{n}{d}\PYG{p}{[}\PYG{n}{j}\PYG{p}{]} \PYG{o}{==} \PYG{l+m+mi}{1}\PYG{p}{)} \PYG{n}{v} \PYG{o}{\PYGZhy{}=} \PYG{n}{C}\PYG{p}{.}\PYG{n}{col}\PYG{p}{(}\PYG{n}{j}\PYG{p}{);} \PYG{k}{else} \PYG{n}{v} \PYG{o}{+=} \PYG{n}{C}\PYG{p}{.}\PYG{n}{col}\PYG{p}{(}\PYG{n}{j}\PYG{p}{);}
+		\PYG{p}{\PYGZcb{}}
+
+		\PYG{c+cp}{\PYGZsh{}pragma omp critical}
+		\PYG{p}{\PYGZob{}}
+			\PYG{n}{p}\PYG{o}{+=} \PYG{n}{p\PYGZus{}local}\PYG{p}{;}
+		\PYG{p}{\PYGZcb{}}
+	\PYG{p}{\PYGZcb{}}
+	\PYG{k}{return} \PYG{l+m+mf}{2.}\PYG{o}{*}\PYG{n}{p}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

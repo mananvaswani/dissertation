@@ -6,11 +6,26 @@ Scott Aaronson and Alex Arkhipov.
 \newblock In {\em Proceedings of the Forty-third Annual ACM Symposium on Theory
   of Computing}, STOC '11, pages 333--342, New York, NY, USA, 2011. ACM.
 
+\bibitem{balasubramanian1980}
+K~Balasubramanian.
+\newblock {\em Combinatorics and diagonals of matrices}.
+\newblock PhD thesis, Indian Statistical Institute, Calcutta, Dec 1980.
+
 \bibitem{galton_board}
 Margherita Barile and Eric~W Weisstein.
 \newblock Galton board.
 \newblock From MathWorld--A Wolfram Web Resource.
   http://mathworld.wolfram.com/GaltonBoard.html.
+
+\bibitem{bax1998}
+Eric Bax.
+\newblock {\em Finite-difference algorithms for counting problems}.
+\newblock PhD thesis, California Institute of Technology, February 1998.
+
+\bibitem{bax1996}
+Eric Bax and Joel Franklin.
+\newblock A finite-difference sieve to count paths and cycles by length.
+\newblock {\em Information Processing Letters}, 60(4):171 -- 176, 1996.
 
 \bibitem{boixo2016}
 Sergio {Boixo}, Sergei~V. {Isakov}, Vadim~N. {Smelyanskiy}, Ryan {Babbush}, Nan
@@ -25,6 +40,11 @@ E.~R. Caianiello.
   in electrodynamics without use of feynman graphs.
 \newblock {\em Il Nuovo Cimento (1943-1954)}, 10(12):1634--1652, Dec 1953.
 
+\bibitem{clifford_r2017}
+Peter Clifford and Rapha{\"e}l Clifford.
+\newblock {\em BosonSampling: Classical Boson Sampling}, 2017.
+\newblock R package version 0.1.1.
+
 \bibitem{clifford17}
 Peter Clifford and Rapha{\"{e}}l Clifford.
 \newblock The classical complexity of boson sampling.
@@ -34,6 +54,29 @@ Peter Clifford and Rapha{\"{e}}l Clifford.
 Leonardo Dagum and Ramesh Menon.
 \newblock Openmp: an industry standard api for shared-memory programming.
 \newblock {\em Computational Science \& Engineering, IEEE}, 5(1):46--55, 1998.
+
+\bibitem{rcpp}
+Dirk Eddelbuettel, Romain Francois, JJ~Allaire, Kevin Ushey, Qiang Kou, Nathan
+  Russell, Douglas Bates, and John Chambers.
+\newblock {\em RCpp}, 2017.
+\newblock R package version 0.12.12.
+
+\bibitem{feller1968}
+William Feller.
+\newblock {\em An Introduction to Probability Theory and its Applications},
+  volume~1.
+\newblock Wiley, 1968.
+
+\bibitem{gcc_flags}
+GCC.
+\newblock Gcc optimize options.
+\newblock
+  https://gcc.gnu.org/onlinedocs/gcc/Optimize-Options.html#Optimize-Options.
+
+\bibitem{glynn2010}
+David~G. Glynn.
+\newblock The permanent of a square matrix.
+\newblock {\em European Journal of Combinatorics}, 31(7):1887 -- 1891, 2010.
 
 \bibitem{god-bolt}
 Matt Godbolt.
@@ -51,6 +94,12 @@ W.~Larry Hastings.
   applications.
 \newblock 1970.
 
+\bibitem{muldc3}
+The LLVM~Compiler Infrastructure.
+\newblock muldc3.c - implement \_\_muldc3.
+\newblock
+  http://www.mit.edu/afs.new/sipb.mit.edu/project/freebsd/head/contrib/compiler-rt/lib/muldc3.c.
+
 \bibitem{kaye2007}
 Phillip Kaye, Raymond Laflamme, and Michele Mosca.
 \newblock {\em An Introduction to Quantum Computing}.
@@ -61,11 +110,28 @@ E.~Knill, R.~Laflamme, and G.~J. Milburn.
 \newblock A scheme for efficient quantum computation with linear optics.
 \newblock {\em Nature}, 409(6816):46--52, 2001.
 
+\bibitem{knuth1969}
+Donald~E. Knuth.
+\newblock {\em The Art of Computer Programming, Volume {II:} Seminumerical
+  Algorithms}.
+\newblock Addison-Wesley, 1969.
+
 \bibitem{lundow2019}
 P.~H. {Lundow} and K.~{Markstr{\"o}m}.
 \newblock {Efficient computation of permanents, with applications to boson
   sampling and random matrices}.
 \newblock {\em arXiv e-prints}, page arXiv:1904.06229, Apr 2019.
+
+\bibitem{marcus_minc66}
+Marvin Marcus and Henryk Minc.
+\newblock Permanents.
+\newblock {\em The American Mathematical Monthly}, vol. 72:577--591, 1965.
+
+\bibitem{matsumoto1998}
+Makoto Matsumoto and Takuji Nishimura.
+\newblock Mersenne twister: A 623-dimensionally equidistributed uniform
+  pseudo-random number generator.
+\newblock {\em ACM Trans. Model. Comput. Simul.}, 8(1):3--30, January 1998.
 
 \bibitem{monz2016}
 Thomas Monz, Daniel Nigg, Esteban~A. Martinez, Matthias~F. Brandl, Philipp
@@ -80,11 +146,22 @@ Alex Neville, Chris Sparrow, Rapha{\"e}l Clifford, Eric Johnston, Patrick~M.
   near-term experiments.
 \newblock {\em Nature Physics}, 13:1153 EP --, 10 2017.
 
+\bibitem{Nijenhuis1978}
+Albert Nijenhuis and Herbert~S. Wilf.
+\newblock 23 - the permanent function (perman).
+\newblock In {\em Combinatorial Algorithms (Second Edition)}, pages 217 -- 225.
+  Academic Press, second edition edition, 1978.
+
 \bibitem{blue_crystal}
 University of~Bristol~ACRC.
 \newblock Blue crystal phase 4.
 \newblock
   https://www.bristol.ac.uk/acrc/high-performance-computing/bluecrystal-tech-specs/.
+
+\bibitem{ozols2009}
+Maris Ozols.
+\newblock How to generate a random unitary matrix.
+\newblock Technical report, 2009.
 
 \bibitem{papadimitriou2003}
 Christos~H. Papadimitriou.
@@ -99,6 +176,11 @@ Edwin {Pednault}, John~A. {Gunnels}, Giacomo {Nannicini}, Lior {Horesh}, Thomas
 \newblock {Breaking the 49-Qubit Barrier in the Simulation of Quantum
   Circuits}.
 \newblock {\em arXiv e-prints}, page arXiv:1710.05867, Oct 2017.
+
+\bibitem{preskill2012}
+John {Preskill}.
+\newblock {Quantum computing and the entanglement frontier}.
+\newblock {\em arXiv e-prints}, page arXiv:1203.5813, Mar 2012.
 
 \bibitem{rahimi2016}
 Saleh {Rahimi-Keshari}, Timothy~C. {Ralph}, and Carlton~M. {Caves}.
@@ -117,6 +199,11 @@ Wojciech {Roga} and Masahiro {Takeoka}.
 \newblock {Classical simulation of boson sampling with sparse output}.
 \newblock {\em arXiv e-prints}, page arXiv:1904.05494, Apr 2019.
 
+\bibitem{ryser_1963}
+Herbert~John Ryser.
+\newblock {\em Combinatorial Mathematics}.
+\newblock Mathematical Association of America, 1963.
+
 \bibitem{armadillo}
 Conrad Sanderson.
 \newblock Armadillo c++ linear algebra library, June 2016.
@@ -127,21 +214,58 @@ Peter~W. {Shor}.
   Logarithms on a Quantum Computer}.
 \newblock {\em arXiv e-prints}, pages quant--ph/9508027, Aug 1995.
 
+\bibitem{intel_compiler}
+Intel Software.
+\newblock Intel c++ compiler.
+\newblock https://software.intel.com/en-us/c-compilers.
+
 \bibitem{vtune2018}
 Intel Software.
 \newblock Intel vtune amplifier 2018.
 \newblock Software available at https://software.intel.com/en-us/vtune, 2018.
+
+\bibitem{gcc_compiler}
+Richard~M. Stallman and the GCC Developer~Community.
+\newblock {\em Using the GNU Compiler Collection}.
+\newblock GNU Press.
+
+\bibitem{cran}
+R~Development~Core Team.
+\newblock Cran: The comprehensive r archive network.
+\newblock https://cran.r-project.org/.
+
+\bibitem{openmpi}
+The Open MPI~Development Team.
+\newblock Openmpi.
+\newblock https://www.open-mpi.org/.
 
 \bibitem{toda1991}
 Seinosuke Toda.
 \newblock Pp is as hard as the polynomial-time hierarchy.
 \newblock {\em SIAM J. Comput.}, 20:865--877, 10 1991.
 
+\bibitem{valiant1979}
+L.G. Valiant.
+\newblock The complexity of computing the permanent.
+\newblock {\em Theoretical Computer Science}, 8(2):189 -- 201, 1979.
+
 \bibitem{vartiainen2004}
 Juha~J. {Vartiainen}, Antti~O. {Niskanen}, Mikio {Nakahara}, and Martti~M.
   {Salomaa}.
 \newblock {Implementing Shor's algorithm on Josephson charge qubits}.
 \newblock {\em Phys. Rev. A}, 70(1):012319, Jul 2004.
+
+\bibitem{walker1974}
+A.~J. {Walker}.
+\newblock New fast method for generating discrete random numbers with arbitrary
+  frequency distributions.
+\newblock {\em Electronics Letters}, 10(8):127--128, April 1974.
+
+\bibitem{2016NJPh...18c2001W}
+Mattia {Walschaers}, Jack {Kuipers}, Juan-Diego {Urbina}, Klaus {Mayer},
+  Malte~Christopher {Tichy}, Klaus {Richter}, and Andreas {Buchleitner}.
+\newblock {Statistical benchmark for BosonSampling}.
+\newblock {\em New Journal of Physics}, 18(3):032001, Mar 2016.
 
 \bibitem{wu2018}
 Junjie Wu, Yong Liu, Baida Zhang, Xianmin Jin, Yang Wang, Huiquan Wang, and

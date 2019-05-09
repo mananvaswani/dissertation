@@ -1,3 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{n+nf}{cxPerm}\PYG{p}{(}\PYG{n}{A}\PYG{p}{),} \PYG{n+nf}{rePerm}\PYG{p}{(}\PYG{n}{B}\PYG{p}{),} \PYG{n+nf}{cxPermMinors}\PYG{p}{(}\PYG{n}{C}\PYG{p}{)}
-\end{Verbatim}

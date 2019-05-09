@@ -7,7 +7,7 @@
    \PYG{k}{if}\PYG{p}{(}\PYG{n}{s}\PYG{p}{)\PYGZob{}}
         \PYG{c+c1}{//Subtract partial products of v from p}
     \PYG{p}{\PYGZcb{}} \PYG{k}{else} \PYG{p}{\PYGZob{}}
-        \PYG{c+c1}{//Subtract partial products from p}
+        \PYG{c+c1}{//Add partial products of v to p}
     \PYG{p}{\PYGZcb{}}
     \PYG{n}{s} \PYG{o}{=} \PYG{o}{!}\PYG{n}{s}\PYG{p}{;}
     \PYG{p}{...}

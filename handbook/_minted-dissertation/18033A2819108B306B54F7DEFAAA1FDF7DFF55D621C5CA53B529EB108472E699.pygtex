@@ -1,0 +1,20 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+cp}{\PYGZsh{}include} \PYG{c+cpf}{\PYGZdq{}header.h\PYGZdq{}}
+
+\PYG{n}{arma}\PYG{o}{::}\PYG{n}{cx\PYGZus{}mat} \PYG{n}{randomUnitary}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{m}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+
+    \PYG{n}{arma}\PYG{o}{::}\PYG{n}{mat} \PYG{n}{A\PYGZus{}real}\PYG{p}{(}\PYG{n}{m}\PYG{p}{,} \PYG{n}{m}\PYG{p}{,} \PYG{n}{arma}\PYG{o}{::}\PYG{n}{fill}\PYG{o}{::}\PYG{n}{randn}\PYG{p}{);}
+    \PYG{n}{arma}\PYG{o}{::}\PYG{n}{mat} \PYG{n}{A\PYGZus{}imag}\PYG{p}{(}\PYG{n}{m}\PYG{p}{,} \PYG{n}{m}\PYG{p}{,} \PYG{n}{arma}\PYG{o}{::}\PYG{n}{fill}\PYG{o}{::}\PYG{n}{randn}\PYG{p}{);}
+
+    \PYG{n}{arma}\PYG{o}{::}\PYG{n}{cx\PYGZus{}mat} \PYG{n}{A}\PYG{p}{(}\PYG{n}{A\PYGZus{}real}\PYG{p}{,} \PYG{n}{A\PYGZus{}imag}\PYG{p}{);}
+
+    \PYG{n}{arma}\PYG{o}{::}\PYG{n}{cx\PYGZus{}mat} \PYG{n}{Q}\PYG{p}{,} \PYG{n}{R}\PYG{p}{;}
+    \PYG{n}{arma}\PYG{o}{::}\PYG{n}{qr}\PYG{p}{(}\PYG{n}{Q}\PYG{p}{,} \PYG{n}{R}\PYG{p}{,} \PYG{n}{A}\PYG{p}{);}
+
+    \PYG{n}{arma}\PYG{o}{::}\PYG{n}{mat} \PYG{n}{R\PYGZus{}diag} \PYG{o}{=} \PYG{n}{arma}\PYG{o}{::}\PYG{n}{sign}\PYG{p}{(}\PYG{n}{arma}\PYG{o}{::}\PYG{n}{real}\PYG{p}{(}\PYG{n}{arma}\PYG{o}{::}\PYG{n}{diagmat}\PYG{p}{(}\PYG{n}{R}\PYG{p}{)));}
+
+    \PYG{n}{A} \PYG{o}{=} \PYG{n}{Q} \PYG{o}{*} \PYG{n}{R\PYGZus{}diag}\PYG{p}{;}
+
+    \PYG{k}{return} \PYG{n}{A}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}
